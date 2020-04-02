@@ -1,4 +1,38 @@
 ---
 label: Post
 hide_body: false
-fields: []
+fields:
+- name: title
+  type: text
+  config:
+    required: false
+  label: Title
+  description: Post description
+- name: date
+  type: datetime
+  label: Date
+  description: Date written
+  config:
+    required: false
+    date_format: 
+    time_format: 
+    display_utc: false
+- name: body
+  type: textarea
+  default: ''
+  config:
+    required: false
+    wysiwyg: false
+    schema:
+      format: markdown
+  label: Body
+  description: Body content
+- name: tags
+  type: tag_list
+  default: []
+  label: Tags
+  description: Technology mentioned
+- name: ispostfinished
+  type: boolean
+  label: isPostFinished
+  description: Check if the post is finished
