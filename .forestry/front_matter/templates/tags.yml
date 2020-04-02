@@ -1,9 +1,0 @@
----
-label: Tags
-hide_body: true
-fields:
-- name: tag
-  type: tag_list
-  default: []
-  label: Tag
-  description: Common tags
