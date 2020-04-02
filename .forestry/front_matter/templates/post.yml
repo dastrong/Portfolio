@@ -5,24 +5,26 @@ fields:
 - name: title
   type: text
   config:
-    required: false
+    required: true
   label: Title
   description: Post description
 - name: date
   type: datetime
   label: Date
-  description: Date written
+  description: Published date
   config:
-    required: false
+    required: true
     date_format: 
     time_format: 
     display_utc: false
+    export_format: MM/DD/YYYY
+  default: now
 - name: body
   type: textarea
   default: ''
   config:
-    required: false
-    wysiwyg: false
+    required: true
+    wysiwyg: true
     schema:
       format: markdown
   label: Body
