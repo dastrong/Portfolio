@@ -37,7 +37,7 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
-          <title>Daniel Strong</title>
+          <link rel="shortcut icon" href="/favicon.png" />
           <link
             href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Work+Sans:wght@300&display=swap"
             rel="stylesheet"
