@@ -2,6 +2,8 @@ import "styled-components";
 
 declare module "styled-components" {
   export interface DefaultTheme {
+    isDarkTheme: boolean;
+    toggleTheme: () => void;
     colors: {
       background: {
         dark: string;
