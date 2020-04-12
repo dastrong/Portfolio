@@ -1,17 +1,23 @@
 import { DefaultTheme } from "styled-components";
 
+export const darkColors = {
+  dark: "#000000",
+  main: "#070707",
+  light: "#161616",
+};
+
+export const lightColors = {
+  dark: "#E1F1F8",
+  main: "#F3F8FA",
+  light: "#FFFFFF",
+};
+
 export const theme: DefaultTheme = {
+  isDarkTheme: true,
+  toggleTheme: () => undefined,
   colors: {
-    background: {
-      dark: "#000000",
-      main: "#070707",
-      light: "#161616",
-    },
-    text: {
-      dark: "#E1F1F8",
-      main: "#F3F8FA",
-      light: "#FFFFFF",
-    },
+    background: darkColors,
+    text: lightColors,
     blue: "#41B6E6",
     pink: "#DB3EB1",
   },
