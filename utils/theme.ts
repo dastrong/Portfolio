@@ -1,5 +1,8 @@
 import { DefaultTheme } from "styled-components";
 
+const customMediaQuery = (maxWidth: number) =>
+  `@media (max-width: ${maxWidth}px)`;
+
 export const darkColors = {
   dark: "#000000",
   main: "#070707",
@@ -15,6 +18,14 @@ export const lightColors = {
 export const theme: DefaultTheme = {
   isDarkTheme: true,
   toggleTheme: () => undefined,
+  media: {
+    xs: customMediaQuery(480),
+    sm: customMediaQuery(576),
+    md: customMediaQuery(768),
+    lg: customMediaQuery(992),
+    xl: customMediaQuery(1200),
+    xxl: customMediaQuery(1600),
+  },
   colors: {
     background: darkColors,
     text: lightColors,
@@ -32,7 +43,7 @@ export const theme: DefaultTheme = {
     lg: "2.25rem",
     xl: "3rem",
   },
-  borderRadius: "10px",
+  borderRadius: 10,
   centered: {
     display: "flex",
     justifyContent: "center",

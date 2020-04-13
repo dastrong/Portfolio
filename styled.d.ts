@@ -4,6 +4,14 @@ declare module "styled-components" {
   export interface DefaultTheme {
     isDarkTheme: boolean;
     toggleTheme: () => void;
+    media: {
+      xs: string;
+      sm: string;
+      md: string;
+      lg: string;
+      xl: string;
+      xxl: string;
+    };
     colors: {
       background: {
         dark: string;
@@ -29,7 +37,7 @@ declare module "styled-components" {
       lg: string;
       xl: string;
     };
-    borderRadius: string;
+    borderRadius: number;
     centered: {
       display: string;
       justifyContent: string;

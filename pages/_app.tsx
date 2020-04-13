@@ -4,6 +4,7 @@ import { ThemeProvider } from "styled-components";
 
 import { theme, darkColors, lightColors } from "../utils";
 import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 import "focus-visible";
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -28,10 +29,31 @@ export default function App({ Component, pageProps }: AppProps) {
 
       <Component {...pageProps} />
 
+      <Footer />
+
       <style jsx global>{`
-        body,
-        html {
+        body {
+          overflow-x: hidden;
           background-color: ${currentTheme.colors.background.light};
+          scrollbar-width: thin;
+          scrollbar-color: ${currentTheme.colors.blue}
+            ${currentTheme.colors.blue};
+        }
+
+        body::-webkit-scrollbar {
+          width: 11px;
+        }
+
+        body::-webkit-scrollbar-track {
+          background: ${currentTheme.colors.background.main};
+        }
+
+        body::-webkit-scrollbar-thumb {
+          background-color: ${currentTheme.colors.blue};
+          border-radius: 6px;
+          border: 3px solid ${currentTheme.colors.background.main};
+          height: 10px;
+          width: 10px;
         }
 
         body,
@@ -40,8 +62,6 @@ export default function App({ Component, pageProps }: AppProps) {
           margin: 0;
           padding: 0;
           box-sizing: border-box;
-          font-family: ${theme.fontFamily.primary};
-          transition: all 0.15s;
         }
 
         // removes the outline on clicks; keeps it for keyboard events
@@ -55,9 +75,20 @@ export default function App({ Component, pageProps }: AppProps) {
           display: inherit;
         }
 
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          font-family: ${theme.fontFamily.primary};
+        }
+
         div,
         p,
-        span {
+        span,
+        li,
+        a {
           font-family: ${theme.fontFamily.secondary};
         }
       `}</style>
