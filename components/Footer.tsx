@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { LogoBig } from "./_svgs";
-import LinkSocial from "./LinkSocial";
-import GradientContainer from "./GradientContainer";
+import { LogoBig } from "components/_svgs";
+import LinkSocial from "components/LinkSocial";
+import GradientContainer from "components/GradientContainer";
 
 const StyledFooter = styled.footer`
   width: 100%;

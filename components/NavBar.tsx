@@ -3,11 +3,11 @@ import { useRouter } from "next/router";
 import styled, { useTheme } from "styled-components";
 import { FaBars, FaTimes } from "react-icons/fa";
 
-import GradientContainer from "./GradientContainer";
-import ThemeToggle from "./ThemeToggle";
-import LinkList from "./LinkList";
-import { LogoNav, LogoBig } from "./_svgs";
-import useOnClickOutside from "../hooks/useOnClickOutside";
+import GradientContainer from "components/GradientContainer";
+import ThemeToggle from "components/ThemeToggle";
+import LinkList from "components/LinkList";
+import { LogoNav, LogoBig } from "components/_svgs";
+import useOnClickOutside from "hooks/useOnClickOutside";
 
 type DropdownMenuProps = {
   isMenuOpen: boolean;
