@@ -5,6 +5,14 @@ declare module "styled-components" {
   export interface DefaultTheme {
     isDarkTheme: boolean;
     toggleTheme: () => void;
+    width: {
+      xs: number;
+      sm: number;
+      md: number;
+      lg: number;
+      xl: number;
+      xxl: number;
+    };
     media: {
       xs: string;
       sm: string;

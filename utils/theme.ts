@@ -18,6 +18,14 @@ export const lightColors = {
 export const theme: DefaultTheme = {
   isDarkTheme: true,
   toggleTheme: () => undefined,
+  width: {
+    xs: 480,
+    sm: 576,
+    md: 768,
+    lg: 992,
+    xl: 1200,
+    xxl: 1600,
+  },
   media: {
     xs: customMediaQuery(480),
     sm: customMediaQuery(576),
