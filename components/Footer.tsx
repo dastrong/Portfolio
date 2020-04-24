@@ -1,20 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-import { LogoBig } from "components/_svgs";
+import { LogoFooter } from "components/_svgs";
 import LinkSocial from "components/LinkSocial";
 import GradientContainer from "components/GradientContainer";
 
 const StyledFooter = styled.footer`
   width: 100%;
-  padding: 10px;
+  padding: 20px;
   background-color: ${props => props.theme.colors.background.main};
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  > a > svg {
-    height: 150px;
-  }
 `;
 
 const StyledBottom = styled.div`
@@ -22,12 +18,12 @@ const StyledBottom = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  max-width: ${props => props.theme.width.md + "px"};
   padding: 10px;
 `;
 
 const StyledText = styled.p`
   font-size: 0.8rem;
-  width: 33%;
   color: ${props => props.theme.colors.text.main};
 
   &:last-of-type {
@@ -35,25 +31,34 @@ const StyledText = styled.p`
   }
 `;
 
-const HighlightedText = styled.span`
+const HighlightedLink = styled.a`
+  display: inline-block;
   font-weight: bold;
-  color: ${props => props.theme.colors.blue};
+  color: ${props => props.theme.colors.accent};
+  text-decoration: underline ${props => props.theme.colors.accent};
 `;
 
 export default function Footer() {
   return (
     <StyledFooter>
-      <LogoBig />
+      <LogoFooter />
 
       <StyledBottom>
-        <StyledText>Copyright 2020 &copy; All Right Reserved</StyledText>
+        <StyledText>&copy; 2020 All Rights Reserved</StyledText>
 
         <GradientContainer isStatic>
           <LinkSocial />
         </GradientContainer>
 
         <StyledText>
-          Designed by: <HighlightedText>Daniel Strong</HighlightedText>
+          Designed by:{" "}
+          <HighlightedLink
+            href="https://www.danielstrong.tech"
+            target="_blank"
+            rel="noopener"
+          >
+            Daniel Strong
+          </HighlightedLink>
         </StyledText>
       </StyledBottom>
     </StyledFooter>
