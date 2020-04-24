@@ -1,13 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import Link from "next/link";
-
-const links = [
-  { href: "/about", text: "About" },
-  { href: "/work", text: "Work" },
-  { href: "/blog", text: "Blog" },
-  { href: "/contact", text: "Contact" },
-];
+import InterLink from "components/Links";
+import { internalLinks } from "utils";
+import { StyledLinkText } from "./styled/StyledLinkText";
 
 const StyledList = styled.ul`
   ${props => props.theme.centered}
@@ -19,41 +14,16 @@ const StyledList = styled.ul`
   }
 `;
 
-const StyledItem = styled.a<LinkListProps>`
-  cursor: pointer;
-  text-align: center;
-  font-size: 1.2rem;
+const StyledListItem = styled.li`
   padding: 15px 10px;
-  transition-property: all;
-  transition-duration: ${props => `${props.isMenuOpen ? 0.15 : 0}s`};
-  transition-delay: ${props =>
-    `${props.isMenuOpen ? props.index * 0.1 + 0.2 : 0}s`};
-  opacity: ${props => (props.isMenuOpen ? 1 : 0)};
-  transform: ${props => `translateY(${props.isMenuOpen ? 0 : 10}px)`};
-  color: ${props => props.theme.colors.text.main};
-  text-decoration-color: ${props => props.theme.colors.pink};
-
-  &:hover {
-    text-decoration-line: underline;
-
-    ${props => props.theme.media.md} {
-      text-decoration: none;
-    }
-  }
-
-  ${props => props.theme.media.md} {
-    width: 100%;
-    text-decoration: none;
-    font-size: 1.4rem;
-  }
 `;
 
 const StyledDivider = styled.hr`
   border: none;
   height: 1px;
   width: 60px;
-  margin: 10px auto;
-  background-color: ${props => props.theme.colors.pink};
+  margin: 5px auto;
+  background-color: ${props => props.theme.colors.accent};
   display: none;
 
   ${props => props.theme.media.md} {
@@ -61,24 +31,24 @@ const StyledDivider = styled.hr`
   }
 `;
 
-type LinkListProps = {
-  isMenuOpen?: boolean;
-  index?: number;
-};
-
-export default function LinkList({ isMenuOpen }: LinkListProps) {
+export default function LinkList({ isMenuOpen }: { isMenuOpen?: boolean }) {
   return (
     <StyledList>
-      {links.map(({ text, href }, index) => (
-        <li key={text}>
-          <Link href={href}>
-            <StyledItem isMenuOpen={isMenuOpen} index={index}>
+      {internalLinks.map(({ text, href }, index) => (
+        <>
+          <StyledListItem key={text}>
+            <InterLink
+              href={href}
+              StyledAnchor={StyledLinkText}
+              isMenuOpen={isMenuOpen}
+              index={index}
+            >
               {text}
-            </StyledItem>
-          </Link>
+            </InterLink>
+          </StyledListItem>
 
           <StyledDivider />
-        </li>
+        </>
       ))}
     </StyledList>
   );
