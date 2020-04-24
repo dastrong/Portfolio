@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useRouter } from "next/router";
+import React, { useState, useRef } from "react";
 import styled, { useTheme } from "styled-components";
 import { FaBars, FaTimes } from "react-icons/fa";
 
@@ -92,24 +91,20 @@ const DropdownMenu = styled.div<DropdownMenuProps>`
 
 export default function NavBar() {
   const { colors } = useTheme();
-  const { pathname } = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const ref = useRef();
-  useOnClickOutside(ref, () => setIsMenuOpen(false));
+  const refMenu = useRef();
+  const refIcons = useRef();
+
+  useOnClickOutside(refMenu, () => setIsMenuOpen(false), refIcons);
 
   const toggleMenu = () => setIsMenuOpen(state => !state);
-
-  useEffect(() => {
-    if (!isMenuOpen) return;
-    setIsMenuOpen(false);
-  }, [pathname]);
 
   return (
     <StyledNav>
       <LogoNav />
 
-      <Icons>
+      <Icons ref={refIcons}>
         <DesktopMenu>
           <LinkList isMenuOpen />
         </DesktopMenu>
@@ -131,7 +126,7 @@ export default function NavBar() {
         </StyledMenuButton>
       </Icons>
 
-      <DropdownMenu ref={ref} isMenuOpen={isMenuOpen}>
+      <DropdownMenu ref={refMenu} isMenuOpen={isMenuOpen}>
         <GradientContainer isStatic>
           <MobileMenu>
             <LinkList isMenuOpen={isMenuOpen} />
