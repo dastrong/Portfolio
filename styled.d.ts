@@ -1,4 +1,5 @@
 import "styled-components";
+// import {} from "styled-components/cssprop";
 
 declare module "styled-components" {
   export interface DefaultTheme {
@@ -25,6 +26,7 @@ declare module "styled-components" {
       };
       blue: string;
       pink: string;
+      accent: string;
     };
     fontFamily: {
       primary: string;

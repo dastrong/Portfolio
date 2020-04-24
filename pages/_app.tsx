@@ -20,6 +20,7 @@ export default function App({ Component, pageProps }: AppProps) {
       ...theme.colors,
       background: isDarkTheme ? darkColors : lightColors,
       text: isDarkTheme ? lightColors : darkColors,
+      accent: isDarkTheme ? theme.colors.pink : theme.colors.blue,
     },
   };
 

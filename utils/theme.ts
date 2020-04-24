@@ -31,6 +31,7 @@ export const theme: DefaultTheme = {
     text: lightColors,
     blue: "#41B6E6",
     pink: "#DB3EB1",
+    accent: "#41B6E6",
   },
   fontFamily: {
     primary: "'Work Sans', sans-serif",
