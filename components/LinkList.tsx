@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import InterLink from "components/Links";
+import InterLink from "components/Shared/Links";
 import { internalLinks } from "utils";
 import { StyledLinkText } from "./styled/StyledLinkText";
 

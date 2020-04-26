@@ -1,5 +1,5 @@
 import React from "react";
-import GradientContainer from "components/GradientContainer";
+import GradientContainer from "components/Shared/GradientContainer";
 
 export default function Index() {
   return (

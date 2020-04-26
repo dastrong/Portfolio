@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { PlainLink } from "components/Links";
+import { PlainLink } from "components/Shared/Links";
 
 export const StyledLinkText = styled(PlainLink)`
   overflow: hidden;

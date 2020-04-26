@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { externalLinks } from "utils";
-import { StyledLinkIcon } from "./styled/StyledLinkIcon";
+import { StyledLinkIcon } from "components/Shared/StyledLinkIcon";
 
 const StyledContainer = styled.div`
   width: 100%;
@@ -16,6 +16,24 @@ const StyledContainer = styled.div`
 
     &:last-of-type {
       margin-right: 0px;
+    }
+  }
+
+  ${props => props.theme.media.md} {
+    flex-direction: column;
+
+    a {
+      margin: 5px 0;
+
+      &:first-of-type {
+        margin-left: 0px;
+        margin-top: 0px;
+      }
+
+      &:last-of-type {
+        margin-right: 0px;
+        margin-bottom: 0px;
+      }
     }
   }
 `;

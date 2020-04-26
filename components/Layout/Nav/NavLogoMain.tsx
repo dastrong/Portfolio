@@ -1,8 +1,8 @@
 import React from "react";
 import { useTheme } from "styled-components";
-import InterLink from "components/Links";
+import InterLink from "components/Shared/Links";
 
-export default function LogoNav() {
+export default function NavLogoMain() {
   const { colors } = useTheme();
 
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { useTheme } from "styled-components";
-import InterLink from "components/Links";
+import InterLink from "components/Shared/Links";
 
 const MoonSun = styled.path`
   transition: 0.4s transform;
@@ -8,7 +8,7 @@ const MoonSun = styled.path`
   transform: rotate(${({ theme }) => (theme.isDarkTheme ? -20 : 20)}deg);
 `;
 
-export default function LogoBig() {
+export default function NavLogoMobile() {
   const { isDarkTheme, colors } = useTheme();
 
   return (
