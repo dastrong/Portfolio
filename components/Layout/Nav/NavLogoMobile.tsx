@@ -2,6 +2,12 @@ import React from "react";
 import styled, { useTheme } from "styled-components";
 import InterLink from "components/Shared/Links";
 
+const StyledAnchor = styled.a`
+  height: 100px;
+  width: 200px;
+  margin: 20px auto 10px;
+`;
+
 const MoonSun = styled.path`
   transition: 0.4s transform;
   transform-origin: center;
@@ -12,7 +18,7 @@ export default function NavLogoMobile() {
   const { isDarkTheme, colors } = useTheme();
 
   return (
-    <InterLink href="/">
+    <InterLink href="/" StyledAnchor={StyledAnchor}>
       <svg viewBox="0 0 452 234" xmlns="http://www.w3.org/2000/svg">
         <MoonSun
           fillRule="evenodd"

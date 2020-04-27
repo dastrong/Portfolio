@@ -5,15 +5,11 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import useOnClickOutside from "hooks/useOnClickOutside";
 
 import GradientContainer from "components/Shared/GradientContainer";
-import LinkList from "components/LinkList";
 import ThemeToggle from "./ThemeToggle";
+import NavList from "./NavList";
 import NavLogoMain from "./NavLogoMain";
 import NavLogoMobile from "./NavLogoMobile";
 import * as Styled from "./Nav.styles";
-
-export type DropdownMenuProps = {
-  isMenuOpen: boolean;
-};
 
 export default function Nav() {
   const { colors } = useTheme();
@@ -32,7 +28,7 @@ export default function Nav() {
 
       <Styled.Container ref={refNavIcons}>
         <Styled.DesktopMenu>
-          <LinkList isMenuOpen />
+          <NavList isMenuOpen />
         </Styled.DesktopMenu>
 
         <ThemeToggle />
@@ -52,14 +48,12 @@ export default function Nav() {
         </Styled.MenuButton>
       </Styled.Container>
 
-      <Styled.MobileMenuContainer ref={refMobileMenu} isMenuOpen={isMenuOpen}>
-        <GradientContainer isStatic>
-          <Styled.MobileMenu>
-            <LinkList isMenuOpen={isMenuOpen} />
-            <NavLogoMobile />
-          </Styled.MobileMenu>
+      <Styled.MobileMenu isMenuOpen={isMenuOpen}>
+        <GradientContainer isStatic ref={refMobileMenu}>
+          <NavList isMobile isMenuOpen={isMenuOpen} />
+          <NavLogoMobile />
         </GradientContainer>
-      </Styled.MobileMenuContainer>
+      </Styled.MobileMenu>
     </Styled.Nav>
   );
 }

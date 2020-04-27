@@ -1,10 +1,11 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import styled from "styled-components";
 
 const gradientWidth = "2px";
 
 interface GradientProps {
   isStatic: boolean;
+  // ref?: React.MutableRefObject<undefined>;
 }
 
 const Container = styled.div`
@@ -52,12 +53,12 @@ type GradientContainerProps = {
   isStatic?: boolean;
 };
 
-export default function GradientContainer({
-  children,
-  isStatic = false,
-}: GradientContainerProps) {
+export default forwardRef(function GradientContainer(
+  { children, isStatic = false }: GradientContainerProps,
+  ref?: React.MutableRefObject<undefined>
+) {
   return (
-    <Container>
+    <Container ref={ref}>
       {/* we use two containers here for a hover animation that starts in opposite corners and that meets up */}
       {/* if isStatic is passed there is no hover animation and just showcase the 'border' */}
       <Gradient isStatic={isStatic} />
@@ -67,4 +68,6 @@ export default function GradientContainer({
       <Content>{children}</Content>
     </Container>
   );
-}
+});
+
+// export default GradientContainer;

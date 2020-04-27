@@ -28,9 +28,9 @@ export const StyledLinkText = styled(PlainLink)`
   }
 
   ${props => props.theme.media.md} {
-    transition-duration: ${props => `${props.isMenuOpen ? 0.15 : 0}s`};
+    transition-duration: ${props => `${props.isMenuOpen ? 0.1 : 0}s`};
     transition-delay: ${props =>
-      `${props.isMenuOpen ? props.index * 0.1 + 0.2 : 0}s`};
+      `${props.isMenuOpen ? props.index * 0.1 + 0.15 : 0}s`};
     transition-property: opacity;
     width: 100%;
     font-size: 1.4rem;

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { DropdownMenuProps } from "./Nav";
 
 export const Nav = styled.nav`
   z-index: 1111;
@@ -38,42 +37,35 @@ export const DesktopMenu = styled.div`
   }
 `;
 
-export const MobileMenu = styled.div`
-  display: none;
-
-  ${props => props.theme.media.md} {
-    ${props => props.theme.centered}
-    flex-direction: column;
-  }
-`;
-
-export const MobileMenuContainer = styled.div<DropdownMenuProps>`
+export const MobileMenu = styled.div<{ isMenuOpen: boolean }>`
+  min-height: calc(100vh - 55px);
   position: absolute;
   top: 55px;
-  right: 1px;
+  right: 0px;
   z-index: 1111111;
-  width: calc(100% - 2px);
+  width: 100%;
   min-width: 310px;
   max-width: 767px;
-  transition: all 0.3s;
+  background-color: ${props =>
+    `rgba(122,122,122, ${props.isMenuOpen ? 0.4 : 0})`};
   transform-origin: top;
   transform: ${props => `rotate3d(${props.isMenuOpen ? 0 : 1}, 0, 0, 90deg)`};
+  transition: ${props =>
+    `transform 0.3s 0s, ${
+      props.isMenuOpen ? "0.2s 0.2s" : "0s 0s"
+    } background-color`};
   display: none;
+  border-radius: calc(10px - 2px);
 
   ${props => props.theme.media.md} {
     display: block;
   }
 
-  svg,
-  hr {
-    opacity: ${props => (props.isMenuOpen ? 1 : 0)};
-    transition-delay: ${props => `${props.isMenuOpen ? 0.3 : 0}s`};
-    transition: opacity 1s;
-  }
-
+  /* these styles apply to the NavLogoMobile  */
   svg {
-    margin-top: 20px;
-    height: 100px;
-    width: 100%;
+    opacity: ${props => (props.isMenuOpen ? 1 : 0)};
+    transition: opacity ${props => `${props.isMenuOpen ? 0.4 : 0}s`};
+    transition-delay: ${props => `${props.isMenuOpen ? 0.5 : 0}s`};
+    transition-timing-function: cubic-bezier(0.57, 0.11, 0.87, 1);
   }
 `;
