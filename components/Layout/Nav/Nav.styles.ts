@@ -9,6 +9,8 @@ export const Nav = styled.nav`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.background.main};
   padding: 5px 10px;
+  position: fixed;
+  top: 0;
 `;
 
 export const Container = styled.div`
@@ -55,7 +57,6 @@ export const MobileMenu = styled.div<{ isMenuOpen: boolean }>`
       props.isMenuOpen ? "0.2s 0.2s" : "0s 0s"
     } background-color`};
   display: none;
-  border-radius: calc(10px - 2px);
 
   ${props => props.theme.media.md} {
     display: block;
@@ -67,5 +68,10 @@ export const MobileMenu = styled.div<{ isMenuOpen: boolean }>`
     transition: opacity ${props => `${props.isMenuOpen ? 0.4 : 0}s`};
     transition-delay: ${props => `${props.isMenuOpen ? 0.5 : 0}s`};
     transition-timing-function: cubic-bezier(0.57, 0.11, 0.87, 1);
+  }
+
+  /* removes the rounded edges from the gradient container */
+  > div > div {
+    border-radius: 0px;
   }
 `;
