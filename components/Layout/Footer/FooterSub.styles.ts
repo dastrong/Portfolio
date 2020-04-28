@@ -1,24 +1,18 @@
 import styled from "styled-components";
 
-export const Container = styled.footer`
-  width: 100%;
-  padding: 20px;
-  background-color: ${props => props.theme.colors.background.main};
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-export const Bottom = styled.div`
+export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   max-width: ${props => props.theme.width.md + "px"};
-  padding: 10px;
+  padding: 20px;
+  margin: 20px 0 0;
 
   ${props => props.theme.media.md} {
     flex-direction: column-reverse;
+    padding: 30px 10px 0px;
+    margin-top: 144px;
   }
 `;
 
@@ -28,6 +22,10 @@ export const Text = styled.p`
 
   &:last-of-type {
     text-align: right;
+
+    ${props => props.theme.media.md} {
+      margin-bottom: 15px;
+    }
   }
 `;
 

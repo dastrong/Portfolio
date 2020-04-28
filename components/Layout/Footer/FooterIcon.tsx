@@ -1,12 +1,18 @@
 import React from "react";
-import { useTheme } from "styled-components";
-import InterLink from "components/Shared/Links";
+import styled, { useTheme } from "styled-components";
+import InterLink, { PlainLink } from "components/Shared/Links";
+
+const StyledAnchor = styled(PlainLink)`
+  height: 90px;
+  width: 90px;
+  z-index: 1;
+`;
 
 export default function FooterIcon() {
   const { colors } = useTheme();
 
   return (
-    <InterLink href="/">
+    <InterLink href="/" StyledAnchor={StyledAnchor}>
       <svg
         width="90"
         height="90"
