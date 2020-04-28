@@ -14,7 +14,7 @@ export const StyledLinkText = styled(PlainLink)`
 
   &:after {
     content: "";
-    height: 1.5px;
+    height: 2px;
     width: 100%;
     background-color: ${props => props.theme.colors.accent};
     opacity: ${props => (props.isCurrentPage ? 1 : 0)};
