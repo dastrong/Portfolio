@@ -5,7 +5,6 @@ const gradientWidth = "2px";
 
 interface GradientProps {
   isStatic: boolean;
-  // ref?: React.MutableRefObject<undefined>;
 }
 
 const Container = styled.div`
@@ -69,5 +68,3 @@ export default forwardRef(function GradientContainer(
     </Container>
   );
 });
-
-// export default GradientContainer;
