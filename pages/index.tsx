@@ -1,25 +1,30 @@
 import React from "react";
-import GradientContainer from "components/Shared/GradientContainer";
 import PageHead from "components/Shared/PageHead";
+import GradientContainer from "components/Shared/GradientContainer";
 
 export default function Index() {
   return (
-    <div>
-      <PageHead title="Home" />
+    <>
+      <PageHead
+        title="Home"
+        description="Please reach out to me regarding potential employment or contract work here."
+      />
 
-      <GradientContainer>
-        <div>Hello</div>
-        <div>Hello</div>
-        <div>Hello</div>
-        <div>Hello</div>
-      </GradientContainer>
+      <div>
+        <GradientContainer>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+        </GradientContainer>
 
-      <GradientContainer isStatic>
-        <div>Hello</div>
-        <div>Hello</div>
-        <div>Hello</div>
-        <div>Hello</div>
-      </GradientContainer>
-    </div>
+        <GradientContainer isStatic>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+        </GradientContainer>
+      </div>
+    </>
   );
 }
