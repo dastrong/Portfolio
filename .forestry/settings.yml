@@ -7,7 +7,7 @@ sections:
 - type: heading
   label: About Me
 - type: document
-  path: _about/*
+  path: _about/**/*
   label: About
 - type: heading
   label: Projects
