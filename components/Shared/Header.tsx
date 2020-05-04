@@ -5,6 +5,7 @@ const StyledHeader = styled.header`
   display: flex;
   flex-direction: column;
   margin: 0px auto 10px;
+  padding: 25px 0;
   width: 100%;
 `;
 
