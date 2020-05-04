@@ -8,6 +8,7 @@ export default createGlobalStyle`
   body {
     overflow-x: hidden;
     background-color: ${props => props.theme.colors.background.light};
+    color: ${props => props.theme.colors.text.main};
     scrollbar-width: thin;
     scrollbar-color: ${props =>
       `${props.theme.colors.blue} ${props.theme.colors.blue}`};
