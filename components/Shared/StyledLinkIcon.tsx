@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledLinkIcon = styled.a`
+export const StyledLinkIcon = styled.a<{ href: string }>`
   display: flex;
   color: ${props => props.theme.colors.text.light};
   opacity: ${props => (props.theme.isDarkTheme ? 0.9 : 0.82)};

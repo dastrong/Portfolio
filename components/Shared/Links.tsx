@@ -7,6 +7,7 @@ type LinkTypes = {
   isCurrentPage?: boolean;
   isMenuOpen?: boolean;
   index?: number;
+  isPrimary?: boolean;
 };
 
 // used as a default Component if none is passed to InterLink
