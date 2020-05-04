@@ -4,10 +4,11 @@ auto_deploy: false
 admin_path: ''
 webhook_url: 
 sections:
+- type: heading
+  label: About Me
 - type: document
   path: _about/*
   label: About
-  match: "**/*"
 - type: heading
   label: Projects
 - type: directory
