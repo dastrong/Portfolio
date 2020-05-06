@@ -2,6 +2,7 @@ import styled, { createGlobalStyle } from "styled-components";
 
 export const StyledSection = styled.section`
   margin-top: 55px;
+  padding: 0 5px;
 `;
 
 export default createGlobalStyle`
@@ -9,20 +10,27 @@ export default createGlobalStyle`
     overflow-x: hidden;
     background-color: ${props => props.theme.colors.background.light};
     color: ${props => props.theme.colors.text.main};
+  }
+
+  body, 
+  textarea {
     scrollbar-width: thin;
     scrollbar-color: ${props =>
       `${props.theme.colors.blue} ${props.theme.colors.blue}`};
   }
 
-  body::-webkit-scrollbar {
+  body::-webkit-scrollbar, 
+  textarea::-webkit-scrollbar  {
     width: 11px;
   }
 
-  body::-webkit-scrollbar-track {
+  body::-webkit-scrollbar-track, 
+  textarea::-webkit-scrollbar-track  {
     background: ${props => props.theme.colors.background.main};
   }
 
-  body::-webkit-scrollbar-thumb {
+  body::-webkit-scrollbar-thumb, 
+  textarea::-webkit-scrollbar-thumb  {
     background-color: ${props => props.theme.colors.blue};
     border-radius: 6px;
     border: 3px solid ${props => props.theme.colors.background.main};
