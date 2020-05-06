@@ -1,7 +1,14 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from "react";
-import ContactButtonSubmit from "components/Contact/ContactButtonSubmit";
-import * as Styled from "./ContactForm.styles";
+import styled from "styled-components";
+import ContactFormButton from "./ContactFormButton";
+import { Input, Textarea } from "./ContactFormElements";
+
+const StyledForm = styled.form`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 export default function ContactForm() {
   const [name, setName] = useState("");
@@ -14,6 +21,8 @@ export default function ContactForm() {
   async function handleSubmit(
     e: React.FormEvent<HTMLFormElement>
   ): Promise<void> {
+    console.log(error, isPending);
+
     try {
       e.preventDefault();
       setIsPending(true);
@@ -30,29 +39,37 @@ export default function ContactForm() {
   }
 
   return (
-    <Styled.StyledForm onSubmit={handleSubmit}>
-      <Styled.StyledLabel>
-        Your name
-        <input
-          type="text"
-          value={name}
-          onChange={e => setName(e.target.value)}
-        />
-      </Styled.StyledLabel>
-      <Styled.StyledLabel>
-        Your email
-        <input
-          type="email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-        />
-      </Styled.StyledLabel>
-      <Styled.StyledLabel>
-        Your message
-        <textarea value={message} onChange={e => setMessage(e.target.value)} />
-      </Styled.StyledLabel>
+    <StyledForm onSubmit={handleSubmit}>
+      <Input
+        required
+        text="Your name"
+        type="text"
+        value={name}
+        onChange={e => setName(e.target.value)}
+      />
 
-      <ContactButtonSubmit type="submit">{buttonText}</ContactButtonSubmit>
-    </Styled.StyledForm>
+      <Input
+        required
+        text="Your email"
+        type="email"
+        value={email}
+        onChange={e => setEmail(e.target.value)}
+      />
+
+      <Textarea
+        required
+        text="Your message"
+        value={message}
+        onChange={e => setMessage(e.target.value)}
+      />
+
+      <ContactFormButton
+        disabled={!(name && email && message)}
+        type="submit"
+        primary
+      >
+        {buttonText}
+      </ContactFormButton>
+    </StyledForm>
   );
 }

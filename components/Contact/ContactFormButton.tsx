@@ -25,6 +25,12 @@ const StyledButton = styled.button<{
   error?: boolean;
 }>`
   ${ButtonStyles}
+  width: 200px;
+
+  &:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+  }
 `;
 
 export default function ContactButtonSubmit({
@@ -34,9 +40,11 @@ export default function ContactButtonSubmit({
 }: ButtonHTMLAttributes<HTMLButtonElement> & {
   children: React.ReactNode;
   primary?: boolean;
+  disabled?: boolean;
   pending?: boolean;
   error?: boolean;
 }) {
+  console.log(props);
   return (
     <StyledButton type="button" {...props} primary={primary}>
       {children}
