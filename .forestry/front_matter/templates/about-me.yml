@@ -17,3 +17,5 @@ fields:
       format: markdown
   label: Body
   description: Write about yourself here
+pages:
+- content/pages/about.md
