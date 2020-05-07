@@ -17,4 +17,5 @@ export default css<{ primary: boolean }>`
   min-width: 100px;
   display: flex;
   justify-content: center;
+  align-items: center;
 `;
