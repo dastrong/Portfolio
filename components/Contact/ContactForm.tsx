@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 import ContactFormButton from "./ContactFormButton";
 import { Input, Textarea } from "./ContactFormElements";
@@ -10,30 +10,66 @@ const StyledForm = styled.form`
   align-items: center;
 `;
 
+const StyledThanks = styled.div`
+  margin: -15px 0 15px;
+  font-size: 1.1rem;
+  padding: 0 10px;
+  text-align: center;
+`;
+
+const initialValues = {
+  name: "",
+  email: "",
+  message: "",
+};
+
 export default function ContactForm() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [error, setError] = useState("");
   const [isPending, setIsPending] = useState(false);
+  const [wasReset, setWasReset] = useState(false);
   const [buttonText, setButtonText] = useState("Submit");
+  const [showThanksMsg, setShowThanksMsg] = useState(false);
+  const [{ name, email, message }, setValues] = useState(initialValues);
+
+  const isDisabled = !name || !email || !message;
+
+  const resetForm = () => {
+    setWasReset(true);
+    setValues(initialValues);
+  };
+
+  const handleChange = (name: string) =>
+    useCallback(e => {
+      e.persist();
+      setWasReset(false);
+      setValues(state => ({ ...state, [name]: e.target.value }));
+    }, []);
 
   async function handleSubmit(
     e: React.FormEvent<HTMLFormElement>
   ): Promise<void> {
-    console.log(error, isPending);
-
     try {
       e.preventDefault();
       setIsPending(true);
 
       // await submission here
+      await fetch("https://formspree.io/xlepezzz", {
+        method: "POST",
+        body: JSON.stringify({
+          name,
+          email,
+          message,
+          _subject: `Contact form submission from ${name}`,
+        }),
+        headers: { "Content-Type": "application/json" },
+      });
 
-      setButtonText("Sent");
+      resetForm();
+      setShowThanksMsg(true);
+      setButtonText("Submit");
       setIsPending(false);
     } catch (err) {
       console.log(err);
-      setError(err.message);
+      setButtonText("Please try again");
       setIsPending(false);
     }
   }
@@ -45,7 +81,8 @@ export default function ContactForm() {
         text="Your name"
         type="text"
         value={name}
-        onChange={e => setName(e.target.value)}
+        onChange={handleChange("name")}
+        wasReset={wasReset}
       />
 
       <Input
@@ -53,20 +90,29 @@ export default function ContactForm() {
         text="Your email"
         type="email"
         value={email}
-        onChange={e => setEmail(e.target.value)}
+        onChange={handleChange("email")}
+        wasReset={wasReset}
       />
 
       <Textarea
         required
         text="Your message"
         value={message}
-        onChange={e => setMessage(e.target.value)}
+        onChange={handleChange("message")}
+        wasReset={wasReset}
       />
 
+      {showThanksMsg && (
+        <StyledThanks>
+          Thanks for contacting me. I&apos;ll respond ASAP.
+        </StyledThanks>
+      )}
+
       <ContactFormButton
-        disabled={!(name && email && message)}
-        type="submit"
         primary
+        type="submit"
+        pending={isPending}
+        disabled={isDisabled}
       >
         {buttonText}
       </ContactFormButton>

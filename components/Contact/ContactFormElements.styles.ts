@@ -1,7 +1,14 @@
 import styled, { css } from "styled-components";
 import AnimatedUnderlineEffect from "components/Shared/_css/AfterStyles";
 
-const ReusableStyles = css`
+const errorOutline = css`
+  &:invalid {
+    outline: 2px solid red;
+    outline-offset: -2px;
+  }
+`;
+
+const ReusableStyles = css<{ error?: boolean; hasBeenFocused: boolean }>`
   background-color: ${props => props.theme.colors.background.main}cf;
   color: ${props => props.theme.colors.text.dark};
   position: relative;
@@ -16,6 +23,8 @@ const ReusableStyles = css`
       props.theme.isDarkTheme
         ? props.theme.colors.blue
         : props.theme.colors.pink};
+
+  ${props => props.hasBeenFocused && errorOutline}
 
   ${props => props.theme.media.md} {
     font-size: 1.2rem;

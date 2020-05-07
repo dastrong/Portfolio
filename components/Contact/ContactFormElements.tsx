@@ -4,24 +4,39 @@ import React, {
   useEffect,
   useRef,
 } from "react";
+import useOnBlur from "hooks/useOnBlur";
 import * as Styled from "./ContactFormElements.styles";
+
+type Props = {
+  text: string;
+  error?: boolean;
+  wasReset: boolean;
+};
 
 export function Input({
   text,
+  wasReset,
   ...props
-}: InputHTMLAttributes<HTMLInputElement> & { text: string }) {
+}: InputHTMLAttributes<HTMLInputElement> & Props) {
+  const { hasBeenFocused, onBlur } = useOnBlur(wasReset);
+
   return (
     <Styled.Label>
       {text}
-      <Styled.Input {...props} />
+      <Styled.Input
+        {...props}
+        hasBeenFocused={hasBeenFocused}
+        onBlur={onBlur}
+      />
     </Styled.Label>
   );
 }
 
 export function Textarea({
   text,
+  wasReset,
   ...props
-}: TextareaHTMLAttributes<HTMLTextAreaElement> & { text: string }) {
+}: TextareaHTMLAttributes<HTMLTextAreaElement> & Props) {
   const ref = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
@@ -46,11 +61,17 @@ export function Textarea({
     // set new rows
     ref.current.rows = rows;
   }, [props.value]);
+  const { hasBeenFocused, onBlur } = useOnBlur(wasReset);
 
   return (
     <Styled.Label>
       {text}
-      <Styled.Textarea ref={ref} {...props} />
+      <Styled.Textarea
+        ref={ref}
+        {...props}
+        hasBeenFocused={hasBeenFocused}
+        onBlur={onBlur}
+      />
     </Styled.Label>
   );
 }

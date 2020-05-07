@@ -4,12 +4,8 @@ import { FaSpinner } from "react-icons/fa";
 import ButtonStyles from "components/Shared/_css/ButtonStyles";
 
 const LoaderAnimation = keyframes`
-  from {
-    transform: rotate(0deg);
-  } 
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); } 
+  to { transform: rotate(360deg); }
 `;
 
 const StyledLoader = styled(FaSpinner)<{ primary: boolean }>`
@@ -20,15 +16,13 @@ const StyledLoader = styled(FaSpinner)<{ primary: boolean }>`
 
 const StyledButton = styled.button<{
   primary: boolean;
-  disabled?: boolean;
   pending?: boolean;
-  error?: boolean;
 }>`
   ${ButtonStyles}
   width: 200px;
 
   &:disabled {
-    opacity: 0.8;
+    opacity: 0.6;
     cursor: not-allowed;
   }
 `;
@@ -40,15 +34,11 @@ export default function ContactButtonSubmit({
 }: ButtonHTMLAttributes<HTMLButtonElement> & {
   children: React.ReactNode;
   primary?: boolean;
-  disabled?: boolean;
   pending?: boolean;
-  error?: boolean;
 }) {
-  console.log(props);
   return (
     <StyledButton type="button" {...props} primary={primary}>
-      {children}
-      {props.pending && <StyledLoader primary={!!primary} />}
+      {props.pending ? <StyledLoader primary={!!primary} /> : children}
     </StyledButton>
   );
 }

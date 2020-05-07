@@ -5,7 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
   text-align: center;
   align-items: center;
-  margin: 50px 0;
+  margin: 40px 0 50px;
 
   svg {
     margin-bottom: 5px;
@@ -26,7 +26,7 @@ export const Availability = styled.div`
   align-items: center;
   font-size: 1.4rem;
   width: 100%;
-  margin: 30px 0 0;
+  margin: 50px 0 0;
 `;
 
 export const AvailabilityHeader = styled.div`
