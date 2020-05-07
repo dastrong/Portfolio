@@ -8,7 +8,9 @@ sections:
   label: About Me
 - type: document
   path: _about/**/*
-  label: About
+  label: About Me
+  match: "**/*"
+  read_only: false
 - type: heading
   label: Projects
 - type: directory
