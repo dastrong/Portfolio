@@ -1,7 +1,11 @@
 import React from "react";
+import { GetStaticProps } from "next";
+import styled from "styled-components";
+import matter from "gray-matter";
+import ReactMarkdown from "react-markdown";
+
 import PageHead from "components/Shared/PageHead";
 import Header from "components/Shared/Header";
-import styled from "styled-components";
 
 const StyledContainer = styled.div`
   display: flex;
@@ -26,19 +30,25 @@ const StyledImage = styled.img`
   border-radius: 30px;
 `;
 
-const StyledText = styled.p`
-  font-size: 1rem;
-  line-height: 110%;
-  letter-spacing: 0.2px;
-  margin: 20px 0;
+// const StyledText = styled.p`
+//   font-size: 1rem;
+//   line-height: 110%;
+//   letter-spacing: 0.2px;
+//   margin: 20px 0;
 
-  &:first-child,
-  &:last-child {
-    margin: 0;
-  }
-`;
+//   &:first-child,
+//   &:last-child {
+//     margin: 0;
+//   }
+// `;
 
-export default function About() {
+type AboutTypes = {
+  body: string;
+  image: string;
+};
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default function About({ data }: { data: AboutTypes }) {
   return (
     <>
       <PageHead
@@ -49,45 +59,18 @@ export default function About() {
       <Header>About Me</Header>
 
       <StyledContainer>
-        <StyledImage
-          src="https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
-          alt="yoda"
-        />
+        <StyledImage src={data.image} alt="daniel strong" />
         <StyledColumn>
-          <StyledText>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Exercitationem nihil quos neque facilis quaerat velit voluptatem,
-            voluptatibus tempora? Vero culpa minus molestias cupiditate voluptas
-            beatae nobis nihil veniam doloribus doloremque!
-          </StyledText>
-          <StyledText>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem,
-            obcaecati.
-          </StyledText>
-          <StyledText>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta
-            adipisci possimus consequuntur commodi iure numquam sed ex, rerum
-            eius cumque error ullam. Mollitia earum libero ullam, provident
-            tempore aliquam eius praesentium sapiente adipisci quam maxime
-            dolores culpa consequatur dignissimos quos?
-          </StyledText>
-          <StyledText>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste
-            quidem non nulla ratione quibusdam. Delectus aspernatur optio saepe
-            dolor deserunt.
-          </StyledText>
-          <StyledText>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste esse
-            rerum, quisquam dolorum aliquam quo incidunt quae blanditiis,
-            expedita omnis nam neque sint cupiditate dolores tempore nihil
-            facilis. Deserunt, voluptas!
-          </StyledText>
-          <StyledText>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi,
-            itaque.
-          </StyledText>
+          <ReactMarkdown source={data.body} />
+          {/* <StyledText>{data.body}</StyledText> */}
         </StyledColumn>
       </StyledContainer>
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const mark = await import("content/pages/about.md");
+  const { data } = matter(mark.default);
+  return { props: { data } };
+};
