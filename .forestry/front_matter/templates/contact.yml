@@ -42,3 +42,5 @@ fields:
     required: true
     color_format: Hex
   description: What color do you want the wifi to have?
+pages:
+- content/pages/contact.md
