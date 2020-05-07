@@ -2,66 +2,66 @@
 label: Work
 hide_body: false
 fields:
-  - name: site_name
-    type: text
-    config:
-      required: true
-    label: Site Name
-    description: What's the site called
-  - name: screenshots
-    type: image_gallery
-    config: {}
-    label: Screenshots
-    description: Add screenshots of the site on different devices
-  - name: body
-    type: textarea
-    default: ""
-    config:
-      required: true
-      wysiwyg: true
-      schema:
-        format: markdown
-    label: Body
-    description: Add some info about the site
-  - name: tech_used
-    type: tag_list
-    default: []
-    label: Tech used
-    description: Add the tech used in this work
-  - name: show_work
-    type: boolean
-    label: Show Work?
-    default: false
-    description: Do you want to show this work?
-  - name: links
+- name: site_name
+  type: text
+  config:
+    required: true
+  label: Site Name
+  description: What's the site called
+- name: screenshots
+  type: image_gallery
+  config: {}
+  label: Screenshots
+  description: Add screenshots of the site on different devices
+- name: body
+  type: textarea
+  default: ''
+  config:
+    required: true
+    wysiwyg: true
+    schema:
+      format: markdown
+  label: Body
+  description: Add some info about the site
+- name: tech_used
+  type: tag_list
+  default: []
+  label: Tech used
+  description: Add the tech used in this work
+- name: show_work
+  type: boolean
+  label: Show Work?
+  default: false
+  description: Do you want to show this work?
+- name: links
+  type: field_group
+  config: {}
+  fields:
+  - name: link
     type: field_group
     config: {}
     fields:
-      - name: link
-        type: field_group
-        config: {}
-        fields:
-          - name: url
-            type: text
-            config:
-              required: true
-            label: url
-          - name: icon
-            type: select
-            default: ""
-            config:
-              required: true
-              options:
-                - GitHub
-                - Source
-              source:
-                type: simple
-                section:
-                file:
-                path:
-            label: icon
-            description: Which icon do you want to use?
-        label: Link
-        description: Singular link
-    label: Links
-    description: Check that the links work!
+    - name: url
+      type: text
+      config:
+        required: true
+      label: url
+    - name: icon
+      type: select
+      default: ''
+      config:
+        required: true
+        options:
+        - GitHub
+        - Source
+        source:
+          type: simple
+          section: 
+          file: 
+          path: 
+      label: icon
+      description: Which icon do you want to use?
+    label: Link
+    description: Singular link
+  label: Links
+  description: Check that the links work!
