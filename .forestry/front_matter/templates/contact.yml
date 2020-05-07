@@ -1,4 +1,44 @@
 ---
 label: Contact
 hide_body: false
-fields: []
+fields:
+- name: email
+  type: text
+  config:
+    required: true
+  label: Email
+  description: What's the email you can be reached at
+- name: phone_number
+  type: text
+  config:
+    required: true
+  label: Phone Number
+  description: What's your phone number
+- name: availability_permanent
+  type: text
+  config:
+    required: true
+  label: Availability (Permanent Date)
+  description: What date can you start a long term position
+  default: Message to discuss
+- name: availability_temporary
+  type: text
+  config:
+    required: true
+  label: Availability (Temporary Date)
+  description: What date can you start temporary work
+  default: Message to discuss
+- name: availability_title
+  type: text
+  config:
+    required: true
+  label: Availability (Title)
+  description: What text do you want display in the tooltip that appears when a user
+    hovers over the wifi icon?
+- name: availability_color
+  type: color
+  label: Availability (Color)
+  config:
+    required: true
+    color_format: Hex
+  description: What color do you want the wifi to have?
