@@ -2,36 +2,36 @@
 new_page_extension: md
 auto_deploy: false
 admin_path: "/public/admin"
-webhook_url: 
+webhook_url:
 sections:
-- type: heading
-  label: About Me
-- type: document
-  path: _about/**/*
-  label: About
-- type: heading
-  label: Projects
-- type: directory
-  path: _projects
-  label: Projects
-  create: documents
-  match: "**/*"
-  templates:
-  - project
-- type: heading
-  label: Posts
-- type: directory
-  path: _posts
-  label: Posts
-  create: documents
-  match: "**/*"
-  templates:
-  - post
-- type: heading
-  label: Contact
+  - type: heading
+    label: About Me
+  - type: document
+    path: content/about
+    label: About
+  - type: heading
+    label: Work
+  - type: directory
+    path: content/work/**/*
+    label: Work
+    create: documents
+    match: "**/*"
+    templates:
+      - work
+  - type: heading
+    label: Posts
+  - type: directory
+    path: content/posts/**/*
+    label: Posts
+    create: documents
+    match: "**/*"
+    templates:
+      - post
+  - type: heading
+    label: Contact
 upload_dir: public
 public_path: "/public"
-front_matter_path: ''
+front_matter_path: ""
 use_front_matter_path: true
 file_template: ":filename:"
 build:
