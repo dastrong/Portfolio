@@ -21,8 +21,6 @@ const PageContainer = styled.div`
 `;
 
 export default function Contact({ data }: { data: ContactTypes }) {
-  console.log(data);
-
   return (
     <>
       <PageHead
