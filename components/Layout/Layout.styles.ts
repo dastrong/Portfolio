@@ -72,5 +72,6 @@ export default createGlobalStyle`
   li,
   a {
     font-family: ${props => props.theme.fontFamily.secondary};
+    font-weight: 400;
   }
 `;
