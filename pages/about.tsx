@@ -11,44 +11,69 @@ const StyledContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px auto;
+  margin: 20px auto 50px;
   width: 90%;
   min-width: 310px;
-  max-width: ${props => `${props.theme.width.lg}px`};
+  max-width: ${props => `${props.theme.width.md}px`};
+
+  ${props => props.theme.media.md} {
+    flex-direction: column;
+  }
 `;
 
-const StyledColumn = styled.div`
+const StyledTextContainer = styled.div`
+  background-color: ${props => props.theme.colors.background.light}cf;
   width: 75%;
   margin-left: 30px;
+  padding: 10px;
+
+  ${props => props.theme.media.md} {
+    margin: 20px auto 0;
+  }
+
+  ${props => props.theme.media.sm} {
+    width: 85%;
+  }
+
+  ${props => props.theme.media.xs} {
+    min-width: 310px;
+    max-width: 375px;
+  }
 `;
 
 const StyledImage = styled.img`
   height: auto;
-  width: 100%;
+  width: 40%;
   min-width: 310px;
   max-width: 375px;
-  border-radius: 30px;
+  border-radius: 155px;
+  box-shadow: 0px 0px 1px 3px ${props => props.theme.colors.accent};
+
+  ${props => props.theme.media.sm} {
+    min-width: 250px;
+  }
 `;
 
-// const StyledText = styled.p`
-//   font-size: 1rem;
-//   line-height: 110%;
-//   letter-spacing: 0.2px;
-//   margin: 20px 0;
+const StyledText = styled.p`
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: 0.2px;
+  margin: 20px 0;
+  font-weight: 300;
 
-//   &:first-child,
-//   &:last-child {
-//     margin: 0;
-//   }
-// `;
+  &:first-child,
+  &:last-child {
+    margin: 0;
+  }
+`;
 
-type AboutTypes = {
-  body: string;
-  image: string;
-};
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function About({ data }: { data: AboutTypes }) {
+export default function About({
+  data,
+  content,
+}: {
+  data: { image: string };
+  content: string;
+}) {
   return (
     <>
       <PageHead
@@ -60,10 +85,12 @@ export default function About({ data }: { data: AboutTypes }) {
 
       <StyledContainer>
         <StyledImage src={data.image} alt="daniel strong" />
-        <StyledColumn>
-          <ReactMarkdown source={data.body} />
-          {/* <StyledText>{data.body}</StyledText> */}
-        </StyledColumn>
+        <StyledTextContainer>
+          <ReactMarkdown
+            source={content}
+            renderers={{ paragraph: StyledText }}
+          />
+        </StyledTextContainer>
       </StyledContainer>
     </>
   );
@@ -71,6 +98,6 @@ export default function About({ data }: { data: AboutTypes }) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const mark = await import("content/pages/about.md");
-  const { data } = matter(mark.default);
-  return { props: { data } };
+  const { data, content } = matter(mark.default);
+  return { props: { data, content } };
 };
