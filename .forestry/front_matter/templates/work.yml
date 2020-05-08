@@ -2,54 +2,54 @@
 label: Work
 hide_body: false
 fields:
-- name: site_name
-  type: text
-  config:
-    required: true
-  label: Site Name
-  description: What's the site called
-- name: image
-  type: file
-  config:
-    maxSize: 64
-  label: Image
-  description: An image of your site in action (mocked to devices, if possible)
-- name: description
-  type: textarea
-  default: ''
-  config:
-    required: true
-    wysiwyg: false
-    schema:
-      format: markdown
-  label: Description
-  description: Add a quick descriptionabout the site
-- name: tech_used
-  type: tag_list
-  default: []
-  label: Tech Used
-  description: Add the tech used in this work
-- name: show_work
-  type: boolean
-  label: Show Work?
-  default: false
-  description: Do you want to show this work?
-- name: links
-  type: field_group
-  config: {}
-  fields:
-  - name: github
-    type: text
-    config:
-      required: false
-    label: Github
-    description: URL to Github repo
-  - name: live
+  - name: site_name
     type: text
     config:
       required: true
-    label: Live
-    description: URL to live site
-  label: Links
+    label: Site Name
+    description: What's the site called
+  - name: image
+    type: file
+    config:
+      maxSize: 64
+    label: Image
+    description: An image of your site in action (mocked to devices, if possible)
+  - name: description
+    type: textarea
+    default: ""
+    config:
+      required: true
+      wysiwyg: false
+      schema:
+        format: markdown
+    label: Description
+    description: Add a quick descriptionabout the site
+  - name: tech_used
+    type: tag_list
+    default: []
+    label: Tech Used
+    description: Add the tech used in this work
+  - name: show_work
+    type: boolean
+    label: Show Work?
+    default: false
+    description: Do you want to show this work?
+  - name: links
+    type: field_group
+    config: {}
+    fields:
+      - name: github
+        type: text
+        config:
+          required: false
+        label: Github
+        description: URL to Github repo
+      - name: live
+        type: text
+        config:
+          required: true
+        label: Live
+        description: URL to live site
+    label: Links
 pages:
-- content/work/**/*/achillesrecovery.md
+  - content/work/achillesrecovery.md
