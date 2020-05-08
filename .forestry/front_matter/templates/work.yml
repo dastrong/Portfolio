@@ -8,25 +8,26 @@ fields:
     required: true
   label: Site Name
   description: What's the site called
-- name: screenshots
-  type: image_gallery
-  config: {}
-  label: Screenshots
-  description: Add screenshots of the site on different devices
-- name: body
+- name: image
+  type: file
+  config:
+    maxSize: 64
+  label: Image
+  description: An image of your site in action (mocked to devices, if possible)
+- name: description
   type: textarea
   default: ''
   config:
     required: true
-    wysiwyg: true
+    wysiwyg: false
     schema:
       format: markdown
-  label: Body
-  description: Add some info about the site
+  label: Description
+  description: Add a quick descriptionabout the site
 - name: tech_used
   type: tag_list
   default: []
-  label: Tech used
+  label: Tech Used
   description: Add the tech used in this work
 - name: show_work
   type: boolean
@@ -37,31 +38,18 @@ fields:
   type: field_group
   config: {}
   fields:
-  - name: link
-    type: field_group
-    config: {}
-    fields:
-    - name: url
-      type: text
-      config:
-        required: true
-      label: url
-    - name: icon
-      type: select
-      default: ''
-      config:
-        required: true
-        options:
-        - GitHub
-        - Source
-        source:
-          type: simple
-          section: 
-          file: 
-          path: 
-      label: icon
-      description: Which icon do you want to use?
-    label: Link
-    description: Singular link
+  - name: github
+    type: text
+    config:
+      required: false
+    label: Github
+    description: URL to Github repo
+  - name: live
+    type: text
+    config:
+      required: true
+    label: Live
+    description: URL to live site
   label: Links
-  description: Check that the links work!
+pages:
+- content/work/**/*/achillesrecovery.md
