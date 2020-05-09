@@ -4,6 +4,9 @@ module.exports = {
       test: [/\.md$/, /\.yml$/],
       use: "raw-loader",
     });
+    config.node = {
+      fs: "empty",
+    };
     return config;
   },
 };
