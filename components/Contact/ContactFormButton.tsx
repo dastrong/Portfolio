@@ -14,12 +14,11 @@ const StyledLoader = styled(FaSpinner)<{ primary: boolean }>`
   animation: ${LoaderAnimation} 2s infinite linear;
 `;
 
-const StyledButton = styled.button<{
-  primary: boolean;
-  pending?: boolean;
-}>`
+const StyledButton = styled.button<{ primary: boolean }>`
   ${ButtonStyles}
   width: 200px;
+  font-size: 1.4rem;
+  line-height: 1.7rem;
 
   &:disabled {
     opacity: 0.6;

@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { StyledLinkIcon } from "components/Shared/StyledLinkIcon";
 
-export const SocialContainer = styled.div`
+export const SocialContainer = css`
   position: absolute;
   bottom: 32px;
 
@@ -12,7 +12,7 @@ export const SocialContainer = styled.div`
   }
 `;
 
-export const ContentContainer = styled.div`
+export const ContentContainer = css`
   display: flex;
 
   ${props => props.theme.media.md} {

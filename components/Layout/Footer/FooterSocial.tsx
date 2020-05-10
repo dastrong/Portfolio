@@ -5,21 +5,21 @@ import * as Styled from "./FooterSocial.styles";
 
 export default function LinkSocial() {
   return (
-    <Styled.SocialContainer>
-      <GradientContainer isStatic>
-        <Styled.ContentContainer>
-          {externalLinks.map(({ Icon, href }) => (
-            <Styled.SocialIcon
-              key={href}
-              href={href}
-              target="_blank"
-              rel="noopener"
-            >
-              <Icon size="30" />
-            </Styled.SocialIcon>
-          ))}
-        </Styled.ContentContainer>
-      </GradientContainer>
-    </Styled.SocialContainer>
+    <GradientContainer
+      isStatic
+      containerStyles={Styled.SocialContainer}
+      contentStyles={Styled.ContentContainer}
+    >
+      {externalLinks.map(({ Icon, href }) => (
+        <Styled.SocialIcon
+          key={href}
+          href={href}
+          target="_blank"
+          rel="noopener"
+        >
+          <Icon size="30" />
+        </Styled.SocialIcon>
+      ))}
+    </GradientContainer>
   );
 }

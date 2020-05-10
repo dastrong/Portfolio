@@ -1,23 +1,19 @@
 import React, { forwardRef } from "react";
-import styled from "styled-components";
+import styled, {
+  css,
+  FlattenInterpolation,
+  ThemeProps,
+  DefaultTheme,
+} from "styled-components";
 
-const gradientWidth = "2px";
+type GradientProps = {
+  customStyles: FlattenInterpolation<ThemeProps<DefaultTheme>>;
+  isStatic?: boolean;
+  gradientWidth?: string;
+};
 
-interface GradientProps {
-  isStatic: boolean;
-}
-
-const Container = styled.div`
-  position: relative;
-  ${props => props.theme.centered}
-
-  &:hover > div:first-child,
-  &:hover > div:not(last-child) {
-    transform: scale(1) rotate(0deg);
-  }
-`;
-
-const Gradient = styled.div<GradientProps>`
+const Effect = css<GradientProps>`
+  content: "";
   position: absolute;
   height: 100%;
   width: 100%;
@@ -29,42 +25,65 @@ const Gradient = styled.div<GradientProps>`
   transform-origin: ${({ theme: { borderRadius } }) =>
     `calc(100% - ${borderRadius}px) ${borderRadius}px`};
   transition: transform 0.25s ease-in-out;
+`;
 
-  &:first-child {
+const Container = styled.div<GradientProps>`
+  position: relative;
+  ${props => props.theme.centered}
+
+  &:before, &:after {
+    ${Effect}
+  }
+
+  &:after {
     transform-origin: ${({ theme: { borderRadius } }) =>
       `${borderRadius}px calc(100% - ${borderRadius}px)`};
   }
+
+  &:hover {
+    &:before,
+    &:after {
+      transform: scale(1) rotate(0deg);
+    }
+  }
+
+  ${props => props.customStyles};
 `;
 
-const Content = styled.div`
+const Content = styled.div<GradientProps>`
   z-index: 1;
   padding: 10px;
   width: 100%;
   background-color: ${props => props.theme.colors.background.main};
   color: ${props => props.theme.colors.text.main};
   border-radius: ${props =>
-    `calc(${props.theme.borderRadius}px - ${gradientWidth})`};
-  margin: ${gradientWidth};
+    `calc(${props.theme.borderRadius}px - ${props.gradientWidth})`};
+  margin: ${props => props.gradientWidth};
+
+  ${props => props.customStyles};
 `;
 
-type GradientContainerProps = {
-  children: React.ReactNode;
-  isStatic?: boolean;
-};
-
 export default forwardRef(function GradientContainer(
-  { children, isStatic = false }: GradientContainerProps,
+  {
+    children,
+    isStatic = false,
+    containerStyles,
+    contentStyles,
+    gradientWidth = "2px",
+  }: {
+    children: React.ReactNode;
+    isStatic?: boolean;
+    containerStyles?: FlattenInterpolation<ThemeProps<DefaultTheme>>;
+    contentStyles?: FlattenInterpolation<ThemeProps<DefaultTheme>>;
+    gradientWidth?: string;
+  },
   ref?: React.MutableRefObject<undefined>
 ) {
   return (
-    <Container ref={ref}>
-      {/* we use two containers here for a hover animation that starts in opposite corners and that meets up */}
-      {/* if isStatic is passed there is no hover animation and just showcase the 'border' */}
-      <Gradient isStatic={isStatic} />
-      <Gradient isStatic={isStatic} />
-
-      {/* this box will automatically adjusts according to theme */}
-      <Content>{children}</Content>
+    <Container ref={ref} isStatic={isStatic} customStyles={containerStyles}>
+      <Content customStyles={contentStyles} gradientWidth={gradientWidth}>
+        {children}
+      </Content>
     </Container>
   );
 });

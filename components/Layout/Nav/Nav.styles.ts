@@ -71,6 +71,9 @@ export const MobileMenu = styled.div<{ isMenuOpen: boolean }>`
   }
 
   /* removes the rounded edges from the gradient container */
+  > div:before,
+  > div:after,
+  > div,
   > div > div {
     border-radius: 0px;
   }
