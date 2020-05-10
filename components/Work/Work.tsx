@@ -6,10 +6,15 @@ import matter from "gray-matter";
 
 import PageHead from "components/Shared/PageHead";
 import Header from "components/Shared/Header";
+import WorkItem from "./WorkItem";
 import { WorkTypes } from "./WorkTypes";
 import * as Styled from "./Work.styles";
 
-export default function Work({ works }: { works: WorkTypes[] }) {
+export default function Work({
+  works,
+}: {
+  works: WorkTypes[] & { routeName: string };
+}) {
   return (
     <>
       <PageHead
@@ -21,10 +26,7 @@ export default function Work({ works }: { works: WorkTypes[] }) {
 
       <Styled.PageContainer>
         {works.map(work => (
-          <div key={work.site_name}>
-            {work.site_name}
-            <img src={work.image} alt="site" />
-          </div>
+          <WorkItem key={work.site_name} {...work} />
         ))}
       </Styled.PageContainer>
     </>
@@ -42,9 +44,10 @@ export const getStaticProps: GetStaticProps = async () => {
   // create an array of all work content
   const allWorkContent = allWorkPaths.map((filename: string) => {
     const filePath = path.join(root, filename);
+    const routeName = filename.slice(13, -3);
     const fileContents = fs.readFileSync(filePath, "utf8");
     const { data } = matter(fileContents);
-    return data;
+    return { ...data, routeName };
   });
 
   return {
