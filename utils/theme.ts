@@ -30,7 +30,7 @@ export const theme: DefaultTheme = {
     xs: customMediaQuery(480),
     sm: customMediaQuery(576),
     md: customMediaQuery(768),
-    lg: customMediaQuery(992),
+    lg: customMediaQuery(1024),
     xl: customMediaQuery(1200),
     xxl: customMediaQuery(1600),
   },
