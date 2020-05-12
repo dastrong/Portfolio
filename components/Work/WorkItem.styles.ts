@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import ButtonStyles from "components/Shared/_css/ButtonStyles";
+import { StyledButton } from "components/Shared/StyledButton";
 
 export const ItemContainer = css`
   width: 100%;
@@ -88,16 +88,6 @@ export const ButtonGroup = styled.div`
   }
 `;
 
-export const Button = styled.a`
-  ${ButtonStyles}
+export const Button = styled(StyledButton)`
   width: 49%;
-  font-size: 0.9rem;
-  line-height: 1.3rem;
-
-  ${props => props.theme.media.md} {
-    max-width: 175px;
-
-    font-size: 0.75rem;
-    line-height: 1.1rem;
-  }
 `;
