@@ -1,8 +1,27 @@
 import styled, { createGlobalStyle } from "styled-components";
 
 export const StyledSection = styled.section`
-  margin-top: 55px;
+  margin: 55px auto 30px;
   padding: 0 5px;
+  width: 90%;
+  max-width: ${props => props.theme.width.xxl}px;
+  min-height: calc(100vh - 228px - 55px - 30px);
+
+  ${props => props.theme.media.xxl} {
+    max-width: ${props => props.theme.width.xl}px;
+  }
+
+  ${props => props.theme.media.xl} {
+    max-width: ${props => props.theme.width.lg}px;
+  }
+
+  ${props => props.theme.media.lg} {
+    max-width: ${props => props.theme.width.md}px;
+  }
+
+  ${props => props.theme.media.md} {
+    min-height: calc(100vh - 375px - 55px - 30px);
+  }
 `;
 
 export default createGlobalStyle`
