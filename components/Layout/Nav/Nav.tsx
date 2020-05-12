@@ -24,36 +24,38 @@ export default function Nav() {
 
   return (
     <Styled.Nav>
-      <NavLogoMain />
+      <Styled.NavContent>
+        <NavLogoMain />
 
-      <Styled.Container ref={refNavIcons}>
-        <Styled.DesktopMenu>
-          <NavList isMenuOpen />
-        </Styled.DesktopMenu>
+        <Styled.Container ref={refNavIcons}>
+          <Styled.DesktopMenu>
+            <NavList isMenuOpen />
+          </Styled.DesktopMenu>
 
-        <ThemeToggle />
+          <ThemeToggle />
 
-        <Styled.MenuButton
-          onClick={toggleMenu}
-          onKeyPress={e => {
-            if (![13, 32].includes(e.keyCode)) return;
-            toggleMenu();
-          }}
-        >
-          {isMenuOpen ? (
-            <FaTimes size="20" color={colors.pink} />
-          ) : (
-            <FaBars size="20" color={colors.blue} />
-          )}
-        </Styled.MenuButton>
-      </Styled.Container>
+          <Styled.MenuButton
+            onClick={toggleMenu}
+            onKeyPress={e => {
+              if (![13, 32].includes(e.keyCode)) return;
+              toggleMenu();
+            }}
+          >
+            {isMenuOpen ? (
+              <FaTimes size="20" color={colors.pink} />
+            ) : (
+              <FaBars size="20" color={colors.blue} />
+            )}
+          </Styled.MenuButton>
+        </Styled.Container>
 
-      <Styled.MobileMenu isMenuOpen={isMenuOpen}>
-        <GradientContainer isStatic ref={refMobileMenu}>
-          <NavList isMobile isMenuOpen={isMenuOpen} />
-          <NavLogoMobile />
-        </GradientContainer>
-      </Styled.MobileMenu>
+        <Styled.MobileMenu isMenuOpen={isMenuOpen}>
+          <GradientContainer isStatic ref={refMobileMenu}>
+            <NavList isMobile isMenuOpen={isMenuOpen} />
+            <NavLogoMobile />
+          </GradientContainer>
+        </Styled.MobileMenu>
+      </Styled.NavContent>
     </Styled.Nav>
   );
 }

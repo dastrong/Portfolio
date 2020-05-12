@@ -4,13 +4,19 @@ export const Nav = styled.nav`
   z-index: 1111;
   height: 55px;
   width: 100%;
+  background-color: ${({ theme }) => theme.colors.background.main};
+  position: fixed;
+  top: 0;
+`;
+
+export const NavContent = styled.div`
+  height: 55px;
+  padding: 5px 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.background.main};
-  padding: 5px 10px;
-  position: fixed;
-  top: 0;
+  max-width: ${props => props.theme.width.lg}px;
+  margin: 0 auto;
 `;
 
 export const Container = styled.div`
