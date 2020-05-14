@@ -3,9 +3,17 @@ import { StyledButton } from "components/Shared/StyledButton";
 
 export const ItemContainer = css`
   width: 100%;
-  min-width: 310px;
+  min-width: 300px;
   max-width: 750px;
   margin: 10px auto;
+
+  ${props => props.theme.media.md} {
+    width: 90%;
+  }
+
+  ${props => props.theme.media.sm} {
+    width: 100%;
+  }
 `;
 
 export const ItemContent = css`
@@ -25,8 +33,7 @@ export const Image = styled.img`
   width: 51%;
 
   ${props => props.theme.media.md} {
-    margin-right: 0px;
-    margin-bottom: 20px;
+    margin: 0px auto 20px;
     width: 100%;
   }
 `;
@@ -51,7 +58,13 @@ export const Title = styled.h2`
   margin-bottom: 12px;
 
   ${props => props.theme.media.md} {
+    font-size: 2rem;
+    margin-bottom: 15px;
     justify-content: center;
+  }
+
+  ${props => props.theme.media.sm} {
+    font-size: 1.5rem;
   }
 `;
 
@@ -66,13 +79,14 @@ export const ExternalLink = styled.a`
 
 export const Description = styled.p`
   font-size: 0.85rem;
-  line-height: 1.5rem;
+  line-height: 1.3rem;
   color: ${props => props.theme.colors.text.dark};
 
   ${props => props.theme.media.md} {
     text-align: center;
     max-width: 500px;
     margin: 0 auto 15px;
+    line-height: 1.5rem;
   }
 `;
 
@@ -82,9 +96,13 @@ export const ButtonGroup = styled.div`
 
   ${props => props.theme.media.md} {
     justify-content: space-evenly;
-    max-width: 400px;
-    width: 100%;
+    width: 90%;
     margin: 0 auto;
+    max-width: 500px;
+  }
+
+  ${props => props.theme.media.sm} {
+    width: 100%;
   }
 `;
 

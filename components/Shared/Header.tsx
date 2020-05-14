@@ -4,15 +4,22 @@ import styled from "styled-components";
 const StyledHeader = styled.header`
   display: flex;
   flex-direction: column;
-  margin: 0px auto 10px;
-  padding: 25px 0;
   width: 100%;
+  margin-bottom: 45px;
+
+  ${props => props.theme.media.xl} {
+    margin-bottom: 40px;
+  }
+
+  ${props => props.theme.media.lg} {
+    margin-bottom: 35px;
+  }
 `;
 
 const StyledText = styled.h1`
   user-select: none;
   position: relative;
-  font-size: 3rem;
+  font-size: 4rem;
   width: 100%;
   min-width: min-content;
   max-width: max-content;
@@ -30,16 +37,24 @@ const StyledText = styled.h1`
     font-family: inherit;
   }
 
+  ${props => props.theme.media.xl} {
+    font-size: 3.75rem;
+  }
+
+  ${props => props.theme.media.lg} {
+    font-size: 3.5rem;
+  }
+
   ${props => props.theme.media.md} {
-    font-size: 2.5rem;
+    font-size: 3rem;
   }
 
   ${props => props.theme.media.sm} {
-    font-size: 2rem;
+    font-size: 2.75rem;
   }
 
   ${props => props.theme.media.xs} {
-    font-size: 1.75rem;
+    font-size: 2.5rem;
   }
 `;
 

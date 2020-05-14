@@ -52,7 +52,7 @@ export const MobileMenu = styled.div<{ isMenuOpen: boolean }>`
   right: 0px;
   z-index: 1111111;
   width: 100%;
-  min-width: 310px;
+  min-width: 300px;
   max-width: 767px;
   background-color: ${props =>
     `rgba(122,122,122, ${props.isMenuOpen ? 0.4 : 0})`};

@@ -9,7 +9,7 @@ export default css<{ primary?: boolean }>`
   color: ${props => (props.primary ? "white" : props.theme.colors.pink)};
   font-weight: ${props => (props.primary ? "400" : "bold")};
   box-sizing: border-box;
-  border-radius: 25px;
+  border-radius: 2rem;
   padding: 10px 20px;
   cursor: pointer;
   position: relative;

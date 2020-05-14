@@ -1,25 +1,28 @@
 import styled, { createGlobalStyle } from "styled-components";
 
 export const StyledSection = styled.section`
-  margin: 55px auto 30px;
-  padding: 0 5px;
+  margin: 55px auto 0;
+  padding: 40px 10px;
   width: 90%;
   max-width: ${props => props.theme.width.xxl}px;
-  min-height: calc(100vh - 228px - 55px - 30px);
+  min-height: calc(100vh - 228px - 55px - 0px);
 
   ${props => props.theme.media.xxl} {
     max-width: ${props => props.theme.width.xl}px;
   }
 
   ${props => props.theme.media.xl} {
+    padding: 35px 5px;
     max-width: ${props => props.theme.width.lg}px;
   }
 
   ${props => props.theme.media.lg} {
+    padding: 30px 5px;
     max-width: ${props => props.theme.width.md}px;
   }
 
   ${props => props.theme.media.md} {
+    width: 100%;
     min-height: calc(100vh - 375px - 55px - 30px);
   }
 `;

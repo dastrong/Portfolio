@@ -3,7 +3,7 @@ export type WorkTypes = {
   image: string;
   description: string;
   tech_used?: string[];
-  show_work: boolean;
+  show_work?: boolean;
   links: {
     github?: string;
     live: string;

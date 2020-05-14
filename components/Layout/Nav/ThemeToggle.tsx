@@ -8,11 +8,7 @@ const Container = styled.div`
   cursor: pointer;
   display: flex;
   position: relative;
-  margin: 0 10px;
-
-  ${props => props.theme.media.md} {
-    margin: 0 15px;
-  }
+  margin: 0 15px;
 
   > * {
     position: absolute;

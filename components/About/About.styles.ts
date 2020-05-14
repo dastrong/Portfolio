@@ -1,26 +1,27 @@
 import styled from "styled-components";
+import { StyledTextContainer } from "components/Shared/StyledTextContainer";
 
 export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px auto 50px;
-  width: 90%;
-  min-width: 310px;
-  max-width: ${props => `${props.theme.width.md}px`};
+  margin: 0 auto;
+  min-width: 300px;
+  max-width: ${props => `${props.theme.width.lg}px`};
 
-  ${props => props.theme.media.md} {
+  ${props => props.theme.media.lg} {
+    max-width: ${props => `${props.theme.width.md}px`};
+    width: 90%;
     flex-direction: column;
   }
 `;
 
-export const TextContainer = styled.div`
-  background-color: ${props => props.theme.colors.background.light}cf;
+export const TextContainer = styled(StyledTextContainer)`
   width: 75%;
-  margin-left: 30px;
-  padding: 10px;
+  margin: 0 10px;
+  margin-left: 50px;
 
-  ${props => props.theme.media.md} {
+  ${props => props.theme.media.lg} {
     margin: 20px auto 0;
   }
 
@@ -29,7 +30,7 @@ export const TextContainer = styled.div`
   }
 
   ${props => props.theme.media.xs} {
-    min-width: 310px;
+    margin: 20px 5px 0;
     max-width: 375px;
   }
 `;
@@ -37,7 +38,7 @@ export const TextContainer = styled.div`
 export const Image = styled.img`
   height: auto;
   width: 40%;
-  min-width: 310px;
+  min-width: 300px;
   max-width: 375px;
   border-radius: 155px;
   box-shadow: 0px 0px 1px 3px ${props => props.theme.colors.accent};
@@ -48,14 +49,9 @@ export const Image = styled.img`
 `;
 
 export const Text = styled.p`
-  font-size: 1rem;
-  line-height: 1.5rem;
-  letter-spacing: 0.2px;
   margin: 20px 0;
-  font-weight: 300;
 
-  &:first-child,
-  &:last-child {
-    margin: 0;
+  ${props => props.theme.media.lg} {
+    text-align: center;
   }
 `;

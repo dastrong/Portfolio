@@ -11,8 +11,6 @@ export default function WorkItem({
   links,
   show_work,
   site_name,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  tech_used,
   routeName,
 }: WorkTypes & { routeName?: string }) {
   if (!show_work) return null;

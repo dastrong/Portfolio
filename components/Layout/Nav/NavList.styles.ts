@@ -11,7 +11,11 @@ export const List = styled.ul`
 `;
 
 export const ListItem = styled.li`
-  padding: 15px 10px;
+  padding: 15px;
+
+  ${props => props.theme.media.lg} {
+    padding: 15px 10px;
+  }
 `;
 
 export const Divider = styled.hr<{ index: number; isMenuOpen: boolean }>`
