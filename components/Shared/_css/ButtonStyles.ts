@@ -20,6 +20,6 @@ export default css<{ primary?: boolean }>`
   transition: opacity 0.2s;
 
   &:hover {
-    opacity: 0.8;
+    opacity: 0.9;
   }
 `;
