@@ -10,14 +10,14 @@ export default function LinkSocial() {
       containerStyles={Styled.SocialContainer}
       contentStyles={Styled.ContentContainer}
     >
-      {externalLinks.map(({ Icon, href }) => (
+      {externalLinks.map(({ SquareIcon, href }) => (
         <Styled.SocialIcon
           key={href}
           href={href}
           target="_blank"
           rel="noopener"
         >
-          <Icon size="30" />
+          <SquareIcon size="30" />
         </Styled.SocialIcon>
       ))}
     </GradientContainer>

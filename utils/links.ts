@@ -1,4 +1,11 @@
-import { FaLinkedin, FaTwitterSquare, FaGithubSquare } from "react-icons/fa";
+import {
+  FaLinkedin,
+  FaTwitterSquare,
+  FaGithubSquare,
+  FaLinkedinIn,
+  FaTwitter,
+  FaGithub,
+} from "react-icons/fa";
 
 export const internalLinks = [
   { href: "/about", text: "About" },
@@ -8,16 +15,22 @@ export const internalLinks = [
 ];
 
 export const externalLinks = [
-  { text: "GitHub", href: "https://github.com/dastrong", Icon: FaGithubSquare },
+  {
+    text: "GitHub",
+    href: "https://github.com/dastrong",
+    SquareIcon: FaGithubSquare,
+    RegIcon: FaGithub,
+  },
   {
     text: "Linked",
     href: "https://www.linkedin.com/in/daniel-strong-tech",
-    Icon: FaLinkedin,
+    SquareIcon: FaLinkedin,
+    RegIcon: FaLinkedinIn,
   },
   {
-    text: "GitHub",
-
+    text: "Twitter",
     href: "https://twitter.com/DaStrongWon",
-    Icon: FaTwitterSquare,
+    SquareIcon: FaTwitterSquare,
+    RegIcon: FaTwitter,
   },
 ];
