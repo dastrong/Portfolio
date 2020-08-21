@@ -4,8 +4,9 @@ import FooterIcon from "./FooterIcon";
 import FooterLinks from "./FooterLinks";
 import FooterSocial from "./FooterSocial";
 import FooterSub from "./FooterSub";
+import { LayoutTypes } from "../LayoutTypes";
 
-export const StyledContainer = styled.footer`
+export const StyledContainer = styled.footer<LayoutTypes>`
   width: 100%;
   padding: 30px;
   background-color: ${props => props.theme.colors.background.main};
@@ -13,11 +14,13 @@ export const StyledContainer = styled.footer`
   flex-direction: column;
   align-items: center;
   position: relative;
+
+  display: ${props => (props.isHomePage ? "none" : "flex")};
 `;
 
-export default function Footer() {
+export default function Footer({ isHomePage }: LayoutTypes) {
   return (
-    <StyledContainer>
+    <StyledContainer isHomePage={isHomePage}>
       <FooterIcon />
       <FooterLinks />
       <FooterSocial />

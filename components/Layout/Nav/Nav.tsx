@@ -3,15 +3,16 @@ import { useTheme } from "styled-components";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 import useOnClickOutside from "hooks/useOnClickOutside";
-
 import GradientContainer from "components/Shared/GradientContainer";
+import { LayoutTypes } from "../LayoutTypes";
+
 import ThemeToggle from "./ThemeToggle";
 import NavList from "./NavList";
 import NavLogoMain from "./NavLogoMain";
 import NavLogoMobile from "./NavLogoMobile";
 import * as Styled from "./Nav.styles";
 
-export default function Nav() {
+export default function Nav({ isHomePage }: LayoutTypes) {
   const { colors } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -23,7 +24,7 @@ export default function Nav() {
   const toggleMenu = () => setIsMenuOpen(state => !state);
 
   return (
-    <Styled.Nav>
+    <Styled.Nav isHomePage={isHomePage}>
       <Styled.NavContent>
         <NavLogoMain />
 

@@ -1,12 +1,16 @@
 import styled from "styled-components";
+import { LayoutTypes } from "../LayoutTypes";
 
-export const Nav = styled.nav`
+export const Nav = styled.nav<LayoutTypes>`
   z-index: 1111;
   height: 55px;
   width: 100%;
   background-color: ${({ theme }) => theme.colors.background.main};
   position: fixed;
   top: 0;
+
+  display: ${props => (props.isHomePage ? "none" : "block")};
+  transform: translateY(${props => (props.isHomePage ? "100%" : "0")});
 `;
 
 export const NavContent = styled.div`
