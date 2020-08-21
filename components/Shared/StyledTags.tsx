@@ -17,5 +17,5 @@ export const StyledTag = styled.div<{ color?: string }>`
   border: 1px solid ${props => props.theme.colors.accent}75;
   background-color: ${props => props.theme.colors.accent}0f;
   color: ${props => props.theme.colors.text.dark};
-  box-shadow: 0.5px 0.5px 0.5px ${props => props.theme.colors.accent};
+  box-shadow: 1.5px 1.5px 0.5px ${props => props.theme.colors.accent};
 `;
