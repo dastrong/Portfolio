@@ -9,7 +9,7 @@ import styled, {
 type GradientProps = {
   customStyles: FlattenInterpolation<ThemeProps<DefaultTheme>>;
   isStatic?: boolean;
-  gradientWidth?: string;
+  gradientWidth?: number;
 };
 
 const Effect = css<GradientProps>`
@@ -29,9 +29,10 @@ const Effect = css<GradientProps>`
 
 const Container = styled.div<GradientProps>`
   position: relative;
-  ${props => props.theme.centered}
+  display: flex;
 
-  &:before, &:after {
+  &:before,
+  &:after {
     ${Effect}
   }
 
@@ -57,8 +58,8 @@ const Content = styled.div<GradientProps>`
   background-color: ${props => props.theme.colors.background.main};
   color: ${props => props.theme.colors.text.main};
   border-radius: ${props =>
-    `calc(${props.theme.borderRadius}px - ${props.gradientWidth})`};
-  margin: ${props => props.gradientWidth};
+    `calc(${props.theme.borderRadius}px - ${props.gradientWidth}px)`};
+  margin: ${props => props.gradientWidth}px;
 
   ${props => props.customStyles};
 `;
@@ -69,13 +70,13 @@ export default forwardRef(function GradientContainer(
     isStatic = false,
     containerStyles,
     contentStyles,
-    gradientWidth = "2px",
+    gradientWidth = 2,
   }: {
     children: React.ReactNode;
     isStatic?: boolean;
     containerStyles?: FlattenInterpolation<ThemeProps<DefaultTheme>>;
     contentStyles?: FlattenInterpolation<ThemeProps<DefaultTheme>>;
-    gradientWidth?: string;
+    gradientWidth?: number;
   },
   ref?: React.MutableRefObject<undefined>
 ) {
