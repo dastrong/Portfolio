@@ -43,3 +43,5 @@ fields:
   config: {}
   label: Code Snippets
   description: Add Carbon snippet images for this post here
+pages:
+- content/posts/test.md
