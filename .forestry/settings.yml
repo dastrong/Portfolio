@@ -30,7 +30,7 @@ upload_dir: public
 public_path: "/public"
 front_matter_path: ''
 use_front_matter_path: true
-file_template: ":filename:"
+file_template: ":year:/:month:/:day:/:filename:"
 build:
   preview_output_directory: preview
   install_dependencies_command: npm install
