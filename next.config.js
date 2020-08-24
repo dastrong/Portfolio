@@ -1,4 +1,7 @@
-module.exports = {
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const withOptimizedImages = require("next-optimized-images");
+
+module.exports = withOptimizedImages({
   webpack: function (config) {
     config.module.rules.push({
       test: [/\.md$/, /\.yml$/],
@@ -9,4 +12,4 @@ module.exports = {
     };
     return config;
   },
-};
+});
