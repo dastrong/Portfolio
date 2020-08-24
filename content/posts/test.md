@@ -5,10 +5,11 @@ tags:
 - Vue
 title: Test
 show_post: false
-code_snippets: []
+code_snippets:
+- "/2020/08/24/carbon.svg"
 
 ---
-![test photo](/public/2020/08/24/carbon.svg "Tester")
+![](/public/2020/08/24/carbon.svg)
 
 sdsd
 
