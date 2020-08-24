@@ -24,9 +24,9 @@ fields:
   default: []
   label: Tags
   description: Technology mentioned
-- name: publish_post
+- name: show_post
   type: boolean
-  label: Publish Post
+  label: Show Post
   description: Check if the post is ready to be published
 - name: code_snippets
   type: image_gallery
