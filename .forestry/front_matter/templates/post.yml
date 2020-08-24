@@ -38,3 +38,10 @@ fields:
   type: boolean
   label: isPostFinished
   description: Check if the post is finished
+- name: code_snippets
+  type: image_gallery
+  config: {}
+  label: Code Snippets
+  description: Add Carbon snippet images for this post here
+pages:
+- content/posts/test.md
