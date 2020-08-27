@@ -3,6 +3,7 @@ import { useTheme } from "styled-components";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 import useOnClickOutside from "hooks/useOnClickOutside";
+import useHomePageChecker from "hooks/useHomePageChecker";
 
 import GradientContainer from "components/Shared/GradientContainer";
 import ThemeToggle from "./ThemeToggle";
@@ -14,6 +15,7 @@ import * as Styled from "./Nav.styles";
 export default function Nav() {
   const { colors } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isHomePage = useHomePageChecker();
 
   const refMobileMenu = useRef();
   const refNavIcons = useRef();
@@ -23,7 +25,7 @@ export default function Nav() {
   const toggleMenu = () => setIsMenuOpen(state => !state);
 
   return (
-    <Styled.Nav>
+    <Styled.Nav isHomePage={isHomePage}>
       <Styled.NavContent>
         <NavLogoMain />
 

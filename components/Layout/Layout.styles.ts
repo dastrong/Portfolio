@@ -1,11 +1,22 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle, css } from "styled-components";
 
-export const StyledSection = styled.section`
-  margin: 55px auto 0;
-  padding: 40px 10px;
-  width: 90%;
-  max-width: ${props => props.theme.width.xxl}px;
-  min-height: calc(100vh - 228px - 55px - 0px);
+export const StyledSection = styled.section<{ isHomePage: boolean }>`
+  ${props =>
+    props.isHomePage
+      ? css`
+          padding: 0;
+          margin: 0 auto;
+          width: 100%;
+          max-width: ${props.theme.width.xxl}px;
+          height: 100vh;
+        `
+      : css`
+          margin: 55px auto 0;
+          padding: 40px 10px;
+          width: 90%;
+          max-width: ${props.theme.width.xxl}px;
+          min-height: calc(100vh - 228px - 55px - 0px);
+        `}
 
   ${props => props.theme.media.xxl} {
     max-width: ${props => props.theme.width.xl}px;

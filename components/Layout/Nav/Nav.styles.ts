@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
-export const Nav = styled.nav`
+export const Nav = styled.nav<{ isHomePage: boolean }>`
   z-index: 1111;
   height: 55px;
   width: 100%;
   background-color: ${({ theme }) => theme.colors.background.main};
   position: fixed;
   top: 0;
+  transition-duration: ${props => (props.isHomePage ? 0 : "0.5s")};
+  transition-property: transform;
+  transform: translateY(${props => (props.isHomePage ? "-100%" : 0)});
 `;
 
 export const NavContent = styled.div`
