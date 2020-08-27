@@ -4,6 +4,7 @@ import GradientContainer from "components/Shared/GradientContainer";
 
 import HomeCornerLinks from "components/Home/HomeCornerLinks";
 import HomeCenter from "components/Home/HomeCenter";
+import HomeAction from "components/Home/HomeAction";
 import * as Styled from "components/Home/Home.styles";
 import { gradientWidth } from "components/Home/_variables";
 
@@ -23,6 +24,7 @@ export default function Home() {
       >
         <HomeCornerLinks />
         <HomeCenter />
+        <HomeAction />
       </GradientContainer>
     </>
   );

@@ -1,23 +1,6 @@
 import styled, { createGlobalStyle, css } from "styled-components";
 
 export const StyledSection = styled.section<{ isHomePage: boolean }>`
-  ${props =>
-    props.isHomePage
-      ? css`
-          padding: 0;
-          margin: 0 auto;
-          width: 100%;
-          max-width: ${props.theme.width.xxl}px;
-          height: 100vh;
-        `
-      : css`
-          margin: 55px auto 0;
-          padding: 40px 10px;
-          width: 90%;
-          max-width: ${props.theme.width.xxl}px;
-          min-height: calc(100vh - 228px - 55px - 0px);
-        `}
-
   ${props => props.theme.media.xxl} {
     max-width: ${props => props.theme.width.xl}px;
   }
@@ -36,6 +19,29 @@ export const StyledSection = styled.section<{ isHomePage: boolean }>`
     width: 100%;
     min-height: calc(100vh - 375px - 55px - 30px);
   }
+
+  ${props =>
+    props.isHomePage
+      ? css`
+          margin: 0 auto;
+          padding: 0;
+          width: 100%;
+          max-width: ${props.theme.width.xxl}px;
+          height: 100vh;
+
+          ${props => props.theme.media.sm} {
+            margin: 55px auto 0;
+            padding: 10px 5px;
+            height: calc(100vh - 55px);
+          }
+        `
+      : css`
+          margin: 55px auto 0;
+          padding: 40px 10px;
+          width: 90%;
+          max-width: ${props.theme.width.xxl}px;
+          min-height: calc(100vh - 228px - 55px);
+        `}
 `;
 
 export default createGlobalStyle`

@@ -6,6 +6,10 @@ const ContainerStyles = css`
   position: absolute;
   width: calc(${dimensions.cornerBox.width} * 100%);
   height: calc(${dimensions.cornerBox.height} * 100%);
+
+  ${props => props.theme.media.sm} {
+    display: none;
+  }
 `;
 
 const TopLeftStyles = css`

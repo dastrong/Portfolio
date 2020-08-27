@@ -7,9 +7,13 @@ export const Nav = styled.nav<{ isHomePage: boolean }>`
   background-color: ${({ theme }) => theme.colors.background.main};
   position: fixed;
   top: 0;
-  transition-duration: ${props => (props.isHomePage ? 0 : "0.5s")};
+  transition-duration: ${props => (props.isHomePage ? 0 : "0.2s")};
   transition-property: transform;
   transform: translateY(${props => (props.isHomePage ? "-100%" : 0)});
+
+  ${props => props.theme.media.sm} {
+    transform: translateY(0);
+  }
 `;
 
 export const NavContent = styled.div`
