@@ -2,11 +2,14 @@ import React, { useState, useEffect } from "react";
 import fs from "fs";
 import path from "path";
 import { GetStaticProps } from "next";
+import { useRouter } from "next/router";
 import matter from "gray-matter";
 
 import PageHead from "components/Shared/PageHead";
 import Header from "components/Shared/Header";
-import { useRouter } from "next/router";
+import Tags from "components/Shared/Tags";
+// import * as Styled from "components/Tags/Tags.styles";
+import TagsVisibilityButtons from "components/Tags/TagsVisibilityButtons";
 
 const getTags = (arr, tagName: string) =>
   arr.reduce((acc: string[], cVal) => [...acc, ...cVal[tagName]], []);
@@ -21,8 +24,8 @@ export default function TagsPage({
   // use the router object to grab the query object for displaying certain tag related content
   const router = useRouter();
 
-  // filter results by this query
-  const [query, setQuery] = useState("");
+  // grab the searched query from the url
+  const currentTag = router.query.q?.toString() || "";
 
   // used to filter tags and content
   const [showWorks, setShowWorks] = useState(true);
@@ -35,17 +38,25 @@ export default function TagsPage({
   // this will hold all our tags to show the user
   const [tags, setTags] = useState(getUniqueAndSortedTags());
 
-  // if there's a query in the url, update the query search value
   useEffect(() => {
-    console.log("query updated: ", router.query.q);
-    setQuery(router.query.q?.toString() || "");
-  }, [router.query.q]);
-
-  // if the user doesn't want to see certain data types, ...
-  // ... we will hide their tags from the list here
-  useEffect(() => {
-    setTags(getUniqueAndSortedTags());
+    // if the user doesn't want to see certain data types, ...
+    // ... we will hide their tags from the list here
+    const newTags = getUniqueAndSortedTags();
+    // if the previous selection in not available anymore, reset url
+    if (!newTags.includes(currentTag)) router.push("/tags");
+    // set the new tags
+    setTags(newTags);
   }, [showWorks, showPosts]);
+
+  useEffect(() => {
+    if (showPosts || showWorks) return;
+    setShowPosts(true);
+  }, [showWorks]);
+
+  useEffect(() => {
+    if (showWorks || showPosts) return;
+    setShowWorks(true);
+  }, [showPosts]);
 
   // get and sorted all our unique tags into one array
   function getUniqueAndSortedTags() {
@@ -60,30 +71,32 @@ export default function TagsPage({
   return (
     <>
       <PageHead
-        title="Tags"
+        title={currentTag ? `${currentTag} | Tag` : `View Tags`}
         description="View my blog or work by the technology used"
       />
 
       <Header>Tags</Header>
 
-      {/* show/hide work/posts buttons */}
+      <TagsVisibilityButtons
+        showPosts={showPosts}
+        showWorks={showWorks}
+        setShowPosts={setShowPosts}
+        setShowWorks={setShowWorks}
+      />
 
-      {/* show all available tags here */}
-      {tags.map(tag => (
-        <div key={tag}>{tag}</div>
-      ))}
+      <Tags tags={tags} currentTag={currentTag} />
 
       {/* Show work or posts related that use the chosen tag */}
-      {showWorks &&
+      {/* {showWorks &&
         works.map(work => {
           if (query && !work.tech_used.includes(query)) return null;
           return <div key={work.site_name}>{work.site_name}</div>;
-        })}
+        })} */}
     </>
   );
 }
 
-export const getStaticProps: GetStaticProps = async ctx => {
+export const getStaticProps: GetStaticProps = async () => {
   const root = path.join(process.cwd());
 
   // get the filenames (add to root)

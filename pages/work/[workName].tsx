@@ -7,8 +7,9 @@ import ReactMarkdown from "react-markdown";
 
 import PageHead from "components/Shared/PageHead";
 import Header from "components/Shared/Header";
-import { StyledTag } from "components/Shared/StyledTags";
+import Tags from "components/Shared/Tags";
 import { StyledBlockquote } from "components/Shared/StyledBlockquote";
+
 import { WorkTypes } from "components/Work/WorkTypes";
 import * as Styled from "components/Work/WorkNamePage.styles";
 
@@ -49,13 +50,7 @@ export default function ViewWork({
           />
         </Styled.TextContainer>
 
-        {tech_used && (
-          <Styled.TagContainer>
-            {tech_used.map(tech => (
-              <StyledTag key={tech}>{tech}</StyledTag>
-            ))}
-          </Styled.TagContainer>
-        )}
+        <Tags tags={tech_used} addContainerStyles={Styled.TagContainerStyles} />
       </Styled.PageContainer>
     </>
   );

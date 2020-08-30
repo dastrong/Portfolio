@@ -1,7 +1,6 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { StyledTextContainer } from "components/Shared/StyledTextContainer";
 import { StyledButton } from "components/Shared/StyledButton";
-import { StyledTagContainer } from "components/Shared/StyledTags";
 
 export const PageContainer = styled.div`
   display: grid;
@@ -102,7 +101,7 @@ export const Button = styled(StyledButton)`
   }
 `;
 
-export const TagContainer = styled(StyledTagContainer)`
+export const TagContainerStyles = css`
   grid-row: 3;
   grid-column: 1/13;
 
