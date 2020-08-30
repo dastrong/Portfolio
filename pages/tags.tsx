@@ -8,8 +8,10 @@ import matter from "gray-matter";
 import PageHead from "components/Shared/PageHead";
 import Header from "components/Shared/Header";
 import Tags from "components/Shared/Tags";
-// import * as Styled from "components/Tags/Tags.styles";
+import * as Styled from "components/Tags/Tags.styles";
 import TagsVisibilityButtons from "components/Tags/TagsVisibilityButtons";
+import { WorkTypes } from "components/Work/WorkTypes";
+import InterLink from "components/Shared/Links";
 
 const getTags = (arr, tagName: string) =>
   arr.reduce((acc: string[], cVal) => [...acc, ...cVal[tagName]], []);
@@ -19,7 +21,7 @@ export default function TagsPage({
   works,
 }: {
   posts: string[];
-  works: string[];
+  works: WorkTypes[];
 }) {
   // use the router object to grab the query object for displaying certain tag related content
   const router = useRouter();
@@ -87,11 +89,42 @@ export default function TagsPage({
       <Tags tags={tags} currentTag={currentTag} />
 
       {/* Show work or posts related that use the chosen tag */}
-      {/* {showWorks &&
-        works.map(work => {
-          if (query && !work.tech_used.includes(query)) return null;
-          return <div key={work.site_name}>{work.site_name}</div>;
-        })} */}
+      {showWorks && (
+        <Styled.ContentList>
+          <Styled.Header>Related Work</Styled.Header>
+          {works.map(work => {
+            if (currentTag && !work.tech_used.includes(currentTag)) return null;
+            return (
+              <InterLink
+                href={`/work/${work.site_name}`}
+                StyledAnchor={Styled.ContentLink}
+                key={work.site_name}
+              >
+                {work.site_name}
+              </InterLink>
+            );
+          })}
+        </Styled.ContentList>
+      )}
+
+      {/* Show work or posts related that use the chosen tag */}
+      {showPosts && (
+        <Styled.ContentList>
+          <Styled.Header>Related Blog Posts</Styled.Header>
+          {posts.map(post => {
+            if (currentTag && !post.tags.includes(currentTag)) return null;
+            return (
+              <InterLink
+                href={`/blog/${post.title}`}
+                StyledAnchor={Styled.ContentLink}
+                key={post.title}
+              >
+                {post.title}
+              </InterLink>
+            );
+          })}
+        </Styled.ContentList>
+      )}
     </>
   );
 }
@@ -132,7 +165,7 @@ export const getStaticProps: GetStaticProps = async () => {
       return data;
     })
     .filter(work => work.show_work);
-
+  console.log(allWorks, allPosts);
   return {
     props: {
       works: allWorks,
