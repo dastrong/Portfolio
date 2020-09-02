@@ -6,17 +6,31 @@ export const ContentList = styled.div`
   max-width: 500px;
 `;
 
-export const Header = styled.h3`
-  font-size: 2rem;
+export const ContentContainer = styled.div`
+  margin: 1.75rem 0;
+  /* margin-bottom: 15px; */
+`;
+
+export const ContentHeader = styled.h3`
+  font-size: 2.25rem;
   text-align: center;
   margin-bottom: 1rem;
 `;
 
-export const ContentLink = styled.a`
-  width: 100%;
-  background-color: ${props => props.theme.colors.background.main};
-  border-radius: ${props => props.theme.borderRadius}px;
-  margin: 10px 0;
-  padding: 10px;
+export const ContentLinkTitle = styled.a`
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
   cursor: pointer;
+  color: ${props => props.theme.colors.text.main};
+  text-decoration-line: underline;
+  text-decoration-color: ${props => props.theme.colors.accent};
+  transition: opacity 0.15s;
+
+  &:hover {
+    opacity: 0.9;
+  }
+`;
+
+export const ContentSubText = styled.p`
+  color: ${props => props.theme.colors.text.dark};
 `;

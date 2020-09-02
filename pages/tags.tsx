@@ -91,17 +91,21 @@ export default function TagsPage({
       {/* Show work or posts related that use the chosen tag */}
       {showWorks && (
         <Styled.ContentList>
-          <Styled.Header>Related Work</Styled.Header>
+          <Styled.ContentHeader>Related Work</Styled.ContentHeader>
           {works.map(work => {
             if (currentTag && !work.tech_used.includes(currentTag)) return null;
             return (
-              <InterLink
-                href={`/work/${work.site_name}`}
-                StyledAnchor={Styled.ContentLink}
-                key={work.site_name}
-              >
-                {work.site_name}
-              </InterLink>
+              <Styled.ContentContainer key={work.site_name}>
+                <InterLink
+                  href={`/work/${work.site_name}`}
+                  StyledAnchor={Styled.ContentLinkTitle}
+                >
+                  {work.site_name}
+                </InterLink>
+                <Styled.ContentSubText>
+                  {work.description}
+                </Styled.ContentSubText>
+              </Styled.ContentContainer>
             );
           })}
         </Styled.ContentList>
@@ -110,17 +114,22 @@ export default function TagsPage({
       {/* Show work or posts related that use the chosen tag */}
       {showPosts && (
         <Styled.ContentList>
-          <Styled.Header>Related Blog Posts</Styled.Header>
+          <Styled.ContentHeader>Related Blog Posts</Styled.ContentHeader>
           {posts.map(post => {
             if (currentTag && !post.tags.includes(currentTag)) return null;
             return (
-              <InterLink
-                href={`/blog/${post.title}`}
-                StyledAnchor={Styled.ContentLink}
-                key={post.title}
-              >
-                {post.title}
-              </InterLink>
+              <Styled.ContentContainer key={post.site_name}>
+                <InterLink
+                  href={`/blog/${post.title}`}
+                  StyledAnchor={Styled.ContentLinkTitle}
+                >
+                  {post.title}
+                </InterLink>
+                <Styled.ContentSubText>
+                  {post.description}
+                </Styled.ContentSubText>
+                <p>{post.date}</p>
+              </Styled.ContentContainer>
             );
           })}
         </Styled.ContentList>
