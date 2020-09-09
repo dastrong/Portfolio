@@ -9,18 +9,17 @@ import PageHead from "components/Shared/PageHead";
 import Header from "components/Shared/Header";
 import Tags from "components/Shared/Tags";
 import * as Styled from "components/Tags/Tags.styles";
-import TagsVisibilityButtons from "components/Tags/TagsVisibilityButtons";
 import { WorkTypes } from "components/Work/WorkTypes";
+import { BlogTypes } from "components/Blog/BlogTypes";
 import InterLink from "components/Shared/Links";
 
-const getTags = (arr, tagName: string) =>
-  arr.reduce((acc: string[], cVal) => [...acc, ...cVal[tagName]], []);
-
 export default function TagsPage({
+  tags,
   posts,
   works,
 }: {
-  posts: string[];
+  tags: string[];
+  posts: BlogTypes[];
   works: WorkTypes[];
 }) {
   // use the router object to grab the query object for displaying certain tag related content
@@ -29,46 +28,15 @@ export default function TagsPage({
   // grab the searched query from the url
   const currentTag = router.query.q?.toString() || "";
 
-  // used to filter tags and content
-  const [showWorks, setShowWorks] = useState(true);
-  const [showPosts, setShowPosts] = useState(true);
+  // filter out the works that aren't related to the currentTag
+  const workList = works.filter(
+    work => !currentTag || work.tech_used.includes(currentTag)
+  );
 
-  // grabbing all tags for each data type
-  const allPostsTags = getTags(posts, "tags");
-  const allWorksTags = getTags(works, "tech_used");
-
-  // this will hold all our tags to show the user
-  const [tags, setTags] = useState(getUniqueAndSortedTags());
-
-  useEffect(() => {
-    // if the user doesn't want to see certain data types, ...
-    // ... we will hide their tags from the list here
-    const newTags = getUniqueAndSortedTags();
-    // if the previous selection in not available anymore, reset url
-    if (!newTags.includes(currentTag)) router.push("/tags");
-    // set the new tags
-    setTags(newTags);
-  }, [showWorks, showPosts]);
-
-  useEffect(() => {
-    if (showPosts || showWorks) return;
-    setShowPosts(true);
-  }, [showWorks]);
-
-  useEffect(() => {
-    if (showWorks || showPosts) return;
-    setShowWorks(true);
-  }, [showPosts]);
-
-  // get and sorted all our unique tags into one array
-  function getUniqueAndSortedTags() {
-    return Array.from(
-      new Set([
-        ...(showPosts ? allPostsTags : []),
-        ...(showWorks ? allWorksTags : []),
-      ])
-    ).sort();
-  }
+  // filter out the blog posts that aren't related to the currentTag
+  const postList = posts.filter(
+    post => !currentTag || post.tags.includes(currentTag)
+  );
 
   return (
     <>
@@ -79,61 +47,51 @@ export default function TagsPage({
 
       <Header>Tags</Header>
 
-      <TagsVisibilityButtons
-        showPosts={showPosts}
-        showWorks={showWorks}
-        setShowPosts={setShowPosts}
-        setShowWorks={setShowWorks}
-      />
-
       <Tags tags={tags} currentTag={currentTag} />
 
       {/* Show work or posts related that use the chosen tag */}
-      {showWorks && (
-        <Styled.ContentList>
-          <Styled.ContentHeader>Related Work</Styled.ContentHeader>
-          {works.map(work => {
-            if (currentTag && !work.tech_used.includes(currentTag)) return null;
-            return (
-              <Styled.ContentContainer key={work.site_name}>
-                <InterLink
-                  href={`/work/${work.site_name}`}
-                  StyledAnchor={Styled.ContentLinkTitle}
-                >
-                  {work.site_name}
-                </InterLink>
-                <Styled.ContentSubText>
-                  {work.description}
-                </Styled.ContentSubText>
-              </Styled.ContentContainer>
-            );
-          })}
-        </Styled.ContentList>
-      )}
+      <Styled.ContentList>
+        <Styled.ContentHeader>Related Posts</Styled.ContentHeader>
+        {postList.length === 0 ? (
+          <Styled.ContentEmpty>
+            No blog posts related to: {currentTag}
+          </Styled.ContentEmpty>
+        ) : (
+          postList.map(post => (
+            <Styled.ContentContainer key={post.title}>
+              <InterLink
+                href={`/blog/${post.title.toLowerCase()}`}
+                StyledAnchor={Styled.ContentLinkTitle}
+              >
+                {post.title}
+              </InterLink>
+              <Styled.ContentSubText>{post.date}</Styled.ContentSubText>
+            </Styled.ContentContainer>
+          ))
+        )}
+      </Styled.ContentList>
 
       {/* Show work or posts related that use the chosen tag */}
-      {showPosts && (
-        <Styled.ContentList>
-          <Styled.ContentHeader>Related Blog Posts</Styled.ContentHeader>
-          {posts.map(post => {
-            if (currentTag && !post.tags.includes(currentTag)) return null;
-            return (
-              <Styled.ContentContainer key={post.site_name}>
-                <InterLink
-                  href={`/blog/${post.title}`}
-                  StyledAnchor={Styled.ContentLinkTitle}
-                >
-                  {post.title}
-                </InterLink>
-                <Styled.ContentSubText>
-                  {post.description}
-                </Styled.ContentSubText>
-                <p>{post.date}</p>
-              </Styled.ContentContainer>
-            );
-          })}
-        </Styled.ContentList>
-      )}
+      <Styled.ContentList>
+        <Styled.ContentHeader>Related Work</Styled.ContentHeader>
+        {workList.length === 0 ? (
+          <Styled.ContentEmpty>
+            No work containing: {currentTag}
+          </Styled.ContentEmpty>
+        ) : (
+          workList.map(work => (
+            <Styled.ContentContainer key={work.site_name}>
+              <InterLink
+                href={`/work/${work.site_name.toLowerCase()}`}
+                StyledAnchor={Styled.ContentLinkTitle}
+              >
+                {work.site_name}
+              </InterLink>
+              <Styled.ContentSubText>{work.description}</Styled.ContentSubText>
+            </Styled.ContentContainer>
+          ))
+        )}
+      </Styled.ContentList>
     </>
   );
 }
@@ -174,9 +132,25 @@ export const getStaticProps: GetStaticProps = async () => {
       return data;
     })
     .filter(work => work.show_work);
-  console.log(allWorks, allPosts);
+
+  // grabbing all tags for each data type
+  const allPostsTags = allPosts.reduce(
+    (acc, cVal) => [...acc, ...cVal.tags],
+    []
+  );
+  const allWorksTags = allWorks.reduce(
+    (acc, cVal) => [...acc, ...cVal.tech_used],
+    []
+  );
+
+  // get and sort all unique tags
+  const uniqueSortedTags = Array.from(
+    new Set([...allPostsTags, ...allWorksTags])
+  ).sort();
+
   return {
     props: {
+      tags: uniqueSortedTags,
       works: allWorks,
       posts: allPosts,
     },
