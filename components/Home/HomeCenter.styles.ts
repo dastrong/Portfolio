@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { dimensions } from "./_variables";
 
 export const CenterContainer = styled.div`
@@ -14,9 +14,8 @@ export const CenterContainer = styled.div`
   }
 `;
 
-export const Headshot = styled.img`
-  height: 75%;
-  width: auto;
+export const Headshot = css`
+  max-width: 275px;
 `;
 
 export const NameHeader = styled.h1`
