@@ -5,6 +5,7 @@ import ReactMarkdown from "react-markdown";
 
 import PageHead from "components/Shared/PageHead";
 import Header from "components/Shared/Header";
+import OptimizedImage from "components/Shared/OptimizedImage";
 import * as Styled from "components/About/About.styles";
 
 export default function About({
@@ -24,7 +25,12 @@ export default function About({
       <Header>About Me</Header>
 
       <Styled.Container>
-        <Styled.Image src={data.image} alt="daniel strong" />
+        <OptimizedImage
+          webp
+          imgFile={data.image}
+          containerStyles={Styled.ImageContainer}
+          alt="Daniel Strong"
+        />
         <Styled.TextContainer>
           <ReactMarkdown
             source={content}
