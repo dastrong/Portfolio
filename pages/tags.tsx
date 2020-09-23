@@ -4,14 +4,27 @@ import path from "path";
 import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import matter from "gray-matter";
+import styled from "styled-components";
 
 import PageHead from "components/Shared/PageHead";
 import Header from "components/Shared/Header";
 import Tags from "components/Shared/Tags";
-import * as Styled from "components/Tags/Tags.styles";
+import { BlogCard, WorkCard } from "components/Shared/Cards";
+
 import { WorkTypes } from "components/Work/WorkTypes";
 import { BlogTypes } from "components/Blog/BlogTypes";
-import InterLink from "components/Shared/Links";
+
+const StyledHeader = styled.h3`
+  margin: 3.5rem auto 0;
+  font-size: ${props => props.theme.fontSize.lg};
+  text-align: center;
+`;
+
+const StyledEmpty = styled.p`
+  margin: 1.5rem 0;
+  text-align: center;
+  font-style: italic;
+`;
 
 export default function TagsPage({
   tags,
@@ -41,7 +54,7 @@ export default function TagsPage({
   return (
     <>
       <PageHead
-        title={currentTag ? `${currentTag} | Tag` : `View Tags`}
+        title={currentTag ? `Tag: ${currentTag}` : `Tags`}
         description="View my blog or work by the technology used"
       />
 
@@ -50,48 +63,20 @@ export default function TagsPage({
       <Tags tags={tags} currentTag={currentTag} />
 
       {/* Show work or posts related that use the chosen tag */}
-      <Styled.ContentList>
-        <Styled.ContentHeader>Related Posts</Styled.ContentHeader>
-        {postList.length === 0 ? (
-          <Styled.ContentEmpty>
-            No blog posts related to: {currentTag}
-          </Styled.ContentEmpty>
-        ) : (
-          postList.map(post => (
-            <Styled.ContentContainer key={post.title}>
-              <InterLink
-                href={`/blog/${post.title.toLowerCase()}`}
-                StyledAnchor={Styled.ContentLinkTitle}
-              >
-                {post.title}
-              </InterLink>
-              <Styled.ContentSubText>{post.date}</Styled.ContentSubText>
-            </Styled.ContentContainer>
-          ))
-        )}
-      </Styled.ContentList>
+      <StyledHeader>Related Posts</StyledHeader>
+      {postList.length === 0 ? (
+        <StyledEmpty>No blog posts related to: {currentTag}</StyledEmpty>
+      ) : (
+        postList.map(post => <BlogCard key={post.title} {...post} />)
+      )}
 
       {/* Show work or posts related that use the chosen tag */}
-      <Styled.ContentList>
-        <Styled.ContentHeader>Related Work</Styled.ContentHeader>
-        {workList.length === 0 ? (
-          <Styled.ContentEmpty>
-            No work containing: {currentTag}
-          </Styled.ContentEmpty>
-        ) : (
-          workList.map(work => (
-            <Styled.ContentContainer key={work.site_name}>
-              <InterLink
-                href={`/work/${work.site_name.toLowerCase()}`}
-                StyledAnchor={Styled.ContentLinkTitle}
-              >
-                {work.site_name}
-              </InterLink>
-              <Styled.ContentSubText>{work.description}</Styled.ContentSubText>
-            </Styled.ContentContainer>
-          ))
-        )}
-      </Styled.ContentList>
+      <StyledHeader>Related Work</StyledHeader>
+      {workList.length === 0 ? (
+        <StyledEmpty>No work containing: {currentTag}</StyledEmpty>
+      ) : (
+        workList.map(work => <WorkCard key={work.site_name} {...work} />)
+      )}
     </>
   );
 }
