@@ -52,29 +52,41 @@ export default createGlobalStyle`
   }
 
   body, 
-  textarea {
+  textarea,
+  div {
     scrollbar-width: thin;
     scrollbar-color: ${props =>
       `${props.theme.colors.blue} ${props.theme.colors.blue}`};
   }
 
+
+  
   body::-webkit-scrollbar, 
-  textarea::-webkit-scrollbar  {
+  textarea::-webkit-scrollbar,
+  div::-webkit-scrollbar {
     width: 11px;
   }
 
   body::-webkit-scrollbar-track, 
-  textarea::-webkit-scrollbar-track  {
+  textarea::-webkit-scrollbar-track,
+  div::-webkit-scrollbar-track {
     background: ${props => props.theme.colors.background.main};
   }
 
   body::-webkit-scrollbar-thumb, 
-  textarea::-webkit-scrollbar-thumb  {
+  textarea::-webkit-scrollbar-thumb,
+  div::-webkit-scrollbar-thumb {
     background-color: ${props => props.theme.colors.blue};
     border-radius: 6px;
     border: 3px solid ${props => props.theme.colors.background.main};
     height: 10px;
     width: 10px;
+  }
+
+  /* styles the thumb horizontally */
+  div::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    border: 5px solid ${props => props.theme.colors.background.main};
   }
 
   body,
