@@ -3,27 +3,22 @@ import fs from "fs";
 import path from "path";
 import { GetStaticPaths, GetStaticProps } from "next";
 import matter from "gray-matter";
-import ReactMarkdown from "react-markdown";
 
 import PageHead from "components/Shared/PageHead";
 import Header from "components/Shared/Header";
-
-type BlogPostTypes = {
-  date: Date;
-  tags: string[];
-  title: string;
-  show_post: boolean;
-  code_snippets: string[];
-};
+import Tags from "components/Shared/Tags";
+import BlogInfo from "components/Blog/BlogInfo";
+import BlogMarkdown from "components/Blog/BlogMarkdown";
+import { BlogTypes } from "components/Blog/BlogTypes";
 
 export default function ViewBlog({
   data,
   content,
 }: {
-  data: BlogPostTypes;
+  data: BlogTypes;
   content: string;
 }) {
-  const { date, tags, title, show_post, code_snippets } = data;
+  const { date, tags, title } = data;
 
   return (
     <>
@@ -34,7 +29,11 @@ export default function ViewBlog({
 
       <Header>{title}</Header>
 
-      <ReactMarkdown source={content} />
+      <BlogInfo date={date} />
+
+      <BlogMarkdown content={content} />
+
+      <Tags tags={tags} />
     </>
   );
 }
