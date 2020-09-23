@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { StyledTextContainer } from "components/Shared/StyledTextContainer";
 
 export const Container = styled.div`
@@ -35,13 +35,12 @@ export const TextContainer = styled(StyledTextContainer)`
   }
 `;
 
-export const Image = styled.img`
-  height: auto;
+export const ImageContainer = css`
   width: 40%;
   min-width: 300px;
-  max-width: 375px;
   border-radius: 155px;
-  box-shadow: 0px 0px 1px 3px ${props => props.theme.colors.accent};
+  box-shadow: 0px 0px 1px 0px ${props => props.theme.colors.accent};
+  border: 3px solid ${props => props.theme.colors.accent};
 
   ${props => props.theme.media.sm} {
     min-width: 250px;
