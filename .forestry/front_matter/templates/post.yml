@@ -47,3 +47,5 @@ fields:
       snippet images for this post here '
 pages:
   - content/posts/samplepost.md
+  - content/posts/previouspost.md
+  - content/posts/nextpost.md
