@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 import { GetStaticPaths, GetStaticProps } from "next";
 import matter from "gray-matter";
+import { css } from "styled-components";
 
 import PageHead from "components/Shared/PageHead";
 import Header from "components/Shared/Header";
@@ -10,6 +11,10 @@ import Tags from "components/Shared/Tags";
 import BlogInfo from "components/Blog/BlogInfo";
 import BlogMarkdown from "components/Blog/BlogMarkdown";
 import { BlogTypes } from "components/Blog/BlogTypes";
+
+const StyledTags = css`
+  margin-top: 0.5rem;
+`;
 
 export default function ViewBlog({
   data,
@@ -31,9 +36,9 @@ export default function ViewBlog({
 
       <BlogInfo date={date} />
 
-      <BlogMarkdown content={content} />
+      <Tags small tags={tags} addContainerStyles={StyledTags} />
 
-      <Tags tags={tags} />
+      <BlogMarkdown content={content} />
     </>
   );
 }

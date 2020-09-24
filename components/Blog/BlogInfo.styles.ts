@@ -22,4 +22,5 @@ export const Name = styled.h5`
 
 export const Date = styled.p`
   font-size: ${props => props.theme.fontSize.xs};
+  color: ${props => props.theme.colors.text.dark};
 `;
