@@ -23,14 +23,8 @@ const StyledTagsContainer = styled.div<TagContainerType>`
   ${props => props.addStyles}
 `;
 
-const StyledTag = styled.button<{ active?: boolean }>`
+const StyledTag = styled.button<{ active?: boolean; small?: boolean }>`
   position: relative;
-  font-family: "Open Sans", sans-serif;
-  font-size: 0.9rem;
-  line-height: 0.9rem;
-  border-radius: 0.9rem;
-  padding: 6px 12px;
-  margin: 5px;
   border: 1px solid ${props => props.theme.colors.accent}75;
   background-color: ${props => props.theme.colors.accent}0f;
   color: ${props => props.theme.colors.text.dark};
@@ -42,6 +36,23 @@ const StyledTag = styled.button<{ active?: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  ${props =>
+    props.small
+      ? css`
+          font-size: 0.75rem;
+          line-height: 0.75rem;
+          border-radius: 0.75rem;
+          padding: 0.25rem 0.5rem;
+          margin: 0.25rem;
+        `
+      : css`
+          font-size: 0.9rem;
+          line-height: 0.9rem;
+          border-radius: 0.9rem;
+          padding: 0.35rem 0.7rem;
+          margin: 5px;
+        `}
 
   span,
   svg {
@@ -82,10 +93,12 @@ const StyledTag = styled.button<{ active?: boolean }>`
 
 export default function Tags({
   tags,
+  small = false,
   currentTag,
   addContainerStyles,
 }: {
   tags: string[];
+  small?: boolean;
   currentTag?: string;
   addContainerStyles?: FlattenInterpolation<ThemeProps<DefaultTheme>>;
 }) {
@@ -112,6 +125,7 @@ export default function Tags({
         return (
           <StyledTag
             active={active}
+            small={small}
             onClick={() => handleTagClick(tag)}
             key={tag}
           >
