@@ -35,13 +35,15 @@ export const getStaticProps: GetStaticProps = async () => {
   const allPostPaths = matter(blog.default).data.pages;
 
   // create an array of all work content
-  const allPostsContent = allPostPaths.map((filename: string) => {
-    const filePath = path.join(root, filename);
-    const routeName = filename.slice(13, -3);
-    const fileContents = fs.readFileSync(filePath, "utf8");
-    const { data } = matter(fileContents);
-    return { ...data, routeName };
-  });
+  const allPostsContent = allPostPaths
+    .map((filename: string) => {
+      const filePath = path.join(root, filename);
+      const routeName = filename.slice(13, -3);
+      const fileContents = fs.readFileSync(filePath, "utf8");
+      const { data } = matter(fileContents);
+      return { ...data, routeName };
+    })
+    .sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
 
   return {
     props: {
