@@ -5,7 +5,7 @@ tags:
   - React
   - Express
   - MongoDB
-title: Previous Post
+title: Speaking out about past lunches
 show_post: false
 code_snippets:
   - "/2020/08/24/carbon.svg"
