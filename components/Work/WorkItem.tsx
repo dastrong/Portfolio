@@ -4,6 +4,7 @@ import GradientContainer from "components/Shared/GradientContainer";
 import { WorkTypes } from "./WorkTypes";
 import * as Styled from "./WorkItem.styles";
 import InterLink from "components/Shared/Links";
+import AnimateIn from "components/Shared/AnimateIn";
 
 export default function WorkItem({
   description,
@@ -16,41 +17,43 @@ export default function WorkItem({
   if (!show_work) return null;
 
   return (
-    <GradientContainer
-      containerStyles={Styled.ItemContainer}
-      contentStyles={Styled.ItemContent}
-    >
-      <Styled.Image src={image} alt={routeName} />
+    <AnimateIn toLeft>
+      <GradientContainer
+        containerStyles={Styled.ItemContainer}
+        contentStyles={Styled.ItemContent}
+      >
+        <Styled.Image src={image} alt={routeName} />
 
-      <Styled.Content>
-        <Styled.TextContent>
-          <Styled.Title>
-            {site_name}
+        <Styled.Content>
+          <Styled.TextContent>
+            <Styled.Title>
+              {site_name}
 
-            <Styled.ExternalLink href={links.live} target="_blank">
-              <FaExternalLinkAlt size="17" />
-            </Styled.ExternalLink>
-          </Styled.Title>
+              <Styled.ExternalLink href={links.live} target="_blank">
+                <FaExternalLinkAlt size="17" />
+              </Styled.ExternalLink>
+            </Styled.Title>
 
-          <Styled.Description>{description}</Styled.Description>
-        </Styled.TextContent>
+            <Styled.Description>{description}</Styled.Description>
+          </Styled.TextContent>
 
-        <Styled.ButtonGroup>
-          <InterLink
-            href="/work/[workName]"
-            as={`/work/${routeName}`}
-            StyledAnchor={Styled.Button}
-            primary
-          >
-            Read More
-          </InterLink>
-          {links.github && (
-            <Styled.Button href={links.github} target="_blank">
-              View Source
-            </Styled.Button>
-          )}
-        </Styled.ButtonGroup>
-      </Styled.Content>
-    </GradientContainer>
+          <Styled.ButtonGroup>
+            <InterLink
+              href="/work/[workName]"
+              as={`/work/${routeName}`}
+              StyledAnchor={Styled.Button}
+              primary
+            >
+              Read More
+            </InterLink>
+            {links.github && (
+              <Styled.Button href={links.github} target="_blank">
+                View Source
+              </Styled.Button>
+            )}
+          </Styled.ButtonGroup>
+        </Styled.Content>
+      </GradientContainer>
+    </AnimateIn>
   );
 }
