@@ -2,61 +2,96 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { useInView } from "react-intersection-observer";
 
-type DirectionTypes =
-  | { toLeft: boolean }
-  | { toRight: boolean }
-  | { toUp: boolean }
-  | { toDown: boolean };
+// numbers are in milliseconds
+type OpacityTypes = {
+  opacityFrom?: number;
+  opacityDuration?: number;
+  opacityDelay?: number;
+  opacityTiming?: string;
+};
 
-// have to add the direction type conditionally here because...
-// ... styled-components doesn't recognize a union type *shrug*
-type StyledAnimationProps = {
-  inView: boolean;
+// numbers are in milliseconds
+type TransformTypes = {
+  transformFrom?: number;
+  transformFromX?: number;
+  transformFromY?: number;
+  transformDuration?: number;
+  transformDelay?: number;
+  transformTiming?: string;
+};
+
+type DirectionTypes = {
   toLeft?: boolean;
   toRight?: boolean;
   toUp?: boolean;
   toDown?: boolean;
 };
+
+type SettingTypes = OpacityTypes & TransformTypes & DirectionTypes;
+
+type StyledAnimationProps = { inView: boolean } & SettingTypes;
+
 const StyledAnimation = styled.div<StyledAnimationProps>`
-  opacity: 0;
-  transition: all 1s;
+  transition: ${props => `
+    opacity ${props.opacityDuration}ms ${props.opacityDelay}ms ${props.opacityTiming},
+    transform ${props.transformDuration}ms ${props.transformDelay}ms ${props.transformTiming}
+  `};
 
-  ${({ toLeft, toRight, toUp, toDown }) => {
-    const xDistance = 30;
-    const yDistance = 30;
+  opacity: ${props => props.opacityFrom};
 
-    const x = xDistance * (toLeft ? 1 : toRight ? -1 : 0);
-    const y = yDistance * (toUp ? 1 : toDown ? -1 : 0);
+  transform: ${props => {
+    const xDistance = props.transformFrom || props.transformFromX;
+    const yDistance = props.transformFrom || props.transformFromY;
 
-    const transform = `translate(${x}px, ${y}px)`;
+    const x = xDistance * (props.toLeft ? 1 : props.toRight ? -1 : 0);
+    const y = yDistance * (props.toUp ? 1 : props.toDown ? -1 : 0);
 
-    return css`
-      transform: ${transform};
-    `;
-  }}
+    return `translate(${x}px, ${y}px)`;
+  }};
 
   ${props =>
     props.inView &&
     css`
       transform: translate(0, 0);
       opacity: 1;
-    `}
+    `};
 `;
 
 const intersectionOptions = {
-  // triggerOnce: true,
+  triggerOnce: true,
   rootMargin: "55px 0px 0px 0px",
 };
 
 export default function AnimateIn({
   children,
-  ...direction
-}: { children: React.ReactNode } & DirectionTypes) {
+  ...settings
+}: {
+  children: React.ReactNode;
+} & SettingTypes) {
   const [ref, inView] = useInView(intersectionOptions);
 
   return (
-    <StyledAnimation ref={ref} inView={inView} {...direction}>
+    <StyledAnimation ref={ref} inView={inView} {...settings}>
       {children}
     </StyledAnimation>
   );
 }
+
+// declare default props here, so we can spread passed ...
+//... settings easily to the StyledAnimation component
+AnimateIn.defaultProps = {
+  opacityFrom: 0,
+  opacityDuration: 1000,
+  opacityDelay: 0,
+  opacityTiming: "ease",
+  transformFrom: 0,
+  transformFromX: 0,
+  transformFromY: 0,
+  transformDuration: 1000,
+  transformDelay: 0,
+  transformTiming: "ease",
+  toLeft: false,
+  toRight: false,
+  toUp: false,
+  toDown: false,
+};
