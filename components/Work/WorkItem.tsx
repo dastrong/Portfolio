@@ -17,7 +17,13 @@ export default function WorkItem({
   if (!show_work) return null;
 
   return (
-    <AnimateIn toLeft>
+    <AnimateIn
+      noAnimationOnRender
+      toUp
+      transformFrom={50}
+      transformDuration={500}
+      transformDelay={100}
+    >
       <GradientContainer
         containerStyles={Styled.ItemContainer}
         contentStyles={Styled.ItemContent}
