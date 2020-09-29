@@ -29,7 +29,10 @@ type DirectionTypes = {
 
 type SettingTypes = OpacityTypes & TransformTypes & DirectionTypes;
 
-type StyledAnimationProps = { inView: boolean } & SettingTypes;
+type StyledAnimationProps = {
+  inView: boolean;
+  noAnimation: boolean;
+} & SettingTypes;
 
 const StyledAnimation = styled.div<StyledAnimationProps>`
   transition: ${props => `
@@ -55,6 +58,12 @@ const StyledAnimation = styled.div<StyledAnimationProps>`
       transform: translate(0, 0);
       opacity: 1;
     `};
+
+  ${props =>
+    props.noAnimation &&
+    css`
+      transition: all 0s 0s;
+    `};
 `;
 
 const intersectionOptions = {
@@ -62,16 +71,48 @@ const intersectionOptions = {
   rootMargin: "55px 0px 0px 0px",
 };
 
+// used to determine if we should show an animation or not
+// for some components we might not want to animate items when ...
+// ... they are mounted and already visible, instead we just ...
+// ... want those components to render right away
+const useAnimation = (inView: boolean, noAnimationOnRender: boolean) => {
+  const mountedTime = React.useRef<number | undefined>();
+  const [noAnimation, setNoAnimation] = React.useState(noAnimationOnRender);
+
+  React.useEffect(() => {
+    mountedTime.current = Date.now();
+  }, []);
+
+  React.useEffect(() => {
+    if (inView) {
+      const threshold = 100;
+      const timeSinceMount = Date.now() - mountedTime.current;
+
+      setNoAnimation(noAnimationOnRender && timeSinceMount < threshold);
+    }
+  }, [inView]);
+
+  return noAnimation;
+};
+
 export default function AnimateIn({
   children,
+  noAnimationOnRender,
   ...settings
 }: {
   children: React.ReactNode;
+  noAnimationOnRender?: boolean;
 } & SettingTypes) {
   const [ref, inView] = useInView(intersectionOptions);
+  const noAnimation = useAnimation(inView, noAnimationOnRender);
 
   return (
-    <StyledAnimation ref={ref} inView={inView} {...settings}>
+    <StyledAnimation
+      ref={ref}
+      inView={inView}
+      noAnimation={noAnimation}
+      {...settings}
+    >
       {children}
     </StyledAnimation>
   );
@@ -94,4 +135,5 @@ AnimateIn.defaultProps = {
   toRight: false,
   toUp: false,
   toDown: false,
+  noAnimationOnRender: false,
 };
