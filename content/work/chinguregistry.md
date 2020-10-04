@@ -11,7 +11,7 @@ tech_used:
 - TypeScript
 - Auth0
 site_name: Chingu Registry
-image: "/Registry.png"
+image: "Registry_w1000_h487.png"
 description: A free-to-use wedding registry for couple's to list gifts and provide
   information regarding their wedding
 show_work: true
