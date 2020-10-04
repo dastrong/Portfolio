@@ -5,6 +5,7 @@ import styled, {
   ThemeProps,
   DefaultTheme,
 } from "styled-components";
+import { EnterAnimationType } from "./_css/EnterAnimationStyles";
 
 type GradientProps = {
   customStyles: FlattenInterpolation<ThemeProps<DefaultTheme>>;
@@ -71,17 +72,23 @@ export default forwardRef(function GradientContainer(
     containerStyles,
     contentStyles,
     gradientWidth = 2,
+    ...rest
   }: {
     children: React.ReactNode;
     isStatic?: boolean;
     containerStyles?: FlattenInterpolation<ThemeProps<DefaultTheme>>;
     contentStyles?: FlattenInterpolation<ThemeProps<DefaultTheme>>;
     gradientWidth?: number;
-  },
-  ref?: React.MutableRefObject<undefined>
+  } & EnterAnimationType,
+  ref?: (node?: Element) => void | React.MutableRefObject<undefined>
 ) {
   return (
-    <Container ref={ref} isStatic={isStatic} customStyles={containerStyles}>
+    <Container
+      ref={ref}
+      isStatic={isStatic}
+      customStyles={containerStyles}
+      {...rest}
+    >
       <Content customStyles={contentStyles} gradientWidth={gradientWidth}>
         {children}
       </Content>
