@@ -1,10 +1,13 @@
 import React from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
+
+import useEnterAnimation from "hooks/useEnterAnimation";
 import GradientContainer from "components/Shared/GradientContainer";
+import InterLink from "components/Shared/Links";
+import OptimizedImage from "components/Shared/OptimizedImage";
+
 import { WorkTypes } from "./WorkTypes";
 import * as Styled from "./WorkItem.styles";
-import InterLink from "components/Shared/Links";
-import AnimateIn from "components/Shared/AnimateIn";
 
 export default function WorkItem({
   description,
@@ -14,52 +17,53 @@ export default function WorkItem({
   site_name,
   routeName,
 }: WorkTypes & { routeName?: string }) {
+  const [ref, inView, skipAnimation] = useEnterAnimation(true);
+
   if (!show_work) return null;
 
   return (
-    <AnimateIn
-      noAnimationOnRender
-      toUp
-      transformFrom={50}
-      transformDuration={500}
-      transformDelay={100}
+    <GradientContainer
+      ref={ref}
+      inView={inView}
+      skipAnimation={skipAnimation}
+      containerStyles={Styled.ItemContainer}
+      contentStyles={Styled.ItemContent}
     >
-      <GradientContainer
-        containerStyles={Styled.ItemContainer}
-        contentStyles={Styled.ItemContent}
-      >
-        <Styled.Image src={image} alt={routeName} />
+      <OptimizedImage
+        imgFile={image}
+        alt={routeName}
+        containerStyles={Styled.Image}
+      />
 
-        <Styled.Content>
-          <Styled.TextContent>
-            <Styled.Title>
-              {site_name}
+      <Styled.Content>
+        <Styled.TextContent>
+          <Styled.Title>
+            {site_name}
 
-              <Styled.ExternalLink href={links.live} target="_blank">
-                <FaExternalLinkAlt size="17" />
-              </Styled.ExternalLink>
-            </Styled.Title>
+            <Styled.ExternalLink href={links.live} target="_blank">
+              <FaExternalLinkAlt size="17" />
+            </Styled.ExternalLink>
+          </Styled.Title>
 
-            <Styled.Description>{description}</Styled.Description>
-          </Styled.TextContent>
+          <Styled.Description>{description}</Styled.Description>
+        </Styled.TextContent>
 
-          <Styled.ButtonGroup>
-            <InterLink
-              href="/work/[workName]"
-              as={`/work/${routeName}`}
-              StyledAnchor={Styled.Button}
-              primary
-            >
-              Read More
-            </InterLink>
-            {links.github && (
-              <Styled.Button href={links.github} target="_blank">
-                View Source
-              </Styled.Button>
-            )}
-          </Styled.ButtonGroup>
-        </Styled.Content>
-      </GradientContainer>
-    </AnimateIn>
+        <Styled.ButtonGroup>
+          <InterLink
+            href="/work/[workName]"
+            as={`/work/${routeName}`}
+            StyledAnchor={Styled.Button}
+            primary
+          >
+            Read More
+          </InterLink>
+          {links.github && (
+            <Styled.Button href={links.github} target="_blank">
+              View Source
+            </Styled.Button>
+          )}
+        </Styled.ButtonGroup>
+      </Styled.Content>
+    </GradientContainer>
   );
 }

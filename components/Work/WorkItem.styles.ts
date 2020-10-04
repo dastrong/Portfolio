@@ -1,11 +1,17 @@
 import styled, { css } from "styled-components";
 import { StyledButton } from "components/Shared/StyledButton";
+import EnterAnimationStyles from "components/Shared/_css/EnterAnimationStyles";
 
 export const ItemContainer = css`
   width: 100%;
   min-width: 300px;
   max-width: 750px;
   margin: 10px auto;
+
+  opacity: 0;
+  transform: translateY(40px);
+  transition: transform 500ms 50ms, opacity 500ms 50ms;
+  ${EnterAnimationStyles}
 
   ${props => props.theme.media.md} {
     width: 90%;
@@ -26,7 +32,8 @@ export const ItemContent = css`
   }
 `;
 
-export const Image = styled.img`
+export const Image = css`
+  background-color: rgba(0, 0, 0, 0);
   border-radius: ${props => props.theme.borderRadius}px;
   height: auto;
   margin-right: 20px;
