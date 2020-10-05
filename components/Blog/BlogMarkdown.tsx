@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 import ReactMarkdown from "react-markdown";
 import OptimizedImage from "components/Shared/OptimizedImage";
 import InterLink from "components/Shared/Links";
+import { StyledParagraph } from "components/Shared/StyledParagraph";
 
 import BlogMarkdownSnippet from "./BlogMarkdownSnippet";
 import * as Styled from "./BlogMarkdown.styles";
@@ -42,7 +43,7 @@ const MarkdownParagraph = (props: { children: ReactNode }) =>
   props.children[0].type.name === "MarkdownImage" ? (
     <BlogMarkdownSnippet {...props} />
   ) : (
-    <Styled.Paragraph {...props} />
+    <StyledParagraph {...props} />
   );
 
 const MarkdownLink = (props: { children: ReactNode; href: string }) =>

@@ -69,10 +69,6 @@ export const TextContainer = styled(StyledTextContainer)`
   }
 `;
 
-export const Text = styled.p`
-  margin: 20px 0;
-`;
-
 export const Button = styled(StyledButton)`
   flex: 1;
   font-size: 1.3rem;

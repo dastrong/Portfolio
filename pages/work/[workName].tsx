@@ -11,6 +11,7 @@ import OptimizedImage from "components/Shared/OptimizedImage";
 import PageHead from "components/Shared/PageHead";
 import Tags from "components/Shared/Tags";
 import { StyledBlockquote } from "components/Shared/StyledBlockquote";
+import { StyledParagraph } from "components/Shared/StyledParagraph";
 
 import { WorkTypes } from "components/Work/WorkTypes";
 import * as Styled from "components/Work/WorkNamePage.styles";
@@ -56,7 +57,10 @@ export default function ViewWork({
         <Styled.TextContainer>
           <ReactMarkdown
             source={content}
-            renderers={{ paragraph: Styled.Text, blockquote: StyledBlockquote }}
+            renderers={{
+              paragraph: StyledParagraph,
+              blockquote: StyledBlockquote,
+            }}
           />
         </Styled.TextContainer>
 

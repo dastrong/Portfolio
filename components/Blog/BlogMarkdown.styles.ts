@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { StyledBlockquote } from "components/Shared/StyledBlockquote";
 
 export const Wrapper = styled.article`
   width: 100%;
@@ -6,11 +7,7 @@ export const Wrapper = styled.article`
   margin: 2rem auto;
 `;
 
-export const Blockquote = styled.blockquote`
-  padding: 1rem;
-  padding-right: 0;
-  border-left: 3px solid ${props => props.theme.colors.accent};
-  margin: 1rem 0;
+export const Blockquote = styled(StyledBlockquote)`
   background-color: #272822;
   color: #f3f8fa;
 `;
@@ -59,16 +56,6 @@ export const ListItem = styled.li`
 
   &:last-child {
     margin-bottom: 0.75rem;
-  }
-`;
-
-export const Paragraph = styled.p`
-  line-height: 1.5;
-  margin-bottom: 0.5rem;
-
-  &:only-child,
-  &:last-child {
-    margin-bottom: 0rem;
   }
 `;
 

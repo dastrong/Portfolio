@@ -2,13 +2,10 @@ import styled from "styled-components";
 import RemoveBookendStyles from "components/Shared/_css/RemoveBookendStyles";
 
 export const StyledBlockquote = styled.blockquote`
-  border-left: 4px solid ${props => props.theme.colors.accent};
-  padding: 5px 10px 5px 15px;
-  font-size: 0.9em;
+  margin: 1rem 0;
+  padding: 0.75rem 0 0.75rem 1rem;
+  border-left: 3px solid ${props => props.theme.colors.accent};
+  font-size: 0.9rem;
 
   ${RemoveBookendStyles}
-
-  * {
-    margin: 10px 0;
-  }
 `;
