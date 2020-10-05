@@ -5,8 +5,9 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import matter from "gray-matter";
 import ReactMarkdown from "react-markdown";
 
-import PageHead from "components/Shared/PageHead";
 import Header from "components/Shared/Header";
+import OptimizedImage from "components/Shared/OptimizedImage";
+import PageHead from "components/Shared/PageHead";
 import Tags from "components/Shared/Tags";
 import { StyledBlockquote } from "components/Shared/StyledBlockquote";
 
@@ -41,7 +42,11 @@ export default function ViewWork({
           )}
         </Styled.ButtonGroup>
 
-        <Styled.Image src={image} alt={site_name} />
+        <OptimizedImage
+          imgFile={image}
+          containerStyles={Styled.Image}
+          alt={site_name + "preview"}
+        />
 
         <Styled.TextContainer>
           <ReactMarkdown

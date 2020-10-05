@@ -23,7 +23,8 @@ export const PageContainer = styled.div`
   }
 `;
 
-export const Image = styled.img`
+export const Image = css`
+  background-color: rgba(0, 0, 0, 0);
   border-radius: ${props => props.theme.borderRadius}px;
   height: auto;
   width: 100%;
