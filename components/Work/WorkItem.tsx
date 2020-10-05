@@ -57,10 +57,14 @@ export default function WorkItem({
           >
             Read More
           </InterLink>
-          {links.github && (
+          {links.github ? (
             <Styled.Button href={links.github} target="_blank">
               View Source
             </Styled.Button>
+          ) : (
+            <InterLink href="/contact" StyledAnchor={Styled.Button}>
+              Source Inquiry
+            </InterLink>
           )}
         </Styled.ButtonGroup>
       </Styled.Content>

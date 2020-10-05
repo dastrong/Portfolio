@@ -6,6 +6,7 @@ import matter from "gray-matter";
 import ReactMarkdown from "react-markdown";
 
 import Header from "components/Shared/Header";
+import InterLink from "components/Shared/Links";
 import OptimizedImage from "components/Shared/OptimizedImage";
 import PageHead from "components/Shared/PageHead";
 import Tags from "components/Shared/Tags";
@@ -35,10 +36,14 @@ export default function ViewWork({
             View Site
           </Styled.Button>
 
-          {links.github && (
+          {links.github ? (
             <Styled.Button href={links.github} target="_blank">
               View Source
             </Styled.Button>
+          ) : (
+            <InterLink href="/contact" StyledAnchor={Styled.Button}>
+              Source Inquiry
+            </InterLink>
           )}
         </Styled.ButtonGroup>
 
