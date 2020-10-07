@@ -6,18 +6,22 @@ export const StyledSection = styled.section<{ isHomePage: boolean }>`
   }
 
   ${props => props.theme.media.xl} {
-    padding: 35px 5px;
+    padding: 35px 10px;
     max-width: ${props => props.theme.width.lg}px;
   }
 
   ${props => props.theme.media.lg} {
-    padding: 30px 5px;
+    padding: 30px 10px;
     max-width: ${props => props.theme.width.md}px;
   }
 
   ${props => props.theme.media.md} {
     width: 100%;
     min-height: calc(100vh - 375px - 55px - 30px);
+  }
+
+  ${props => props.theme.media.sm} {
+    padding: 30px 20px;
   }
 
   ${props =>
@@ -31,7 +35,7 @@ export const StyledSection = styled.section<{ isHomePage: boolean }>`
 
           ${props => props.theme.media.sm} {
             margin: 55px auto 0;
-            padding: 10px 5px;
+            padding: 10px;
             height: calc(100vh - 55px);
           }
         `
