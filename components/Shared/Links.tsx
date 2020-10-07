@@ -2,6 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import Link, { LinkProps } from "next/link";
 import styled, { StyledComponent, DefaultTheme } from "styled-components";
+import { EnterAnimationTypes } from "./_css/EnterAnimationStyles";
 
 type LinkTypes = {
   isCurrentPage?: boolean;
@@ -31,7 +32,8 @@ export default function InterLink({
   StyledAnchor?: StyledComponent<"a", DefaultTheme, LinkTypes, never>;
 } & React.AnchorHTMLAttributes<HTMLAnchorElement> &
   LinkProps &
-  LinkTypes) {
+  LinkTypes &
+  EnterAnimationTypes) {
   // these are the accepted props for next/link
   const linkProps = { href, as, replace, scroll, shallow, passHref, prefetch };
 
