@@ -1,4 +1,5 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/router";
 import { useTheme } from "styled-components";
 import { FaBars, FaTimes } from "react-icons/fa";
 
@@ -13,6 +14,7 @@ import NavLogoMobile from "./NavLogoMobile";
 import * as Styled from "./Nav.styles";
 
 export default function Nav() {
+  const { pathname } = useRouter();
   const { colors } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isHomePage = useHomePageChecker();
@@ -21,6 +23,10 @@ export default function Nav() {
   const refNavIcons = useRef();
 
   useOnClickOutside(refMobileMenu, () => setIsMenuOpen(false), refNavIcons);
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
 
   const toggleMenu = () => setIsMenuOpen(state => !state);
 
