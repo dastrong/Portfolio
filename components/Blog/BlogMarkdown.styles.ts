@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components";
 import { StyledBlockquote } from "components/Shared/StyledBlockquote";
+import { StyledTextContainer } from "components/Shared/StyledTextContainer";
 
-export const Wrapper = styled.article`
-  width: 100%;
+export const Wrapper = styled(StyledTextContainer)`
   max-width: 600px;
   margin: 2rem auto;
 `;

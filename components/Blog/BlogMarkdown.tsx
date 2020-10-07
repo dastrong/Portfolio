@@ -55,7 +55,7 @@ const MarkdownLink = (props: { children: ReactNode; href: string }) =>
 
 export default function StyledMarkdown({ content }: { content: string }) {
   return (
-    <Styled.Wrapper>
+    <Styled.Wrapper as="article">
       <ReactMarkdown
         source={content}
         renderers={{
