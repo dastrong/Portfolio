@@ -16,12 +16,13 @@ export const StyledSection = styled.section<{ isHomePage: boolean }>`
   }
 
   ${props => props.theme.media.md} {
+    padding: 30px 20px;
     width: 100%;
     min-height: calc(100vh - 375px - 55px - 30px);
   }
 
   ${props => props.theme.media.sm} {
-    padding: 30px 20px;
+    padding: 30px 10px;
   }
 
   ${props =>

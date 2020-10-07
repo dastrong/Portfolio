@@ -29,6 +29,11 @@ export const ItemContent = css`
 
   ${props => props.theme.media.md} {
     flex-direction: column;
+    padding: 15px;
+  }
+
+  ${props => props.theme.media.sm} {
+    padding: 10px;
   }
 `;
 
@@ -57,7 +62,11 @@ export const Content = styled.div`
 `;
 
 export const TextContent = styled.div`
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+
+  ${props => props.theme.media.md} {
+    margin-bottom: 0.5rem;
+  }
 `;
 
 export const Title = styled.h2`

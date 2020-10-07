@@ -7,7 +7,7 @@ export const PageContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  width: 95%;
+  width: 100%;
   min-width: 300px;
   max-width: ${props => props.theme.width.md}px;
 
