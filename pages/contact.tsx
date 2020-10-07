@@ -4,7 +4,7 @@ import styled from "styled-components";
 import matter from "gray-matter";
 
 import PageHead from "components/Shared/PageHead";
-import Header from "components/Shared/Header";
+import { StyledHeader } from "components/Shared/StyledHeader";
 import ContactForm from "components/Contact/ContactForm";
 import ContactInfo from "components/Contact/ContactInfo";
 import { ContactTypes } from "components/Contact/ContactTypes";
@@ -28,7 +28,7 @@ export default function Contact({ data }: { data: ContactTypes }) {
         description="Come check out how Daniel Strong can help you, your team or company."
       />
 
-      <Header>Contact Me</Header>
+      <StyledHeader underlined>Contact Me</StyledHeader>
 
       <PageContainer>
         <ContactForm />

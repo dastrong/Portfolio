@@ -5,12 +5,12 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import matter from "gray-matter";
 import ReactMarkdown from "react-markdown";
 
-import Header from "components/Shared/Header";
 import InterLink from "components/Shared/Links";
 import OptimizedImage from "components/Shared/OptimizedImage";
 import PageHead from "components/Shared/PageHead";
 import Tags from "components/Shared/Tags";
 import { StyledBlockquote } from "components/Shared/StyledBlockquote";
+import { StyledHeader } from "components/Shared/StyledHeader";
 import { StyledParagraph } from "components/Shared/StyledParagraph";
 import useEnterAnimation from "hooks/useEnterAnimation";
 
@@ -31,7 +31,7 @@ export default function ViewWork({
     <>
       <PageHead title={`${site_name} | My Work`} description={description} />
 
-      <Header>{site_name}</Header>
+      <StyledHeader underlined>{site_name}</StyledHeader>
 
       <Styled.PageContainer>
         <OptimizedImage

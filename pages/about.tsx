@@ -4,8 +4,8 @@ import matter from "gray-matter";
 import ReactMarkdown from "react-markdown";
 
 import PageHead from "components/Shared/PageHead";
-import Header from "components/Shared/Header";
 import OptimizedImage from "components/Shared/OptimizedImage";
+import { StyledHeader } from "components/Shared/StyledHeader";
 import * as Styled from "components/About/About.styles";
 
 export default function About({
@@ -22,7 +22,7 @@ export default function About({
         description="Get to know the man behind Daniel Strong Tech."
       />
 
-      <Header>About Me</Header>
+      <StyledHeader underlined>About Me</StyledHeader>
 
       <Styled.Container>
         <OptimizedImage

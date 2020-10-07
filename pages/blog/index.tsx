@@ -5,8 +5,8 @@ import { GetStaticProps } from "next";
 import matter from "gray-matter";
 
 import PageHead from "components/Shared/PageHead";
-import Header from "components/Shared/Header";
 import { BlogCard } from "components/Shared/Cards";
+import { StyledHeader } from "components/Shared/StyledHeader";
 import { BlogTypes } from "components/Blog/BlogTypes";
 
 export default function Blog({ posts }: { posts: BlogTypes[] }) {
@@ -17,7 +17,7 @@ export default function Blog({ posts }: { posts: BlogTypes[] }) {
         description="Come and join me in learning new and useful things in web development."
       />
 
-      <Header>Blog Posts</Header>
+      <StyledHeader underlined>Blog Posts</StyledHeader>
 
       {posts.map(post => (
         <BlogCard key={post.title} {...post} />

@@ -7,14 +7,14 @@ import matter from "gray-matter";
 import styled from "styled-components";
 
 import PageHead from "components/Shared/PageHead";
-import Header from "components/Shared/Header";
 import Tags from "components/Shared/Tags";
 import { BlogCard, WorkCard } from "components/Shared/Cards";
+import { StyledHeader } from "components/Shared/StyledHeader";
 
 import { WorkTypes } from "components/Work/WorkTypes";
 import { BlogTypes } from "components/Blog/BlogTypes";
 
-const StyledHeader = styled.h3`
+const StyledTypeHeader = styled.h3`
   margin: 3.5rem auto 0;
   font-size: ${props => props.theme.fontSize.lg};
   text-align: center;
@@ -58,12 +58,12 @@ export default function TagsPage({
         description="View my blog or work by the technology used"
       />
 
-      <Header>Tags</Header>
+      <StyledHeader underlined>Tags</StyledHeader>
 
       <Tags tags={tags} currentTag={currentTag} />
 
       {/* Show work or posts related that use the chosen tag */}
-      <StyledHeader>Related Posts</StyledHeader>
+      <StyledTypeHeader>Related Posts</StyledTypeHeader>
       {postList.length === 0 ? (
         <StyledEmpty>No blog posts related to: {currentTag}</StyledEmpty>
       ) : (
@@ -71,7 +71,7 @@ export default function TagsPage({
       )}
 
       {/* Show work or posts related that use the chosen tag */}
-      <StyledHeader>Related Work</StyledHeader>
+      <StyledTypeHeader>Related Work</StyledTypeHeader>
       {workList.length === 0 ? (
         <StyledEmpty>No work containing: {currentTag}</StyledEmpty>
       ) : (

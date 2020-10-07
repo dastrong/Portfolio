@@ -6,8 +6,8 @@ import matter from "gray-matter";
 import { css } from "styled-components";
 
 import PageHead from "components/Shared/PageHead";
-import Header from "components/Shared/Header";
 import Tags from "components/Shared/Tags";
+import { StyledHeader } from "components/Shared/StyledHeader";
 import BlogActions from "components/Blog/BlogActions";
 import BlogInfo from "components/Blog/BlogInfo";
 import BlogMarkdown from "components/Blog/BlogMarkdown";
@@ -37,7 +37,7 @@ export default function ViewBlog({
         // description=""
       />
 
-      <Header>{title}</Header>
+      <StyledHeader>{title}</StyledHeader>
 
       <BlogInfo date={date} />
 

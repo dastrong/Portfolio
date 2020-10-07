@@ -5,7 +5,7 @@ import { GetStaticProps } from "next";
 import matter from "gray-matter";
 
 import PageHead from "components/Shared/PageHead";
-import Header from "components/Shared/Header";
+import { StyledHeader } from "components/Shared/StyledHeader";
 import WorkItem from "components/Work/WorkItem";
 import { WorkTypes } from "components/Work/WorkTypes";
 import * as Styled from "components/Work/WorkPage.styles";
@@ -22,7 +22,7 @@ export default function Work({
         description="Check out some of my past work for clients and personal projects."
       />
 
-      <Header>My Work</Header>
+      <StyledHeader underlined>My Work</StyledHeader>
 
       <Styled.PageContainer>
         {works.map(work => (
