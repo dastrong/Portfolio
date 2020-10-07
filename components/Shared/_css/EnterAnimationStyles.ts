@@ -1,23 +1,12 @@
-import {
-  css,
-  DefaultTheme,
-  FlattenInterpolation,
-  ThemedStyledProps,
-} from "styled-components";
+import { css } from "styled-components";
 
-export type EnterAnimationType = {
+export type EnterAnimationTypes = {
   inView?: boolean;
   skipAnimation?: boolean;
+  direction?: string;
 };
 
-export type EnterAnimationStyleType = FlattenInterpolation<
-  ThemedStyledProps<EnterAnimationType, DefaultTheme>
->;
-
-export default css<{
-  inView: boolean;
-  skipAnimation: boolean;
-}>`
+export default css<EnterAnimationTypes>`
   ${props =>
     props.inView &&
     css`
