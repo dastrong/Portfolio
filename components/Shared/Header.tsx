@@ -27,7 +27,6 @@ const StyledText = styled.h1`
   text-align: center;
   padding: 0 1ch;
   margin: 0 auto;
-  font-weight: bold;
   text-shadow: 0px 0.125px 0.5px ${props => props.theme.colors.background.dark},
     0.1px 0.3px 1px ${props => props.theme.colors.background.main},
     0.2px 0.5px 2px ${props => props.theme.colors.background.light};

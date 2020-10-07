@@ -7,19 +7,19 @@ export default css<{ primary?: boolean }>`
   background-color: ${props =>
     props.primary ? props.theme.colors.blue : "transparent"};
   color: ${props => (props.primary ? "white" : props.theme.colors.pink)};
-  font-weight: ${props => (props.primary ? "400" : "bold")};
+  font-weight: ${props => (props.primary ? 300 : 600)};
   box-sizing: border-box;
   border-radius: 2rem;
-  padding: 10px 20px;
+  padding: 0.75rem 1.25rem;
   cursor: pointer;
   position: relative;
   min-width: 100px;
   display: flex;
   justify-content: center;
-  backface-visibility: hidden;
   transition: opacity 0.2s;
+  backface-visibility: hidden;
 
   &:hover {
-    opacity: 0.9;
+    opacity: 0.8;
   }
 `;

@@ -119,6 +119,7 @@ export default createGlobalStyle`
   h5,
   h6 {
     font-family: ${props => props.theme.fontFamily.primary};
+    font-weight: 500;
   }
 
   div,
@@ -127,6 +128,6 @@ export default createGlobalStyle`
   li,
   a {
     font-family: ${props => props.theme.fontFamily.secondary};
-    font-weight: 400;
+    font-weight: 300;
   }
 `;

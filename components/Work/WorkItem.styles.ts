@@ -36,11 +36,11 @@ export const Image = css`
   background-color: rgba(0, 0, 0, 0);
   border-radius: ${props => props.theme.borderRadius}px;
   height: auto;
-  margin-right: 20px;
+  margin-right: 1.25rem;
   width: 51%;
 
   ${props => props.theme.media.md} {
-    margin: 0px auto 20px;
+    margin: 0px auto 1.25rem;
     width: 100%;
   }
 `;
@@ -56,17 +56,19 @@ export const Content = styled.div`
   }
 `;
 
-export const TextContent = styled.div``;
+export const TextContent = styled.div`
+  margin-bottom: 0.5rem;
+`;
 
 export const Title = styled.h2`
   display: flex;
   align-items: center;
   font-size: 1.75rem;
-  margin-bottom: 12px;
+  margin-bottom: 0.5rem;
 
   ${props => props.theme.media.md} {
     font-size: 2rem;
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
     justify-content: center;
   }
 
@@ -77,7 +79,7 @@ export const Title = styled.h2`
 
 export const ExternalLink = styled.a`
   transition: opacity 0.2s;
-  margin-left: 10px;
+  margin-left: 0.5rem;
 
   &:hover {
     opacity: 0.85;
@@ -86,14 +88,13 @@ export const ExternalLink = styled.a`
 
 export const Description = styled.p`
   font-size: 0.85rem;
-  line-height: 1.3rem;
+  line-height: 1.5;
   color: ${props => props.theme.colors.text.dark};
 
   ${props => props.theme.media.md} {
     text-align: center;
     max-width: 500px;
-    margin: 0 auto 15px;
-    line-height: 1.5rem;
+    margin: 0 auto 1rem;
   }
 `;
 

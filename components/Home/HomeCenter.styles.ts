@@ -37,7 +37,6 @@ export const NameHeader = styled.h1`
 export const JobDescription = styled.p`
   color: ${props => props.theme.colors.text.dark};
   font-size: 2rem;
-  font-weight: 300;
   text-align: center;
 
   ${props => props.theme.media.sm} {
