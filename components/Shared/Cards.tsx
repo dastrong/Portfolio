@@ -12,20 +12,21 @@ const StyledContainer = styled.div`
   max-width: 600px;
   min-width: 300px;
   margin: 1.75rem auto;
-
-  ${props => props.theme.media.xs} {
-    text-align: center;
-  }
 `;
 
 const StyledTitle = styled.a`
+  font-family: ${props => props.theme.fontFamily.primary};
   font-size: ${props => props.theme.fontSize.md};
   cursor: pointer;
   color: ${props => props.theme.colors.text.main};
   text-decoration-line: underline;
   text-decoration-color: ${props => props.theme.colors.accent};
   transition: opacity 0.15s;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.25rem;
+
+  ${props => props.theme.media.md} {
+    font-size: ${props => props.theme.fontSize.sm};
+  }
 
   &:hover {
     opacity: 0.95;
@@ -33,14 +34,19 @@ const StyledTitle = styled.a`
 `;
 
 const StyledDate = styled.p`
+  font-weight: 600;
   font-size: ${props => props.theme.fontSize.xs};
-  font-style: italic;
   color: ${props => props.theme.colors.text.dark};
 `;
 
 const StyledSubtitle = styled.p`
   margin-top: 0.5rem;
-  color: ${props => props.theme.colors.text.dark};
+  line-height: 1.5;
+  color: ${props => props.theme.colors.text.main};
+
+  ${props => props.theme.media.md} {
+    font-size: ${props => props.theme.fontSize.xs};
+  }
 `;
 
 export const BlogCard = ({ title, description, date }: BlogTypes) => (
