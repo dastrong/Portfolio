@@ -1,26 +1,18 @@
 import styled, { css } from "styled-components";
 import { StyledTextContainer } from "components/Shared/StyledTextContainer";
 import { StyledButton } from "components/Shared/StyledButton";
+import EnterAnimationStyles, {
+  EnterAnimationTypes,
+} from "components/Shared/_css/EnterAnimationStyles";
 
 export const PageContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-row-gap: 50px;
-  grid-column-gap: 25px;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 100%;
   min-width: 300px;
+  max-width: 1000px;
   margin: 0 auto;
-
-  ${props => props.theme.media.lg} {
-    grid-row-gap: 40px;
-    max-width: 750px;
-    width: 95%;
-  }
-
-  ${props => props.theme.media.md} {
-    grid-row-gap: 30px;
-  }
 `;
 
 export const Image = css`
@@ -28,55 +20,59 @@ export const Image = css`
   border-radius: ${props => props.theme.borderRadius}px;
   height: auto;
   width: 100%;
-  grid-row: 2;
-  grid-column: 1 / 9;
+  margin-bottom: 2rem;
 
-  ${props => props.theme.media.xl} {
-    grid-column: 1 / 8;
-  }
-
-  ${props => props.theme.media.lg} {
-    grid-row: 1;
-    grid-column: 1 / 13;
+  ${props => props.theme.media.sm} {
+    width: 100%;
+    margin-bottom: 1.5rem;
   }
 `;
 
 export const ButtonGroup = styled.div`
-  grid-row: 1;
-  grid-column: 4 / 10;
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin: 0 auto;
+  margin: 0 auto 2rem;
+  width: 90%;
 
-  ${props => props.theme.media.lg} {
-    grid-row: 2;
-    grid-column: 1 / 13;
+  ${props => props.theme.media.sm} {
+    width: 100%;
+    margin-bottom: 1.5rem;
   }
 `;
 
 export const TextContainer = styled(StyledTextContainer)`
-  grid-row: 2;
-  grid-column: 9 / 13;
+  margin: 0 auto 2rem;
+  width: 80%;
 
-  ${props => props.theme.media.xl} {
-    grid-column: 8 / 13;
-  }
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 400ms 200ms, transform 400ms 200ms;
 
-  ${props => props.theme.media.lg} {
-    grid-row: 3;
-    grid-column: 1 / 13;
+  ${EnterAnimationStyles}
+
+  ${props => props.theme.media.sm} {
+    width: 100%;
+    margin-bottom: 1.5rem;
   }
 `;
 
-export const Button = styled(StyledButton)`
+export const Button = styled(StyledButton)<EnterAnimationTypes>`
   flex: 1;
   font-size: 1.3rem;
-  padding: 12px;
+  padding: 0.8rem;
+
+  opacity: 0;
+  transform: translateX(
+    ${props => (props.direction === "toLeft" ? "50px" : "-50px")}
+  );
+  transition: transform 500ms, opacity 500ms;
+
+  ${EnterAnimationStyles}
 
   ${props => props.theme.media.lg} {
     font-size: 1.2rem;
-    padding: 10px;
+    padding: 0.6rem;
   }
 
   ${props => props.theme.media.md} {
@@ -99,10 +95,9 @@ export const Button = styled(StyledButton)`
 `;
 
 export const TagContainerStyles = css`
-  grid-row: 3;
-  grid-column: 1/13;
+  width: 70%;
 
-  ${props => props.theme.media.lg} {
-    grid-row: 4;
+  ${props => props.theme.media.sm} {
+    width: 100%;
   }
 `;

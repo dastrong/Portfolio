@@ -12,18 +12,20 @@ import PageHead from "components/Shared/PageHead";
 import Tags from "components/Shared/Tags";
 import { StyledBlockquote } from "components/Shared/StyledBlockquote";
 import { StyledParagraph } from "components/Shared/StyledParagraph";
+import useEnterAnimation from "hooks/useEnterAnimation";
 
 import { WorkTypes } from "components/Work/WorkTypes";
 import * as Styled from "components/Work/WorkNamePage.styles";
 
 export default function ViewWork({
-  data,
+  data: { description, image, links, site_name, tech_used },
   content,
 }: {
   data: WorkTypes;
   content: string;
 }) {
-  const { description, image, links, site_name, tech_used } = data;
+  const [refButtons, inViewButtons] = useEnterAnimation();
+  const [refText, inViewText] = useEnterAnimation();
 
   return (
     <>
@@ -32,29 +34,45 @@ export default function ViewWork({
       <Header>{site_name}</Header>
 
       <Styled.PageContainer>
-        <Styled.ButtonGroup>
-          <Styled.Button primary href={links.live} target="_blank">
-            View Site
-          </Styled.Button>
-
-          {links.github ? (
-            <Styled.Button href={links.github} target="_blank">
-              View Source
-            </Styled.Button>
-          ) : (
-            <InterLink href="/contact" StyledAnchor={Styled.Button}>
-              Source Inquiry
-            </InterLink>
-          )}
-        </Styled.ButtonGroup>
-
         <OptimizedImage
           imgFile={image}
           containerStyles={Styled.Image}
           alt={site_name + "preview"}
         />
 
-        <Styled.TextContainer>
+        <Styled.ButtonGroup ref={refButtons}>
+          <Styled.Button
+            primary
+            href={links.live}
+            target="_blank"
+            inView={inViewButtons}
+            direction="toRight"
+          >
+            View Site
+          </Styled.Button>
+
+          {links.github ? (
+            <Styled.Button
+              href={links.github}
+              target="_blank"
+              inView={inViewButtons}
+              direction="toLeft"
+            >
+              View Source
+            </Styled.Button>
+          ) : (
+            <InterLink
+              href="/contact"
+              StyledAnchor={Styled.Button}
+              inView={inViewButtons}
+              direction="toLeft"
+            >
+              Source Inquiry
+            </InterLink>
+          )}
+        </Styled.ButtonGroup>
+
+        <Styled.TextContainer ref={refText} inView={inViewText}>
           <ReactMarkdown
             source={content}
             renderers={{
