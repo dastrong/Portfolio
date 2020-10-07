@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import EnterAnimationStyles from "components/Shared/_css/EnterAnimationStyles";
 
 export const Container = styled.div`
   display: flex;
@@ -10,6 +11,22 @@ export const Link = styled.a`
   display: flex;
   align-items: center;
 
+  opacity: 0;
+  transform: translateX(
+    ${props => (props.direction === "toLeft" ? "60px" : "-60px")}
+  );
+  transition: opacity 600ms cubic-bezier(0.58, 0.64, 0.54, 1.93),
+    transform 600ms cubic-bezier(0.58, 0.64, 0.54, 1.93);
+
+  ${props => props.theme.media.sm} {
+    transform: translateX(
+      ${props => (props.direction === "toLeft" ? "30px" : "-30px")}
+    );
+    ${EnterAnimationStyles};
+  }
+
+  ${EnterAnimationStyles};
+
   ${props => props.theme.media.xs} {
     flex-direction: column;
 
@@ -19,8 +36,8 @@ export const Link = styled.a`
   }
 `;
 
-export const TextContainer = styled.div<{ direction: string }>`
-  text-align: ${props => props.direction};
+export const TextContainer = styled.div<{ align: string }>`
+  text-align: ${props => props.align};
 
   ${props => props.theme.media.xs} {
     text-align: center;
