@@ -18,7 +18,7 @@ export const StyledSection = styled.section<{ isHomePage: boolean }>`
   ${props => props.theme.media.md} {
     padding: 2rem 1.25rem;
     width: 100%;
-    min-height: calc(100vh - 375px - 55px - 2rem);
+    min-height: calc(100vh - 375px - 55px);
   }
 
   ${props => props.theme.media.sm} {
