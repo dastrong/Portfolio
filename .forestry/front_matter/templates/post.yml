@@ -46,6 +46,6 @@ fields:
       'Add (<a href="https://carbon.now.sh/" title="Carbon" target="_blank">https://carbon.now.sh/</a>)
       snippet images for this post here '
 pages:
-  - content/posts/samplepost.md
-  - content/posts/previouspost.md
-  - content/posts/nextpost.md
+  - content/posts/somethingcleverhere.md
+  - content/posts/speakingoutaboutpastlunches.md
+  - content/posts/discussingbacktothefuture.md

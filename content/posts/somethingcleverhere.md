@@ -5,7 +5,7 @@ tags:
   - React
   - Express
   - MongoDB
-title: Sample Post
+title: Something clever here
 show_post: false
 code_snippets:
   - "/2020/08/24/carbon.svg"

@@ -1,9 +1,15 @@
 [
-  { "previousPost": "Sample Post", "currentPost": "nextpost" },
+  {
+    "previousPost": "Something clever here",
+    "currentPost": "discussingbacktothefuture"
+  },
   {
     "previousPost": "Speaking out about past lunches",
     "nextPost": "Discussing back to the future",
-    "currentPost": "samplepost"
+    "currentPost": "somethingcleverhere"
   },
-  { "nextPost": "Sample Post", "currentPost": "previouspost" }
+  {
+    "nextPost": "Something clever here",
+    "currentPost": "speakingoutaboutpastlunches"
+  }
 ]
