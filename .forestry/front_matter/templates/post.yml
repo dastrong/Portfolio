@@ -2,50 +2,49 @@
 label: Blog Post
 hide_body: false
 fields:
-  - name: title
-    type: text
-    config:
-      required: true
-    label: Title
-    description: Post description
-  - name: description
-    type: textarea
-    default: ""
-    config:
-      required: true
-      wysiwyg: false
-      schema:
-        format: markdown
-    label: Description
-    description: Add a quick descriptionabout the site
-  - name: date
-    type: datetime
-    label: Date
-    description: Published date
-    config:
-      required: true
-      date_format:
-      time_format:
-      display_utc: false
-      export_format: MM/DD/YYYY
-    default: now
-  - name: tags
-    type: tag_list
-    default: []
-    label: Tags
-    description: Technology mentioned
-  - name: show_post
-    type: boolean
-    label: Show Post
-    description: Check if the post is ready to be published
-  - name: code_snippets
-    type: image_gallery
-    config: {}
-    label: Code Snippets
-    description:
-      'Add (<a href="https://carbon.now.sh/" title="Carbon" target="_blank">https://carbon.now.sh/</a>)
-      snippet images for this post here '
+- name: title
+  type: text
+  config:
+    required: true
+  label: Title
+  description: Post description
+- name: description
+  type: textarea
+  default: ''
+  config:
+    required: true
+    wysiwyg: false
+    schema:
+      format: markdown
+  label: Description
+  description: Add a quick descriptionabout the site
+- name: date
+  type: datetime
+  label: Date
+  description: Published date
+  config:
+    required: true
+    date_format: 
+    time_format: 
+    display_utc: false
+    export_format: MM/DD/YYYY
+  default: now
+- name: tags
+  type: tag_list
+  default: []
+  label: Tags
+  description: Technology mentioned
+- name: show_post
+  type: boolean
+  label: Show Post
+  description: Check if the post is ready to be published
+- name: code_snippets
+  type: image_gallery
+  config: {}
+  label: Code Snippets
+  description: 'Add (<a href="https://carbon.now.sh/" title="Carbon" target="_blank">https://carbon.now.sh/</a>)
+    snippet images for this post here '
 pages:
-  - content/posts/samplepost.md
-  - content/posts/previouspost.md
-  - content/posts/nextpost.md
+- content/posts/nextpost.md
+- content/posts/previouspost.md
+- content/posts/samplepost.md
