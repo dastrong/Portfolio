@@ -28,7 +28,8 @@ export default function BlogActions({
     <Styled.Container ref={ref}>
       {previousPostTitle && (
         <InterLink
-          href={"/blog/" + previousPostTitle.split(" ").join("").toLowerCase()}
+          href="/blog/[blogTitle]"
+          as={"/blog/" + previousPostTitle.split(" ").join("").toLowerCase()}
           StyledAnchor={Styled.Link}
           style={{ marginRight: "auto" }}
           inView={inView}
@@ -45,7 +46,8 @@ export default function BlogActions({
 
       {nextPostTitle && (
         <InterLink
-          href={"/blog/" + nextPostTitle.split(" ").join("").toLowerCase()}
+          href="/blog/[blogTitle]"
+          as={"/blog/" + nextPostTitle.split(" ").join("").toLowerCase()}
           StyledAnchor={Styled.Link}
           style={{ marginLeft: "auto" }}
           inView={inView}
