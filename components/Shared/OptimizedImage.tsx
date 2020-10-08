@@ -7,6 +7,7 @@ import styled, {
   ThemeProps,
   DefaultTheme,
 } from "styled-components";
+import { intersectionOptions } from "utils";
 
 type StyledCSSType = FlattenInterpolation<ThemeProps<DefaultTheme>>;
 
@@ -57,11 +58,6 @@ const StyledImage = styled.img<{ lqip?: boolean; loaded?: boolean }>`
       transition: opacity 400ms ease 0ms;
     `}
 `;
-
-const intersectionOptions = {
-  triggerOnce: true,
-  rootMargin: "55px 0px 0px 0px",
-};
 
 export default function OptimizedImage({
   imgFile,

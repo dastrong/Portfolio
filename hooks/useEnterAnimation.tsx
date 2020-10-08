@@ -1,10 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-
-const intersectionOptions = {
-  triggerOnce: true,
-  rootMargin: "55px 0px 0px 0px",
-};
+import { intersectionOptions } from "utils";
 
 export default function useEnterAnimation(
   skipAnimationOnRender = false
