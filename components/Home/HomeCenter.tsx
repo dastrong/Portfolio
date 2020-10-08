@@ -1,5 +1,6 @@
 import React from "react";
 import OptimizedImage from "components/Shared/OptimizedImage";
+import HomeMobileActions from "./HomeMobileActions";
 import * as Styled from "./HomeCenter.styles";
 
 export default function HomeCenter() {
@@ -12,6 +13,8 @@ export default function HomeCenter() {
       />
       <Styled.NameHeader>Daniel Strong</Styled.NameHeader>
       <Styled.JobDescription>Full Stack Developer</Styled.JobDescription>
+
+      <HomeMobileActions />
     </Styled.CenterContainer>
   );
 }

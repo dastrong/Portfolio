@@ -7,7 +7,7 @@ export const GradientContainerStyles = css`
   margin: auto;
 
   /* hides the gradient outline on mobile sizes */
-  ${props => props.theme.media.sm} {
+  ${props => props.theme.media.md} {
     &:after,
     &:before {
       opacity: 0;
@@ -26,10 +26,10 @@ export const ContentStyles = css`
 
   /* need to reset the background color to light since ...
    the gradient container should be invisible on mobile */
-  ${props => props.theme.media.sm} {
+  ${props => props.theme.media.md} {
     justify-content: space-around;
-    width: 95%;
-    max-width: 400px;
+    width: 100%;
+    max-width: 500px;
     margin: 0 auto;
     background-color: ${props => props.theme.colors.background.light};
   }

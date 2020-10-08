@@ -7,7 +7,7 @@ const ContainerStyles = css`
   width: calc(${dimensions.cornerBox.width} * 100%);
   height: calc(${dimensions.cornerBox.height} * 100%);
 
-  ${props => props.theme.media.sm} {
+  ${props => props.theme.media.md} {
     display: none;
   }
 `;

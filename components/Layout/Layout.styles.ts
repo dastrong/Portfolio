@@ -6,23 +6,23 @@ export const StyledSection = styled.section<{ isHomePage: boolean }>`
   }
 
   ${props => props.theme.media.xl} {
-    padding: 35px 10px;
+    padding: 2.25rem 0.625rem;
     max-width: ${props => props.theme.width.lg}px;
   }
 
   ${props => props.theme.media.lg} {
-    padding: 30px 10px;
+    padding: 2rem 0.625rem;
     max-width: ${props => props.theme.width.md}px;
   }
 
   ${props => props.theme.media.md} {
-    padding: 30px 20px;
+    padding: 2rem 1.25rem;
     width: 100%;
-    min-height: calc(100vh - 375px - 55px - 30px);
+    min-height: calc(100vh - 375px - 55px - 2rem);
   }
 
   ${props => props.theme.media.sm} {
-    padding: 30px 10px;
+    padding: 30px 0.625rem;
   }
 
   ${props =>
@@ -34,15 +34,16 @@ export const StyledSection = styled.section<{ isHomePage: boolean }>`
           max-width: ${props.theme.width.xxl}px;
           height: 100vh;
 
-          ${props => props.theme.media.sm} {
+          ${props => props.theme.media.md} {
             margin: 55px auto 0;
-            padding: 10px;
-            height: calc(100vh - 55px);
+            padding: 1.25rem 0.625rem 0;
+            min-height: calc(100vh - 55px);
+            height: 100%;
           }
         `
       : css`
           margin: 55px auto 0;
-          padding: 40px 10px;
+          padding: 2.5rem 0.625rem;
           width: 90%;
           max-width: ${props.theme.width.xxl}px;
           min-height: calc(100vh - 228px - 55px);

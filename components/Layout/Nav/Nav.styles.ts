@@ -11,7 +11,7 @@ export const Nav = styled.nav<{ isHomePage: boolean }>`
   transition-property: transform;
   transform: translateY(${props => (props.isHomePage ? "-100%" : 0)});
 
-  ${props => props.theme.media.sm} {
+  ${props => props.theme.media.md} {
     transform: translateY(0);
   }
 `;
