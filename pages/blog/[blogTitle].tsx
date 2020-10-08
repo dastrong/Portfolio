@@ -25,8 +25,8 @@ export default function ViewBlog({
 }: {
   data: BlogTypes;
   content: string;
-  previousPostTitle?: string;
-  nextPostTitle?: string;
+  previousPostTitle: string | null;
+  nextPostTitle: string | null;
 }) {
   const { date, tags, title } = data;
 
@@ -127,8 +127,8 @@ export const getStaticProps: GetStaticProps = async ctx => {
     props: {
       data,
       content,
-      previousPostTitle: previousPost,
-      nextPostTitle: nextPost,
+      previousPostTitle: previousPost || null,
+      nextPostTitle: nextPost || null,
     },
   };
 };
