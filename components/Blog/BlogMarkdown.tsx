@@ -39,12 +39,15 @@ const MarkdownList = (props: { children: ReactNode; ordered: boolean }) => (
 );
 
 // need to render a div instead of p - re: invalid markup
-const MarkdownParagraph = (props: { children: ReactNode }) =>
-  props.children[0].type.name === "MarkdownImage" ? (
+const MarkdownParagraph = (props: { children: ReactNode }) => {
+  console.log(props.children[0].type.name);
+
+  return props.children[0].type.name === "MarkdownImage" ? (
     <BlogMarkdownSnippet {...props} />
   ) : (
     <StyledParagraph {...props} />
   );
+};
 
 const MarkdownLink = (props: { children: ReactNode; href: string }) =>
   props.href.startsWith("/") ? (
