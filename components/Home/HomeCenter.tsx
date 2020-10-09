@@ -7,7 +7,7 @@ export default function HomeCenter() {
   return (
     <Styled.CenterContainer>
       <OptimizedImage
-        imgFile="about_me(672x1026)_w672_h1026.jpg"
+        imgFile="about_me(672x1026)jpg"
         alt="Daniel Strong"
         containerStyles={Styled.Headshot}
       />
