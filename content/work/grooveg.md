@@ -5,7 +5,7 @@ tech_used:
 - Sass
 - React Spring
 site_name: GrooveG
-image: "GrooveG_w1000_h487.png"
+image: "work_GrooveG(1000x487).png"
 description: 'A custom design for a marketing consultant''s business in Thailand.  '
 show_work: true
 links:

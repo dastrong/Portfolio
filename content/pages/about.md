@@ -1,5 +1,5 @@
 ---
-image: "aboutme_w672_h1026.jpg"
+image: "about_me(672x1026).jpg"
 ---
 
 My name is Daniel Strong and I’m a full-stack JavaScript developer. I was born on Vancouver Island, Canada, but have been living abroad for the past five years.

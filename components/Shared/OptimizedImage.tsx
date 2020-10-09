@@ -86,14 +86,9 @@ export default function OptimizedImage({
 
   // get the image dimensions from the imgFile string
   const [width, height] = imgFile
-    // remove the file extension
-    .slice(0, imgFile.indexOf("."))
-    // split the width and height into an array
-    .split("_")
-    // remove the file name from the array
-    .filter((_, i) => !!i)
-    // remove the `w` and `h` characters and convert to Number
-    .map(dimension => Number(dimension.substring(1)));
+    .substring(imgFile.lastIndexOf("(") + 1, imgFile.lastIndexOf(")"))
+    .split("x")
+    .map(Number);
 
   // get the image's aspectRatio
   const aspectRatio = height / width;

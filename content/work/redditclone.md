@@ -8,7 +8,7 @@ tech_used:
 - Sass
 - Slate
 site_name: Reddit Clone
-image: "RedditClone_w1000_h487.png"
+image: "work_RedditClone(1000x487).png"
 description: A full stack clone of Reddit.com
 show_work: true
 links:

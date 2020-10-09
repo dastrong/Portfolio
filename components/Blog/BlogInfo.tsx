@@ -7,7 +7,7 @@ export default function BlogInfo({ date }: { date: Date }) {
   return (
     <Styled.Container>
       <OptimizedImage
-        imgFile="avatar_w357_h357.jpg"
+        imgFile="misc_avatar(357x357).jpg"
         alt="daniel avatar"
         containerStyles={Styled.Image}
       />
