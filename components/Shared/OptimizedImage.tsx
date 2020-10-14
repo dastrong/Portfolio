@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 import styled, {
   css,
@@ -17,6 +17,7 @@ type StyledImageContainerProps = {
 };
 
 const StyledImageContainer = styled.div<StyledImageContainerProps>`
+  overflow: hidden;
   position: relative;
   box-sizing: border-box;
   background-color: rgba(242, 242, 242, 1);
@@ -34,55 +35,80 @@ const StyledImageContainer = styled.div<StyledImageContainerProps>`
   }
 `;
 
-const StyledImage = styled.img<{ lqip?: boolean; loaded?: boolean }>`
+type StyledImageTypes = {
+  lqip?: boolean;
+  hideLqip?: boolean;
+  isLoading?: boolean;
+  isLoaded?: boolean;
+};
+const StyledImage = styled.img<StyledImageTypes>`
   position: absolute;
   top: 0;
   left:0;
   width: 100%;
   height: 100%;
+  transition-property: opacity;
   
-    /* LQIP */
-  ${props =>
-    props.lqip &&
-    css`
-      opacity: ${props.loaded ? 0 : 1};
-      transition: opacity 400ms 0ms;
-      z-index: 1;
-    `}
-  
-  /* HQ img */
-  ${props =>
-    !props.lqip &&
-    css`
-      opacity: ${props.loaded ? 1 : 0};
-      transition: opacity 400ms ease 0ms;
-    `}
+  ${({ lqip, hideLqip, isLoaded }) =>
+    lqip
+      ? /* LQIP */
+        css`
+          filter: blur(10px);
+          opacity: ${isLoaded || hideLqip ? 0 : 1};
+          transition-duration: ${isLoaded || hideLqip ? 0 : 300}ms;
+          z-index: 11;
+        `
+      : /* HQ img */
+        css`
+          opacity: ${isLoaded ? 1 : 0};
+          transition-duration: 300ms;
+        `}
+  }
 `;
 
 export default function OptimizedImage({
   imgFile,
-  // sizes,
   containerStyles,
   webp = false,
   ...imgProps
 }: {
   imgFile: string;
   containerStyles: StyledCSSType;
-  // sizes?: number[];
   alt: string;
   title?: string;
   webp?: boolean;
 }) {
-  const [isLoading, setIsLoading] = useState(false);
-
   // used to check whether the picture has entered the viewport
   const [pictureRef, inView] = useInView(intersectionOptions);
 
+  // used to animate lqip and hq image
+  const [isLoading, setIsLoading] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [hideLqip, setHideLqip] = useState(true);
+
+  // trigger load animation once it's in view
   useEffect(() => {
-    if (inView && !isLoading) {
+    if (inView && !isLoading && !isLoaded) {
       setIsLoading(true);
     }
   }, [inView]);
+
+  // hide the lqip unless the loading threshold has been passed
+  useEffect(() => {
+    const threshold = 100; //ms
+    let id;
+
+    if (isLoading) {
+      id = setTimeout(() => {
+        console.log(isLoading, "tooooo slowwww");
+        setHideLqip(false);
+      }, threshold);
+    }
+
+    return () => {
+      clearTimeout(id);
+    };
+  }, [isLoading]);
 
   // get the image dimensions from the imgFile string
   const [width, height] = imgFile
@@ -116,7 +142,8 @@ export default function OptimizedImage({
               height={height}
               width={width}
               src={require(`images/${imgFile}?lqip`)}
-              loaded={!isLoading && inView}
+              hideLqip={hideLqip}
+              isLoaded={isLoaded}
             />
 
             {/* HQ Image */}
@@ -131,8 +158,11 @@ export default function OptimizedImage({
                   height={height}
                   width={width}
                   {...fallbackImg}
-                  loaded={!isLoading && inView}
-                  onLoad={() => setIsLoading(false)}
+                  isLoaded={isLoaded}
+                  onLoad={() => {
+                    setIsLoading(false);
+                    setIsLoaded(true);
+                  }}
                 />
               </picture>
             )}
