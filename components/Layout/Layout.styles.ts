@@ -1,6 +1,8 @@
 import styled, { createGlobalStyle, css } from "styled-components";
 
 export const StyledSection = styled.section<{ isHomePage: boolean }>`
+  overflow: hidden;
+
   ${props => props.theme.media.xxl} {
     max-width: ${props => props.theme.width.xl}px;
   }
