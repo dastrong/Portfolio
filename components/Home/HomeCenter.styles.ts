@@ -17,6 +17,7 @@ export const CenterContainer = styled.div`
 
 export const Headshot = css`
   max-width: 275px;
+  background-color: inherit;
 `;
 
 export const NameHeader = styled.h1`
