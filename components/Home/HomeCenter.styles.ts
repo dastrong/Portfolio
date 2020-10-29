@@ -6,7 +6,6 @@ export const CenterContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   width: calc(${1 - dimensions.cornerBox.width * 2}* 100%);
-  height: calc(${1 - dimensions.cornerBox.height * 2}* 100%);
 
   ${props => props.theme.media.md} {
     justify-content: flex-start;
