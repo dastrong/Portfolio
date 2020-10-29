@@ -2,9 +2,9 @@ import React from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
 import styled, { useTheme } from "styled-components";
 
-const Container = styled.div`
-  height: 20px;
-  width: 20px;
+const Container = styled.div<{ iconSize: number }>`
+  height: ${props => props.iconSize}px;
+  width: ${props => props.iconSize}px;
   cursor: pointer;
   display: flex;
   position: relative;
@@ -15,22 +15,23 @@ const Container = styled.div`
   }
 `;
 
-export default function ThemeToggle() {
+export default function ThemeToggle({ iconSize }: { iconSize: number }) {
   const { isDarkTheme, toggleTheme } = useTheme();
 
   return (
     <Container
+      iconSize={iconSize}
       tabIndex={0}
       role="button"
       aria-label="Toggle Theme"
       onClick={toggleTheme}
-      onKeyDown={e => {
-        if (![13, 32].includes(e.keyCode)) return;
+      onKeyPress={e => {
+        if (![" ", "Enter"].includes(e.key)) return;
         toggleTheme();
       }}
     >
-      <FaSun color="#fcff50" size="20" opacity={isDarkTheme ? "1" : "0"} />
-      <FaMoon color="#a9a9a9" size="20" opacity={isDarkTheme ? "0" : "1"} />
+      <FaSun color="#fcff50" size={iconSize} opacity={isDarkTheme ? 1 : 0} />
+      <FaMoon color="#a9a9a9" size={iconSize} opacity={isDarkTheme ? 0 : 1} />
     </Container>
   );
 }

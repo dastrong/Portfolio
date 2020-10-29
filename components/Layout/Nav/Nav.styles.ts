@@ -40,6 +40,7 @@ export const MenuButton = styled.button`
   color: ${({ theme }) => theme.colors.blue};
 
   ${props => props.theme.media.md} {
+    margin: 0px 10px 0px 5px;
     ${props => props.theme.centered}
   }
 `;
