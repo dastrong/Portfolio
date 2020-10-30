@@ -31,7 +31,6 @@ export default function BlogActions({
           href="/blog/[blogTitle]"
           as={"/blog/" + previousPostTitle.split(" ").join("").toLowerCase()}
           StyledAnchor={Styled.Link}
-          style={{ marginRight: "auto" }}
           inView={inView}
           direction="toLeft"
         >
@@ -49,7 +48,6 @@ export default function BlogActions({
           href="/blog/[blogTitle]"
           as={"/blog/" + nextPostTitle.split(" ").join("").toLowerCase()}
           StyledAnchor={Styled.Link}
-          style={{ marginLeft: "auto" }}
           inView={inView}
           direction="toRight"
         >
