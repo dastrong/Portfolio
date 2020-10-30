@@ -130,7 +130,8 @@ export default createGlobalStyle`
   p,
   span,
   li,
-  a {
+  a,
+  button{
     font-family: ${props => props.theme.fontFamily.secondary};
     font-weight: 300;
   }
