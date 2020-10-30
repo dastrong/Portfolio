@@ -1,6 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { useTheme } from "styled-components";
 
 type PageHeadProps = {
   title?: string;
@@ -18,6 +19,7 @@ export default function PageHead({
   twitterCard,
 }: PageHeadProps) {
   const { pathname } = useRouter();
+  const { colors } = useTheme();
 
   const isBlogPost = pathname.startsWith("/blog/");
 
@@ -41,6 +43,7 @@ export default function PageHead({
       <meta name="twitter:image" content={image} />
       <meta name="twitter:image:alt" content={imageAlt} />
       <meta name="twitter:creator" content="@DaStrongWon" />
+      <meta name="theme-color" content={colors.background.main} />
     </Head>
   );
 }
