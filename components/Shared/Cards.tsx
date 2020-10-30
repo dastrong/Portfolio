@@ -3,9 +3,9 @@ import React from "react";
 import styled from "styled-components";
 
 import InterLink from "components/Shared/Links";
-import DateWithOrdinal from "components/Shared/DateWithOrdinal";
 import { BlogTypes } from "components/Blog/BlogTypes";
 import { WorkTypes } from "components/Work/WorkTypes";
+import { formatDate } from "utils";
 
 const StyledContainer = styled.div`
   width: 90%;
@@ -35,14 +35,17 @@ const StyledTitle = styled.a`
 
 const StyledDate = styled.p`
   font-weight: 600;
-  font-size: ${props => props.theme.fontSize.xs};
+  font-size: 0.8rem;
+  font-variant: petite-caps;
+  opacity: 0.9;
   color: ${props => props.theme.colors.text.dark};
+  margin: 0.5rem 0 -0.25rem;
 `;
 
 const StyledSubtitle = styled.p`
   margin-top: 0.5rem;
   line-height: 1.5;
-  color: ${props => props.theme.colors.text.main};
+  color: ${props => props.theme.colors.text.light};
 
   ${props => props.theme.media.md} {
     font-size: ${props => props.theme.fontSize.xs};
@@ -59,9 +62,7 @@ export const BlogCard = ({ title, description, date }: BlogTypes) => (
       {title}
     </InterLink>
 
-    <StyledDate>
-      <DateWithOrdinal date={date} />
-    </StyledDate>
+    <StyledDate>{formatDate(date)}</StyledDate>
     <StyledSubtitle>{description}</StyledSubtitle>
   </StyledContainer>
 );

@@ -1,7 +1,7 @@
 import React from "react";
 import OptimizedImage from "components/Shared/OptimizedImage";
-import DateWithOrdinal from "components/Shared/DateWithOrdinal";
 import * as Styled from "./BlogInfo.styles";
+import { formatDate } from "utils";
 
 export default function BlogInfo({ date }: { date: Date }) {
   return (
@@ -15,9 +15,7 @@ export default function BlogInfo({ date }: { date: Date }) {
       <div>
         <Styled.Name>Daniel Strong</Styled.Name>
 
-        <Styled.Date>
-          <DateWithOrdinal date={date} />
-        </Styled.Date>
+        <Styled.Date>{formatDate(date)}</Styled.Date>
       </div>
     </Styled.Container>
   );
