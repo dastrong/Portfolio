@@ -60,7 +60,6 @@ export const TextContainer = styled(StyledTextContainer)`
 export const Button = styled(StyledButton)<EnterAnimationTypes>`
   flex: 1;
   font-size: 1.3rem;
-  padding: 0.8rem;
 
   opacity: 0;
   transform: translateX(
@@ -72,7 +71,6 @@ export const Button = styled(StyledButton)<EnterAnimationTypes>`
 
   ${props => props.theme.media.lg} {
     font-size: 1.2rem;
-    padding: 0.6rem;
   }
 
   ${props => props.theme.media.md} {

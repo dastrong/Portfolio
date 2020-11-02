@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import ButtonStyles from "components/Shared/_css/ButtonStyles";
+import { StyledButton } from "components/Shared/StyledButton";
 import EnterAnimationStyles, {
   EnterAnimationTypes,
 } from "components/Shared/_css/EnterAnimationStyles";
@@ -23,9 +23,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Anchor = styled.a<EnterAnimationTypes>`
-  ${ButtonStyles}
-
+export const Anchor = styled(StyledButton)<EnterAnimationTypes>`
   opacity: 0;
   transform: translateX(
     ${props => (props.direction === "toLeft" ? "25px" : "-25px")}
