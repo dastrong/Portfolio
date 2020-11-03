@@ -18,11 +18,8 @@ const ReusableStyles = css<{ error?: boolean; hasBeenFocused: boolean }>`
   font-family: inherit;
   box-sizing: border-box;
   border: none;
-  border-bottom: 1px solid
-    ${props =>
-      props.theme.isDarkTheme
-        ? props.theme.colors.blue
-        : props.theme.colors.pink};
+  border-bottom: 1px solid ${props => props.theme.colors.accent};
+  outline: none;
 
   ${props => props.hasBeenFocused && errorOutline}
 
