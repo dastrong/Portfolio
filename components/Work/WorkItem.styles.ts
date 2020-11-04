@@ -96,7 +96,7 @@ export const ExternalLink = styled.a`
 `;
 
 export const Description = styled.p`
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   line-height: 1.5;
   color: ${props => props.theme.colors.text.dark};
 
@@ -125,4 +125,8 @@ export const ButtonGroup = styled.div`
 
 export const Button = styled(StyledButton)`
   width: 49%;
+
+  ${props => props.theme.media.sm} {
+    font-size: 0.9rem;
+  }
 `;
