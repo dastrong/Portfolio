@@ -1,13 +1,19 @@
 import React from "react";
+import styled from "styled-components";
+import { Img } from "react-optimized-image";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
 import useEnterAnimation from "hooks/useEnterAnimation";
 import GradientContainer from "components/Shared/GradientContainer";
 import InterLink from "components/Shared/Links";
-import OptimizedImage from "components/Shared/OptimizedImage";
+import OptimizedImage, { HQstyles } from "components/Shared/OptimizedImage";
 
 import { WorkTypes } from "./WorkTypes";
 import * as Styled from "./WorkItem.styles";
+
+const StyledImage = styled(Img)`
+  ${HQstyles}
+`;
 
 export default function WorkItem({
   description,
@@ -33,7 +39,14 @@ export default function WorkItem({
         imgFile={image}
         alt={routeName}
         containerStyles={Styled.Image}
-      />
+      >
+        <StyledImage
+          webp
+          src={require(`images/${image}`)}
+          sizes={[450, 615, 350]}
+          breakpoints={[500, 767]}
+        />
+      </OptimizedImage>
 
       <Styled.Content>
         <Styled.TextContent>
