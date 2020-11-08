@@ -15,8 +15,31 @@ export const CenterContainer = styled.div`
 `;
 
 export const Headshot = css`
-  max-width: 275px;
   background-color: inherit;
+
+  @media screen and (min-width: 1024px) and (orientation: portrait) {
+    max-width: 600px;
+  }
+
+  @media screen and (min-width: 768px) and (orientation: landscape) {
+    max-width: 500px;
+  }
+
+  @media screen and (min-width: 768px) and (orientation: landscape) and (max-height: 600px) {
+    max-width: 250px;
+  }
+
+  @media screen and (min-width: 768px) and (orientation: landscape) and (min-height: 601px) {
+    max-width: 300px;
+  }
+
+  @media screen and (min-width: 768px) and (orientation: landscape) and (min-height: 701px) {
+    max-width: 350px;
+  }
+
+  @media screen and (min-width: 768px) and (orientation: landscape) and (min-height: 801px) {
+    max-width: 500px;
+  }
 `;
 
 export const NameHeader = styled.h1`
