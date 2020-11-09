@@ -1,4 +1,7 @@
 import styled, { css } from "styled-components";
+import EnterAnimationStyles, {
+  EnterAnimationTypes,
+} from "components/Shared/_css/EnterAnimationStyles";
 import { dimensions } from "./_variables";
 
 export const CenterContainer = styled.div`
@@ -42,12 +45,18 @@ export const Headshot = css`
   }
 `;
 
-export const NameHeader = styled.h1`
+export const NameHeader = styled.h1<EnterAnimationTypes>`
   color: ${props => props.theme.colors.text.light};
   font-size: 4rem;
   margin: 1rem 0 0.5rem;
   line-height: 1;
   text-align: center;
+
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 400ms, transform 400ms;
+
+  ${EnterAnimationStyles}
 
   ${props => props.theme.media.lg} {
     font-size: 3.4rem;
@@ -62,11 +71,17 @@ export const NameHeader = styled.h1`
   }
 `;
 
-export const JobDescription = styled.p`
+export const JobDescription = styled.p<EnterAnimationTypes>`
   color: ${props => props.theme.colors.text.dark};
   font-size: 2.6rem;
   line-height: 1;
   text-align: center;
+
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 400ms 200ms, transform 800ms 100ms;
+
+  ${EnterAnimationStyles}
 
   ${props => props.theme.media.lg} {
     font-size: 2.3rem;

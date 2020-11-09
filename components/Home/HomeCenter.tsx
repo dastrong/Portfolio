@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Img } from "react-optimized-image";
+import { useInView } from "react-intersection-observer";
+
 import OptimizedImage, { HQstyles } from "components/Shared/OptimizedImage";
 import HomeMobileActions from "./HomeMobileActions";
 import * as Styled from "./HomeCenter.styles";
@@ -10,6 +12,9 @@ const StyledImage = styled(Img)`
 `;
 
 export default function HomeCenter() {
+  const [headerRef, headerInView] = useInView();
+  const [descriptionRef, descriptionInView] = useInView();
+
   return (
     <Styled.CenterContainer>
       <OptimizedImage
@@ -23,8 +28,14 @@ export default function HomeCenter() {
           breakpoints={[350]}
         />
       </OptimizedImage>
-      <Styled.NameHeader>Daniel Strong</Styled.NameHeader>
-      <Styled.JobDescription>Full Stack Developer</Styled.JobDescription>
+
+      <Styled.NameHeader ref={headerRef} inView={headerInView}>
+        Daniel Strong
+      </Styled.NameHeader>
+
+      <Styled.JobDescription ref={descriptionRef} inView={descriptionInView}>
+        Full Stack Developer
+      </Styled.JobDescription>
 
       <HomeMobileActions />
     </Styled.CenterContainer>
