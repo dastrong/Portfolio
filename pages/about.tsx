@@ -2,11 +2,17 @@ import React from "react";
 import { GetStaticProps } from "next";
 import matter from "gray-matter";
 import ReactMarkdown from "react-markdown";
+import styled from "styled-components";
+import { Img } from "react-optimized-image";
 
 import PageHead from "components/Shared/PageHead";
-import OptimizedImage from "components/Shared/OptimizedImage";
+import OptimizedImage, { HQstyles } from "components/Shared/OptimizedImage";
 import { StyledHeader } from "components/Shared/StyledHeader";
 import * as Styled from "components/About/About.styles";
+
+const StyledImage = styled(Img)`
+  ${HQstyles}
+`;
 
 export default function About({
   data,
@@ -26,11 +32,16 @@ export default function About({
 
       <Styled.Container>
         <OptimizedImage
-          webp
           imgFile={data.image}
           containerStyles={Styled.ImageContainer}
           alt="Daniel Strong"
-        />
+        >
+          <StyledImage
+            src={require(`images/${data.image}`)}
+            sizes={[250, 300]}
+            breakpoints={[576]}
+          ></StyledImage>
+        </OptimizedImage>
         <Styled.TextContainer>
           <ReactMarkdown
             source={content}

@@ -97,8 +97,8 @@ export default function OptimizedImage({
           <div style={{ paddingBottom: `${aspectRatio * 100}%`, height: 0 }}>
             {/* LQIP */}
             <StyledLQIP
-              {...imgProps}
               src={require(`images/${imgFile}?lqip`)}
+              alt={imgProps.alt + " low quality"}
               mainImgLoading={mainImgLoading}
             />
 

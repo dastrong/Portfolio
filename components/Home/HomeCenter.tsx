@@ -20,7 +20,7 @@ export default function HomeCenter() {
         <StyledImage
           src={require(`images/home_portrait(2100x2716).webp`)}
           sizes={[300, 500]}
-          breakpoints={[350, 475]}
+          breakpoints={[350]}
         />
       </OptimizedImage>
       <Styled.NameHeader>Daniel Strong</Styled.NameHeader>

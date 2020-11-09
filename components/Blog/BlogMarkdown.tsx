@@ -38,12 +38,7 @@ const MarkdownImage = ({
     title={title}
     containerStyles={Styled.Image}
   >
-    <StyledImage
-      webp
-      src={require(`images/${src}`)}
-      sizes={[767]}
-      breakpoints={[10000]}
-    />
+    <StyledImage webp src={require(`images/${src}`)} sizes={[767]} />
   </OptimizedImage>
 );
 

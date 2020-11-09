@@ -20,7 +20,6 @@ export default function BlogInfo({ date }: { date: Date }) {
         <StyledImage
           src={require(`images/misc_avatar(357x357).jpg`)}
           sizes={[45]}
-          breakpoints={[10000]}
         />
       </OptimizedImage>
 
