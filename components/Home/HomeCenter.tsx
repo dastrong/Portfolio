@@ -13,12 +13,12 @@ export default function HomeCenter() {
   return (
     <Styled.CenterContainer>
       <OptimizedImage
-        imgFile="home_portrait(2100x2716).webp"
+        imgFile="misc_homeportrait.webp"
         alt="Daniel Strong"
         containerStyles={Styled.Headshot}
       >
         <StyledImage
-          src={require(`images/home_portrait(2100x2716).webp`)}
+          src={require(`images/misc_homeportrait.webp`)}
           sizes={[300, 500]}
           breakpoints={[350]}
         />

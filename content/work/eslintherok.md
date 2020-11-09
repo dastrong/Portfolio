@@ -7,7 +7,7 @@ tech_used:
 - Mongo
 - Mongoose
 site_name: ESL in the ROK
-image: "work_ESLintheROK(1000x487).png"
+image: "work_ESLintheROK.png"
 description: A collection of games for ESL teachers in South Korea to use in their
   classes
 show_work: true
