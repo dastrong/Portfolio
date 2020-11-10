@@ -94,11 +94,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   // convert info to JSON string
   const prevAndNextInfoString = JSON.stringify(prevAndNextInfo);
-
   // save that info into a file, so it can be used later
-  fs.writeFile(root + "/utils/posts.json", prevAndNextInfoString, () =>
-    console.log("Finished calculating prev and next post logic")
-  );
+  fs.writeFileSync(root + "/blogposts.json", prevAndNextInfoString);
 
   // create an array of paths with params object for NextJS' getStaticProps
   const paths = allFilteredPaths.map(({ filename }) => ({
@@ -112,13 +109,16 @@ export const getStaticProps: GetStaticProps = async ctx => {
   const { blogTitle } = ctx.params;
   const title = blogTitle.toString().toLowerCase();
 
+  // get root path
+  const root = path.join(process.cwd());
+
   // get the content and frontmatter data from the current post
   const mark = await import(`content/posts/${title}.md`);
   const { data, content } = matter(mark.default);
 
   // get the post file
-  const postsString = await import(`utils/posts.json`);
-  const allPosts = postsString.default;
+  const postsString = fs.readFileSync(root + "/blogposts.json");
+  const allPosts = JSON.parse(postsString.toString());
   const { previousPost, nextPost } = allPosts.find(
     post => post.currentPost === title
   );
