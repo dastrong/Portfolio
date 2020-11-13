@@ -35,7 +35,7 @@ export default function ViewWork({
 
   return (
     <>
-      <PageHead title={`${site_name} | My Work`} description={description} />
+      <PageHead title={`${site_name} | Work`} description={description} />
 
       <StyledHeader underlined>{site_name}</StyledHeader>
 

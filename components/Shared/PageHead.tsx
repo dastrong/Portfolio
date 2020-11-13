@@ -31,7 +31,10 @@ export default function PageHead({
       <meta property="og:type" content={isBlogPost ? "article" : "website"} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={image} />
+      <meta
+        property="og:image"
+        content={image || "https://danielstrong.tech/favicon.png"}
+      />
       <meta
         property="og:url"
         content={`https://www.danielstrong.tech${pathname}`}
@@ -40,7 +43,10 @@ export default function PageHead({
       <meta name="twitter:card" content={twitterCard || "summary"} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image} />
+      <meta
+        name="twitter:image"
+        content={image || "https://danielstrong.tech/favicon.png"}
+      />
       <meta name="twitter:image:alt" content={imageAlt} />
       <meta name="twitter:creator" content="@DaStrongWon" />
       <meta name="theme-color" content={colors.background.main} />

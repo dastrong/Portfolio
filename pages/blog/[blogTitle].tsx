@@ -32,10 +32,7 @@ export default function ViewBlog({
 
   return (
     <>
-      <PageHead
-        title={`${title} | My Blog`}
-        // description=""
-      />
+      <PageHead title={`${title} | Blog`} description={data.description} />
 
       <StyledHeader>{title}</StyledHeader>
 

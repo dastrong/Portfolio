@@ -25,7 +25,7 @@ export default function About({
     <>
       <PageHead
         title="About Me"
-        description="Get to know the man behind Daniel Strong Tech."
+        description="Learn more about the man behind Daniel Strong Tech."
       />
 
       <StyledHeader underlined>About Me</StyledHeader>

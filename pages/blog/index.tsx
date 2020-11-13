@@ -13,8 +13,8 @@ export default function Blog({ posts }: { posts: BlogTypes[] }) {
   return (
     <>
       <PageHead
-        title="Blog"
-        description="Come and join me in learning new and useful things in web development."
+        title="Blog Posts"
+        description="Come and join me in learning something useful, new and/or interesting in web development."
       />
 
       <StyledHeader underlined>Blog Posts</StyledHeader>
