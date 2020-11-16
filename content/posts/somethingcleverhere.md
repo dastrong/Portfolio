@@ -8,7 +8,8 @@ tags:
 title: Something clever here
 show_post: false
 code_snippets:
-  - "/2020/08/24/carbon.svg"
+  - "blog_samplesnippet.png"
+  - "blog_samplesnippet2.png"
 ---
 
 Lorem ipsum dolor sit amet.
@@ -17,9 +18,11 @@ Lorem ipsum dolor sit amet.
 
 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti adipisci quia beatae architecto, unde doloremque at nisi pariatur eos eum.
 
-![brackets here](blog_samplesnippet.png "title here")
+![brackets here](blog_samplesnippet.png "full 767px width example")
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, placeat. Nulla ratione in enim voluptas voluptatem. Cumque, nobis doloribus molestiae aut at tenetur autem sint iusto quam, consequuntur, quo tempora.
+
+![brackets here](blog_samplesnippet2.png "shorter width example")
 
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni delectus laboriosam cum aspernatur ratione.
 
