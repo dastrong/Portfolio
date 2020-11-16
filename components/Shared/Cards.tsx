@@ -1,6 +1,7 @@
 // simple list cards when lots of info might be listed
 import React from "react";
 import styled from "styled-components";
+import { BiCalendar, BiCalendarEdit } from "react-icons/bi";
 
 import InterLink from "components/Shared/Links";
 import { BlogTypes } from "components/Blog/BlogTypes";
@@ -33,13 +34,27 @@ const StyledTitle = styled.a`
   }
 `;
 
-const StyledDate = styled.p`
+const StyledDates = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0 -0.25rem;
+
+  svg {
+    height: 1.15rem;
+    width: 1.15rem;
+    margin-right: 0.25rem;
+  }
+
+  * {
+    color: ${props => props.theme.colors.text.dark};
+    opacity: 0.9;
+  }
+`;
+
+const StyledDate = styled.span`
   font-weight: 600;
   font-size: 0.8rem;
   font-variant: petite-caps;
-  opacity: 0.9;
-  color: ${props => props.theme.colors.text.dark};
-  margin: 0.5rem 0 -0.25rem;
 `;
 
 const StyledSubtitle = styled.p`
@@ -52,20 +67,37 @@ const StyledSubtitle = styled.p`
   }
 `;
 
-export const BlogCard = ({ title, description, date }: BlogTypes) => (
-  <StyledContainer>
-    <InterLink
-      href="/blog/[blogTitle]"
-      as={`/blog/${title.split(" ").join("").toLowerCase()}`}
-      StyledAnchor={StyledTitle}
-    >
-      {title}
-    </InterLink>
+export const BlogCard = ({ title, description, date }: BlogTypes) => {
+  const update_date = date;
 
-    <StyledDate>{formatDate(date)}</StyledDate>
-    <StyledSubtitle>{description}</StyledSubtitle>
-  </StyledContainer>
-);
+  return (
+    <StyledContainer>
+      <InterLink
+        href="/blog/[blogTitle]"
+        as={`/blog/${title.split(" ").join("").toLowerCase()}`}
+        StyledAnchor={StyledTitle}
+      >
+        {title}
+      </InterLink>
+
+      <StyledDates>
+        <BiCalendar title="Published Date" />
+        <StyledDate>{formatDate(date)}</StyledDate>
+
+        {update_date && (
+          <>
+            <BiCalendarEdit
+              title="Updated Date"
+              style={{ marginLeft: "1rem" }}
+            />
+            <StyledDate>{formatDate(update_date)}</StyledDate>
+          </>
+        )}
+      </StyledDates>
+      <StyledSubtitle>{description}</StyledSubtitle>
+    </StyledContainer>
+  );
+};
 
 export const WorkCard = ({ site_name, description }: WorkTypes) => (
   <StyledContainer>
