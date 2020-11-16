@@ -6,7 +6,8 @@
     "javascript",
     "javascriptreact",
     "typescript",
-    "typescriptreact"
+    "typescriptreact",
+    "json"
   ],
   "editor.formatOnSave": true,
   "[javascript]": {
