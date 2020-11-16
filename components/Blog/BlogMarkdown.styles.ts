@@ -19,8 +19,9 @@ export const Heading = styled.h1<{ level: number; incrementer: number }>`
   `}
 `;
 
-export const Image = css`
-  min-width: 767px;
+export const Image = css<{ maxWidth: number }>`
+  min-width: ${props => props.maxWidth}px;
+  margin: 0;
 `;
 
 export const Link = styled.a`
