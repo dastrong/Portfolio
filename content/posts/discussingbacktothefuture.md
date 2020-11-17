@@ -1,5 +1,6 @@
 ---
-date: 08/26/2020
+date_publish: 08/26/2020
+date_update: 09/30/2020
 description: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt sit temporibus nisi distinctio.
 tags:
   - React

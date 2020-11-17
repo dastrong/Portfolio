@@ -43,7 +43,10 @@ export const getStaticProps: GetStaticProps = async () => {
       const { data } = matter(fileContents);
       return { ...data, routeName };
     })
-    .sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
+    .sort(
+      (a: BlogTypes, b: BlogTypes) =>
+        Date.parse(b.date_publish) - Date.parse(a.date_publish)
+    );
 
   return {
     props: {

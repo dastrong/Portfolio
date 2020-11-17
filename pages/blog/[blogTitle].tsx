@@ -3,18 +3,28 @@ import fs from "fs";
 import path from "path";
 import { GetStaticPaths, GetStaticProps } from "next";
 import matter from "gray-matter";
-import { css } from "styled-components";
+import styled, { css } from "styled-components";
 
+import { formatDate } from "utils";
 import PageHead from "components/Shared/PageHead";
 import Tags from "components/Shared/Tags";
 import { StyledHeader } from "components/Shared/StyledHeader";
+
 import BlogActions from "components/Blog/BlogActions";
 import BlogInfo from "components/Blog/BlogInfo";
 import BlogMarkdown from "components/Blog/BlogMarkdown";
+import { Blockquote } from "components/Blog/BlogMarkdown.styles";
 import { BlogTypes } from "components/Blog/BlogTypes";
 
 const StyledTags = css`
   margin-top: 0.5rem;
+`;
+
+const StyledNotificationBox = styled(Blockquote)`
+  max-width: 250px;
+  margin: 1.5rem auto;
+  border-width: 0px 0px 3px;
+  text-align: center;
 `;
 
 export default function ViewBlog({
@@ -28,7 +38,7 @@ export default function ViewBlog({
   previousPostTitle: string | null;
   nextPostTitle: string | null;
 }) {
-  const { date, tags, title } = data;
+  const { date_publish, date_update, tags, title } = data;
 
   return (
     <>
@@ -36,9 +46,17 @@ export default function ViewBlog({
 
       <StyledHeader>{title}</StyledHeader>
 
-      <BlogInfo date={date} />
+      <BlogInfo date={date_publish} />
 
       <Tags small tags={tags} addContainerStyles={StyledTags} />
+
+      {date_update && (
+        <StyledNotificationBox>
+          This post was updated on:
+          <br />
+          {formatDate(date_update)}
+        </StyledNotificationBox>
+      )}
 
       <BlogMarkdown content={content} />
 

@@ -9,7 +9,7 @@ const StyledImage = styled(Img)`
   ${HQstyles}
 `;
 
-export default function BlogInfo({ date }: { date: Date }) {
+export default function BlogInfo({ date }: { date: string }) {
   return (
     <Styled.Container>
       <OptimizedImage

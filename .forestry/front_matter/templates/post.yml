@@ -10,7 +10,7 @@ fields:
   description: Post description
 - name: description
   type: textarea
-  default: ''
+  default: ""
   config:
     required: true
     wysiwyg: false
@@ -18,17 +18,27 @@ fields:
       format: markdown
   label: Description
   description: Add a quick descriptionabout the site
-- name: date
+- name: date_publish
+  type: datetime
+  label: Date
+  description: Date Published
+  config:
+    required: true
+    date_format:
+    time_format:
+    display_utc: false
+    export_format: MM/DD/YYYY
+  default: now
+- name: date_update
   type: datetime
   label: Date
   description: Published date
   config:
-    required: true
-    date_format: 
-    time_format: 
+    required: false
+    date_format:
+    time_format:
     display_utc: false
     export_format: MM/DD/YYYY
-  default: now
 - name: tags
   type: tag_list
   default: []
@@ -42,9 +52,8 @@ fields:
   type: image_gallery
   config: {}
   label: Code Snippets
-  description: 'Add (<a href="https://carbon.now.sh/" title="Carbon" target="_blank">https://carbon.now.sh/</a>)
-    snippet images for this post here '
+  description: 'Add <a href="https://carbon.now.sh/" title="Carbon" target="_blank">Carbon/</a> snippet images for this post here'
 pages:
-- content/posts/discussingbacktothefuture.md
-- content/posts/somethingcleverhere.md
-- content/posts/speakingoutaboutpastlunches.md
+  - content/posts/discussingbacktothefuture.md
+  - content/posts/somethingcleverhere.md
+  - content/posts/speakingoutaboutpastlunches.md

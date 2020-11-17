@@ -67,37 +67,35 @@ const StyledSubtitle = styled.p`
   }
 `;
 
-export const BlogCard = ({ title, description, date }: BlogTypes) => {
-  const update_date = date;
+export const BlogCard = ({
+  title,
+  description,
+  date_publish,
+  date_update,
+}: BlogTypes) => (
+  <StyledContainer>
+    <InterLink
+      href="/blog/[blogTitle]"
+      as={`/blog/${title.split(" ").join("").toLowerCase()}`}
+      StyledAnchor={StyledTitle}
+    >
+      {title}
+    </InterLink>
 
-  return (
-    <StyledContainer>
-      <InterLink
-        href="/blog/[blogTitle]"
-        as={`/blog/${title.split(" ").join("").toLowerCase()}`}
-        StyledAnchor={StyledTitle}
-      >
-        {title}
-      </InterLink>
+    <StyledDates>
+      <BiCalendar title="Published Date" />
+      <StyledDate>{formatDate(date_publish)}</StyledDate>
 
-      <StyledDates>
-        <BiCalendar title="Published Date" />
-        <StyledDate>{formatDate(date)}</StyledDate>
-
-        {update_date && (
-          <>
-            <BiCalendarEdit
-              title="Updated Date"
-              style={{ marginLeft: "1rem" }}
-            />
-            <StyledDate>{formatDate(update_date)}</StyledDate>
-          </>
-        )}
-      </StyledDates>
-      <StyledSubtitle>{description}</StyledSubtitle>
-    </StyledContainer>
-  );
-};
+      {date_update && (
+        <>
+          <BiCalendarEdit title="Updated Date" style={{ marginLeft: "1rem" }} />
+          <StyledDate>{formatDate(date_update)}</StyledDate>
+        </>
+      )}
+    </StyledDates>
+    <StyledSubtitle>{description}</StyledSubtitle>
+  </StyledContainer>
+);
 
 export const WorkCard = ({ site_name, description }: WorkTypes) => (
   <StyledContainer>

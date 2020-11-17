@@ -8,8 +8,9 @@ export const Wrapper = styled(StyledTextContainer)`
 `;
 
 export const Blockquote = styled(StyledBlockquote)`
-  background-color: #272822;
-  color: #f3f8fa;
+  background-color: ${({ theme: { colors, isDarkTheme } }) =>
+    isDarkTheme ? "#272822" : colors.background.main};
+  color: ${props => props.theme.colors.text.main};
 `;
 
 export const Heading = styled.h1<{ level: number; incrementer: number }>`
