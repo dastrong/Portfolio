@@ -8,15 +8,15 @@ type PageHeadProps = {
   description?: string;
   image?: string;
   imageAlt?: string;
-  twitterCard?: string;
 };
+
+const url = "https://www.danielstrong.tech";
 
 export default function PageHead({
   title,
   description,
-  image,
+  image = "/favicon.png",
   imageAlt,
-  twitterCard,
 }: PageHeadProps) {
   const { pathname } = useRouter();
   const { colors } = useTheme();
@@ -27,26 +27,17 @@ export default function PageHead({
     <Head>
       <title>{`${title ? title + " | " : ""}`} Daniel Strong</title>
       <meta name="description" content={description} />
-      <link rel="canonical" href="https://www.danielstrong.tech/" />
+      <link rel="canonical" href={url} />
       <meta property="og:type" content={isBlogPost ? "article" : "website"} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta
-        property="og:image"
-        content={image || "https://danielstrong.tech/favicon.png"}
-      />
-      <meta
-        property="og:url"
-        content={`https://www.danielstrong.tech${pathname}`}
-      />
+      <meta property="og:image" content={url + image} />
+      <meta property="og:url" content={url + pathname} />
       <meta property="og:site_name" content="Daniel Strong Tech" />
-      <meta name="twitter:card" content={twitterCard || "summary"} />
+      <meta name="twitter:card" content="summary" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta
-        name="twitter:image"
-        content={image || "https://danielstrong.tech/favicon.png"}
-      />
+      <meta name="twitter:image" content={url + image} />
       <meta name="twitter:image:alt" content={imageAlt} />
       <meta name="twitter:creator" content="@DaStrongWon" />
       <meta name="theme-color" content={colors.background.main} />
