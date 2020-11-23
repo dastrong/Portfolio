@@ -81,24 +81,20 @@ export const getStaticPaths: GetStaticPaths = async () => {
     // need to grab the post dates and if we should show them
     .map((filename: string): {
       filename: string;
-      date: string;
+      date_publish: string;
       show_post: boolean;
       title: string;
     } => {
       const filePath = path.join(root, filename);
       const fileContents = fs.readFileSync(filePath, "utf8");
       const { data } = matter(fileContents);
-      const { date, show_post, title } = data;
-      return { filename, date, show_post, title };
+      const { date_publish, show_post, title } = data;
+      return { filename, date_publish, show_post, title };
     })
     // filter out all the incomplete posts
-    .filter(({ show_post }) => {
-      // FLIP ME!!
-      // return show_post;
-      return !show_post;
-    })
+    .filter(({ show_post }) => show_post)
     // sort the posts - newest first
-    .sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
+    .sort((a, b) => Date.parse(b.date_publish) - Date.parse(a.date_publish));
 
   // create an array of what posts are prev and next
   const prevAndNextInfo = allFilteredPaths.map(({ filename }, i, arr) => ({

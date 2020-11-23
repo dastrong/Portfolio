@@ -6,7 +6,7 @@ tags:
   - Express
   - MongoDB
 title: Something clever here
-show_post: false
+show_post: true
 code_snippets:
   - "blog_samplesnippet.png"
   - "blog_samplesnippet2.png"
