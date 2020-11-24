@@ -1,11 +1,12 @@
 // simple list cards when lots of info might be listed
 import React from "react";
 import styled from "styled-components";
+import { BiCalendar, BiCalendarEdit } from "react-icons/bi";
 
 import InterLink from "components/Shared/Links";
-import DateWithOrdinal from "components/Shared/DateWithOrdinal";
 import { BlogTypes } from "components/Blog/BlogTypes";
 import { WorkTypes } from "components/Work/WorkTypes";
+import { formatDate } from "utils";
 
 const StyledContainer = styled.div`
   width: 90%;
@@ -33,23 +34,45 @@ const StyledTitle = styled.a`
   }
 `;
 
-const StyledDate = styled.p`
+const StyledDates = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0 -0.25rem;
+
+  svg {
+    height: 1.15rem;
+    width: 1.15rem;
+    margin-right: 0.25rem;
+  }
+
+  * {
+    color: ${props => props.theme.colors.text.dark};
+    opacity: 0.9;
+  }
+`;
+
+const StyledDate = styled.span`
   font-weight: 600;
-  font-size: ${props => props.theme.fontSize.xs};
-  color: ${props => props.theme.colors.text.dark};
+  font-size: 0.8rem;
+  font-variant: petite-caps;
 `;
 
 const StyledSubtitle = styled.p`
   margin-top: 0.5rem;
   line-height: 1.5;
-  color: ${props => props.theme.colors.text.main};
+  color: ${props => props.theme.colors.text.light};
 
   ${props => props.theme.media.md} {
     font-size: ${props => props.theme.fontSize.xs};
   }
 `;
 
-export const BlogCard = ({ title, description, date }: BlogTypes) => (
+export const BlogCard = ({
+  title,
+  description,
+  date_publish,
+  date_update,
+}: BlogTypes) => (
   <StyledContainer>
     <InterLink
       href="/blog/[blogTitle]"
@@ -59,9 +82,17 @@ export const BlogCard = ({ title, description, date }: BlogTypes) => (
       {title}
     </InterLink>
 
-    <StyledDate>
-      <DateWithOrdinal date={date} />
-    </StyledDate>
+    <StyledDates>
+      <BiCalendar title="Published Date" />
+      <StyledDate>{formatDate(date_publish)}</StyledDate>
+
+      {date_update && (
+        <>
+          <BiCalendarEdit title="Updated Date" style={{ marginLeft: "1rem" }} />
+          <StyledDate>{formatDate(date_update)}</StyledDate>
+        </>
+      )}
+    </StyledDates>
     <StyledSubtitle>{description}</StyledSubtitle>
   </StyledContainer>
 );

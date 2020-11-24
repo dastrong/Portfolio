@@ -1,11 +1,17 @@
 import React, { ReactNode } from "react";
 import ReactMarkdown from "react-markdown";
-import OptimizedImage from "components/Shared/OptimizedImage";
+import styled from "styled-components";
+import { Img } from "react-optimized-image";
+
+import OptimizedImage, { HQstyles } from "components/Shared/OptimizedImage";
 import InterLink from "components/Shared/Links";
 import { StyledParagraph } from "components/Shared/StyledParagraph";
-
 import BlogMarkdownSnippet from "./BlogMarkdownSnippet";
 import * as Styled from "./BlogMarkdown.styles";
+
+const StyledImage = styled(Img)`
+  ${HQstyles}
+`;
 
 const MarkdownHeading = (props: { children: ReactNode; level: number }) => (
   <Styled.Heading
@@ -31,7 +37,9 @@ const MarkdownImage = ({
     alt={alt}
     title={title}
     containerStyles={Styled.Image}
-  />
+  >
+    <StyledImage webp src={require(`images/${src}`)} />
+  </OptimizedImage>
 );
 
 const MarkdownList = (props: { children: ReactNode; ordered: boolean }) => (

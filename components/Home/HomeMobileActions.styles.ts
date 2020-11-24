@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import ButtonStyles from "components/Shared/_css/ButtonStyles";
+import { StyledButton } from "components/Shared/StyledButton";
 import EnterAnimationStyles, {
   EnterAnimationTypes,
 } from "components/Shared/_css/EnterAnimationStyles";
@@ -23,13 +23,15 @@ export const Container = styled.div`
   }
 `;
 
-export const Anchor = styled.a<EnterAnimationTypes>`
-  ${ButtonStyles}
-
+export const Anchor = styled(StyledButton)<EnterAnimationTypes>`
   opacity: 0;
   transform: translateX(
-    ${props => (props.direction === "toLeft" ? "25px" : "-25px")}
+    ${props => (props.direction === "toLeft" ? "20px" : "-20px")}
   );
-  transition: opacity 400ms, transform 400ms;
+  transition: opacity 200ms, transform 400ms;
   ${EnterAnimationStyles}
+
+  ${props => props.theme.media.md} {
+    transition-delay: 600ms;
+  }
 `;

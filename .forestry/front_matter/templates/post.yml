@@ -18,10 +18,10 @@ fields:
       format: markdown
   label: Description
   description: Add a quick descriptionabout the site
-- name: date
+- name: date_publish
   type: datetime
   label: Date
-  description: Published date
+  description: Date Published
   config:
     required: true
     date_format: 
@@ -29,6 +29,16 @@ fields:
     display_utc: false
     export_format: MM/DD/YYYY
   default: now
+- name: date_update
+  type: datetime
+  label: Date
+  description: Published date
+  config:
+    required: false
+    date_format: 
+    time_format: 
+    display_utc: false
+    export_format: MM/DD/YYYY
 - name: tags
   type: tag_list
   default: []
@@ -42,8 +52,8 @@ fields:
   type: image_gallery
   config: {}
   label: Code Snippets
-  description: 'Add (<a href="https://carbon.now.sh/" title="Carbon" target="_blank">https://carbon.now.sh/</a>)
-    snippet images for this post here '
+  description: Add <a href="https://carbon.now.sh/" title="Carbon" target="_blank">Carbon/</a>
+    snippet images for this post here
 pages:
 - content/posts/discussingbacktothefuture.md
 - content/posts/somethingcleverhere.md

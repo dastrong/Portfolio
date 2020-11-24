@@ -13,8 +13,8 @@ export default function Blog({ posts }: { posts: BlogTypes[] }) {
   return (
     <>
       <PageHead
-        title="Blog"
-        description="Come and join me in learning new and useful things in web development."
+        title="Blog Posts"
+        description="Come and join me in learning something useful, new and/or interesting in web development."
       />
 
       <StyledHeader underlined>Blog Posts</StyledHeader>
@@ -43,7 +43,13 @@ export const getStaticProps: GetStaticProps = async () => {
       const { data } = matter(fileContents);
       return { ...data, routeName };
     })
-    .sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
+    // filter out all the incomplete posts
+    .filter(({ show_post }) => show_post)
+    // sort the posts - newest first
+    .sort(
+      (a: BlogTypes, b: BlogTypes) =>
+        Date.parse(b.date_publish) - Date.parse(a.date_publish)
+    );
 
   return {
     props: {

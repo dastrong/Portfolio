@@ -10,6 +10,9 @@ export const Container = styled.div`
 export const Link = styled.a`
   display: flex;
   align-items: center;
+  /* adds auto margin to keep actions to their edge */
+  margin: ${props =>
+    props.direction === "toLeft" ? "0 auto 0 0" : "0 0 0 auto"};
 
   opacity: 0;
   transform: translateX(
@@ -28,20 +31,21 @@ export const Link = styled.a`
   ${EnterAnimationStyles};
 
   ${props => props.theme.media.xs} {
-    flex-direction: column;
-
-    &:last-child:not(svg) {
-      flex-direction: column-reverse;
-    }
+    ${props =>
+      props.direction === "toLeft"
+        ? css`
+            flex-direction: column;
+            align-items: flex-start;
+          `
+        : css`
+            flex-direction: column-reverse;
+            align-items: flex-end;
+          `}
   }
 `;
 
 export const TextContainer = styled.div<{ align: string }>`
   text-align: ${props => props.align};
-
-  ${props => props.theme.media.xs} {
-    text-align: center;
-  }
 `;
 
 export const Header = styled.h5`
@@ -68,6 +72,6 @@ export const Arrow = css`
   color: ${props => props.theme.colors.accent};
 
   ${props => props.theme.media.xs} {
-    margin: 0 0 0.5rem;
+    margin: 0 0 0.25rem;
   }
 `;

@@ -1,6 +1,8 @@
 import styled, { createGlobalStyle, css } from "styled-components";
 
 export const StyledSection = styled.section<{ isHomePage: boolean }>`
+  overflow: hidden;
+
   ${props => props.theme.media.xxl} {
     max-width: ${props => props.theme.width.xl}px;
   }
@@ -32,13 +34,16 @@ export const StyledSection = styled.section<{ isHomePage: boolean }>`
           padding: 0;
           width: 100%;
           max-width: ${props.theme.width.xxl}px;
+          max-width: 100vw;
           height: 100vh;
+          display: flex;
 
           ${props => props.theme.media.md} {
             margin: 55px auto 0;
             padding: 1.25rem 0.625rem 0;
             min-height: calc(100vh - 55px);
             height: 100%;
+            display: block;
           }
         `
       : css`
@@ -128,7 +133,8 @@ export default createGlobalStyle`
   p,
   span,
   li,
-  a {
+  a,
+  button{
     font-family: ${props => props.theme.fontFamily.secondary};
     font-weight: 300;
   }

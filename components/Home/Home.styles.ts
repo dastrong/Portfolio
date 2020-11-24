@@ -1,13 +1,17 @@
 import { css } from "styled-components";
-import { dimensions } from "./_variables";
 
 export const GradientContainerStyles = css`
-  width: calc(${dimensions.gradientContainer.width} * 100%);
-  height: calc(${dimensions.gradientContainer.height} * 100%);
   margin: auto;
+  width: calc(100vw - max(5vh, 5vw));
+  height: calc(100vh - max(5vh, 5vw));
+  max-width: ${props => props.theme.width.xl}px;
+  max-height: ${props => props.theme.width.xl}px;
 
-  /* hides the gradient outline on mobile sizes */
   ${props => props.theme.media.md} {
+    width: 100%;
+    height: 100%;
+
+    /* hides the gradient outline on mobile sizes */
     &:after,
     &:before {
       opacity: 0;

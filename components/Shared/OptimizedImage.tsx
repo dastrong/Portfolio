@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import React, { useState, useEffect } from "react";
+import React, { useState, cloneElement } from "react";
 import { useInView } from "react-intersection-observer";
 import styled, {
   css,
@@ -17,6 +17,7 @@ type StyledImageContainerProps = {
 };
 
 const StyledImageContainer = styled.div<StyledImageContainerProps>`
+  overflow: hidden;
   position: relative;
   box-sizing: border-box;
   background-color: rgba(242, 242, 242, 1);
@@ -34,71 +35,56 @@ const StyledImageContainer = styled.div<StyledImageContainerProps>`
   }
 `;
 
-const StyledImage = styled.img<{ lqip?: boolean; loaded?: boolean }>`
+const ImageStyles = css`
   position: absolute;
   top: 0;
-  left:0;
+  left: 0;
   width: 100%;
   height: 100%;
-  
-    /* LQIP */
-  ${props =>
-    props.lqip &&
-    css`
-      opacity: ${props.loaded ? 0 : 1};
-      transition: opacity 400ms 0ms;
-      z-index: 1;
-    `}
-  
-  /* HQ img */
-  ${props =>
-    !props.lqip &&
-    css`
-      opacity: ${props.loaded ? 1 : 0};
-      transition: opacity 400ms ease 0ms;
-    `}
+  transition-property: opacity;
+`;
+
+const StyledLQIP = styled.img<{ mainImgLoading: boolean }>`
+  ${ImageStyles};
+  filter: blur(10px);
+  opacity: ${props => (props.mainImgLoading ? 1 : 0)};
+  transition-duration: ${props => (props.mainImgLoading ? 0 : 400)}ms;
+  transition-delay: ${props => (props.mainImgLoading ? 150 : 0)}ms;
+`;
+
+export const HQstyles = css<{ isloaded?: string }>`
+  ${ImageStyles};
+  opacity: ${props => (props.isloaded === "true" ? 1 : 0)};
+  transition-duration: 400ms;
 `;
 
 export default function OptimizedImage({
   imgFile,
-  // sizes,
   containerStyles,
-  webp = false,
+  children,
   ...imgProps
 }: {
   imgFile: string;
-  containerStyles: StyledCSSType;
-  // sizes?: number[];
+  containerStyles: FlattenInterpolation<ThemeProps<DefaultTheme>>;
   alt: string;
   title?: string;
-  webp?: boolean;
+  children: React.ReactElement;
 }) {
-  const [isLoading, setIsLoading] = useState(false);
-
   // used to check whether the picture has entered the viewport
   const [pictureRef, inView] = useInView(intersectionOptions);
 
-  useEffect(() => {
-    if (inView && !isLoading) {
-      setIsLoading(true);
-    }
-  }, [inView]);
+  // used to animate lqip and hq image
+  const [isLoaded, setIsLoaded] = useState(false);
+  const onLoad = () => setIsLoaded(true);
 
-  // get the image dimensions from the imgFile string
-  const [width, height] = imgFile
-    .substring(imgFile.lastIndexOf("(") + 1, imgFile.lastIndexOf(")"))
-    .split("x")
-    .map(Number);
+  // get the dimensions from the original image
+  const { width, height } = children.props.src;
 
   // get the image's aspectRatio
   const aspectRatio = height / width;
 
-  // require the imgs here, so they build correctly
-  const webpSrcSet = webp ? require(`images/${imgFile}?webp`) : "";
-  const fallbackSrc = require(`images/${imgFile}`);
-  // place into an object so we can spread onto the element
-  const webpImg = { srcSet: inView ? webpSrcSet : "" };
-  const fallbackImg = { src: inView ? fallbackSrc : "" };
+  // check if the hq img is currently loading
+  const mainImgLoading = inView && !isLoaded;
 
   return (
     <StyledImageContainer
@@ -110,32 +96,19 @@ export default function OptimizedImage({
         <div style={{ position: "relative", margin: "0 auto" }}>
           <div style={{ paddingBottom: `${aspectRatio * 100}%`, height: 0 }}>
             {/* LQIP */}
-            <StyledImage
-              lqip
-              {...imgProps}
-              height={height}
-              width={width}
+            <StyledLQIP
               src={require(`images/${imgFile}?lqip`)}
-              loaded={!isLoading && inView}
+              alt={imgProps.alt + " low quality"}
+              mainImgLoading={mainImgLoading}
             />
 
             {/* HQ Image */}
-            {inView && (
-              <picture>
-                {/* if webp is supported use this image */}
-                {webp && <source type="image/webp" {...webpImg} />}
-
-                {/* otherwise, use the default */}
-                <StyledImage
-                  {...imgProps}
-                  height={height}
-                  width={width}
-                  {...fallbackImg}
-                  loaded={!isLoading && inView}
-                  onLoad={() => setIsLoading(false)}
-                />
-              </picture>
-            )}
+            {inView &&
+              cloneElement(children, {
+                onLoad,
+                isloaded: isLoaded.toString(),
+                ...imgProps,
+              })}
           </div>
         </div>
       </div>

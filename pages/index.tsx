@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <PageHead
         title="Home"
-        description="Please reach out to me regarding potential employment or contract work here."
+        description="Work Portfolio and Blog. I'm a Full Stack Developer and Designer who simply loves to code."
       />
 
       <GradientContainer

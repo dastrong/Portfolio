@@ -13,6 +13,8 @@ import NavLogoMain from "./NavLogoMain";
 import NavLogoMobile from "./NavLogoMobile";
 import * as Styled from "./Nav.styles";
 
+const iconSize = 22;
+
 export default function Nav() {
   const { pathname } = useRouter();
   const { colors } = useTheme();
@@ -40,19 +42,19 @@ export default function Nav() {
             <NavList isMenuOpen />
           </Styled.DesktopMenu>
 
-          <ThemeToggle />
+          <ThemeToggle iconSize={iconSize} />
 
           <Styled.MenuButton
             onClick={toggleMenu}
             onKeyPress={e => {
-              if (![13, 32].includes(e.keyCode)) return;
+              if (![" ", "Enter"].includes(e.key)) return;
               toggleMenu();
             }}
           >
             {isMenuOpen ? (
-              <FaTimes size="20" color={colors.pink} />
+              <FaTimes size={iconSize} color={colors.pink} />
             ) : (
-              <FaBars size="20" color={colors.blue} />
+              <FaBars size={iconSize} color={colors.blue} />
             )}
           </Styled.MenuButton>
         </Styled.Container>

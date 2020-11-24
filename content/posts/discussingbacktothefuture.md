@@ -1,12 +1,13 @@
 ---
-date: 08/26/2020
+date_publish: 08/26/2020
+date_update: 09/30/2020
 description: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt sit temporibus nisi distinctio.
 tags:
   - React
   - Express
   - MongoDB
 title: Discussing back to the future
-show_post: false
+show_post: true
 code_snippets:
   - "/2020/08/24/carbon.svg"
 ---
@@ -17,7 +18,7 @@ Lorem ipsum dolor sit amet.
 
 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti adipisci quia beatae architecto, unde doloremque at nisi pariatur eos eum.
 
-![brackets here](blog_samplesnippet(767x352).png "title here")
+![brackets here](blog_samplesnippet.png "title here")
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, placeat. Nulla ratione in enim voluptas voluptatem. Cumque, nobis doloribus molestiae aut at tenetur autem sint iusto quam, consequuntur, quo tempora.
 

@@ -25,7 +25,7 @@ export default function Contact({ data }: { data: ContactTypes }) {
     <>
       <PageHead
         title="Contact"
-        description="Come check out how Daniel Strong can help you, your team or company."
+        description="Reach out to learn how I can help you, your team or company."
       />
 
       <StyledHeader underlined>Contact Me</StyledHeader>

@@ -1,23 +1,29 @@
 import React from "react";
-import OptimizedImage from "components/Shared/OptimizedImage";
-import DateWithOrdinal from "components/Shared/DateWithOrdinal";
+import styled from "styled-components";
+import { Img } from "react-optimized-image";
+import OptimizedImage, { HQstyles } from "components/Shared/OptimizedImage";
 import * as Styled from "./BlogInfo.styles";
+import { formatDate } from "utils";
 
-export default function BlogInfo({ date }: { date: Date }) {
+const StyledImage = styled(Img)`
+  ${HQstyles}
+`;
+
+export default function BlogInfo({ date }: { date: string }) {
   return (
     <Styled.Container>
       <OptimizedImage
-        imgFile="misc_avatar(357x357).jpg"
+        imgFile="misc_blogme.jpg"
         alt="daniel avatar"
         containerStyles={Styled.Image}
-      />
+      >
+        <StyledImage src={require(`images/misc_blogme.jpg`)} sizes={[45]} />
+      </OptimizedImage>
 
       <div>
         <Styled.Name>Daniel Strong</Styled.Name>
 
-        <Styled.Date>
-          <DateWithOrdinal date={date} />
-        </Styled.Date>
+        <Styled.Date>{formatDate(date)}</Styled.Date>
       </div>
     </Styled.Container>
   );

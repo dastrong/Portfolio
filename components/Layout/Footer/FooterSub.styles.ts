@@ -31,7 +31,5 @@ export const Text = styled.p`
 
 export const HighlightedTextLink = styled.a`
   display: inline-block;
-  font-weight: bold;
-  color: ${props => props.theme.colors.accent};
   text-decoration: underline ${props => props.theme.colors.accent};
 `;

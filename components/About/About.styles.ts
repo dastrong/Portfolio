@@ -26,7 +26,7 @@ export const TextContainer = styled(StyledTextContainer)`
   }
 
   ${props => props.theme.media.sm} {
-    width: 85%;
+    width: 100%;
   }
 
   ${props => props.theme.media.xs} {

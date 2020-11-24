@@ -1,17 +1,16 @@
 import "styled-components";
-// import {} from "styled-components/cssprop";
 
 declare module "styled-components" {
   export interface DefaultTheme {
     isDarkTheme: boolean;
     toggleTheme: () => void;
     width: {
-      xs: number;
-      sm: number;
-      md: number;
-      lg: number;
-      xl: number;
-      xxl: number;
+      xs: 480;
+      sm: 576;
+      md: 768;
+      lg: 992;
+      xl: 1200;
+      xxl: 1600;
     };
     media: {
       xs: string;

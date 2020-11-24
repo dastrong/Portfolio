@@ -12,12 +12,12 @@ export const Container = styled.ul`
   height: 50px;
 
   ${props => props.theme.media.md} {
-    height: inherit;
+    height: 134px;
     flex-direction: column;
+    justify-content: space-between;
     width: 65px;
     top: 140px;
     left: calc(52%);
-    margin: -4px 0;
   }
 `;
 
@@ -33,7 +33,7 @@ export const Item = styled.li`
   }
 
   ${props => props.theme.media.md} {
-    padding: 5px 0;
+    padding: 0;
     margin: 0 !important;
     text-align: left;
     width: 100%;

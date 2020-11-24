@@ -1,0 +1,31 @@
+{
+  "paddingVertical": "0px",
+  "paddingHorizontal": "0px",
+  "backgroundImage": null,
+  "backgroundImageSelection": null,
+  "backgroundMode": "color",
+  "backgroundColor": "rgba(0,0,0,0)",
+  "dropShadow": false,
+  "dropShadowOffsetY": "0px",
+  "dropShadowBlurRadius": "0px",
+  "theme": "theme:fqkq718hdcn",
+  "windowTheme": "sharp",
+  "language": "jsx",
+  "fontFamily": "Hack",
+  "fontSize": "13.5px",
+  "lineHeight": "160%",
+  "windowControls": false,
+  "widthAdjustment": false,
+  "lineNumbers": false,
+  "firstLineNumber": 1,
+  "exportSize": "1x",
+  "watermark": false,
+  "squaredImage": false,
+  "hiddenCharacters": false,
+  "name": "blog_",
+  "width": "767",
+  "highlights": {
+    "background": "rgba(39,40,34,1)",
+    "number": "rgba(219,62,177,1)"
+  }
+}

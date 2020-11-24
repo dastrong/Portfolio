@@ -6,7 +6,8 @@
     "javascript",
     "javascriptreact",
     "typescript",
-    "typescriptreact"
+    "typescriptreact",
+    "json"
   ],
   "editor.formatOnSave": true,
   "[javascript]": {
@@ -28,6 +29,9 @@
     "editor.formatOnSave": false
   },
   "[json]": {
+    "editor.formatOnSave": false
+  },
+  "[yaml]": {
     "editor.formatOnSave": false
   }
 }

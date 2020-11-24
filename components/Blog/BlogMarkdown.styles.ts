@@ -8,8 +8,9 @@ export const Wrapper = styled(StyledTextContainer)`
 `;
 
 export const Blockquote = styled(StyledBlockquote)`
-  background-color: #272822;
-  color: #f3f8fa;
+  background-color: ${({ theme: { colors, isDarkTheme } }) =>
+    isDarkTheme ? "#272822" : colors.background.main};
+  color: ${props => props.theme.colors.text.main};
 `;
 
 export const Heading = styled.h1<{ level: number; incrementer: number }>`
@@ -19,8 +20,9 @@ export const Heading = styled.h1<{ level: number; incrementer: number }>`
   `}
 `;
 
-export const Image = css`
-  min-width: 767px;
+export const Image = css<{ maxWidth: number }>`
+  min-width: ${props => props.maxWidth}px;
+  margin: 0;
 `;
 
 export const Link = styled.a`

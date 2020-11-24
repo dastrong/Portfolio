@@ -4,9 +4,11 @@ import path from "path";
 import { GetStaticPaths, GetStaticProps } from "next";
 import matter from "gray-matter";
 import ReactMarkdown from "react-markdown";
+import styled from "styled-components";
+import { Img } from "react-optimized-image";
 
 import InterLink from "components/Shared/Links";
-import OptimizedImage from "components/Shared/OptimizedImage";
+import OptimizedImage, { HQstyles } from "components/Shared/OptimizedImage";
 import PageHead from "components/Shared/PageHead";
 import Tags from "components/Shared/Tags";
 import { StyledBlockquote } from "components/Shared/StyledBlockquote";
@@ -16,6 +18,10 @@ import useEnterAnimation from "hooks/useEnterAnimation";
 
 import { WorkTypes } from "components/Work/WorkTypes";
 import * as Styled from "components/Work/WorkNamePage.styles";
+
+const StyledImage = styled(Img)`
+  ${HQstyles}
+`;
 
 export default function ViewWork({
   data: { description, image, links, site_name, tech_used },
@@ -29,7 +35,7 @@ export default function ViewWork({
 
   return (
     <>
-      <PageHead title={`${site_name} | My Work`} description={description} />
+      <PageHead title={`${site_name} | Work`} description={description} />
 
       <StyledHeader underlined>{site_name}</StyledHeader>
 
@@ -38,7 +44,14 @@ export default function ViewWork({
           imgFile={image}
           containerStyles={Styled.Image}
           alt={site_name + "preview"}
-        />
+        >
+          <StyledImage
+            webp
+            src={require(`images/${image}`)}
+            sizes={[480, 750, 1000]}
+            breakpoints={[500, 768]}
+          />
+        </OptimizedImage>
 
         <Styled.ButtonGroup ref={refButtons}>
           <Styled.Button

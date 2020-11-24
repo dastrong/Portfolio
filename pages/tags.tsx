@@ -55,7 +55,7 @@ export default function TagsPage({
     <>
       <PageHead
         title={currentTag ? `Tag: ${currentTag}` : `Tags`}
-        description="View my blog or work by the technology used"
+        description="Filter my work or blog posts by a technology used or another available tag."
       />
 
       <StyledHeader underlined>Tags</StyledHeader>

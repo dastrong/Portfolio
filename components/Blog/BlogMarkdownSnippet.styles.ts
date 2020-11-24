@@ -6,7 +6,7 @@ export const SnippetWrapper = styled.div`
 `;
 
 export const SnippetImageWrapper = styled.div`
-  overflow-x: auto;
+  overflow-x: scroll;
   /* this bg-color matches the snippet bg-color */
   background-color: #272822;
 `;
