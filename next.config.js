@@ -6,10 +6,10 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 
 module.exports = withBundleAnalyzer(
   withOptimizedImages({
-    // removed inline img strings and lowers bundle size
-    // images: {
-    //   limit: 1,
-    // },
+    // removes larger image being bundled currently
+    images: {
+      limit: 1000,
+    },
     webpack: function (config) {
       config.module.rules.push({
         test: [/\.md$/, /\.yml$/],

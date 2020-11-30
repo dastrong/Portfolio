@@ -13,11 +13,11 @@ export default function BlogInfo({ date }: { date: string }) {
   return (
     <Styled.Container>
       <OptimizedImage
-        imgFile="misc_blogme.jpg"
+        imgFile="_blogavatar.jpg"
         alt="daniel avatar"
         containerStyles={Styled.Image}
       >
-        <StyledImage src={require(`images/misc_blogme.jpg`)} sizes={[45]} />
+        <StyledImage src={require(`images/_blogavatar.jpg`)} sizes={[45]} />
       </OptimizedImage>
 
       <div>
