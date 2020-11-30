@@ -47,7 +47,7 @@ export default function ViewWork({
         >
           <StyledImage
             webp
-            src={require(`images/${image}`)}
+            src={require(`images/work_${image.substring(5)}`)}
             sizes={[480, 750, 1000]}
             breakpoints={[500, 768]}
           />

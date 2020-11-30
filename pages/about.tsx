@@ -37,7 +37,7 @@ export default function About({
           alt="Daniel Strong"
         >
           <StyledImage
-            src={require(`images/${data.image}`)}
+            src={require(`images/about_${data.image.substring(6)}`)}
             sizes={[250, 300]}
             breakpoints={[576]}
           ></StyledImage>

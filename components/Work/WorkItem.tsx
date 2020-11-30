@@ -42,7 +42,7 @@ export default function WorkItem({
       >
         <StyledImage
           webp
-          src={require(`images/${image}`)}
+          src={require(`images/work_${image.substring(5)}`)}
           sizes={[450, 615, 350]}
           breakpoints={[500, 767]}
         />

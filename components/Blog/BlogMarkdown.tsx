@@ -38,7 +38,7 @@ const MarkdownImage = ({
     title={title}
     containerStyles={Styled.Image}
   >
-    <StyledImage webp src={require(`images/${src}`)} />
+    <StyledImage webp src={require(`images/blog_${src.substring(5)}`)} />
   </OptimizedImage>
 );
 
