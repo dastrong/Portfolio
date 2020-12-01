@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { useTheme } from "styled-components";
 import { FaBars, FaTimes } from "react-icons/fa";
@@ -10,7 +11,7 @@ import GradientContainer from "components/Shared/GradientContainer";
 import ThemeToggle from "./ThemeToggle";
 import NavList from "./NavList";
 import NavLogoMain from "./NavLogoMain";
-import NavLogoMobile from "./NavLogoMobile";
+const NavLogoMobile = dynamic(() => import("./NavLogoMobile"));
 import * as Styled from "./Nav.styles";
 
 const iconSize = 22;
