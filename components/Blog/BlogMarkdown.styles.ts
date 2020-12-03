@@ -25,6 +25,13 @@ export const Image = css<{ maxWidth: number }>`
   margin: 0;
 `;
 
+export const ImageHttp = styled.img`
+  max-width: 100%;
+  height: auto;
+  margin: 1rem auto;
+  display: block;
+`;
+
 export const Link = styled.a`
   position: relative;
   display: inline-block;
