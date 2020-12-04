@@ -16,12 +16,12 @@ export default function PageHead({
   title,
   description,
   image = "/favicon.png",
-  imageAlt,
+  imageAlt = "Daniel Strong",
 }: PageHeadProps) {
-  const { pathname } = useRouter();
+  const { asPath } = useRouter();
   const { colors } = useTheme();
 
-  const isBlogPost = pathname.startsWith("/blog/");
+  const isBlogPost = asPath.startsWith("/blog/");
 
   return (
     <Head>
@@ -32,7 +32,7 @@ export default function PageHead({
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={url + image} />
-      <meta property="og:url" content={url + pathname} />
+      <meta property="og:url" content={url + asPath} />
       <meta property="og:site_name" content="Daniel Strong Tech" />
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:title" content={title} />

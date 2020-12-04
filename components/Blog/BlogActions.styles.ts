@@ -4,7 +4,7 @@ import EnterAnimationStyles from "components/Shared/_css/EnterAnimationStyles";
 export const Container = styled.div`
   display: flex;
   align-items: center;
-  margin: 1rem 1rem 0;
+  margin: 3rem 1rem 0;
 `;
 
 export const Link = styled.a`
