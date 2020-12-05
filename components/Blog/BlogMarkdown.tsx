@@ -31,29 +31,41 @@ const MarkdownImage = ({
   src: string;
   alt: string;
   title: string;
-}) => (
-  <OptimizedImage
-    imgFile={src}
-    alt={alt}
-    title={title}
-    containerStyles={Styled.Image}
-  >
-    <StyledImage webp src={require(`images/blog_${src.substring(5)}`)} />
-  </OptimizedImage>
-);
+}) => {
+  const isHttpImage = src.startsWith("http");
+
+  return isHttpImage ? (
+    <Styled.ImageHttp src={src} alt={alt} title={title} loading="lazy" />
+  ) : (
+    <OptimizedImage
+      imgFile={src}
+      alt={alt}
+      title={title}
+      containerStyles={Styled.Image}
+    >
+      <StyledImage webp src={require(`images/blog_${src.substring(5)}`)} />
+    </OptimizedImage>
+  );
+};
 
 const MarkdownList = (props: { children: ReactNode; ordered: boolean }) => (
   <Styled.List {...props} as={props.ordered ? "ol" : "ul"} />
 );
 
 // need to render a div instead of p - re: invalid markup
-const MarkdownParagraph = (props: { children: ReactNode }) =>
-  // in dev: MarkdownImage; in prod: tt
-  ["MarkdownImage", "tt"].includes(props.children[0].type.name) ? (
+const MarkdownParagraph = (props: { children: ReactNode }) => {
+  const elProps = props.children[0].props;
+  const elPropKeys = Object.keys(elProps);
+  const imageProps = ["src", "alt"];
+  const isImage = imageProps.every(imgProp => elPropKeys.includes(imgProp));
+  const isHttpImage = isImage && elProps.src.startsWith("http");
+
+  return isImage && !isHttpImage ? (
     <BlogMarkdownSnippet {...props} />
   ) : (
     <StyledParagraph {...props} />
   );
+};
 
 const MarkdownLink = (props: { children: ReactNode; href: string }) =>
   props.href.startsWith("/") ? (
@@ -62,22 +74,21 @@ const MarkdownLink = (props: { children: ReactNode; href: string }) =>
     <Styled.Link {...props} />
   );
 
+const renderers = {
+  heading: MarkdownHeading,
+  image: MarkdownImage,
+  list: MarkdownList,
+  paragraph: MarkdownParagraph,
+  blockquote: Styled.Blockquote,
+  link: MarkdownLink,
+  listItem: Styled.ListItem,
+  table: Styled.Table,
+};
+
 export default function StyledMarkdown({ content }: { content: string }) {
   return (
     <Styled.Wrapper as="article">
-      <ReactMarkdown
-        source={content}
-        renderers={{
-          heading: MarkdownHeading,
-          image: MarkdownImage,
-          list: MarkdownList,
-          paragraph: MarkdownParagraph,
-          blockquote: Styled.Blockquote,
-          link: MarkdownLink,
-          listItem: Styled.ListItem,
-          table: Styled.Table,
-        }}
-      />
+      <ReactMarkdown source={content} renderers={renderers} />
     </Styled.Wrapper>
   );
 }

@@ -15,6 +15,7 @@ import BlogInfo from "components/Blog/BlogInfo";
 import BlogMarkdown from "components/Blog/BlogMarkdown";
 import { Blockquote } from "components/Blog/BlogMarkdown.styles";
 import { BlogTypes } from "components/Blog/BlogTypes";
+import BlogShare from "components/Blog/BlogShare";
 
 const StyledTags = css`
   margin-top: 0.5rem;
@@ -64,6 +65,8 @@ export default function ViewBlog({
         previousPostTitle={previousPostTitle}
         nextPostTitle={nextPostTitle}
       />
+
+      <BlogShare />
     </>
   );
 }

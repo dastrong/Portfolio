@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import { useInView } from "react-intersection-observer";
 import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
+
 import InterLink from "components/Shared/Links";
-import useEnterAnimation from "hooks/useEnterAnimation";
+import { BlogIntersectionOptions } from "./BlogIntersectionOptions";
 import * as Styled from "./BlogActions.styles";
 
 const StyledLeftArrow = styled(FaArrowCircleLeft)`
@@ -22,7 +24,7 @@ export default function BlogActions({
   previousPostTitle?: string;
   nextPostTitle?: string;
 }) {
-  const [ref, inView] = useEnterAnimation();
+  const [ref, inView] = useInView(BlogIntersectionOptions);
 
   return (
     <Styled.Container ref={ref}>
