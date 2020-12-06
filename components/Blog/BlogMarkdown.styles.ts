@@ -32,22 +32,30 @@ export const ImageHttp = styled.img`
   display: block;
 `;
 
-export const Link = styled.a`
+export const LinkStyles = css`
   position: relative;
   display: inline-block;
   transition: 0s 0s all;
   z-index: 1;
+`;
+
+export const LinkAfterStyles = css`
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  height: 2px;
+  z-index: -1;
+  width: 100%;
+  transition: 0.25s transform, 0.5s opacity;
+`;
+
+export const Link = styled.a`
+  ${LinkStyles}
 
   &:after {
-    content: "";
-    position: absolute;
-    bottom: 2px;
-    left: 0;
-    height: 2px;
-    z-index: -1;
-    width: 100%;
     background-color: ${props => props.theme.colors.accent};
-    transition: 0.25s transform, 0.5s opacity;
+    ${LinkAfterStyles}
   }
 `;
 

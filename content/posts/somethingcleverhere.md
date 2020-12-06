@@ -16,6 +16,15 @@ Lorem ipsum dolor sit amet.
 
 > _This is a_ blockquote. View all posts [here](/blog)
 
+<figure>
+    <div>
+        <img src='https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80' alt='alt here' title='title here' height="4480" width="6720" loading="lazy"  />
+    </div>
+    <figcaption>
+        <a href='https://unsplash.com/photos/wQLAGv4_OYs' target='_blank' rel='noopener'>Photo</a> by Lucas Benjamin
+    </figcaption>
+</figure>
+
 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti adipisci quia beatae architecto, unde doloremque at nisi pariatur eos eum.
 
 ![brackets here](blog_samplesnippet.png "full 767px width example")

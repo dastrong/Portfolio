@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import ReactMarkdown from "react-markdown";
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 import { Img } from "react-optimized-image";
 
 import OptimizedImage, { HQstyles } from "components/Shared/OptimizedImage";
@@ -86,9 +86,70 @@ const renderers = {
 };
 
 export default function StyledMarkdown({ content }: { content: string }) {
+  const { colors } = useTheme();
+
   return (
     <Styled.Wrapper as="article">
-      <ReactMarkdown source={content} renderers={renderers} />
+      <ReactMarkdown
+        escapeHtml={false}
+        skipHtml={false}
+        source={content}
+        renderers={renderers}
+      />
+
+      {/* Need to add styling for the html snippets in markdown */}
+      <style jsx global>
+        {`
+          article figure {
+            margin: 0.75rem auto;
+          }
+
+          @keyframes shimmer {
+            0% {
+              background-position: -600px 0;
+            }
+            100% {
+              background-position: 600px 0;
+            }
+          }
+
+          article figure div {
+            margin: 0 auto;
+            width: fit-content;
+            animation: shimmer 2s infinite;
+            background: linear-gradient(
+              to right,
+              #272822 0%,
+              ${colors.pink}15 17%,
+              #272822 42%
+            );
+            background-color: #272822;
+            background-size: 600px 43%;
+          }
+
+          article figure div img {
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+          }
+
+          article figure figcaption {
+            margin-top: 0.25rem;
+            font-size: 0.9rem;
+            text-align: center;
+          }
+
+          article figure figcaption a {
+            ${Styled.LinkStyles}
+          }
+
+          article figure figcaption a:after {
+            background-color: ${colors.accent};
+            ${Styled.LinkAfterStyles}
+          }
+        `}
+      </style>
     </Styled.Wrapper>
   );
 }
