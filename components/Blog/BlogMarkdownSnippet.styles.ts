@@ -3,12 +3,26 @@ import styled from "styled-components";
 export const SnippetWrapper = styled.div`
   position: relative;
   margin: 1rem auto;
+  display: flex;
 `;
 
 export const SnippetImageWrapper = styled.div`
-  overflow-x: scroll;
+  position: relative;
+  overflow-x: auto;
   /* this bg-color matches the snippet bg-color */
   background-color: #272822;
+  margin: 0 auto;
+`;
+
+export const SnippetCaptionLinkContainer = styled.div`
+  position: sticky;
+  left: 0;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -24px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  z-index: 1;
 `;
 
 export const SnippetCaptionLink = styled.a`
@@ -17,10 +31,6 @@ export const SnippetCaptionLink = styled.a`
   align-items: center;
   font-size: 0.4rem;
   color: #aba8a8;
-  position: absolute;
-  bottom: 22px;
-  right: 5px;
-  z-index: 1;
 `;
 
 export const SnippetCaptionImage = styled.img`
