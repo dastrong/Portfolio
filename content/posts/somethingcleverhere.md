@@ -27,11 +27,47 @@ Lorem ipsum dolor sit amet.
 
 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti adipisci quia beatae architecto, unde doloremque at nisi pariatur eos eum.
 
+<div>
+
 ![brackets here](blog_samplesnippet.png "full 767px width example")
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, placeat. Nulla ratione in enim voluptas voluptatem. Cumque, nobis doloribus molestiae aut at tenetur autem sint iusto quam, consequuntur, quo tempora.
+```
+code example here
+next line
+    spaced next line
+```
+
+
+</div>
+
+Inline code example: `() => console.log(true)` Fancy.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, placeat. Nulla ratione in enim voluptas voluptatem. Cumque, nobis doloribus molestiae aut at tenetur autem sint iusto quam, consequuntur, quo tempora. 
+
+<div>
 
 ![brackets here](blog_samplesnippet2.png "shorter width example")
+
+```
+// string
+const str = 'string'
+
+const pluckDeep = (key) => (obj) =>
+  key.split('.').reduce((accum, key) => accum[key], obj)
+
+const compose = (...fns) => (res) =>
+  fns.reduce((accum, next) => next(accum), res)
+
+const unfold = (f, seed) => {
+  const go = (f, seed, acc) => {
+    const res = f(seed)
+    return res ? go(f, res[1], acc.concat([res[0]])) : acc
+  }
+  return go(f, seed, [])
+}
+```
+
+</div>
 
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni delectus laboriosam cum aspernatur ratione.
 

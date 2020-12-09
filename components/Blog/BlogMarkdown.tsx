@@ -1,7 +1,9 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import styled, { useTheme } from "styled-components";
 import { Img } from "react-optimized-image";
+import CopyToClipboard from "react-copy-to-clipboard";
+import { FaCheck, FaCopy } from "react-icons/fa";
 
 import OptimizedImage, { HQstyles } from "components/Shared/OptimizedImage";
 import InterLink from "components/Shared/Links";
@@ -74,6 +76,29 @@ const MarkdownLink = (props: { children: ReactNode; href: string }) =>
     <Styled.Link {...props} />
   );
 
+const MarkdownCodeBlock = (props: { children: ReactNode; value: string }) => {
+  const [isCopied, setIsCopied] = useState(false);
+
+  useEffect(() => {
+    let id: number;
+
+    if (isCopied) {
+      id = setTimeout(() => setIsCopied(false), 5000);
+    }
+
+    return () => clearTimeout(id);
+  }, [isCopied]);
+
+  return (
+    <CopyToClipboard text={props.value} onCopy={() => setIsCopied(true)}>
+      <Styled.CodeBlockCopy isCopied={isCopied} title="Copy Code Block">
+        {isCopied ? <FaCheck color="#f8e81c" /> : <FaCopy />}
+        <span>Copied</span>
+      </Styled.CodeBlockCopy>
+    </CopyToClipboard>
+  );
+};
+
 const renderers = {
   heading: MarkdownHeading,
   image: MarkdownImage,
@@ -83,6 +108,8 @@ const renderers = {
   link: MarkdownLink,
   listItem: Styled.ListItem,
   table: Styled.Table,
+  inlineCode: Styled.InlineCode,
+  code: MarkdownCodeBlock,
 };
 
 export default function StyledMarkdown({ content }: { content: string }) {
@@ -147,6 +174,11 @@ export default function StyledMarkdown({ content }: { content: string }) {
           article figure figcaption a:after {
             background-color: ${colors.accent};
             ${Styled.LinkAfterStyles}
+          }
+
+          // allows me to position a copy icon neatly in code image snippets
+          article div:not([class]) {
+            position: relative;
           }
         `}
       </style>

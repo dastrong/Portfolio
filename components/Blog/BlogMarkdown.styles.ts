@@ -13,11 +13,43 @@ export const Blockquote = styled(StyledBlockquote)`
   color: ${props => props.theme.colors.text.main};
 `;
 
+export const CodeBlockCopy = styled.div<{ isCopied: boolean }>`
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  color: ${props => props.theme.colors.accent};
+  z-index: 1;
+
+  svg,
+  span {
+    background-color: #282922;
+  }
+
+  span {
+    position: absolute;
+    opacity: ${props => (props.isCopied ? 1 : 0)};
+    left: -18.5px;
+    transform: translateX(${props => (props.isCopied ? -40 : 0)}px);
+    transition: transform 0.5s, opacity 0.35s;
+    font-size: 1rem;
+    line-height: 1.25rem;
+    z-index: -1;
+    font-weight: bold;
+  }
+`;
+
 export const Heading = styled.h1<{ level: number; incrementer: number }>`
   ${({ level, incrementer }) => css`
     font-size: ${(6 / level) * incrementer + 1}rem;
     margin: ${level < 3 ? "1.25rem 0 0.8rem" : "1rem 0 0.5rem"};
   `}
+`;
+
+export const InlineCode = styled.code`
+  color: ${props => props.theme.colors.accent};
 `;
 
 export const Image = css<{ maxWidth: number }>`
