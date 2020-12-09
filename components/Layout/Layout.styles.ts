@@ -34,7 +34,6 @@ export const StyledSection = styled.section<{ isHomePage: boolean }>`
           padding: 0;
           width: 100%;
           max-width: ${props.theme.width.xxl}px;
-          max-width: 100vw;
           height: 100vh;
           display: flex;
 
@@ -44,6 +43,10 @@ export const StyledSection = styled.section<{ isHomePage: boolean }>`
             min-height: calc(100vh - 55px);
             height: 100%;
             display: block;
+          }
+
+          @media screen and (min-width: 768px) and (orientation: landscape) and (max-height: 768px) {
+            max-width: ${props => props.theme.width.lg}px;
           }
         `
       : css`

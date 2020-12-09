@@ -36,11 +36,15 @@ export const Headshot = css`
     max-width: 300px;
   }
 
-  @media screen and (min-width: 768px) and (orientation: landscape) and (min-height: 701px) {
+  @media screen and (min-width: 768px) and (orientation: landscape) and (min-height: 751px) {
     max-width: 350px;
   }
 
-  @media screen and (min-width: 768px) and (orientation: landscape) and (min-height: 801px) {
+  @media screen and (min-width: 768px) and (orientation: landscape) and (min-height: 875px) {
+    max-width: 425px;
+  }
+
+  @media screen and (min-width: 768px) and (orientation: landscape) and (min-height: 950px) {
     max-width: 500px;
   }
 `;
