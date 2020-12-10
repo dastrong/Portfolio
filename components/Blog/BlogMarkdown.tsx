@@ -177,8 +177,11 @@ export default function StyledMarkdown({ content }: { content: string }) {
           }
 
           // allows me to position a copy icon neatly in code image snippets
-          article div:not([class]) {
+          article > div:not([class]) {
             position: relative;
+            width: fit-content;
+            max-width: 100%;
+            margin: 0 auto;
           }
         `}
       </style>

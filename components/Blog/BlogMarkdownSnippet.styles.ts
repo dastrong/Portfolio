@@ -3,15 +3,11 @@ import styled from "styled-components";
 export const SnippetWrapper = styled.div`
   position: relative;
   margin: 1rem auto;
-  display: flex;
-`;
 
-export const SnippetImageWrapper = styled.div`
-  position: relative;
   overflow-x: auto;
   /* this bg-color matches the snippet bg-color */
   background-color: #272822;
-  margin: 0 auto;
+  max-width: 600px;
 `;
 
 export const SnippetCaptionLinkContainer = styled.div`

@@ -23,11 +23,6 @@ export const CodeBlockCopy = styled.div<{ isCopied: boolean }>`
   color: ${props => props.theme.colors.accent};
   z-index: 1;
 
-  svg,
-  span {
-    background-color: #282922;
-  }
-
   span {
     position: absolute;
     opacity: ${props => (props.isCopied ? 1 : 0)};
