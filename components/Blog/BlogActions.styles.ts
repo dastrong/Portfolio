@@ -4,7 +4,19 @@ import EnterAnimationStyles from "components/Shared/_css/EnterAnimationStyles";
 export const Container = styled.div`
   display: flex;
   align-items: center;
-  margin: 3rem 1rem 0;
+  margin: 3rem auto 0;
+  max-width: 700px;
+  width: 90%;
+
+  ${props => props.theme.media.sm} {
+    margin: 3rem 0.5rem 0;
+    max-width: 100%;
+    width: initial;
+  }
+
+  ${props => props.theme.media.xs} {
+    margin: 3rem 0.25rem 0;
+  }
 `;
 
 export const Link = styled.a`
