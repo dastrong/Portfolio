@@ -10,11 +10,12 @@ export const Container = styled.div`
 
   ${props => props.theme.media.md} {
     width: initial;
+    margin: 3rem 1rem 0;
+    max-width: 100%;
   }
 
   ${props => props.theme.media.sm} {
     margin: 3rem 0.5rem 0;
-    max-width: 100%;
   }
 
   ${props => props.theme.media.xs} {
