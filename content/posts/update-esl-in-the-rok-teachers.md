@@ -47,7 +47,7 @@ If you don't have an account, you can choose another font that we've preselected
 
 ### The Future
 
-I have over 15 game ideas that I've scribbled down that I or someone can work on. You can actually view some of them on the \[ESL in the ROK repo\]([https://github.com/dastrong/ESLintheROK-front](https://github.com/dastrong/ESLintheROK-front "https://github.com/dastrong/ESLintheROK-front")) and contribute if you know how to code. We're always looking for new ideas or people who are good at designing. You don't need to know how to code to know how to design. We use \[Figma\]([https://www.figma.com](https://www.figma.com "Figma")) to design game images, SVGs, etc. Even if you don't want to contribute, I believe teachers should learn a bit about design and Figma is the perfect playground to practice.
+I have over 15 game ideas that I've scribbled down that I or someone can work on. You can actually view some of them on the [ESL in the ROK repo](https://github.com/dastrong/ESLintheROK-front) and contribute if you know how to code. We're always looking for new ideas or people who are good at designing. You don't need to know how to code to know how to design. We use [Figma](https://www.figma.com) to design game images, SVGs, etc. Even if you don't want to contribute, I believe teachers should learn a bit about design and Figma is the perfect playground to practice.
 
 ### Conclusion
 
