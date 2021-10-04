@@ -104,10 +104,7 @@ export const getStaticProps: GetStaticProps = async () => {
       const { data } = matter(fileContents);
       return data;
     })
-    .filter(post => {
-      // FLIP ME!!
-      return !post.show_post;
-    });
+    .filter(post => post.show_post);
   // create an array of all completed posts
   const allWorks = allWorkPaths
     .map((filename: string) => {
