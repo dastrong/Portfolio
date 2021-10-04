@@ -120,8 +120,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ctx => {
-  const { blogTitle } = ctx.params;
-  const title = blogTitle.toString().toLowerCase();
+  const { blogTitle: title } = ctx.params;
 
   // get root path
   const root = path.join(process.cwd());

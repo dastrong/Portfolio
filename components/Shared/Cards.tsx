@@ -6,7 +6,7 @@ import { BiCalendar, BiCalendarEdit } from "react-icons/bi";
 import InterLink from "components/Shared/Links";
 import { BlogTypes } from "components/Blog/BlogTypes";
 import { WorkTypes } from "components/Work/WorkTypes";
-import { formatDate } from "utils";
+import { formatBlogTitle, formatDate } from "utils";
 
 const StyledContainer = styled.div`
   width: 90%;
@@ -76,7 +76,7 @@ export const BlogCard = ({
   <StyledContainer>
     <InterLink
       href="/blog/[blogTitle]"
-      as={`/blog/${title.split(" ").join("").toLowerCase()}`}
+      as={`/blog/${formatBlogTitle(title)}`}
       StyledAnchor={StyledTitle}
     >
       {title}
