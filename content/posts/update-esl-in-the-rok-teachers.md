@@ -6,7 +6,7 @@ title: 'Update: ESL in the ROK (Teachers)'
 description: Hey teachers! Come read about what's new in ESL in the ROK and how it
   can help you.
 date_update: 
-show_post: false
+show_post: true
 code_snippets: []
 
 ---
