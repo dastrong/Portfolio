@@ -51,7 +51,7 @@ export const TopRightGradient = styled.div`
 export const BottomLeftGradient = styled.div`
   ${ContainerStyles}
   ${BottomLeftStyles}
-  ${TopRightToBottomLeftRadiusStyles} 
+  ${TopRightToBottomLeftRadiusStyles}
 `;
 export const BottomRightGradient = styled.div`
   ${ContainerStyles}

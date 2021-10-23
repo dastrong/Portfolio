@@ -82,18 +82,22 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   const allFilteredPaths = allBlogPostPaths
     // need to grab the post dates and if we should show them
-    .map((filename: string): {
-      filename: string;
-      date_publish: string;
-      show_post: boolean;
-      title: string;
-    } => {
-      const filePath = path.join(root, filename);
-      const fileContents = fs.readFileSync(filePath, "utf8");
-      const { data } = matter(fileContents);
-      const { date_publish, show_post, title } = data;
-      return { filename, date_publish, show_post, title };
-    })
+    .map(
+      (
+        filename: string
+      ): {
+        filename: string;
+        date_publish: string;
+        show_post: boolean;
+        title: string;
+      } => {
+        const filePath = path.join(root, filename);
+        const fileContents = fs.readFileSync(filePath, "utf8");
+        const { data } = matter(fileContents);
+        const { date_publish, show_post, title } = data;
+        return { filename, date_publish, show_post, title };
+      }
+    )
     // filter out all the incomplete posts
     .filter(({ show_post }) => show_post)
     // sort the posts - newest first
