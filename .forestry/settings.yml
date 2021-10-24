@@ -27,7 +27,7 @@ sections:
   templates:
   - post
 upload_dir: Portfolio
-public_path: ''
+public_path: "/Portfolio"
 front_matter_path: ''
 use_front_matter_path: 
 file_template: ":filename:"
