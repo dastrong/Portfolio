@@ -22,6 +22,7 @@ export default function About({ content }: { content: string }) {
           <Styled.Image
             priority
             src="Portfolio/about_me.jpg"
+            alt="Daniel Strong"
             height={1026}
             width={672}
             layout="responsive"
