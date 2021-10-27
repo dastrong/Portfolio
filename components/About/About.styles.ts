@@ -1,18 +1,20 @@
-import styled, { css } from "styled-components";
+import { default as NextImage } from "next/image";
+import styled from "styled-components";
 import { StyledTextContainer } from "components/Shared/StyledTextContainer";
 
 export const Container = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   margin: 0 auto;
   min-width: 300px;
   max-width: ${props => `${props.theme.width.lg}px`};
 
-  ${props => props.theme.media.lg} {
+  ${props => props.theme.media.md} {
     max-width: ${props => `${props.theme.width.md}px`};
     width: 90%;
     flex-direction: column;
+    align-items: center;
   }
 `;
 
@@ -21,7 +23,7 @@ export const TextContainer = styled(StyledTextContainer)`
   margin: 0 10px;
   margin-left: 50px;
 
-  ${props => props.theme.media.lg} {
+  ${props => props.theme.media.md} {
     margin: 20px auto 0;
   }
 
@@ -35,11 +37,14 @@ export const TextContainer = styled(StyledTextContainer)`
   }
 `;
 
-export const ImageContainer = css`
+export const ImageWrapper = styled.div`
+  display: block;
   width: 40%;
+  line-height: 0;
   min-width: 300px;
   border-radius: 155px;
-  box-shadow: 0px 0px 1px 0px ${props => props.theme.colors.accent};
+  box-shadow: 0px 0px 1px 0px ${props => props.theme.colors.accent},
+    0px 0px 0px 3px ${props => props.theme.colors.accent} inset;
   border: 3px solid ${props => props.theme.colors.accent};
 
   ${props => props.theme.media.sm} {
@@ -47,10 +52,14 @@ export const ImageContainer = css`
   }
 `;
 
+export const Image = styled(NextImage)`
+  border-radius: 155px;
+`;
+
 export const Text = styled.p`
   margin: 20px 0;
 
-  ${props => props.theme.media.lg} {
+  ${props => props.theme.media.md} {
     text-align: center;
   }
 `;

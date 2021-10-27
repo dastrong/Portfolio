@@ -2,25 +2,12 @@ import React from "react";
 import { GetStaticProps } from "next";
 import matter from "gray-matter";
 import ReactMarkdown from "react-markdown";
-import styled from "styled-components";
-import { Img } from "react-optimized-image";
 
 import PageHead from "components/Shared/PageHead";
-import OptimizedImage, { HQstyles } from "components/Shared/OptimizedImage";
 import { StyledHeader } from "components/Shared/StyledHeader";
 import * as Styled from "components/About/About.styles";
 
-const StyledImage = styled(Img)`
-  ${HQstyles}
-`;
-
-export default function About({
-  data,
-  content,
-}: {
-  data: { image: string };
-  content: string;
-}) {
+export default function About({ content }: { content: string }) {
   return (
     <>
       <PageHead
@@ -31,22 +18,25 @@ export default function About({
       <StyledHeader underlined>About Me</StyledHeader>
 
       <Styled.Container>
-        <OptimizedImage
-          imgFile={data.image}
-          containerStyles={Styled.ImageContainer}
-          alt="Daniel Strong"
-        >
-          <StyledImage
-            src={require(`images/about_${data.image.substring(6)}`)}
-            sizes={[250, 300]}
-            breakpoints={[576]}
-          ></StyledImage>
-        </OptimizedImage>
+        <Styled.ImageWrapper>
+          <Styled.Image
+            priority
+            src="Portfolio/about_me.jpg"
+            height={1026}
+            width={672}
+            layout="responsive"
+            sizes="(max-width: 500px) 85vw, 40vw"
+          />
+        </Styled.ImageWrapper>
+
         <Styled.TextContainer>
           <ReactMarkdown
-            source={content}
-            renderers={{ paragraph: Styled.Text }}
-          />
+            components={{
+              p: ({ children }) => <Styled.Text>{children}</Styled.Text>,
+            }}
+          >
+            {content}
+          </ReactMarkdown>
         </Styled.TextContainer>
       </Styled.Container>
     </>
@@ -55,6 +45,6 @@ export default function About({
 
 export const getStaticProps: GetStaticProps = async () => {
   const mark = await import("content/pages/about.md");
-  const { data, content } = matter(mark.default);
-  return { props: { data, content } };
+  const { content } = matter(mark.default);
+  return { props: { content } };
 };
