@@ -1,15 +1,8 @@
 import React from "react";
-import styled from "styled-components";
-import { Img } from "react-optimized-image";
+import Image from "next/image";
 import { useInView } from "react-intersection-observer";
-
-import OptimizedImage, { HQstyles } from "components/Shared/OptimizedImage";
 import HomeMobileActions from "./HomeMobileActions";
 import * as Styled from "./HomeCenter.styles";
-
-const StyledImage = styled(Img)`
-  ${HQstyles}
-`;
 
 export default function HomeCenter() {
   const [headerRef, headerInView] = useInView();
@@ -17,27 +10,30 @@ export default function HomeCenter() {
 
   return (
     <Styled.CenterContainer>
-      <OptimizedImage
-        imgFile="home_portrait.webp"
-        alt="Daniel Strong"
-        containerStyles={Styled.Headshot}
-      >
-        <StyledImage
-          src={require(`images/home_portrait.webp`)}
-          sizes={[300, 500]}
-          breakpoints={[350]}
+      <Styled.ImageWrapper>
+        <Image
+          priority
+          src="Portfolio/home_portrait.webp"
+          alt="Daniel Strong"
+          height={2716}
+          width={2100}
+          quality={85}
+          layout="responsive"
+          sizes="(max-width: 500px) 300px, 500px"
         />
-      </OptimizedImage>
+      </Styled.ImageWrapper>
 
-      <Styled.NameHeader ref={headerRef} inView={headerInView}>
-        Daniel Strong
-      </Styled.NameHeader>
+      <Styled.TextAndActionsContainer>
+        <Styled.NameHeader ref={headerRef} inView={headerInView}>
+          Daniel Strong
+        </Styled.NameHeader>
 
-      <Styled.JobDescription ref={descriptionRef} inView={descriptionInView}>
-        Full Stack Developer
-      </Styled.JobDescription>
+        <Styled.JobDescription ref={descriptionRef} inView={descriptionInView}>
+          Full Stack Developer
+        </Styled.JobDescription>
 
-      <HomeMobileActions />
+        <HomeMobileActions />
+      </Styled.TextAndActionsContainer>
     </Styled.CenterContainer>
   );
 }

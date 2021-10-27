@@ -7,23 +7,25 @@ import EnterAnimationStyles, {
 export const Container = styled.div`
   display: none;
   flex-direction: column;
-  width: 275px;
-  margin: 1.5rem auto;
+  width: 350px;
+  margin: 4vh auto 1vh;
 
   a:first-child {
-    margin-bottom: 0.5rem;
+    margin-bottom: 2vh;
   }
 
   ${props => props.theme.media.md} {
     display: flex;
+    width: 325px;
   }
 
   ${props => props.theme.media.xs} {
-    width: 225px;
+    width: 275px;
   }
 `;
 
 export const Anchor = styled(StyledButton)<EnterAnimationTypes>`
+  font-size: 1.2rem;
   opacity: 0;
   transform: translateX(
     ${props => (props.direction === "toLeft" ? "20px" : "-20px")}
