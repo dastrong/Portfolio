@@ -1,19 +1,12 @@
 import React from "react";
-import styled from "styled-components";
-import { Img } from "react-optimized-image";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
 import useEnterAnimation from "hooks/useEnterAnimation";
 import GradientContainer from "components/Shared/GradientContainer";
 import InterLink from "components/Shared/Links";
-import OptimizedImage, { HQstyles } from "components/Shared/OptimizedImage";
 
 import { WorkTypes } from "./WorkTypes";
 import * as Styled from "./WorkItem.styles";
-
-const StyledImage = styled(Img)`
-  ${HQstyles}
-`;
 
 export default function WorkItem({
   description,
@@ -22,7 +15,8 @@ export default function WorkItem({
   show_work,
   site_name,
   routeName,
-}: WorkTypes & { routeName?: string }) {
+  priority,
+}: WorkTypes & { routeName?: string; priority: boolean }) {
   const [ref, inView, skipAnimation] = useEnterAnimation(true);
 
   if (!show_work) return null;
@@ -30,23 +24,23 @@ export default function WorkItem({
   return (
     <GradientContainer
       ref={ref}
-      inView={inView}
+      inView={inView || priority}
       skipAnimation={skipAnimation}
       containerStyles={Styled.ItemContainer}
       contentStyles={Styled.ItemContent}
     >
-      <OptimizedImage
-        imgFile={image}
-        alt={routeName}
-        containerStyles={Styled.Image}
-      >
-        <StyledImage
-          webp
-          src={require(`images/work_${image.substring(5)}`)}
-          sizes={[450, 615, 350]}
-          breakpoints={[500, 767]}
+      <Styled.ImageWrapper>
+        <Styled.Image
+          priority={priority}
+          src={`Portfolio/${image}`}
+          alt={routeName}
+          height={487}
+          width={1000}
+          layout="responsive"
+          placeholder={priority ? "empty" : "blur"}
+          blurDataURL={`https://res.cloudinary.com/dastrong/image/upload/c_scale,f_auto,w_10/Portfolio/${image}`}
         />
-      </OptimizedImage>
+      </Styled.ImageWrapper>
 
       <Styled.Content>
         <Styled.TextContent>

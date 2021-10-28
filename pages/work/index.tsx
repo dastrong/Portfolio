@@ -25,8 +25,8 @@ export default function Work({
       <StyledHeader underlined>My Work</StyledHeader>
 
       <Styled.PageContainer>
-        {works.map(work => (
-          <WorkItem key={work.site_name} {...work} />
+        {works.map((work, i) => (
+          <WorkItem key={work.site_name} {...work} priority={!i} />
         ))}
       </Styled.PageContainer>
     </>

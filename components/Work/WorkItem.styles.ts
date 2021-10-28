@@ -1,3 +1,4 @@
+import { default as NextImage } from "next/image";
 import styled, { css } from "styled-components";
 import { StyledButton } from "components/Shared/StyledButton";
 import EnterAnimationStyles from "components/Shared/_css/EnterAnimationStyles";
@@ -37,7 +38,8 @@ export const ItemContent = css`
   }
 `;
 
-export const Image = css`
+export const ImageWrapper = styled.div`
+  display: block;
   background-color: rgba(0, 0, 0, 0);
   border-radius: ${props => props.theme.borderRadius}px;
   height: auto;
@@ -48,6 +50,10 @@ export const Image = css`
     margin: 0px auto 1.25rem;
     width: 100%;
   }
+`;
+
+export const Image = styled(NextImage)`
+  border-radius: ${props => props.theme.borderRadius}px;
 `;
 
 export const Content = styled.div`
