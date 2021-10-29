@@ -119,7 +119,7 @@ export const ButtonGroup = styled.div`
 
   ${props => props.theme.media.md} {
     justify-content: space-evenly;
-    width: 90%;
+    width: 80%;
     margin: 0 auto;
     max-width: 500px;
   }

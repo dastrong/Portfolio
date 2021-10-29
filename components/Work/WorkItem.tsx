@@ -36,6 +36,7 @@ export default function WorkItem({
           alt={routeName}
           height={487}
           width={1000}
+          sizes="(max-width: 400px) 350px, (max-width: 767px) 550px, 350px"
           layout="responsive"
           placeholder={priority ? "empty" : "blur"}
           blurDataURL={`https://res.cloudinary.com/dastrong/image/upload/c_scale,f_auto,w_10/Portfolio/${image}`}
