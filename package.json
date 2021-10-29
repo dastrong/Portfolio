@@ -1,8 +1,8 @@
 {
   "name": "dastrong-portfolio",
-  "author": "danielstrong.ds@gmail.com",
+  "author": "Daniel Strong",
   "version": "1.0.0",
-  "description": "Daniel Strong's 2020 Web Developer Portfolio",
+  "description": "Daniel Strong's Portfolio",
   "license": "UNLICENSED",
   "scripts": {
     "dev": "next",
