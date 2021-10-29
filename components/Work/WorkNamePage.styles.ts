@@ -1,3 +1,4 @@
+import { default as NextImage } from "next/image";
 import styled, { css } from "styled-components";
 import { StyledTextContainer } from "components/Shared/StyledTextContainer";
 import { StyledButton } from "components/Shared/StyledButton";
@@ -13,19 +14,6 @@ export const PageContainer = styled.div`
   min-width: 300px;
   max-width: 1000px;
   margin: 0 auto;
-`;
-
-export const Image = css`
-  background-color: rgba(0, 0, 0, 0);
-  border-radius: ${props => props.theme.borderRadius}px;
-  height: auto;
-  width: 100%;
-  margin-bottom: 2rem;
-
-  ${props => props.theme.media.sm} {
-    width: 100%;
-    margin-bottom: 1.5rem;
-  }
 `;
 
 export const ButtonGroup = styled.div`
@@ -98,4 +86,20 @@ export const TagContainerStyles = css`
   ${props => props.theme.media.sm} {
     width: 100%;
   }
+`;
+
+export const ImageWrapper = styled.div`
+  display: block;
+  border-radius: ${props => props.theme.borderRadius}px;
+  height: auto;
+  width: 100%;
+  margin-bottom: 2rem;
+
+  ${props => props.theme.media.sm} {
+    margin-bottom: 1.5rem;
+  }
+`;
+
+export const Image = styled(NextImage)`
+  border-radius: ${props => props.theme.borderRadius}px;
 `;

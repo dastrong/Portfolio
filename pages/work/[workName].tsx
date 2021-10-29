@@ -4,11 +4,8 @@ import path from "path";
 import { GetStaticPaths, GetStaticProps } from "next";
 import matter from "gray-matter";
 import ReactMarkdown from "react-markdown";
-import styled from "styled-components";
-import { Img } from "react-optimized-image";
 
 import InterLink from "components/Shared/Links";
-import OptimizedImage, { HQstyles } from "components/Shared/OptimizedImage";
 import PageHead from "components/Shared/PageHead";
 import Tags from "components/Shared/Tags";
 import { StyledBlockquote } from "components/Shared/StyledBlockquote";
@@ -18,10 +15,6 @@ import useEnterAnimation from "hooks/useEnterAnimation";
 
 import { WorkTypes } from "components/Work/WorkTypes";
 import * as Styled from "components/Work/WorkNamePage.styles";
-
-const StyledImage = styled(Img)`
-  ${HQstyles}
-`;
 
 export default function ViewWork({
   data: { description, image, links, site_name, tech_used },
@@ -40,18 +33,17 @@ export default function ViewWork({
       <StyledHeader underlined>{site_name}</StyledHeader>
 
       <Styled.PageContainer>
-        <OptimizedImage
-          imgFile={image}
-          containerStyles={Styled.Image}
-          alt={site_name + "preview"}
-        >
-          <StyledImage
-            webp
-            src={require(`images/work_${image.substring(5)}`)}
-            sizes={[480, 750, 1000]}
-            breakpoints={[500, 768]}
+        <Styled.ImageWrapper>
+          <Styled.Image
+            priority
+            src={`Portfolio/${image}`}
+            alt={site_name + " mockup"}
+            height={487}
+            width={1000}
+            layout="responsive"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 750px, 1000px"
           />
-        </OptimizedImage>
+        </Styled.ImageWrapper>
 
         <Styled.ButtonGroup ref={refButtons}>
           <Styled.Button
@@ -87,12 +79,17 @@ export default function ViewWork({
 
         <Styled.TextContainer ref={refText} inView={inViewText}>
           <ReactMarkdown
-            source={content}
-            renderers={{
-              paragraph: StyledParagraph,
-              blockquote: StyledBlockquote,
+            components={{
+              p({ children }) {
+                return <StyledParagraph>{children}</StyledParagraph>;
+              },
+              blockquote({ children }) {
+                return <StyledBlockquote>{children}</StyledBlockquote>;
+              },
             }}
-          />
+          >
+            {content}
+          </ReactMarkdown>
         </Styled.TextContainer>
 
         <Tags tags={tech_used} addContainerStyles={Styled.TagContainerStyles} />
