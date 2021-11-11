@@ -9,7 +9,7 @@ import { StyledTextContainer } from "components/Shared/StyledTextContainer";
 
 const StyledDescription = styled.p`
   line-height: 1.5;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   text-align: center;
 `;
 
