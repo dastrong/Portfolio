@@ -24,7 +24,7 @@ export const StyledButton = styled.a<{ primary?: boolean }>`
         `
       : css`
           border: 2px solid ${theme.colors.pink};
-          background-color: transparent;
+          background-color: ${theme.colors.background.light};
           color: ${theme.colors.pink};
           font-weight: 600;
         `}

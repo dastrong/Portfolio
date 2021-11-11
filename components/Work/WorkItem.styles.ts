@@ -131,6 +131,11 @@ export const ButtonGroup = styled.div`
 
 export const Button = styled(StyledButton)`
   width: 49%;
+  ${props =>
+    !props.primary &&
+    css`
+      background-color: ${props => props.theme.colors.background.dark};
+    `}
 
   ${props => props.theme.media.sm} {
     font-size: 0.9rem;
