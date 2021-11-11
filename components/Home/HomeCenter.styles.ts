@@ -64,7 +64,12 @@ export const TextAndActionsContainer = styled.div`
 
   ${props => props.theme.media.md} {
     margin-top: -4vh;
-    background: linear-gradient(0deg, #161616, #1616163b 90%, transparent 100%);
+    background: linear-gradient(
+      0deg,
+      ${props => props.theme.colors.background.light},
+      ${props => props.theme.colors.background.light}3b 90%,
+      transparent 100%
+    );
   }
 `;
 
