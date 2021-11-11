@@ -52,5 +52,6 @@ declare module "styled-components" {
       justifyContent: string;
       alignItems: string;
     };
+    texture: string;
   }
 }
