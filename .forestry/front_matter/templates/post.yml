@@ -55,7 +55,6 @@ fields:
   description: Add <a href="https://carbon.now.sh/" title="Carbon" target="_blank">Carbon/</a>
     snippet images for this post here
 pages:
-- content/posts/discussingbacktothefuture.md
-- content/posts/somethingcleverhere.md
-- content/posts/speakingoutaboutpastlunches.md
+- content/posts/discussing-back-to-the-future.md
+- content/posts/something-clever-here.md
 - content/posts/update-esl-in-the-rok-teachers.md

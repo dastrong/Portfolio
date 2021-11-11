@@ -1,73 +1,26 @@
 ---
-date_publish: 08/23/2020
+date_publish: 08/26/2020
+date_update: 09/30/2020
 description: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt sit temporibus nisi distinctio.
 tags:
   - React
   - Express
   - MongoDB
-title: Something clever here
-show_post: false
+title: Discussing back to the future
+show_post: true
 code_snippets:
-  - "blog_samplesnippet.png"
-  - "blog_samplesnippet2.png"
+  - "/2020/08/24/carbon.svg"
 ---
 
 Lorem ipsum dolor sit amet.
 
 > _This is a_ blockquote. View all posts [here](/blog)
 
-<figure>
-    <div>
-        <img src='https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80' alt='alt here' title='title here' height="4480" width="6720" loading="lazy"  />
-    </div>
-    <figcaption>
-        <a href='https://unsplash.com/photos/wQLAGv4_OYs' target='_blank' rel='noopener'>Photo</a> by Lucas Benjamin
-    </figcaption>
-</figure>
-
 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti adipisci quia beatae architecto, unde doloremque at nisi pariatur eos eum.
 
-<div>
+![brackets here](blog_samplesnippet.png "title here")
 
-![brackets here](blog_samplesnippet.png "full 767px width example")
-
-```
-code example here
-next line
-    spaced next line
-```
-
-
-</div>
-
-Inline code example: `() => console.log(true)` Fancy.
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, placeat. Nulla ratione in enim voluptas voluptatem. Cumque, nobis doloribus molestiae aut at tenetur autem sint iusto quam, consequuntur, quo tempora. 
-
-<div>
-
-![brackets here](blog_samplesnippet2.png "shorter width example")
-
-```
-// string
-const str = 'string'
-
-const pluckDeep = (key) => (obj) =>
-  key.split('.').reduce((accum, key) => accum[key], obj)
-
-const compose = (...fns) => (res) =>
-  fns.reduce((accum, next) => next(accum), res)
-
-const unfold = (f, seed) => {
-  const go = (f, seed, acc) => {
-    const res = f(seed)
-    return res ? go(f, res[1], acc.concat([res[0]])) : acc
-  }
-  return go(f, seed, [])
-}
-```
-
-</div>
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, placeat. Nulla ratione in enim voluptas voluptatem. Cumque, nobis doloribus molestiae aut at tenetur autem sint iusto quam, consequuntur, quo tempora.
 
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni delectus laboriosam cum aspernatur ratione.
 

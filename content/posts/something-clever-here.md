@@ -1,31 +1,85 @@
 ---
-date_publish: 08/26/2020
-date_update: 09/30/2020
+date_publish: 08/23/2020
 description: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt sit temporibus nisi distinctio.
 tags:
   - React
   - Express
   - MongoDB
-title: Discussing back to the future
-show_post: false
+title: Something clever here
+show_post: true
 code_snippets:
-  - "/2020/08/24/carbon.svg"
+  - "blog_samplesnippet.png"
+  - "blog_samplesnippet2.png"
 ---
 
 Lorem ipsum dolor sit amet.
 
 > _This is a_ blockquote. View all posts [here](/blog)
 
+<!-- <figure>
+  <img 
+    src='https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80'
+    alt='alt'
+    title='title'
+  />
+  <figcaption>
+    <a href='https://unsplash.com/photos/wQLAGv4_OYs' target='_blank' rel='noopener'>Photo</a> by Lucas Benjamin
+  </figcaption>
+</figure> -->
+
 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti adipisci quia beatae architecto, unde doloremque at nisi pariatur eos eum.
 
-![brackets here](blog_samplesnippet.png "title here")
+![square bracket](https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80)
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, placeat. Nulla ratione in enim voluptas voluptatem. Cumque, nobis doloribus molestiae aut at tenetur autem sint iusto quam, consequuntur, quo tempora.
+```js
+function hello() {
+  return 'hi';
+}
+// this is a really really really long line of text that should force an overflow on the x-axis
+// next line
+    // spaced next line
+```
+
+Inline code example: `() => console.log(true)` Fancy.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, placeat. Nulla ratione in enim voluptas voluptatem. Cumque, nobis doloribus molestiae aut at tenetur autem sint iusto quam, consequuntur, quo tempora. 
+
+<!-- ![brackets here](blog_samplesnippet2.png "full 767px width example") -->
+
+```ts
+type Props = {
+  children: React.ReactNode;
+} 
+
+const str: string = 'string'
+
+const func = (props: Props) => undefined
+```
+
+```js
+// string
+const str = 'string'
+
+const pluckDeep = (key) => (obj) =>
+  key.split('.').reduce((accum, key) => accum[key], obj)
+
+const compose = (...fns) => (res) =>
+  fns.reduce((accum, next) => next(accum), res)
+
+const unfold = (f, seed) => {
+  const go = (f, seed, acc) => {
+    const res = f(seed)
+    return res ? go(f, res[1], acc.concat([res[0]])) : acc
+  }
+  return go(f, seed, [])
+}
+```
 
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni delectus laboriosam cum aspernatur ratione.
 
 # Basics of Markdown
 Markdown is the most popular markup language that can be used to format documents. It can be used to create *websites*,*ebooks*,*email*,*chats in discussions forums*.
+
 
 ## Topics
 1. Paragraphs 
@@ -52,6 +106,7 @@ Markdown is the most popular markup language that can be used to format document
     Lorem ipsum dolor sit amet consectetur adipisicing elit.
 
 4. Links
+
     [My Github](https://github.com/bhupendra1011 "all repos") account. [Bhupendra]() github repo.
 
 5. List Item 5
@@ -73,12 +128,18 @@ Markdown is the most popular markup language that can be used to format document
 
 7. Tables 
 
-    Tables can be generated with headings and text alignment option
+Tables can be generated with headings and text alignment option
 
-    |Stocks|Price|
-    |:-----:|:------:|
-    |TCS|230|
-    |YES Bank|500|
+|Stocks|Price|
+|:-----:|:------:|
+|TCS|230|
+|YES Bank|500|
+
+| Tables   |      Are      |  Cool |
+|----------|:-------------:|------:|
+| col 1 is |  left-aligned | $1600 |
+| col 2 is |    centered   |   $12 |
+| col 3 is | right-aligned |    $1 |
 
 Cool Tips 
 
