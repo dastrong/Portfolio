@@ -38,6 +38,6 @@ export const ContentStyles = css`
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
-    background-color: ${props => props.theme.colors.background.light};
+    background-color: ${props => props.theme.colors.background.light}00;
   }
 `;
