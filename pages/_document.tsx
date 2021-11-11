@@ -38,7 +38,10 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link rel="shortcut icon" href="/favicon.ico" />
+          <link
+            rel="shortcut icon"
+            href="https://res.cloudinary.com/dastrong/image/upload/c_scale,w_32/Portfolio/favicon.png"
+          />
           <link
             href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&family=Work+Sans:wght@500&display=swap"
             rel="stylesheet"
