@@ -15,7 +15,7 @@ const url = "https://www.danielstrong.tech";
 export default function PageHead({
   title,
   description,
-  image = "/favicon.png",
+  image = "https://res.cloudinary.com/dastrong/image/upload/Portfolio/favicon.png",
   imageAlt = "Daniel Strong",
 }: PageHeadProps) {
   const { asPath } = useRouter();
@@ -27,6 +27,10 @@ export default function PageHead({
     <Head>
       <title>{`${title ? title + " | " : ""}`} Daniel Strong</title>
       <meta name="description" content={description} />
+      <meta
+        name="google-site-verification"
+        content="lqEy-SYpFRPj_h-cShxJuEz1PrdnDfR9nWkjsOMm11g"
+      />
       <link rel="canonical" href={url} />
       <meta property="og:type" content={isBlogPost ? "article" : "website"} />
       <meta property="og:title" content={title} />
