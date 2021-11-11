@@ -13,6 +13,9 @@ const StyledContainer = styled.div`
   max-width: 600px;
   min-width: 300px;
   margin: 1.75rem auto;
+  padding: 1rem;
+  border-radius: ${props => props.theme.borderRadius}px;
+  background-color: ${props => props.theme.colors.background.main}85;
 `;
 
 const StyledTitle = styled.a`
@@ -52,13 +55,13 @@ const StyledDates = styled.div`
 `;
 
 const StyledDate = styled.span`
-  font-weight: 600;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-variant: petite-caps;
 `;
 
 const StyledSubtitle = styled.p`
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0.25rem;
   line-height: 1.5;
   color: ${props => props.theme.colors.text.light};
 
@@ -75,8 +78,7 @@ export const BlogCard = ({
 }: BlogTypes) => (
   <StyledContainer>
     <InterLink
-      href="/blog/[blogTitle]"
-      as={`/blog/${formatBlogTitle(title)}`}
+      href={`/blog/${formatBlogTitle(title)}`}
       StyledAnchor={StyledTitle}
     >
       {title}
@@ -100,8 +102,7 @@ export const BlogCard = ({
 export const WorkCard = ({ site_name, description }: WorkTypes) => (
   <StyledContainer>
     <InterLink
-      href="/work/[workName]"
-      as={`/work/${site_name.split(" ").join("").toLowerCase()}`}
+      href={`/work/${site_name.split(" ").join("").toLowerCase()}`}
       StyledAnchor={StyledTitle}
     >
       {site_name}
