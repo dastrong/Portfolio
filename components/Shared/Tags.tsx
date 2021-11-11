@@ -26,9 +26,10 @@ const StyledTagsContainer = styled.div<TagContainerType>`
 const StyledTag = styled.button<{ active?: boolean; small?: boolean }>`
   position: relative;
   border: 1px solid ${props => props.theme.colors.accent}75;
-  background-color: ${props => props.theme.colors.accent}0f;
+  background-color: ${props =>
+    props.theme.isDarkTheme ? "#22191f" : "#e9f4f9"};
   color: ${props => props.theme.colors.text.dark};
-  box-shadow: 1px 1px 1.5px ${props => props.theme.colors.accent};
+  box-shadow: 0px 1px 1px ${props => props.theme.colors.accent};
   cursor: pointer;
   transition-duration: 0.1s;
   transition-property: opacity, transform;
@@ -62,9 +63,9 @@ const StyledTag = styled.button<{ active?: boolean; small?: boolean }>`
 
   span {
     transform: translateY(0%);
-    font-weight: ${props => (props.active ? "bold" : "normal")};
     color: ${props => (props.active ? props.theme.colors.accent : "inherit")};
   }
+
   svg {
     position: absolute;
     opacity: 0;
@@ -72,22 +73,25 @@ const StyledTag = styled.button<{ active?: boolean; small?: boolean }>`
   }
 
   &:hover {
-    opacity: ${props => (props.active ? 1 : 0.8)};
-    transform: translate(0.5px, 0.5px);
-
     ${props =>
-      props.active &&
-      css`
-        span {
-          opacity: 0;
-          transform: translateY(150%);
-        }
+      props.active
+        ? css`
+            opacity: 1;
 
-        svg {
-          opacity: 1;
-          transform: translateY(0%);
-        }
-      `}
+            span {
+              opacity: 0;
+              transform: translateY(150%);
+            }
+
+            svg {
+              opacity: 1;
+              transform: translateY(0%);
+            }
+          `
+        : css`
+            opacity: 0.8;
+            transform: translateY(1px);
+          `}
   }
 `;
 
@@ -109,7 +113,7 @@ export default function Tags({
     const tagPath = `/tags?q=${tag}`;
 
     // if we click the same tag remove the query from the url
-    const newPath = router.asPath === tagPath ? "/tags" : tagPath;
+    const newPath = router.query.q === tag ? "/tags" : tagPath;
 
     // using shallow option to avoid re-running data fetching
     // will ignore shallow if routing to /tags from a different page
