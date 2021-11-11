@@ -17,12 +17,12 @@ yarn check-lint || yarn lint-staged ||
 	false; 
 )
 
-# # Check tsconfig standards
-# yarn check-types ||
-# (
-# 	echo 'Type Check Failed. Fix the required changes above.'
-# 	false;
-# )
+# Check tsconfig standards
+yarn check-types ||
+(
+	echo 'Type Check Failed. Fix the required changes above.'
+	false;
+)
 
 # If everything passes... Now we can commit
 echo '✅✅✅✅ Successful Commit ✅✅✅✅'
