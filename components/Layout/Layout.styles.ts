@@ -63,6 +63,7 @@ export default createGlobalStyle`
     overflow-x: hidden;
     background-color: ${props => props.theme.colors.background.light};
     color: ${props => props.theme.colors.text.main};
+    background-image: url(${props => `"${props.theme.texture}"`});
   }
 
   body, 

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AppProps } from "next/app";
 import { ThemeProvider } from "styled-components";
 
-import { theme, darkColors, lightColors } from "../utils";
+import { theme, darkColors, lightColors, textures } from "../utils";
 import Layout from "components/Layout";
 import "focus-visible";
 import "intersection-observer";
@@ -22,6 +22,7 @@ export default function App({ Component, pageProps }: AppProps) {
       text: isDarkTheme ? lightColors : darkColors,
       accent: isDarkTheme ? theme.colors.pink : theme.colors.blue,
     },
+    texture: isDarkTheme ? textures.dark : textures.light,
   };
 
   return (
