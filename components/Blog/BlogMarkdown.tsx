@@ -1,164 +1,198 @@
 import React, { ReactNode, useEffect, useState } from "react";
-import ReactMarkdown from "react-markdown";
-import styled, { useTheme } from "styled-components";
-import { Img } from "react-optimized-image";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { FaCheck, FaCopy } from "react-icons/fa";
+import ReactMarkdown, { Components } from "react-markdown";
+import { PluggableList } from "react-markdown/lib/react-markdown";
+import rehypeRaw from "rehype-raw";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import remarkGfm from "remark-gfm";
+import { PrismAsyncLight as SyntaxHighlighter } from "react-syntax-highlighter";
+import { synthwave84 } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
-import OptimizedImage, { HQstyles } from "components/Shared/OptimizedImage";
 import InterLink from "components/Shared/Links";
-import { StyledParagraph } from "components/Shared/StyledParagraph";
-import BlogMarkdownSnippet from "./BlogMarkdownSnippet";
 import * as Styled from "./BlogMarkdown.styles";
 
-const StyledImage = styled(Img)`
-  ${HQstyles}
-`;
+const rehypePlugins = [
+  rehypeRaw,
+  rehypeSlug,
+  [
+    rehypeAutolinkHeadings,
+    {
+      behavior: "wrap",
+      properties: { className: "heading-link" },
+    },
+  ],
+];
 
-const MarkdownHeading = (props: { children: ReactNode; level: number }) => (
-  <Styled.Heading
-    {...props}
-    incrementer={0.3}
-    level={props.level}
-    as={`h${props.level}` as never}
-  />
-);
-
-// pass the src from markdown and the custom css styles
-const MarkdownImage = ({
-  src,
-  alt,
-  title,
-}: {
-  src: string;
-  alt: string;
-  title: string;
-}) => {
-  const isHttpImage = src.startsWith("http");
-
-  return isHttpImage ? (
-    <Styled.ImageHttp src={src} alt={alt} title={title} loading="lazy" />
-  ) : (
-    <OptimizedImage
-      imgFile={src}
-      alt={alt}
-      title={title}
-      containerStyles={Styled.Image}
-    >
-      <StyledImage webp src={require(`images/blog_${src.substring(5)}`)} />
-    </OptimizedImage>
-  );
-};
-
-const MarkdownList = (props: { children: ReactNode; ordered: boolean }) => (
-  <Styled.List {...props} as={props.ordered ? "ol" : "ul"} />
-);
-
-// need to render a div instead of p - re: invalid markup
-const MarkdownParagraph = (props: { children: ReactNode }) => {
-  const elProps = props.children[0].props;
-  const elPropKeys = Object.keys(elProps);
-  const imageProps = ["src", "alt"];
-  const isImage = imageProps.every(imgProp => elPropKeys.includes(imgProp));
-  const isHttpImage = isImage && elProps.src.startsWith("http");
-
-  return isImage && !isHttpImage ? (
-    <BlogMarkdownSnippet {...props} />
-  ) : (
-    <StyledParagraph {...props} />
-  );
-};
-
-const MarkdownLink = (props: { children: ReactNode; href: string }) =>
-  props.href.startsWith("/") ? (
-    <InterLink {...props} StyledAnchor={Styled.Link} />
-  ) : (
-    <Styled.Link {...props} />
-  );
+const remarkPlugins = [remarkGfm];
 
 const MarkdownCodeBlock = (props: { children: ReactNode; value: string }) => {
   const [isCopied, setIsCopied] = useState(false);
 
   useEffect(() => {
-    let id: number;
+    let id: NodeJS.Timeout;
 
-    if (isCopied) {
-      id = setTimeout(() => setIsCopied(false), 5000);
-    }
+    if (isCopied) id = setTimeout(() => setIsCopied(false), 3000);
 
     return () => clearTimeout(id);
   }, [isCopied]);
 
   return (
-    <CopyToClipboard text={props.value} onCopy={() => setIsCopied(true)}>
-      <Styled.CodeBlockCopy isCopied={isCopied} title="Copy Code Block">
-        {isCopied ? <FaCheck color="#f8e81c" /> : <FaCopy />}
-        <span>Copied</span>
-      </Styled.CodeBlockCopy>
-    </CopyToClipboard>
+    <>
+      <CopyToClipboard text={props.value} onCopy={() => setIsCopied(true)}>
+        <Styled.CodeBlockCopy isCopied={isCopied} title="Copy Code Block">
+          {isCopied ? <FaCheck /> : <FaCopy />}
+          <span>Copied</span>
+        </Styled.CodeBlockCopy>
+      </CopyToClipboard>
+      {props.children}
+    </>
   );
 };
 
-const renderers = {
-  heading: MarkdownHeading,
-  image: MarkdownImage,
-  list: MarkdownList,
-  paragraph: MarkdownParagraph,
-  blockquote: Styled.Blockquote,
-  link: MarkdownLink,
-  listItem: Styled.ListItem,
-  table: Styled.Table,
-  inlineCode: Styled.InlineCode,
-  code: MarkdownCodeBlock,
+const components: Components = {
+  h1: props => (
+    <Styled.Heading level={1} as="h1">
+      {props.children}
+    </Styled.Heading>
+  ),
+  h2: props => (
+    <Styled.Heading level={2} as="h2">
+      {props.children}
+    </Styled.Heading>
+  ),
+  h3: props => (
+    <Styled.Heading level={3} as="h3">
+      {props.children}
+    </Styled.Heading>
+  ),
+  h4: props => (
+    <Styled.Heading level={4} as="h4">
+      {props.children}
+    </Styled.Heading>
+  ),
+  h5: props => (
+    <Styled.Heading level={5} as="h5">
+      {props.children}
+    </Styled.Heading>
+  ),
+  h6: props => (
+    <Styled.Heading level={6} as="h6">
+      {props.children}
+    </Styled.Heading>
+  ),
+  p: props => {
+    const firstChild = props.children[0] as { type?: { name?: string } };
+    return firstChild?.type?.name === "img" ? (
+      <Styled.ImageWrapper>{props.children}</Styled.ImageWrapper>
+    ) : (
+      <Styled.Paragraph>{props.children}</Styled.Paragraph>
+    );
+  },
+  blockquote: props => <Styled.Blockquote>{props.children}</Styled.Blockquote>,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  a: ({ node, ref, ...props }) => {
+    // this anchor is within a heading, pass a regular anchor tag
+    if (props.className === "heading-link") return <a {...props} />;
+    // any other external links will get a styled anchor tag
+    if (!props.href.startsWith("/")) return <Styled.Link {...props} />;
+    // internal link, use Next Link tag
+    return (
+      <InterLink
+        {...props}
+        href={props.href || ""}
+        StyledAnchor={Styled.Link}
+      />
+    );
+  },
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  code({ node, ref, inline, className, children, ...props }) {
+    const match = /language-(\w+)/.exec(className || "");
+    const child = String(children);
+    const language = match && match[1];
+    return !inline && match ? (
+      <MarkdownCodeBlock value={child}>
+        <SyntaxHighlighter
+          {...props}
+          showLineNumbers
+          PreTag="div"
+          style={synthwave84}
+          language={language}
+          customStyle={{
+            fontSize: "0.9em",
+            borderRadius: "1rem",
+            margin: 0,
+            position: "relative",
+          }}
+          codeTagProps={
+            {
+              ["data-language"]: language,
+            } as React.HTMLProps<HTMLElement>
+          }
+          lineNumberStyle={{ minWidth: "2.25em" }}
+        >
+          {child.replace(/\n$/, "")}
+        </SyntaxHighlighter>
+      </MarkdownCodeBlock>
+    ) : (
+      <Styled.InlineCode className={className}>{children}</Styled.InlineCode>
+    );
+  },
+  ul: ({ children }) => <Styled.List as="ul">{children}</Styled.List>,
+  ol: ({ children }) => <Styled.List as="ol">{children}</Styled.List>,
+  li: ({ children }) => <Styled.ListItem>{children}</Styled.ListItem>,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  img: ({ node, ref, ...props }) => {
+    return props.src.startsWith("http") ? (
+      <Styled.ImageHttp {...props} loading="lazy" />
+    ) : (
+      <Styled.Image
+        src={`Portfolio/${props.src}`}
+        alt="Daniel Strong"
+        title={props.title}
+        layout="fill"
+        objectFit="contain"
+        objectPosition="center top"
+        sizes="(max-width: 650px) 100vw, 600px"
+        placeholder="blur"
+        blurDataURL={`https://res.cloudinary.com/dastrong/image/upload/c_scale,f_auto,w_50/Portfolio/${props.src}`}
+      />
+    );
+  },
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  table: ({ node, ref, ...props }) => <Styled.Table {...props} />,
 };
 
 export default function StyledMarkdown({ content }: { content: string }) {
-  const { colors } = useTheme();
-
   return (
     <Styled.Wrapper as="article">
       <ReactMarkdown
-        escapeHtml={false}
         skipHtml={false}
-        source={content}
-        renderers={renderers}
-      />
+        components={components}
+        remarkPlugins={remarkPlugins}
+        rehypePlugins={rehypePlugins as PluggableList}
+      >
+        {content}
+      </ReactMarkdown>
 
-      {/* Need to add styling for the html snippets in markdown */}
+      {/* Need to add styling for header links */}
       <style jsx global>
         {`
+          article .heading-link {
+            font-family: inherit;
+            font-weight: inherit;
+          }
+
+          article .heading-link:hover::after {
+            content: "🔗";
+            font-size: 0.5em;
+            margin-inline-start: 0.3rem;
+            vertical-align: middle;
+          }
+
           article figure {
-            margin: 0.75rem auto;
-          }
-
-          @keyframes shimmer {
-            0% {
-              background-position: -600px 0;
-            }
-            100% {
-              background-position: 600px 0;
-            }
-          }
-
-          article figure div {
-            margin: 0 auto;
-            width: fit-content;
-            animation: shimmer 2s infinite;
-            background: linear-gradient(
-              to right,
-              #272822 0%,
-              ${colors.pink}15 17%,
-              #272822 42%
-            );
-            background-color: #272822;
-            background-size: 600px 43%;
-          }
-
-          article figure div img {
-            max-width: 100%;
-            height: auto;
-            margin: 0 auto;
-            display: block;
+            margin: 1.25rem auto;
           }
 
           article figure figcaption {
@@ -167,21 +201,19 @@ export default function StyledMarkdown({ content }: { content: string }) {
             text-align: center;
           }
 
-          article figure figcaption a {
-            ${Styled.LinkStyles}
-          }
-
-          article figure figcaption a:after {
-            background-color: ${colors.accent};
-            ${Styled.LinkAfterStyles}
-          }
-
-          // allows me to position a copy icon neatly in code image snippets
-          article > div:not([class]) {
+          article pre {
             position: relative;
-            width: fit-content;
-            max-width: 100%;
-            margin: 0 auto;
+            margin: 1rem auto 1.5rem;
+            overflow: hidden;
+          }
+
+          article pre code:after {
+            content: attr(data-language) " ";
+            position: absolute;
+            bottom: 0.75rem;
+            right: 0.5rem;
+            font-size: 0.75rem;
+            opacity: 0.7;
           }
         `}
       </style>
