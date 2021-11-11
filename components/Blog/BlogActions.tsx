@@ -6,6 +6,7 @@ import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
 import InterLink from "components/Shared/Links";
 import { BlogIntersectionOptions } from "./BlogIntersectionOptions";
 import * as Styled from "./BlogActions.styles";
+import { formatBlogTitle } from "utils";
 
 const StyledLeftArrow = styled(FaArrowCircleLeft)`
   ${Styled.Arrow}
@@ -30,8 +31,7 @@ export default function BlogActions({
     <Styled.Container ref={ref}>
       {previousPostTitle && (
         <InterLink
-          href="/blog/[blogTitle]"
-          as={"/blog/" + previousPostTitle.split(" ").join("").toLowerCase()}
+          href={`/blog/${formatBlogTitle(previousPostTitle)}`}
           StyledAnchor={Styled.Link}
           inView={inView}
           direction="toLeft"
@@ -47,8 +47,7 @@ export default function BlogActions({
 
       {nextPostTitle && (
         <InterLink
-          href="/blog/[blogTitle]"
-          as={"/blog/" + nextPostTitle.split(" ").join("").toLowerCase()}
+          href={`/blog/${formatBlogTitle(nextPostTitle)}`}
           StyledAnchor={Styled.Link}
           inView={inView}
           direction="toRight"
