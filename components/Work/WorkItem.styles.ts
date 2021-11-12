@@ -134,7 +134,7 @@ export const Button = styled(StyledButton)`
   ${props =>
     !props.primary &&
     css`
-      background-color: ${props => props.theme.colors.background.dark};
+      background-color: ${props => props.theme.colors.background.main};
     `}
 
   ${props => props.theme.media.sm} {
