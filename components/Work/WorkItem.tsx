@@ -62,8 +62,7 @@ export default function WorkItem({
 
         <Styled.ButtonGroup>
           <InterLink
-            href="/work/[workName]"
-            as={`/work/${routeName}`}
+            href={`/work/${routeName}`}
             StyledAnchor={Styled.Button}
             primary
           >
