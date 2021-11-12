@@ -50,6 +50,7 @@ export default function ViewWork({
             primary
             href={links.live}
             target="_blank"
+            rel="noopener"
             inView={inViewButtons}
             direction="toRight"
           >
@@ -60,6 +61,7 @@ export default function ViewWork({
             <Styled.Button
               href={links.github}
               target="_blank"
+              rel="noopener"
               inView={inViewButtons}
               direction="toLeft"
             >

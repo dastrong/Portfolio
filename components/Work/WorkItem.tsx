@@ -48,7 +48,11 @@ export default function WorkItem({
           <Styled.Title>
             {site_name}
 
-            <Styled.ExternalLink href={links.live} target="_blank">
+            <Styled.ExternalLink
+              href={links.live}
+              target="_blank"
+              rel="noopener"
+            >
               <FaExternalLinkAlt size="17" />
             </Styled.ExternalLink>
           </Styled.Title>
@@ -66,7 +70,7 @@ export default function WorkItem({
             Read More
           </InterLink>
           {links.github ? (
-            <Styled.Button href={links.github} target="_blank">
+            <Styled.Button href={links.github} target="_blank" rel="noopener">
               View Source
             </Styled.Button>
           ) : (
