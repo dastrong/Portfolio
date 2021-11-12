@@ -37,7 +37,7 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head>
+        <Head lang="en">
           <link
             rel="shortcut icon"
             href="https://res.cloudinary.com/dastrong/image/upload/c_scale,w_32/Portfolio/favicon.png"
