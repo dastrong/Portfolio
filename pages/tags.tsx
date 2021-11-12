@@ -14,7 +14,7 @@ import { StyledHeader } from "components/Shared/StyledHeader";
 import { WorkTypes } from "components/Work/WorkTypes";
 import { BlogTypes } from "components/Blog/BlogTypes";
 
-const StyledTypeHeader = styled.h3`
+const StyledTypeHeader = styled.h2`
   margin: 3.5rem auto 0;
   font-size: ${props => props.theme.fontSize.lg};
   text-align: center;
