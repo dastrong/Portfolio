@@ -10,12 +10,13 @@ export default function LinkSocial() {
       containerStyles={Styled.SocialContainer}
       contentStyles={Styled.ContentContainer}
     >
-      {externalLinks.map(({ SquareIcon, href }) => (
+      {externalLinks.map(({ SquareIcon, href, text }) => (
         <Styled.SocialIcon
           key={href}
           href={href}
           target="_blank"
           rel="noopener"
+          aria-label={text}
         >
           <SquareIcon size="30" />
         </Styled.SocialIcon>

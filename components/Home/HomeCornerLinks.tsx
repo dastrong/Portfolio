@@ -107,11 +107,15 @@ export default function HomeCornerLinks() {
         }}
       >
         <Styled.BottomRightContainer>
-          <InterLink href="/contact" StyledAnchor={StyledLinkIcon}>
+          <InterLink
+            href="/contact"
+            StyledAnchor={StyledLinkIcon}
+            aria-label="Contact Us"
+          >
             <FaEnvelope size={iconSize} />
           </InterLink>
-          {externalLinks.map(({ href, RegIcon }) => (
-            <StyledLinkIcon href={href} key={href}>
+          {externalLinks.map(({ href, RegIcon, text }) => (
+            <StyledLinkIcon href={href} key={href} aria-label={text}>
               <RegIcon size={iconSize} />
             </StyledLinkIcon>
           ))}

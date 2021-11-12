@@ -18,7 +18,7 @@ export default function NavLogoMobile() {
   const { isDarkTheme, colors } = useTheme();
 
   return (
-    <InterLink href="/" StyledAnchor={StyledAnchor}>
+    <InterLink href="/" StyledAnchor={StyledAnchor} aria-label="Home">
       <svg viewBox="0 0 452 234" xmlns="http://www.w3.org/2000/svg">
         <MoonSun
           fillRule="evenodd"

@@ -51,6 +51,7 @@ export default function Nav() {
               if (![" ", "Enter"].includes(e.key)) return;
               toggleMenu();
             }}
+            aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
           >
             {isMenuOpen ? (
               <FaTimes size={iconSize} color={colors.pink} />

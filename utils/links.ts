@@ -22,7 +22,7 @@ export const externalLinks = [
     RegIcon: FaGithub,
   },
   {
-    text: "Linked",
+    text: "LinkedIn",
     href: "https://www.linkedin.com/in/daniel-strong-tech",
     SquareIcon: FaLinkedin,
     RegIcon: FaLinkedinIn,

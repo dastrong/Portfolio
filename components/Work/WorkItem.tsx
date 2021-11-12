@@ -52,6 +52,7 @@ export default function WorkItem({
               href={links.live}
               target="_blank"
               rel="noopener"
+              aria-label={`Visit ${site_name}`}
             >
               <FaExternalLinkAlt size="17" />
             </Styled.ExternalLink>
@@ -62,18 +63,28 @@ export default function WorkItem({
 
         <Styled.ButtonGroup>
           <InterLink
+            primary
             href={`/work/${routeName}`}
             StyledAnchor={Styled.Button}
-            primary
+            aria-label={`More ${site_name} Info`}
           >
             Read More
           </InterLink>
           {links.github ? (
-            <Styled.Button href={links.github} target="_blank" rel="noopener">
+            <Styled.Button
+              href={links.github}
+              target="_blank"
+              rel="noopener"
+              aria-label={`${site_name} GitHub Repository`}
+            >
               View Source
             </Styled.Button>
           ) : (
-            <InterLink href="/contact" StyledAnchor={Styled.Button}>
+            <InterLink
+              href="/contact"
+              StyledAnchor={Styled.Button}
+              aria-label={`${site_name} Source Code Inquiry`}
+            >
               Source Inquiry
             </InterLink>
           )}

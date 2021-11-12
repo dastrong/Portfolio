@@ -6,7 +6,7 @@ export default function NavLogoMain() {
   const { colors } = useTheme();
 
   return (
-    <InterLink href="/">
+    <InterLink href="/" aria-label="Home">
       <svg
         width="141"
         height="45"

@@ -10,7 +10,7 @@ export default function FooterIcon() {
   const { colors } = useTheme();
 
   return (
-    <InterLink href="/" StyledAnchor={StyledAnchor}>
+    <InterLink href="/" StyledAnchor={StyledAnchor} aria-label="Home">
       <svg
         width="90"
         height="90"
