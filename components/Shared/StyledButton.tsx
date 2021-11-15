@@ -21,6 +21,7 @@ export const StyledButton = styled.a<{ primary?: boolean }>`
           background-color: ${theme.colors.blue};
           color: #fff;
           font-weight: 300;
+          text-shadow: 0rem 0rem 0.75rem ${theme.colors.background.main};
         `
       : css`
           border: 2px solid ${theme.colors.pink};
