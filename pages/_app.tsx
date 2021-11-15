@@ -5,7 +5,6 @@ import { ThemeProvider } from "styled-components";
 import { theme, darkColors, lightColors, textures } from "../utils";
 import Layout from "components/Layout";
 import "focus-visible";
-import "intersection-observer";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [isDarkTheme, setTheme] = useState(true);
