@@ -6,7 +6,7 @@ import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
 import InterLink from "components/Shared/Links";
 import { BlogIntersectionOptions } from "./BlogIntersectionOptions";
 import * as Styled from "./BlogActions.styles";
-import { formatBlogTitle } from "utils";
+import { formatBlogTitle } from "utils/formatBlogTitle";
 
 const StyledLeftArrow = styled(FaArrowCircleLeft)`
   ${Styled.Arrow}

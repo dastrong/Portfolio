@@ -4,7 +4,7 @@ import { FaEnvelope } from "react-icons/fa";
 
 import InterLink from "components/Shared/Links";
 import { StyledLinkIcon } from "components/Shared/StyledLinkIcon";
-import { externalLinks } from "utils";
+import { externalLinks } from "utils/links";
 
 import * as Styled from "./HomeCornerLinks.styles";
 import { blendColors } from "./_blendColors";

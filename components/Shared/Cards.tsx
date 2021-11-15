@@ -6,7 +6,8 @@ import { BiCalendar, BiCalendarEdit } from "react-icons/bi";
 import InterLink from "components/Shared/Links";
 import { BlogTypes } from "components/Blog/BlogTypes";
 import { WorkTypes } from "components/Work/WorkTypes";
-import { formatBlogTitle, formatDate } from "utils";
+import { formatBlogTitle } from "utils/formatBlogTitle";
+import { formatDate } from "utils/formatDate";
 
 const StyledContainer = styled.div`
   width: 90%;

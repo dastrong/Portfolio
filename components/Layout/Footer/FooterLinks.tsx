@@ -1,5 +1,5 @@
 import React from "react";
-import { internalLinks } from "utils";
+import { internalLinks } from "utils/links";
 import InterLink from "components/Shared/Links";
 import * as Styled from "./FooterLinks.styles";
 

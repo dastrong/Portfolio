@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AppProps } from "next/app";
 import { ThemeProvider } from "styled-components";
 
-import { theme, darkColors, lightColors, textures } from "../utils";
+import { theme, darkColors, lightColors, textures } from "utils/theme";
 import Layout from "components/Layout";
 import "focus-visible";
 

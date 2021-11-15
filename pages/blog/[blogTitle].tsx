@@ -5,7 +5,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import matter from "gray-matter";
 import styled, { css } from "styled-components";
 
-import { formatDate } from "utils";
+import { formatDate } from "utils/formatDate";
 import PageHead from "components/Shared/PageHead";
 import Tags from "components/Shared/Tags";
 import { StyledHeader } from "components/Shared/StyledHeader";
