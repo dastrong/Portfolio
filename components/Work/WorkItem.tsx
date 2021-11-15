@@ -66,7 +66,7 @@ export default function WorkItem({
             primary
             href={`/work/${routeName}`}
             StyledAnchor={Styled.Button}
-            aria-label={`More ${site_name} Info`}
+            aria-label={`Further ${site_name} Information`}
           >
             Read More
           </InterLink>
