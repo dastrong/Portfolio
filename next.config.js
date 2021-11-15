@@ -4,6 +4,13 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 });
 
 module.exports = withBundleAnalyzer({
+  redirects: async () => [
+    {
+      source: "/admin",
+      destination: "https://app.forestry.io/login",
+      permanent: false,
+    },
+  ],
   images: {
     loader: "cloudinary",
     path: "https://res.cloudinary.com/dastrong/image/upload",
