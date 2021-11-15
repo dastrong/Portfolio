@@ -14,10 +14,10 @@ import BlogActions from "components/Blog/BlogActions";
 import BlogInfo from "components/Blog/BlogInfo";
 import { Blockquote } from "components/Blog/BlogMarkdown.styles";
 import { BlogTypes } from "components/Blog/BlogTypes";
-import BlogShare from "components/Blog/BlogShare";
+import BlogMarkdown from "components/Blog/BlogMarkdown";
 
 import dynamic from "next/dynamic";
-const BlogMarkdown = dynamic(() => import("components/Blog/BlogMarkdown"));
+const BlogShare = dynamic(() => import("components/Blog/BlogShare"));
 
 const StyledTags = css`
   margin-top: 0.5rem;
