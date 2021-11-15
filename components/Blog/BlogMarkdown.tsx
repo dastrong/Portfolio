@@ -7,7 +7,7 @@ import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkGfm from "remark-gfm";
 import { PrismAsyncLight as SyntaxHighlighter } from "react-syntax-highlighter";
-import { synthwave84 } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import synthwave84 from "react-syntax-highlighter/dist/cjs/styles/prism/synthwave84";
 
 import InterLink from "components/Shared/Links";
 import * as Styled from "./BlogMarkdown.styles";
