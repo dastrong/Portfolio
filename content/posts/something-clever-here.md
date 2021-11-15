@@ -16,20 +16,10 @@ Lorem ipsum dolor sit amet.
 
 > _This is a_ blockquote. View all posts [here](/blog)
 
-<!-- <figure>
-  <img 
-    src='https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80'
-    alt='alt'
-    title='title'
-  />
-  <figcaption>
-    <a href='https://unsplash.com/photos/wQLAGv4_OYs' target='_blank' rel='noopener'>Photo</a> by Lucas Benjamin
-  </figcaption>
-</figure> -->
-
 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti adipisci quia beatae architecto, unde doloremque at nisi pariatur eos eum.
 
 ![square bracket](https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80)
+[Photo](https://unsplash.com/photos/wQLAGv4_OYs) by Lucas Benjamin
 
 ```js
 function hello() {
@@ -44,7 +34,7 @@ Inline code example: `() => console.log(true)` Fancy.
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, placeat. Nulla ratione in enim voluptas voluptatem. Cumque, nobis doloribus molestiae aut at tenetur autem sint iusto quam, consequuntur, quo tempora. 
 
-<!-- ![brackets here](blog_samplesnippet2.png "full 767px width example") -->
+### TS Code Block
 
 ```ts
 type Props = {
@@ -56,7 +46,42 @@ const str: string = 'string'
 const func = (props: Props) => undefined
 ```
 
+### Typescript Code Block
+
+```typescript
+type Props = {
+  children: React.ReactNode;
+} 
+
+const str: string = 'string'
+
+const func = (props: Props) => undefined
+```
+
+### JS Code Block
+
 ```js
+// string
+const str = 'string'
+
+const pluckDeep = (key) => (obj) =>
+  key.split('.').reduce((accum, key) => accum[key], obj)
+
+const compose = (...fns) => (res) =>
+  fns.reduce((accum, next) => next(accum), res)
+
+const unfold = (f, seed) => {
+  const go = (f, seed, acc) => {
+    const res = f(seed)
+    return res ? go(f, res[1], acc.concat([res[0]])) : acc
+  }
+  return go(f, seed, [])
+}
+```
+
+### Javascript Code Block
+
+```javascript
 // string
 const str = 'string'
 
