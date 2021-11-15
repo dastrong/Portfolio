@@ -3,7 +3,7 @@ node_modules
 
 // this will be created at build time
 blogposts.json
-tsconfig.tsbuildinfo
-lighthouse
+
+/reports
 /public/robots.txt
 /public/sitemap.xml

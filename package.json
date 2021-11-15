@@ -15,7 +15,7 @@
     "check-format": "prettier --check components/**/* pages/**/* utils/**/* hooks/**/*",
     "check-lint": "eslint . --ext ts --ext tsx --ext js",
     "check-types": "tsc --pretty --noEmit",
-    "lighthouse-setup": "lighthouse-batch -o ./lighthouse/report --no-report -h",
+    "lighthouse-setup": "lighthouse-batch -o ./reports/lighthouse --no-report -h",
     "check-lighthouse-mobile": "yarn lighthouse-setup -p \"--view\"",
     "check-lighthouse-desktop": "yarn lighthouse-setup -p \"--view --preset=desktop\""
   },
