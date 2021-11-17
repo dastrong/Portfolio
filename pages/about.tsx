@@ -14,12 +14,10 @@ export default function About({
   image,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <>
-      <PageHead
-        title="About Me"
-        description="Learn more about the man behind Daniel Strong Tech."
-      />
-
+    <PageHead
+      title="About Me"
+      description="Learn more about the man behind Daniel Strong Tech."
+    >
       <StyledHeader underlined>About Me</StyledHeader>
 
       <Styled.Container>
@@ -47,7 +45,7 @@ export default function About({
           </ReactMarkdown>
         </Styled.TextContainer>
       </Styled.Container>
-    </>
+    </PageHead>
   );
 }
 

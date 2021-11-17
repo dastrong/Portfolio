@@ -44,9 +44,7 @@ export default function ViewBlog({
   const { date_publish, date_update, tags, title } = data;
 
   return (
-    <>
-      <PageHead title={`${title} | Blog`} description={data.description} />
-
+    <PageHead title={`${title} | Blog`} description={data.description}>
       <StyledHeader>{title}</StyledHeader>
 
       <BlogInfo date={date_publish} />
@@ -69,7 +67,7 @@ export default function ViewBlog({
       />
 
       <BlogShare />
-    </>
+    </PageHead>
   );
 }
 

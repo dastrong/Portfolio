@@ -52,12 +52,10 @@ export default function TagsPage({
   );
 
   return (
-    <>
-      <PageHead
-        title={currentTag ? `Tag: ${currentTag}` : `Tags`}
-        description="Filter my work or blog posts by a technology used or another available tag."
-      />
-
+    <PageHead
+      title={currentTag ? `Tag: ${currentTag}` : `Tags`}
+      description="Filter my work or blog posts by a technology used or another available tag."
+    >
       <StyledHeader underlined>Tags</StyledHeader>
 
       <Tags tags={tags} currentTag={currentTag} />
@@ -77,7 +75,7 @@ export default function TagsPage({
       ) : (
         workList.map(work => <WorkCard key={work.site_name} {...work} />)
       )}
-    </>
+    </PageHead>
   );
 }
 

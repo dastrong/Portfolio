@@ -16,12 +16,10 @@ export default function Work({
   works: WorkTypes[] & { routeName: string };
 }) {
   return (
-    <>
-      <PageHead
-        title="My Work"
-        description="Check out some of my past work for clients and personal projects."
-      />
-
+    <PageHead
+      title="My Work"
+      description="Check out some of my past work for clients and personal projects."
+    >
       <StyledHeader underlined>My Work</StyledHeader>
 
       <Styled.PageContainer>
@@ -29,7 +27,7 @@ export default function Work({
           <WorkItem key={work.site_name} {...work} priority={!i} />
         ))}
       </Styled.PageContainer>
-    </>
+    </PageHead>
   );
 }
 

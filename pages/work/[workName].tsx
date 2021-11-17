@@ -27,9 +27,7 @@ export default function ViewWork({
   const [refText, inViewText] = useEnterAnimation();
 
   return (
-    <>
-      <PageHead title={`${site_name} | Work`} description={description} />
-
+    <PageHead title={`${site_name} | Work`} description={description}>
       <StyledHeader underlined>{site_name}</StyledHeader>
 
       <Styled.PageContainer>
@@ -96,7 +94,7 @@ export default function ViewWork({
 
         <Tags tags={tech_used} addContainerStyles={Styled.TagContainerStyles} />
       </Styled.PageContainer>
-    </>
+    </PageHead>
   );
 }
 

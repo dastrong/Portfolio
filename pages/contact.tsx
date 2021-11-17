@@ -24,19 +24,17 @@ export default function Contact({
   data,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <>
-      <PageHead
-        title="Contact"
-        description="Reach out to learn how I can help you, your team or company."
-      />
-
+    <PageHead
+      title="Contact"
+      description="Reach out to learn how I can help you, your team or company."
+    >
       <StyledHeader underlined>Contact Me</StyledHeader>
 
       <PageContainer>
         <ContactForm />
         <ContactInfo {...data} />
       </PageContainer>
-    </>
+    </PageHead>
   );
 }
 
