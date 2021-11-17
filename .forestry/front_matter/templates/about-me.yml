@@ -2,7 +2,7 @@
 label: About Me
 hide_body: false
 fields:
-- name: file
+- name: img_file
   type: file
   config:
     maxSize: 64

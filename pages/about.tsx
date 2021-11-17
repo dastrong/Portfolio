@@ -26,7 +26,7 @@ export default function About({
         <Styled.ImageWrapper>
           <Image
             priority
-            src={image.file}
+            src={image.img_file}
             alt="Daniel Strong"
             height={image.height}
             width={image.width}
@@ -58,11 +58,11 @@ export const getStaticProps = async () => {
   const {
     base64,
     img: { width, height },
-  } = await getPlaiceholder(process.env.CLOUD_URL + data.file);
+  } = await getPlaiceholder(process.env.CLOUD_URL + data.img_file);
 
   return {
     props: {
-      image: { base64, height, width, file: data.file as string },
+      image: { base64, height, width, img_file: data.img_file as string },
       content,
     },
   };
