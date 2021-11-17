@@ -1,5 +1,5 @@
 import React from "react";
-import { GetStaticProps } from "next";
+import type { InferGetStaticPropsType } from "next";
 import styled from "styled-components";
 import matter from "gray-matter";
 
@@ -20,7 +20,9 @@ const PageContainer = styled.div`
   max-width: ${props => props.theme.width.md}px;
 `;
 
-export default function Contact({ data }: { data: ContactTypes }) {
+export default function Contact({
+  data,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
       <PageHead
@@ -38,8 +40,13 @@ export default function Contact({ data }: { data: ContactTypes }) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps = async () => {
   const mark = await import("content/pages/contact.md");
   const { data } = matter(mark.default);
-  return { props: { data } };
+
+  return {
+    props: {
+      data: data as ContactTypes,
+    },
+  };
 };
