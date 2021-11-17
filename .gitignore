@@ -6,5 +6,6 @@ node_modules
 blogposts.json
 
 /reports
+urls.txt
 /public/robots.txt
 /public/sitemap.xml
