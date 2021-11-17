@@ -2,10 +2,10 @@
 label: About Me
 hide_body: false
 fields:
-- name: image
+- name: file
   type: file
   config:
     maxSize: 64
-  label: Image
+  label: Image File
 pages:
 - content/pages/about.md

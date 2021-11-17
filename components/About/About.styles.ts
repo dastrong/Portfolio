@@ -1,4 +1,3 @@
-import { default as NextImage } from "next/image";
 import styled from "styled-components";
 import { StyledTextContainer } from "components/Shared/StyledTextContainer";
 
@@ -47,13 +46,13 @@ export const ImageWrapper = styled.div`
     0px 0px 0px 3px ${props => props.theme.colors.accent} inset;
   border: 3px solid ${props => props.theme.colors.accent};
 
+  * {
+    border-radius: inherit;
+  }
+
   ${props => props.theme.media.sm} {
     min-width: 250px;
   }
-`;
-
-export const Image = styled(NextImage)`
-  border-radius: 155px;
 `;
 
 export const Text = styled.p`
