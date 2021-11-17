@@ -13,7 +13,7 @@ import { StyledHeader } from "components/Shared/StyledHeader";
 import { StyledParagraph } from "components/Shared/StyledParagraph";
 import useEnterAnimation from "hooks/useEnterAnimation";
 
-import { WorkTypes } from "components/Work/WorkTypes";
+import type { WorkTypes } from "components/Work/Work.types";
 import * as Styled from "components/Work/WorkNamePage.styles";
 
 export default function ViewWork({

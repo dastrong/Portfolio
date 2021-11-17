@@ -4,8 +4,8 @@ import styled from "styled-components";
 import { BiCalendar, BiCalendarEdit } from "react-icons/bi";
 
 import InterLink from "components/Shared/Links";
-import { BlogTypes } from "components/Blog/BlogTypes";
-import { WorkTypes } from "components/Work/WorkTypes";
+import type { BlogTypes } from "components/Blog/Blog.types";
+import type { WorkTypes } from "components/Work/Work.types";
 import { formatBlogTitle } from "utils/formatBlogTitle";
 import { formatDate } from "utils/formatDate";
 

@@ -7,7 +7,7 @@ import matter from "gray-matter";
 import PageHead from "components/Shared/PageHead";
 import { StyledHeader } from "components/Shared/StyledHeader";
 import WorkItem from "components/Work/WorkItem";
-import { WorkTypes } from "components/Work/WorkTypes";
+import type { WorkTypes } from "components/Work/Work.types";
 import * as Styled from "components/Work/WorkPage.styles";
 
 export default function Work({

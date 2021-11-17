@@ -5,7 +5,7 @@ import useEnterAnimation from "hooks/useEnterAnimation";
 import GradientContainer from "components/Shared/GradientContainer";
 import InterLink from "components/Shared/Links";
 
-import { WorkTypes } from "./WorkTypes";
+import type { WorkTypes } from "./Work.types";
 import * as Styled from "./WorkItem.styles";
 
 export default function WorkItem({
@@ -38,7 +38,7 @@ export default function WorkItem({
           width={1000}
           sizes="(max-width: 400px) 350px, (max-width: 767px) 550px, 350px"
           layout="responsive"
-          placeholder={priority ? "empty" : "blur"}
+          placeholder="blur"
           blurDataURL={`https://res.cloudinary.com/dastrong/image/upload/c_scale,f_auto,w_10/Portfolio/${image}`}
         />
       </Styled.ImageWrapper>
