@@ -13,7 +13,7 @@ import { StyledHeader } from "components/Shared/StyledHeader";
 import BlogActions from "components/Blog/BlogActions";
 import BlogInfo from "components/Blog/BlogInfo";
 import { Blockquote } from "components/Blog/BlogMarkdown.styles";
-import { BlogTypes } from "components/Blog/BlogTypes";
+import type { BlogTypes } from "components/Blog/Blog.types";
 import BlogMarkdown from "components/Blog/BlogMarkdown";
 
 import dynamic from "next/dynamic";

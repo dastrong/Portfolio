@@ -7,7 +7,7 @@ import matter from "gray-matter";
 import PageHead from "components/Shared/PageHead";
 import { BlogCard } from "components/Shared/Cards";
 import { StyledHeader } from "components/Shared/StyledHeader";
-import { BlogTypes } from "components/Blog/BlogTypes";
+import type { BlogTypes } from "components/Blog/Blog.types";
 
 export default function Blog({ posts }: { posts: BlogTypes[] }) {
   return (

@@ -11,8 +11,8 @@ import Tags from "components/Shared/Tags";
 import { BlogCard, WorkCard } from "components/Shared/Cards";
 import { StyledHeader } from "components/Shared/StyledHeader";
 
-import { WorkTypes } from "components/Work/WorkTypes";
-import { BlogTypes } from "components/Blog/BlogTypes";
+import type { WorkTypes } from "components/Work/Work.types";
+import type { BlogTypes } from "components/Blog/Blog.types";
 
 const StyledTypeHeader = styled.h2`
   margin: 3.5rem auto 0;

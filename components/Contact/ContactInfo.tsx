@@ -1,7 +1,7 @@
 import React from "react";
 import { FaWifi } from "react-icons/fa";
 import * as Styled from "./ContactInfo.styles";
-import { ContactTypes } from "./ContactTypes";
+import type { ContactTypes } from "./Contact.types";
 
 export default function ContactInfo({
   availability_color,

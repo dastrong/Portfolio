@@ -7,7 +7,7 @@ import PageHead from "components/Shared/PageHead";
 import { StyledHeader } from "components/Shared/StyledHeader";
 import ContactForm from "components/Contact/ContactForm";
 import ContactInfo from "components/Contact/ContactInfo";
-import { ContactTypes } from "components/Contact/ContactTypes";
+import type { ContactTypes } from "components/Contact/Contact.types";
 
 const PageContainer = styled.div`
   display: flex;
