@@ -1,6 +1,7 @@
 node_modules
 .next
 .env
+.babelrc
 
 // this will be created at build time
 blogposts.json
