@@ -5,17 +5,19 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import matter from "gray-matter";
 import styled, { css } from "styled-components";
 
-import { formatDate } from "utils";
+import { formatDate } from "utils/formatDate";
 import PageHead from "components/Shared/PageHead";
 import Tags from "components/Shared/Tags";
 import { StyledHeader } from "components/Shared/StyledHeader";
 
 import BlogActions from "components/Blog/BlogActions";
 import BlogInfo from "components/Blog/BlogInfo";
-import BlogMarkdown from "components/Blog/BlogMarkdown";
 import { Blockquote } from "components/Blog/BlogMarkdown.styles";
-import { BlogTypes } from "components/Blog/BlogTypes";
-import BlogShare from "components/Blog/BlogShare";
+import type { BlogTypes } from "components/Blog/Blog.types";
+import BlogMarkdown from "components/Blog/BlogMarkdown";
+
+import dynamic from "next/dynamic";
+const BlogShare = dynamic(() => import("components/Blog/BlogShare"));
 
 const StyledTags = css`
   margin-top: 0.5rem;
@@ -42,9 +44,7 @@ export default function ViewBlog({
   const { date_publish, date_update, tags, title } = data;
 
   return (
-    <>
-      <PageHead title={`${title} | Blog`} description={data.description} />
-
+    <PageHead title={`${title} | Blog`} description={data.description}>
       <StyledHeader>{title}</StyledHeader>
 
       <BlogInfo date={date_publish} />
@@ -67,7 +67,7 @@ export default function ViewBlog({
       />
 
       <BlogShare />
-    </>
+    </PageHead>
   );
 }
 

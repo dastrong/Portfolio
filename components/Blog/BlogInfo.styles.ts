@@ -20,8 +20,10 @@ export const Image = styled(NextImage)`
   border-radius: 100%;
 `;
 
-export const Name = styled.h5`
+export const Name = styled.span`
   font-size: 1.1rem;
+  font-weight: 500;
+  font-family: ${props => props.theme.fontFamily.primary};
 `;
 
 export const Date = styled.p`

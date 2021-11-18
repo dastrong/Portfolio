@@ -1,30 +1,51 @@
-# [My Portfolio Website](https://www.danielstrong.tech)
+# [Daniel Strong's Portfolio Site](https://danielstrong.tech)
 
 ### About
 
-My custom portfolio site made to show my work and blog posts. Feel free to contact me, if you have any questions.
+I wanted a unique portfolio site to show off my work and write blog posts. The design, icons and images used are completely custom made by me.
 
-### Main Tech Used
+### Tech Used
 
-- NextJS
-- Forestry CMS
-- Styled Components
+The site is build with `Next.js`, `Styled Components`, `ForestryCMS` and is hosted on `Vercel`.
 
-### Writing Blog Posts
+### Environment Variables
 
-- Code Snippets - image and text
-  - Images
-    - There is a snippet template (`code`) to follow in the `.forestry` folder
-    - Created with [Carbon](carbon.now.sh) 
-      - Config can be found in this root directory 
-    - Should start with `blog_`
-      - We do this so they will be optimized
-      - The build will fail otherwise
-    - An image's `width` cannot be larger than `767px`
-      - You can use the auto-width feature to scale easily
-  - Text
-    - Simply paste into into the snippet template mentioned above
+```
+CLOUD_URL=https://res.cloudinary.com/dastrong/image/upload
+```
 
-- External Images
-  - There's a snippet template (`figure`) to follow in the `.forestry` folder
-  - Simply fill in the blanks in the template
+### Lighthouse Results
+
+We have excellent lighthouse results across the whole site and part of the reason is because it's so easy to test pages. 
+
+There are two commands to view results.
+
+```bash
+# yarn check-lighthouse-mobile 
+# yarn check-lighthouse-desktop
+```
+
+You need to pass in an additional flag to notify the script which pages to check. The results will automatically open for each tested page. 
+
+```bash
+# -s, --sites [sites]  // a comma delimited list of site urls to analyze with Lighthouse
+# -f, --file [path]    // an input file with a site url per-line to analyze with Lighthouse
+
+# // example of each in actions
+
+# yarn check-lighthouse-desktop -s https://danielstrong.com
+# yarn check-lighthouse-desktop -s https://danielstrong.com,https://danielstrong.com/contact
+# yarn check-lighthouse-mobile -f urls.txt
+```
+
+<details>
+<summary>urls.txt</summary>
+
+```
+https://danielstrong.tech
+https://danielstrong.tech/about
+https://danielstrong.tech/contact
+https://danielstrong.tech/tags
+```
+
+</details>

@@ -81,6 +81,12 @@ export const ImageWrapper = styled.div`
   position: relative;
   margin: 1.5rem auto;
   border-radius: ${props => props.theme.borderRadius}px;
+  text-align: center;
+  font-size: 0.9rem;
+
+  img {
+    margin-bottom: 0.25rem;
+  }
 
   & > span {
     position: unset !important;

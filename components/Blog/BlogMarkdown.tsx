@@ -3,18 +3,16 @@ import CopyToClipboard from "react-copy-to-clipboard";
 import { FaCheck, FaCopy } from "react-icons/fa";
 import ReactMarkdown, { Components } from "react-markdown";
 import { PluggableList } from "react-markdown/lib/react-markdown";
-import rehypeRaw from "rehype-raw";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkGfm from "remark-gfm";
 import { PrismAsyncLight as SyntaxHighlighter } from "react-syntax-highlighter";
-import { synthwave84 } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import synthwave84 from "react-syntax-highlighter/dist/cjs/styles/prism/synthwave84";
 
 import InterLink from "components/Shared/Links";
 import * as Styled from "./BlogMarkdown.styles";
 
 const rehypePlugins = [
-  rehypeRaw,
   rehypeSlug,
   [
     rehypeAutolinkHeadings,
@@ -168,7 +166,6 @@ export default function StyledMarkdown({ content }: { content: string }) {
   return (
     <Styled.Wrapper as="article">
       <ReactMarkdown
-        skipHtml={false}
         components={components}
         remarkPlugins={remarkPlugins}
         rehypePlugins={rehypePlugins as PluggableList}
@@ -189,16 +186,6 @@ export default function StyledMarkdown({ content }: { content: string }) {
             font-size: 0.5em;
             margin-inline-start: 0.3rem;
             vertical-align: middle;
-          }
-
-          article figure {
-            margin: 1.25rem auto;
-          }
-
-          article figure figcaption {
-            margin-top: 0.25rem;
-            font-size: 0.9rem;
-            text-align: center;
           }
 
           article pre {

@@ -7,7 +7,7 @@ import styled, {
   ThemeProps,
   DefaultTheme,
 } from "styled-components";
-import { intersectionOptions } from "utils";
+import { intersectionOptions } from "utils/intersectionOptions";
 
 type StyledCSSType = FlattenInterpolation<ThemeProps<DefaultTheme>>;
 

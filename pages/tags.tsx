@@ -11,8 +11,8 @@ import Tags from "components/Shared/Tags";
 import { BlogCard, WorkCard } from "components/Shared/Cards";
 import { StyledHeader } from "components/Shared/StyledHeader";
 
-import { WorkTypes } from "components/Work/WorkTypes";
-import { BlogTypes } from "components/Blog/BlogTypes";
+import type { WorkTypes } from "components/Work/Work.types";
+import type { BlogTypes } from "components/Blog/Blog.types";
 
 const StyledTypeHeader = styled.h2`
   margin: 3.5rem auto 0;
@@ -52,12 +52,10 @@ export default function TagsPage({
   );
 
   return (
-    <>
-      <PageHead
-        title={currentTag ? `Tag: ${currentTag}` : `Tags`}
-        description="Filter my work or blog posts by a technology used or another available tag."
-      />
-
+    <PageHead
+      title={currentTag ? `Tag: ${currentTag}` : `Tags`}
+      description="Filter my work or blog posts by a technology used or another available tag."
+    >
       <StyledHeader underlined>Tags</StyledHeader>
 
       <Tags tags={tags} currentTag={currentTag} />
@@ -77,7 +75,7 @@ export default function TagsPage({
       ) : (
         workList.map(work => <WorkCard key={work.site_name} {...work} />)
       )}
-    </>
+    </PageHead>
   );
 }
 

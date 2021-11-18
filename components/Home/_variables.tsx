@@ -9,6 +9,6 @@ export const dimensions = {
   },
   cornerBox: {
     width: 0.2,
-    height: 0.15,
+    height: 0.2,
   },
 };

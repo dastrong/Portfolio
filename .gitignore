@@ -1,6 +1,11 @@
 node_modules
 .next
+.env
 
 // this will be created at build time
 blogposts.json
-tsconfig.tsbuildinfo
+
+/reports
+urls.txt
+/public/robots.txt
+/public/sitemap.xml

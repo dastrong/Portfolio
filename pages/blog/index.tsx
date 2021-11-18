@@ -7,22 +7,20 @@ import matter from "gray-matter";
 import PageHead from "components/Shared/PageHead";
 import { BlogCard } from "components/Shared/Cards";
 import { StyledHeader } from "components/Shared/StyledHeader";
-import { BlogTypes } from "components/Blog/BlogTypes";
+import type { BlogTypes } from "components/Blog/Blog.types";
 
 export default function Blog({ posts }: { posts: BlogTypes[] }) {
   return (
-    <>
-      <PageHead
-        title="Blog Posts"
-        description="Come and join me in learning something useful, new and/or interesting in web development."
-      />
-
+    <PageHead
+      title="Blog Posts"
+      description="Come and join me in learning something useful, new and/or interesting in web development."
+    >
       <StyledHeader underlined>Blog Posts</StyledHeader>
 
       {posts.map(post => (
         <BlogCard key={post.title} {...post} />
       ))}
-    </>
+    </PageHead>
   );
 }
 

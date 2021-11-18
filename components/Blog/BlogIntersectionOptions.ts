@@ -1,4 +1,4 @@
-import { intersectionOptions } from "utils";
+import { intersectionOptions } from "utils/intersectionOptions";
 
 export const BlogIntersectionOptions = {
   ...intersectionOptions,

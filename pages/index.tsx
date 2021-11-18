@@ -9,12 +9,10 @@ import { gradientWidth } from "components/Home/_variables";
 
 export default function Home() {
   return (
-    <>
-      <PageHead
-        title="Home"
-        description="Work Portfolio and Blog. I'm a Full Stack Developer and Designer who simply loves to code."
-      />
-
+    <PageHead
+      title="Home"
+      description="Work Portfolio and Blog. I'm a Full Stack Developer and Designer who simply loves to code."
+    >
       <GradientContainer
         isStatic
         containerStyles={Styled.GradientContainerStyles}
@@ -24,6 +22,6 @@ export default function Home() {
         <HomeCornerLinks />
         <HomeCenter />
       </GradientContainer>
-    </>
+    </PageHead>
   );
 }

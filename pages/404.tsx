@@ -31,12 +31,10 @@ const StyledAnchor = styled(StyledButton)`
 
 export default function PageNotFound() {
   return (
-    <>
-      <PageHead
-        title="Page Not Found"
-        description="Couldn't find the page you were looking for."
-      />
-
+    <PageHead
+      title="Page Not Found"
+      description="Couldn't find the page you were looking for."
+    >
       <StyledHeader underlined>404</StyledHeader>
 
       <StyledTextContainer>
@@ -53,6 +51,6 @@ export default function PageNotFound() {
           </InterLink>
         </StyledButtonGroup>
       </StyledTextContainer>
-    </>
+    </PageHead>
   );
 }

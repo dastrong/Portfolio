@@ -1,5 +1,5 @@
 import React from "react";
-import { formatDate } from "utils";
+import { formatDate } from "utils/formatDate";
 import * as Styled from "./BlogInfo.styles";
 
 export default function BlogInfo({ date }: { date: string }) {

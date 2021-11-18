@@ -1,5 +1,5 @@
 import React from "react";
-import { externalLinks } from "utils";
+import { externalLinks } from "utils/links";
 import GradientContainer from "components/Shared/GradientContainer";
 import * as Styled from "./FooterSocial.styles";
 
