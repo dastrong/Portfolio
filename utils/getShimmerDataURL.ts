@@ -7,9 +7,9 @@ const shimmer = (
 <svg width="${width}" height="${height}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
     <linearGradient id="g">
-      <stop stop-color="${backgroundColor}" offset="20%" />
-      <stop stop-color="${accent}" offset="50%" />
-      <stop stop-color="${backgroundColor}" offset="70%" />
+      <stop stop-color="${backgroundColor}" offset="10%" />
+      <stop stop-color="${accent}80" offset="30%" />
+      <stop stop-color="${backgroundColor}" offset="40%" />
     </linearGradient>
   </defs>
   <rect width="${width}" height="${height}" fill="${backgroundColor}" />
