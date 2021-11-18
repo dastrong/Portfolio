@@ -1,7 +1,7 @@
 import React from "react";
 import fs from "fs";
 import path from "path";
-import { GetStaticPaths, GetStaticProps } from "next";
+import type { InferGetStaticPropsType, GetStaticPaths } from "next";
 import matter from "gray-matter";
 import styled, { css } from "styled-components";
 
@@ -31,23 +31,21 @@ const StyledNotificationBox = styled(Blockquote)`
 `;
 
 export default function ViewBlog({
-  data,
-  content,
+  title,
+  description,
+  date_publish,
+  date_update,
+  tags,
+  postContent,
   previousPostTitle,
   nextPostTitle,
-}: {
-  data: BlogTypes;
-  content: string;
-  previousPostTitle: string | null;
-  nextPostTitle: string | null;
-}) {
-  const { date_publish, date_update, tags, title } = data;
-
+  thumbnail_img_file,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <PageHead title={`${title} | Blog`} description={data.description}>
+    <PageHead title={`${title} | Blog`} description={description}>
       <StyledHeader>{title}</StyledHeader>
 
-      <BlogInfo date={date_publish} />
+      <BlogInfo date={date_publish} thumbnail_img_file={thumbnail_img_file} />
 
       <Tags small tags={tags} addContainerStyles={StyledTags} />
 
@@ -59,7 +57,7 @@ export default function ViewBlog({
         </StyledNotificationBox>
       )}
 
-      <BlogMarkdown content={content} />
+      <BlogMarkdown content={postContent} />
 
       <BlogActions
         previousPostTitle={previousPostTitle}
@@ -123,15 +121,21 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: false };
 };
 
-export const getStaticProps: GetStaticProps = async ctx => {
+export const getStaticProps = async ctx => {
   const { blogTitle: title } = ctx.params;
 
   // get root path
   const root = path.join(process.cwd());
 
+  // get the thumbnail image for posts
+  const blogMark = await import("content/pages/blog.md");
+  const blogMatter = matter(blogMark.default);
+  const thumbnail_img_file = blogMatter.data.thumbnail_img_file as string;
+
   // get the content and frontmatter data from the current post
-  const mark = await import(`content/posts/${title}.md`);
-  const { data, content } = matter(mark.default);
+  const postMark = await import(`content/posts/${title}.md`);
+  const postMatter = matter(postMark.default);
+  const postData = postMatter.data as BlogTypes;
 
   // get the post file
   const postsString = fs.readFileSync(root + "/blogposts.json");
@@ -142,10 +146,11 @@ export const getStaticProps: GetStaticProps = async ctx => {
 
   return {
     props: {
-      data,
-      content,
+      ...postData,
+      postContent: postMatter.content,
       previousPostTitle: previousPost || null,
       nextPostTitle: nextPost || null,
+      thumbnail_img_file,
     },
   };
 };

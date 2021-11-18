@@ -1,16 +1,39 @@
 import React from "react";
+import Image from "next/image";
+import { useTheme } from "styled-components";
+
 import { formatDate } from "utils/formatDate";
+import { getShimmerDataURL } from "utils/getShimmerDataURL";
 import * as Styled from "./BlogInfo.styles";
 
-export default function BlogInfo({ date }: { date: string }) {
+const thumbnailSize = 45;
+
+export default function BlogInfo({
+  date,
+  thumbnail_img_file,
+}: {
+  date: string;
+  thumbnail_img_file: string;
+}) {
+  const { colors } = useTheme();
+  const shimmerDataURL = getShimmerDataURL(
+    thumbnailSize,
+    thumbnailSize,
+    colors.background.main,
+    colors.accent
+  );
+
   return (
     <Styled.Container>
       <Styled.ImageWrapper>
-        <Styled.Image
-          src="Portfolio/_blogavatar.jpg"
-          alt="daniel avatar"
-          height={45}
-          width={45}
+        <Image
+          alt="Daniel Thumbnail"
+          placeholder="blur"
+          src={`/Portfolio/${thumbnail_img_file}`}
+          blurDataURL={shimmerDataURL}
+          layout="fill"
+          sizes={`${thumbnailSize}px`}
+          objectFit="contain"
         />
       </Styled.ImageWrapper>
 

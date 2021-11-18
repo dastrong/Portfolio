@@ -1,4 +1,3 @@
-import { default as NextImage } from "next/image";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -9,15 +8,21 @@ export const Container = styled.div`
 `;
 
 export const ImageWrapper = styled.div`
+  background-color: ${props => props.theme.colors.background.main};
   border-radius: 100%;
   border: 2px solid ${props => props.theme.colors.accent};
   margin: 0;
   margin-right: 1rem;
   line-height: 0;
-`;
+  height: 45px;
+  width: 45px;
+  display: block;
+  position: relative;
+  box-sizing: content-box;
 
-export const Image = styled(NextImage)`
-  border-radius: 100%;
+  * {
+    border-radius: inherit;
+  }
 `;
 
 export const Name = styled.span`
