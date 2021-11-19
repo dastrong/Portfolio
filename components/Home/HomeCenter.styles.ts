@@ -18,14 +18,22 @@ export const CenterContainer = styled.div`
   }
 `;
 
-export const ImageWrapper = styled.div`
+export const ImageWrapper = styled.div<{ blurred: boolean }>`
   position: relative;
   display: block;
   width: 95%;
   max-height: 65vh;
+  filter: ${props => `blur(${props.blurred ? 20 : 0}px)`};
+  transition: filter 200ms, opacity 100ms;
+  opacity: ${props =>
+    props.blurred ? (props.theme.isDarkTheme ? 1 : 0.5) : 1};
 
   ${props => props.theme.media.md} {
     width: 85%;
+    transition: filter 0ms, opacity 100ms;
+    filter: ${props => `blur(${props.blurred ? 40 : 0}px)`};
+    opacity: ${props =>
+      props.blurred ? (props.theme.isDarkTheme ? 0.3 : 0.2) : 1};
   }
 
   @media screen and (min-width: 1024px) and (orientation: portrait) {
@@ -70,6 +78,7 @@ export const TextAndActionsContainer = styled.div`
       ${props => props.theme.colors.background.light}3b 90%,
       transparent 100%
     );
+    width: 100%;
   }
 `;
 
