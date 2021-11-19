@@ -44,6 +44,7 @@ export const ImageWrapper = styled.div`
   border-radius: ${props => props.theme.borderRadius}px;
   height: auto;
   margin-right: 1.25rem;
+  margin-block: auto;
   width: 51%;
 
   ${props => props.theme.media.md} {
