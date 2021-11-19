@@ -10,7 +10,7 @@ import { StyledHeader } from "components/Shared/StyledHeader";
 import * as Styled from "components/About/About.styles";
 
 export default function About({
-  content,
+  aboutContent,
   image,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
@@ -24,7 +24,7 @@ export default function About({
         <Styled.ImageWrapper>
           <Image
             priority
-            src={image.img_file}
+            src={"/Portfolio/" + image.img_file}
             alt="Daniel Strong"
             height={image.height}
             width={image.width}
@@ -41,7 +41,7 @@ export default function About({
               p: ({ children }) => <Styled.Text>{children}</Styled.Text>,
             }}
           >
-            {content}
+            {aboutContent}
           </ReactMarkdown>
         </Styled.TextContainer>
       </Styled.Container>
@@ -50,18 +50,21 @@ export default function About({
 }
 
 export const getStaticProps = async () => {
-  const mark = await import("content/pages/about.md");
-  const { content, data } = matter(mark.default);
+  const aboutMark = await import("content/pages/about.md");
+  const aboutMatter = matter(aboutMark.default);
+  const img_file = aboutMatter.data.img_file as string;
 
   const {
     base64,
     img: { width, height },
-  } = await getPlaiceholder(process.env.CLOUD_URL + data.img_file);
+  } = await getPlaiceholder(process.env.CLOUD_URL + "/Portfolio/" + img_file, {
+    size: 16,
+  });
 
   return {
     props: {
-      image: { base64, height, width, img_file: data.img_file as string },
-      content,
+      image: { base64, height, width, img_file },
+      aboutContent: aboutMatter.content,
     },
   };
 };
