@@ -17,6 +17,7 @@ const StyledContainer = styled.div`
   padding: 1rem;
   border-radius: ${props => props.theme.borderRadius}px;
   background-color: ${props => props.theme.colors.background.main}85;
+  box-shadow: 0px 0px 6px ${props => props.theme.colors.accent}33;
 `;
 
 const StyledTitle = styled.a`

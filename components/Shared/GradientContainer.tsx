@@ -31,6 +31,7 @@ const Effect = css<GradientProps>`
 const Container = styled.div<GradientProps>`
   position: relative;
   display: flex;
+  border-radius: ${props => props.theme.borderRadius}px;
 
   &:before,
   &:after {
@@ -56,13 +57,20 @@ const Content = styled.div<GradientProps>`
   z-index: 1;
   padding: 10px;
   width: 100%;
-  background-color: ${props => props.theme.colors.background.main};
-  color: ${props => props.theme.colors.text.main};
-  border-radius: ${props =>
-    `calc(${props.theme.borderRadius}px - ${props.gradientWidth}px)`};
-  margin: ${props => props.gradientWidth}px;
+
+  ${({ gradientWidth, theme }) => css`
+    background-color: ${theme.colors.background.main};
+    color: ${theme.colors.text.main};
+    border-radius: ${theme.borderRadius - gradientWidth}px;
+    margin: ${gradientWidth}px;
+    box-shadow: 0px 0px ${gradientWidth * 3}px ${theme.colors.accent}33;
+  `}
 
   ${props => props.customStyles};
+
+  ${props => props.theme.media.md} {
+    box-shadow: none;
+  }
 `;
 
 export default forwardRef(function GradientContainer(
@@ -87,6 +95,7 @@ export default forwardRef(function GradientContainer(
       ref={ref}
       isStatic={isStatic}
       customStyles={containerStyles}
+      gradientWidth={gradientWidth}
       {...rest}
     >
       <Content customStyles={contentStyles} gradientWidth={gradientWidth}>

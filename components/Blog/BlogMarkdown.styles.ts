@@ -8,7 +8,7 @@ export const Wrapper = styled(StyledTextContainer)`
   max-width: 600px;
   margin: 2rem auto;
   background-color: ${props => props.theme.colors.background.light};
-  box-shadow: 0px 0px 10px ${props => props.theme.colors.accent}61;
+  box-shadow: 0px 0px 6px ${props => props.theme.colors.accent}33;
   border-radius: ${props => props.theme.borderRadius}px;
   padding: 1rem;
 
