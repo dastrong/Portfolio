@@ -1,7 +1,9 @@
 import React from "react";
+import { useTheme } from "styled-components";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
 import useEnterAnimation from "hooks/useEnterAnimation";
+import { getShimmerDataURL } from "utils/getShimmerDataURL";
 import GradientContainer from "components/Shared/GradientContainer";
 import InterLink from "components/Shared/Links";
 
@@ -10,7 +12,7 @@ import * as Styled from "./WorkItem.styles";
 
 export default function WorkItem({
   description,
-  image,
+  img_file,
   links,
   show_work,
   site_name,
@@ -18,6 +20,14 @@ export default function WorkItem({
   priority,
 }: WorkTypes & { routeName?: string; priority: boolean }) {
   const [ref, inView, skipAnimation] = useEnterAnimation(true);
+
+  const { colors } = useTheme();
+  const shimmerDataURL = getShimmerDataURL(
+    1000,
+    487,
+    colors.background.main,
+    colors.accent
+  );
 
   if (!show_work) return null;
 
@@ -32,14 +42,14 @@ export default function WorkItem({
       <Styled.ImageWrapper>
         <Styled.Image
           priority={priority}
-          src={`Portfolio/${image}`}
+          src={`Portfolio/${img_file}`}
           alt={routeName}
           height={487}
           width={1000}
           sizes="(max-width: 400px) 350px, (max-width: 767px) 550px, 350px"
           layout="responsive"
           placeholder="blur"
-          blurDataURL={`https://res.cloudinary.com/dastrong/image/upload/c_scale,f_auto,w_10/Portfolio/${image}`}
+          blurDataURL={shimmerDataURL}
         />
       </Styled.ImageWrapper>
 
