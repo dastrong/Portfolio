@@ -1,4 +1,3 @@
-import { default as NextImage } from "next/image";
 import styled, { css } from "styled-components";
 import { StyledTextContainer } from "components/Shared/StyledTextContainer";
 import { StyledButton } from "components/Shared/StyledButton";
@@ -95,11 +94,11 @@ export const ImageWrapper = styled.div`
   width: 100%;
   margin-bottom: 2rem;
 
+  * {
+    border-radius: inherit;
+  }
+
   ${props => props.theme.media.sm} {
     margin-bottom: 1.5rem;
   }
-`;
-
-export const Image = styled(NextImage)`
-  border-radius: ${props => props.theme.borderRadius}px;
 `;

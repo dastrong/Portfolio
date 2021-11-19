@@ -1,8 +1,10 @@
 import React from "react";
 import fs from "fs";
 import path from "path";
-import { GetStaticPaths, GetStaticProps } from "next";
+import type { GetStaticPaths, InferGetStaticPropsType } from "next";
+import Image from "next/image";
 import matter from "gray-matter";
+import { getPlaiceholder } from "plaiceholder";
 import ReactMarkdown from "react-markdown";
 
 import InterLink from "components/Shared/Links";
@@ -17,12 +19,13 @@ import type { WorkTypes } from "components/Work/Work.types";
 import * as Styled from "components/Work/WorkNamePage.styles";
 
 export default function ViewWork({
-  data: { description, image, links, site_name, tech_used },
-  content,
-}: {
-  data: WorkTypes;
-  content: string;
-}) {
+  image,
+  description,
+  links,
+  site_name,
+  tech_used,
+  workContent,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   const [refButtons, inViewButtons] = useEnterAnimation();
   const [refText, inViewText] = useEnterAnimation();
 
@@ -32,12 +35,14 @@ export default function ViewWork({
 
       <Styled.PageContainer>
         <Styled.ImageWrapper>
-          <Styled.Image
+          <Image
             priority
-            src={`Portfolio/${image}`}
+            src={`/Portfolio/${image.img_file}`}
             alt={site_name + " mockup"}
-            height={487}
-            width={1000}
+            height={image.height}
+            width={image.width}
+            blurDataURL={image.base64}
+            placeholder="blur"
             layout="responsive"
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 750px, 1000px"
           />
@@ -88,7 +93,7 @@ export default function ViewWork({
               },
             }}
           >
-            {content}
+            {workContent}
           </ReactMarkdown>
         </Styled.TextContainer>
 
@@ -121,9 +126,26 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: false };
 };
 
-export const getStaticProps: GetStaticProps = async ctx => {
+export const getStaticProps = async ctx => {
   const { workName } = ctx.params;
-  const mark = await import(`content/work/${workName}.md`);
-  const { data, content } = matter(mark.default);
-  return { props: { data, content } };
+
+  const workMark = await import(`content/work/${workName}.md`);
+  const workMatter = matter(workMark.default);
+  const workData = workMatter.data as WorkTypes;
+
+  const {
+    base64,
+    img: { width, height },
+  } = await getPlaiceholder(
+    process.env.CLOUD_URL + "/Portfolio/" + workData.img_file,
+    { size: 48 }
+  );
+
+  return {
+    props: {
+      ...workData,
+      image: { base64, height, width, img_file: workData.img_file },
+      workContent: workMatter.content,
+    },
+  };
 };
