@@ -146,7 +146,7 @@ const components: Components = {
       <Styled.ImageHttp {...props} loading="lazy" />
     ) : (
       <Styled.Image
-        src={`Portfolio/${props.src}`}
+        src={props.src}
         alt="Daniel Strong"
         title={props.title}
         layout="fill"
@@ -154,7 +154,7 @@ const components: Components = {
         objectPosition="center top"
         sizes="(max-width: 650px) 100vw, 600px"
         placeholder="blur"
-        blurDataURL={`https://res.cloudinary.com/dastrong/image/upload/c_scale,f_auto,w_50/Portfolio/${props.src}`}
+        blurDataURL={`https://res.cloudinary.com/dastrong/image/upload/c_scale,f_auto,w_50${props.src}`}
       />
     );
   },

@@ -37,7 +37,7 @@ export default function ViewWork({
         <Styled.ImageWrapper>
           <Image
             priority
-            src={`/Portfolio/${image.img_file}`}
+            src={image.img_file}
             alt={site_name + " mockup"}
             height={image.height}
             width={image.width}
@@ -136,10 +136,9 @@ export const getStaticProps = async ctx => {
   const {
     base64,
     img: { width, height },
-  } = await getPlaiceholder(
-    process.env.CLOUD_URL + "/Portfolio/" + workData.img_file,
-    { size: 48 }
-  );
+  } = await getPlaiceholder(process.env.CLOUD_URL + workData.img_file, {
+    size: 48,
+  });
 
   return {
     props: {

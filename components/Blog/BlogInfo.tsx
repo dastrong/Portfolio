@@ -29,7 +29,7 @@ export default function BlogInfo({
         <Image
           alt="Daniel Thumbnail"
           placeholder="blur"
-          src={`/Portfolio/${thumbnail_img_file}`}
+          src={thumbnail_img_file}
           blurDataURL={shimmerDataURL}
           layout="fill"
           sizes={`${thumbnailSize}px`}
