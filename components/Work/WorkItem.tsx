@@ -42,7 +42,7 @@ export default function WorkItem({
       <Styled.ImageWrapper>
         <Styled.Image
           priority={priority}
-          src={`Portfolio/${img_file}`}
+          src={img_file}
           alt={routeName}
           height={487}
           width={1000}
