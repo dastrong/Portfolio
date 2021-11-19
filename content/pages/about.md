@@ -1,7 +1,7 @@
 ---
-img_file: "about_me.jpg"
----
+img_file: "/v1635041038/Portfolio/about_me.jpg"
 
+---
 My name is Daniel Strong and I’m a full-stack JavaScript developer. I was born on Vancouver Island, Canada, but have been living abroad for the past five years.
 
 Currently, I live in South Korea, but I’m looking to transition for the right opportunity to transition full time into web development (wherever that may be).
