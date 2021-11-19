@@ -8,7 +8,7 @@ fields:
     required: true
   label: Site Name
   description: What's the site called
-- name: image
+- name: img_file
   type: file
   config:
     maxSize: 64

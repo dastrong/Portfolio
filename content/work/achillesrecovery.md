@@ -7,7 +7,7 @@ tech_used:
 - NetlifyCMS
 - TypeScript
 site_name: Achilles Recovery
-image: "work_Achilles.png"
+img_file: "work_Achilles.png"
 description: A uniquely themed blog created for a friend who had recently ruptured
   his achilles and wanted to document his recovery
 show_work: true

@@ -5,7 +5,7 @@ tech_used:
 - Redux
 - Material UI
 site_name: uTubeFiltered
-image: "work_uTubeFiltered.png"
+img_file: "work_uTubeFiltered.png"
 description: A simplified YouTube clone to help users create, manage and watch playlists
 show_work: true
 links:

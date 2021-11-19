@@ -1,6 +1,6 @@
 export type WorkTypes = {
   site_name: string;
-  image: string;
+  img_file: string;
   description: string;
   tech_used?: string[];
   show_work?: boolean;
