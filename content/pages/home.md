@@ -1,4 +1,4 @@
 ---
-headshot_img_file: "/v1635041042/Portfolio/home_headshot.jpg"
+headshot_img_file: "/v1635041042/Portfolio/home_headshot.webp"
 
 ---
