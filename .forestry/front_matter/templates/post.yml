@@ -48,12 +48,16 @@ fields:
   type: boolean
   label: Show Post
   description: Check if the post is ready to be published
-- name: code_snippets
+- name: internal_images
   type: image_gallery
   config: {}
-  label: Code Snippets
-  description: Add <a href="https://carbon.now.sh/" title="Carbon" target="_blank">Carbon/</a>
-    snippet images for this post here
+  label: Internal Images
+  description: 'Add any images that need hosting for the blog post here  '
+- name: external_images
+  type: tag_list
+  default: []
+  label: External Images
+  description: Add any external image URL's used in the blog post here
 pages:
 - content/posts/discussing-back-to-the-future.md
 - content/posts/something-clever-here.md
