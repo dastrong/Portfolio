@@ -5,5 +5,6 @@ export type BlogTypes = {
   date_update?: string;
   tags: string[];
   show_post: boolean;
-  code_snippets?: unknown;
+  internal_images?: string[];
+  external_images?: string[];
 };

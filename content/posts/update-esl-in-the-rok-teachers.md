@@ -7,7 +7,8 @@ description: Hey teachers! Come read about what's new in ESL in the ROK and how 
   can help you.
 date_update: 
 show_post: true
-code_snippets: []
+internal_images: []
+external_images: []
 
 ---
 I'm very excited to finally be releasing a major update of ESL in the ROK today. This has been in the works since April and to say I've been eager to see what people have to say about it is an understatement.

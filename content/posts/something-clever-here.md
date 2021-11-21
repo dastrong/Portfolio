@@ -7,14 +7,17 @@ tags:
   - MongoDB
 title: Something clever here
 show_post: true
-code_snippets:
-  - "blog_samplesnippet.png"
-  - "blog_samplesnippet2.png"
+internal_images: 
+  - "/v1635041038/Portfolio/blog_samplesnippet.png"
+external_images:
+  - "https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
 ---
 
 Lorem ipsum dolor sit amet.
 
 > _This is a_ blockquote. View all posts [here](/blog)
+
+![code snippet](/v1635041038/Portfolio/blog_samplesnippet.png "sample code snippet")
 
 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti adipisci quia beatae architecto, unde doloremque at nisi pariatur eos eum.
 
