@@ -15,8 +15,8 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <PageHead
-      title="Home"
-      description="Work Portfolio and Blog. I'm a Full Stack Developer and Designer who simply loves to code."
+      title="Daniel Strong | Full Stack Developer"
+      description="Come check out how Daniel Strong, a full stack wizard, can help you and your team level up."
     >
       <GradientContainer
         isStatic

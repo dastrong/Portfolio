@@ -30,7 +30,7 @@ export default function ViewWork({
   const [refText, inViewText] = useEnterAnimation();
 
   return (
-    <PageHead title={`${site_name} | Work`} description={description}>
+    <PageHead title={site_name} description={description}>
       <StyledHeader underlined>{site_name}</StyledHeader>
 
       <Styled.PageContainer>

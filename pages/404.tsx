@@ -33,7 +33,7 @@ export default function PageNotFound() {
   return (
     <PageHead
       title="Page Not Found"
-      description="Couldn't find the page you were looking for."
+      description="Unfortunately, we couldn't find the page you were looking for! Please contact me, if you think this page should exist."
     >
       <StyledHeader underlined>404</StyledHeader>
 

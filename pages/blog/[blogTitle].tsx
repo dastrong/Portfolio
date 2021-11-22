@@ -46,7 +46,7 @@ export default function ViewBlog({
   images,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <PageHead title={`${title} | Blog`} description={description}>
+    <PageHead title={title} description={description} ogType="article">
       <StyledHeader>{title}</StyledHeader>
 
       <BlogInfo date={date_publish} thumbnail_img_file={thumbnail_img_file} />

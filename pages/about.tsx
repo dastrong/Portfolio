@@ -15,8 +15,8 @@ export default function About({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <PageHead
-      title="About Me"
-      description="Learn more about the man behind Daniel Strong Tech."
+      title="About Daniel Strong"
+      description="I'm a full stack web developer from Canada mastering his craft in South Korea. You can read more about me here."
     >
       <StyledHeader underlined>About Me</StyledHeader>
 

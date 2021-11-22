@@ -9,38 +9,39 @@ type PageHeadProps = {
   description?: string;
   image?: string;
   imageAlt?: string;
+  ogType?: string;
 };
 
 const url = "https://www.danielstrong.tech";
 
 export default function PageHead({
   children,
-  title,
+  title = "Daniel Strong",
   description,
-  image = "https://res.cloudinary.com/dastrong/image/upload/Portfolio/favicon.png",
-  imageAlt = "Daniel Strong",
+  image = "/favicon.png",
+  imageAlt = "Daniel Strong Tech",
+  ogType = "website",
 }: PageHeadProps) {
-  const { asPath } = useRouter();
   const { colors } = useTheme();
-
-  const isBlogPost = asPath.startsWith("/blog/");
+  const { asPath } = useRouter();
 
   return (
     <>
       <Head>
-        <title>{`${title ? title + " | " : ""}`} Daniel Strong</title>
+        <title>{title}</title>
         <meta name="description" content={description} />
         <meta
           name="google-site-verification"
           content="lqEy-SYpFRPj_h-cShxJuEz1PrdnDfR9nWkjsOMm11g"
         />
-        <link rel="canonical" href={url} />
-        <meta property="og:type" content={isBlogPost ? "article" : "website"} />
+        <link rel="canonical" href={url + asPath} />
+        <link rel="shortcut icon" href="/favicon.png" />
+        <meta property="og:type" content={ogType} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={url + image} />
         <meta property="og:url" content={url + asPath} />
-        <meta property="og:site_name" content="Daniel Strong Tech" />
+        <meta property="og:site_name" content="Daniel Strong" />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />

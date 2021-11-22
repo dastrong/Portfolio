@@ -25,8 +25,8 @@ export default function Contact({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <PageHead
-      title="Contact"
-      description="Reach out to learn how I can help you, your team or company."
+      title="Contact Daniel Strong"
+      description="Reach out and send Daniel Strong a personal email."
     >
       <StyledHeader underlined>Contact Me</StyledHeader>
 

@@ -17,8 +17,8 @@ export default function Work({
 }) {
   return (
     <PageHead
-      title="My Work"
-      description="Check out some of my past work for clients and personal projects."
+      title="Daniel Strong's Work"
+      description="Want to see what I've worked on? View some of my past work for clients and in projects now."
     >
       <StyledHeader underlined>My Work</StyledHeader>
 
