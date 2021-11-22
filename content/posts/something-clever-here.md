@@ -8,16 +8,22 @@ tags:
 title: Something clever here
 show_post: true
 internal_images: 
+  - "/v1635041037/Portfolio/blog_thumbnail.jpg"
   - "/v1635041038/Portfolio/blog_samplesnippet.png"
 external_images:
   - "https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+  - "https://i.pinimg.com/474x/5f/4a/14/5f4a142c059f9bb6ef39e81f29d4b0ec.jpg"
 ---
 
 Lorem ipsum dolor sit amet.
 
 > _This is a_ blockquote. View all posts [here](/blog)
 
+![code snippet](/v1635041037/Portfolio/blog_thumbnail.jpg "sample code snippet")
+
 ![code snippet](/v1635041038/Portfolio/blog_samplesnippet.png "sample code snippet")
+
+![code snippet](https://i.pinimg.com/474x/5f/4a/14/5f4a142c059f9bb6ef39e81f29d4b0ec.jpg "sample code snippet")
 
 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti adipisci quia beatae architecto, unde doloremque at nisi pariatur eos eum.
 

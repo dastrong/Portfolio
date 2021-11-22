@@ -87,26 +87,13 @@ export const ImageWrapper = styled.div`
   img {
     margin-bottom: 0.25rem;
   }
-
-  & > span {
-    position: unset !important;
-  }
 `;
 
 export const Image = styled(NextImage)`
-  object-fit: contain;
-  width: 100% !important;
-  position: relative !important;
-  height: unset !important;
   border-radius: ${props => props.theme.borderRadius}px;
-`;
-
-export const ImageHttp = styled.img`
   max-width: 100%;
   height: auto;
   margin: 0rem auto;
-  display: block;
-  border-radius: ${props => props.theme.borderRadius}px;
 `;
 
 export const LinkStyles = css`

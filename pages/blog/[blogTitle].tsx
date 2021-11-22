@@ -4,12 +4,15 @@ import path from "path";
 import type { InferGetStaticPropsType, GetStaticPaths } from "next";
 import matter from "gray-matter";
 import styled, { css } from "styled-components";
+import probe from "probe-image-size";
 
 import { formatDate } from "utils/formatDate";
 import PageHead from "components/Shared/PageHead";
 import Tags from "components/Shared/Tags";
 import { StyledHeader } from "components/Shared/StyledHeader";
 
+import BlogContextProvider from "components/Blog/BlogContext";
+import type { ProbedImageType } from "components/Blog/BlogContext";
 import BlogActions from "components/Blog/BlogActions";
 import BlogInfo from "components/Blog/BlogInfo";
 import { Blockquote } from "components/Blog/BlogMarkdown.styles";
@@ -40,6 +43,7 @@ export default function ViewBlog({
   previousPostTitle,
   nextPostTitle,
   thumbnail_img_file,
+  images,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <PageHead title={`${title} | Blog`} description={description}>
@@ -57,7 +61,9 @@ export default function ViewBlog({
         </StyledNotificationBox>
       )}
 
-      <BlogMarkdown content={postContent} />
+      <BlogContextProvider value={images}>
+        <BlogMarkdown content={postContent} />
+      </BlogContextProvider>
 
       <BlogActions
         previousPostTitle={previousPostTitle}
@@ -137,6 +143,22 @@ export const getStaticProps = async ctx => {
   const postMatter = matter(postMark.default);
   const postData = postMatter.data as BlogTypes;
 
+  const { internal_images, external_images } = postData;
+  const cloud_url = process.env.CLOUD_URL;
+  const internalImageUrls = internal_images.map(file => cloud_url + file);
+
+  const internalImages = await Promise.all<ProbedImageType>(
+    internalImageUrls.map(probe)
+  ).then(imgs =>
+    imgs.map(({ height, width, url }) => ({ height, width, url }))
+  );
+  const externalImages = await Promise.all<ProbedImageType>(
+    external_images.map(probe)
+  ).then(imgs =>
+    imgs.map(({ height, width, url }) => ({ height, width, url }))
+  );
+  const images = { internalImages, externalImages };
+
   // get the post file
   const postsString = fs.readFileSync(root + "/blogposts.json");
   const allPosts = JSON.parse(postsString.toString());
@@ -151,6 +173,7 @@ export const getStaticProps = async ctx => {
       previousPostTitle: previousPost || null,
       nextPostTitle: nextPost || null,
       thumbnail_img_file,
+      images,
     },
   };
 };

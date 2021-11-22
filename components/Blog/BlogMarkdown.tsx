@@ -1,4 +1,5 @@
 import React, { ReactNode, useEffect, useState } from "react";
+import { useTheme } from "styled-components";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { FaCheck, FaCopy } from "react-icons/fa";
 import ReactMarkdown, { Components } from "react-markdown";
@@ -9,6 +10,8 @@ import remarkGfm from "remark-gfm";
 import { PrismAsyncLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import synthwave84 from "react-syntax-highlighter/dist/cjs/styles/prism/synthwave84";
 
+import { getShimmerDataURL } from "utils/getShimmerDataURL";
+import { useBlogImages } from "components/Blog/BlogContext";
 import InterLink from "components/Shared/Links";
 import * as Styled from "./BlogMarkdown.styles";
 
@@ -142,19 +145,36 @@ const components: Components = {
   li: ({ children }) => <Styled.ListItem>{children}</Styled.ListItem>,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   img: ({ node, ref, ...props }) => {
-    return props.src.startsWith("http") ? (
-      <Styled.ImageHttp {...props} loading="lazy" />
-    ) : (
+    // check if the image is external/internal
+    const isExternal = props.src.startsWith("http");
+
+    const { colors } = useTheme();
+    // grab the image heights/widths from the BlogContext
+    const images = useBlogImages();
+
+    // get this currently processed image height/width combo
+    const { height, width } = images[
+      isExternal ? "externalImages" : "internalImages"
+    ].find(img => img.url.endsWith(props.src));
+
+    // create a styled shimmerDataURL as a placeholder
+    const shimmerDataURL = getShimmerDataURL(
+      width,
+      height,
+      colors.background.light,
+      colors.accent
+    );
+
+    return (
       <Styled.Image
+        {...props}
+        unoptimized={isExternal}
+        layout="intrinsic"
+        height={height}
+        width={width}
         src={props.src}
-        alt="Daniel Strong"
-        title={props.title}
-        layout="fill"
-        objectFit="contain"
-        objectPosition="center top"
-        sizes="(max-width: 650px) 100vw, 600px"
         placeholder="blur"
-        blurDataURL={`https://res.cloudinary.com/dastrong/image/upload/c_scale,f_auto,w_50${props.src}`}
+        blurDataURL={shimmerDataURL}
       />
     );
   },
