@@ -39,7 +39,7 @@ export const getStaticProps = async () => {
   const {
     base64,
     img: { width, height },
-  } = await getPlaiceholder(process.env.CLOUD_URL + img_file, {
+  } = await getPlaiceholder(process.env.NEXT_PUBLIC_CLOUD_URL + img_file, {
     size: 64,
   });
 

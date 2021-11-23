@@ -11,7 +11,7 @@ The site is build with `Next.js`, `Styled Components`, `ForestryCMS` and is host
 ### Environment Variables
 
 ```
-CLOUD_URL=https://res.cloudinary.com/dastrong/image/upload
+NEXT_PUBLIC_CLOUD_URL=https://res.cloudinary.com/dastrong/image/upload
 ```
 
 ### Lighthouse Results

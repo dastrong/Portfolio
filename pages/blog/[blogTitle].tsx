@@ -144,8 +144,8 @@ export const getStaticProps = async ctx => {
   const postData = postMatter.data as BlogTypes;
 
   const { internal_images, external_images } = postData;
-  const cloud_url = process.env.CLOUD_URL;
-  const internalImageUrls = internal_images.map(file => cloud_url + file);
+  const CLOUD_URL = process.env.NEXT_PUBLIC_CLOUD_URL;
+  const internalImageUrls = internal_images.map(file => CLOUD_URL + file);
 
   const internalImages = await Promise.all<ProbedImageType>(
     internalImageUrls.map(probe)
