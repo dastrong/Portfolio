@@ -7,19 +7,20 @@ type PageHeadProps = {
   children?: React.ReactNode;
   title?: string;
   description?: string;
-  image?: string;
-  imageAlt?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
   ogType?: string;
 };
 
-const url = "https://www.danielstrong.tech";
+const URL = "https://www.danielstrong.tech";
+const CLOUD_URL = process.env.NEXT_PUBLIC_CLOUD_URL;
 
 export default function PageHead({
   children,
   title = "Daniel Strong",
   description,
-  image = "/favicon.png",
-  imageAlt = "Daniel Strong Tech",
+  ogImage = "/c_scale,w_550/v1637644711/Portfolio/banner.png",
+  ogImageAlt = "Daniel Strong Social Media Banner",
   ogType = "website",
 }: PageHeadProps) {
   const { colors } = useTheme();
@@ -34,19 +35,20 @@ export default function PageHead({
           name="google-site-verification"
           content="lqEy-SYpFRPj_h-cShxJuEz1PrdnDfR9nWkjsOMm11g"
         />
-        <link rel="canonical" href={url + asPath} />
+        <link rel="canonical" href={URL + asPath} />
         <link rel="shortcut icon" href="/favicon.png" />
         <meta property="og:type" content={ogType} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
-        <meta property="og:image" content={url + image} />
-        <meta property="og:url" content={url + asPath} />
+        <meta property="og:image" content={CLOUD_URL + ogImage} />
+        <meta property="og:image:alt" content={ogImageAlt} />
+        <meta property="og:url" content={URL + asPath} />
         <meta property="og:site_name" content="Daniel Strong" />
-        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={url + image} />
-        <meta name="twitter:image:alt" content={imageAlt} />
+        <meta name="twitter:image" content={CLOUD_URL + ogImage} />
+        <meta name="twitter:image:alt" content={ogImageAlt} />
         <meta name="twitter:creator" content="@DaStrongWon" />
         <meta name="theme-color" content={colors.background.main} />
       </Head>

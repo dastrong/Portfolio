@@ -30,7 +30,12 @@ export default function ViewWork({
   const [refText, inViewText] = useEnterAnimation();
 
   return (
-    <PageHead title={site_name} description={description}>
+    <PageHead
+      title={site_name}
+      description={description}
+      ogImage={"/c_pad,h_300,w_525" + image.img_file}
+      ogImageAlt={site_name + " social media banner"}
+    >
       <StyledHeader underlined>{site_name}</StyledHeader>
 
       <Styled.PageContainer>
@@ -136,9 +141,12 @@ export const getStaticProps = async ctx => {
   const {
     base64,
     img: { width, height },
-  } = await getPlaiceholder(process.env.CLOUD_URL + workData.img_file, {
-    size: 48,
-  });
+  } = await getPlaiceholder(
+    process.env.NEXT_PUBLIC_CLOUD_URL + workData.img_file,
+    {
+      size: 48,
+    }
+  );
 
   return {
     props: {
