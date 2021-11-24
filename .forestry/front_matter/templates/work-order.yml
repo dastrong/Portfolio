@@ -1,4 +1,15 @@
 ---
 label: Work Order
 hide_body: true
-fields: []
+fields:
+- name: work_order
+  type: list
+  config:
+    use_select: true
+    min: 
+    max: 
+    source:
+      type: pages
+      section: work-07e433be-de0b-488c-8170-e5bf2129eef8
+  label: Work Order
+  description: The order that work should be displayed in.
