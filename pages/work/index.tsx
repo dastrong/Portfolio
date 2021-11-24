@@ -35,9 +35,9 @@ export const getStaticProps: GetStaticProps = async () => {
   // get root path
   const root = path.join(process.cwd());
 
-  // get the filenames (add to root)
-  const work = await import(".forestry/front_matter/templates/work.yml");
-  const allWorkPaths = matter(work.default).data.pages;
+  const workMark = await import("content/pages/work.md");
+  const workMatter = matter(workMark.default);
+  const allWorkPaths = workMatter.data.work_order as string[];
 
   // create an array of all work content
   const allWorkContent = allWorkPaths.map((filename: string) => {
