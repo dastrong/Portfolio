@@ -22,9 +22,6 @@ export const Wrapper = styled(StyledTextContainer)`
 `;
 
 export const Blockquote = styled(StyledBlockquote)`
-  background-color: ${({ theme: { colors, isDarkTheme } }) =>
-    isDarkTheme ? "#272822" : colors.background.main};
-  color: ${props => props.theme.colors.text.main};
   margin: 1.5rem auto;
 `;
 

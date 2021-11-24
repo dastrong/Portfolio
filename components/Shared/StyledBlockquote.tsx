@@ -9,6 +9,10 @@ export const StyledBlockquote = styled.blockquote`
   border-width: 0px 0px 0px 3px;
   border-radius: ${props => props.theme.borderRadius}px;
   font-size: 0.9rem;
+  background-color: ${({ theme: { colors, isDarkTheme } }) =>
+    isDarkTheme ? "#272822" : colors.background.main};
+  color: ${props => props.theme.colors.text.main};
+  box-shadow: 0px 0px 6px ${props => props.theme.colors.accent}1a;
 
   ${RemoveBookendStyles}
 `;
