@@ -60,4 +60,5 @@ fields:
   description: Add any external image URL's used in the blog post here
 pages:
 - content/posts/something-clever-here.md
+- content/posts/testing-number-one.md
 - content/posts/update-esl-in-the-rok-teachers.md
