@@ -11,8 +11,8 @@ import { PrismAsyncLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import synthwave84 from "react-syntax-highlighter/dist/cjs/styles/prism/synthwave84";
 
 import { getShimmerDataURL } from "utils/getShimmerDataURL";
+import MarkdownLink from "components/Shared/MarkdownLink";
 import { useBlogImages } from "components/Blog/BlogContext";
-import InterLink from "components/Shared/Links";
 import * as Styled from "./BlogMarkdown.styles";
 
 const rehypePlugins = [
@@ -96,16 +96,8 @@ const components: Components = {
   a: ({ node, ref, ...props }) => {
     // this anchor is within a heading, pass a regular anchor tag
     if (props.className === "heading-link") return <a {...props} />;
-    // any other external links will get a styled anchor tag
-    if (!props.href.startsWith("/")) return <Styled.Link {...props} />;
-    // internal link, use Next Link tag
-    return (
-      <InterLink
-        {...props}
-        href={props.href || ""}
-        StyledAnchor={Styled.Link}
-      />
-    );
+    // other process it like any other link
+    return <MarkdownLink {...props} />;
   },
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   code({ node, ref, inline, className, children, ...props }) {

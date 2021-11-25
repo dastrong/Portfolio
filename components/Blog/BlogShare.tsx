@@ -10,8 +10,8 @@ import {
   RedditShareButton,
 } from "react-share";
 
+import MarkdownLink from "components/Shared/MarkdownLink";
 import { BlogIntersectionOptions } from "./BlogIntersectionOptions";
-import { Link } from "./BlogMarkdown.styles";
 import * as Styled from "./BlogShare.styles";
 
 export default function BlogShare() {
@@ -39,7 +39,7 @@ export default function BlogShare() {
       <Styled.Paragraph inView={inView}>
         If you enjoyed the content, feel free to share it. If you noticed
         something incorrect or want to discuss this post, you can{" "}
-        <Link href="/contact">contact me</Link> directly.
+        <MarkdownLink href="/contact">contact me</MarkdownLink> directly.
       </Styled.Paragraph>
     </Styled.Container>
   );

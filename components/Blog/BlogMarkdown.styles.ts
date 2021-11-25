@@ -1,5 +1,5 @@
 import { default as NextImage } from "next/image";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { StyledBlockquote } from "components/Shared/StyledBlockquote";
 import { StyledTextContainer } from "components/Shared/StyledTextContainer";
 import { StyledParagraph } from "components/Shared/StyledParagraph";
@@ -91,44 +91,6 @@ export const Image = styled(NextImage)`
   max-width: 100%;
   height: auto;
   margin: 0rem auto;
-`;
-
-export const LinkStyles = css`
-  position: relative;
-  display: inline-block;
-  transition: 0s 0s all;
-  z-index: 0;
-  backface-visibility: hidden;
-`;
-
-export const LinkBeforeStyles = css`
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 0;
-  height: 2px;
-  z-index: -1;
-  width: 100%;
-  transition: 0.3s transform, 0.4s opacity;
-  transform-origin: bottom;
-`;
-
-export const LinkBeforeHoverStyles = css`
-  transform: scaleY(3);
-  opacity: 0.6;
-`;
-
-export const Link = styled.a`
-  ${LinkStyles}
-
-  &:before {
-    background-color: ${props => props.theme.colors.accent};
-    ${LinkBeforeStyles}
-  }
-
-  &:hover:before {
-    ${LinkBeforeHoverStyles}
-  }
 `;
 
 export const List = styled.ol`

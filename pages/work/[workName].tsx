@@ -10,6 +10,7 @@ import ReactMarkdown from "react-markdown";
 import InterLink from "components/Shared/Links";
 import PageHead from "components/Shared/PageHead";
 import Tags from "components/Shared/Tags";
+import MarkdownLink from "components/Shared/MarkdownLink";
 import { StyledBlockquote } from "components/Shared/StyledBlockquote";
 import { StyledHeader } from "components/Shared/StyledHeader";
 import { StyledParagraph } from "components/Shared/StyledParagraph";
@@ -95,6 +96,10 @@ export default function ViewWork({
               },
               blockquote({ children }) {
                 return <StyledBlockquote>{children}</StyledBlockquote>;
+              },
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
+              a({ node, ref, ...props }) {
+                return <MarkdownLink {...props} />;
               },
             }}
           >
