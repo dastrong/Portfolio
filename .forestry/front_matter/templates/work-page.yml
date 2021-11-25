@@ -1,5 +1,5 @@
 ---
-label: Work Order
+label: Work Page
 hide_body: true
 fields:
 - name: work_order

@@ -88,10 +88,10 @@ export const getStaticProps: GetStaticProps = async () => {
 
   // get the filenames (add to root)
   const postFrontMatter = await import(
-    ".forestry/front_matter/templates/post.yml"
+    ".forestry/front_matter/templates/blog-post.yml"
   );
   const workFrontMatter = await import(
-    ".forestry/front_matter/templates/work.yml"
+    ".forestry/front_matter/templates/work-item.yml"
   );
 
   // get all the paths

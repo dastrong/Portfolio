@@ -17,7 +17,7 @@ fields:
     schema:
       format: markdown
   label: Description
-  description: Add a quick descriptionabout the site
+  description: Add a quick description about the post
 - name: date_publish
   type: datetime
   label: Date
@@ -60,5 +60,4 @@ fields:
   description: Add any external image URL's used in the blog post here
 pages:
 - content/posts/something-clever-here.md
-- content/posts/testing-number-one.md
 - content/posts/update-esl-in-the-rok-teachers.md

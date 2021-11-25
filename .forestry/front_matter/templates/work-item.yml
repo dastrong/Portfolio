@@ -1,5 +1,5 @@
 ---
-label: Work
+label: Work Item
 hide_body: false
 fields:
 - name: site_name
@@ -52,10 +52,10 @@ fields:
     description: URL to live site
   label: Links
 pages:
-- content/work/achillesrecovery.md
-- content/work/chinguregistry.md
-- content/work/eslintherok.md
+- content/work/achilles-recovery.md
+- content/work/chingu-registry.md
+- content/work/esl-in-the-rok.md
 - content/work/grooveg.md
-- content/work/redditclone.md
-- content/work/rescuekorea.md
+- content/work/reddit-clone.md
+- content/work/rescue-korea.md
 - content/work/utubefiltered.md

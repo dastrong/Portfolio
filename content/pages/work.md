@@ -1,11 +1,11 @@
 ---
 work_order:
-- content/work/eslintherok.md
+- content/work/esl-in-the-rok.md
 - content/work/grooveg.md
-- content/work/chinguregistry.md
-- content/work/redditclone.md
+- content/work/chingu-registry.md
+- content/work/reddit-clone.md
 - content/work/utubefiltered.md
-- content/work/achillesrecovery.md
-- content/work/rescuekorea.md
+- content/work/rescue-korea.md
+- content/work/achilles-recovery.md
 
 ---

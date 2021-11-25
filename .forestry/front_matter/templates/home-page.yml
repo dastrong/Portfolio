@@ -1,11 +1,11 @@
 ---
-label: Blog
+label: Home Page
 hide_body: true
 fields:
-- name: thumbnail_img_file
+- name: headshot_img_file
   type: file
   config:
     maxSize: 64
   label: Image File
 pages:
-- content/pages/blog.md
+- content/pages/home.md

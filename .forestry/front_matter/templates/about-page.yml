@@ -1,5 +1,5 @@
 ---
-label: About Me
+label: About Page
 hide_body: false
 fields:
 - name: img_file

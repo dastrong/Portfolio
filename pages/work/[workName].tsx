@@ -113,7 +113,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const root = path.join(process.cwd());
 
   // get the filenames (add to root)
-  const work = await import(".forestry/front_matter/templates/work.yml");
+  const work = await import(".forestry/front_matter/templates/work-item.yml");
   const allWorkPaths = matter(work.default).data.pages;
 
   // create an array of all completed work

@@ -29,7 +29,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const root = path.join(process.cwd());
 
   // get the filenames (add to root)
-  const blog = await import(".forestry/front_matter/templates/post.yml");
+  const blog = await import(".forestry/front_matter/templates/blog-post.yml");
   const allPostPaths = matter(blog.default).data.pages;
 
   // create an array of all work content

@@ -80,7 +80,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const root = path.join(process.cwd());
 
   // get the filenames (add to root)
-  const blogPosts = await import(".forestry/front_matter/templates/post.yml");
+  const blogPosts = await import(
+    ".forestry/front_matter/templates/blog-post.yml"
+  );
 
   const allBlogPostPaths = matter(blogPosts.default).data.pages as string[];
 
