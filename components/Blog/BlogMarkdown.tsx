@@ -117,6 +117,7 @@ const components: Components = {
             borderRadius: "1rem",
             margin: 0,
             position: "relative",
+            paddingBlock: "1.5rem",
           }}
           codeTagProps={
             {
@@ -207,12 +208,18 @@ export default function StyledMarkdown({ content }: { content: string }) {
           }
 
           article pre code:after {
-            content: attr(data-language) " ";
-            position: absolute;
-            bottom: 0.75rem;
-            right: 0.5rem;
+            content: attr(data-language) "";
             font-size: 0.75rem;
             opacity: 0.7;
+            line-height: 1;
+            position: sticky;
+            width: 125px;
+            top: 100%;
+            left: calc(100% - 125px);
+            display: block;
+            text-align: right;
+            margin-right: -0.25rem;
+            margin-bottom: -0.75rem;
           }
         `}
       </style>

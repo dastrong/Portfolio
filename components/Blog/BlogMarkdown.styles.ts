@@ -27,9 +27,9 @@ export const Blockquote = styled(StyledBlockquote)`
 
 export const CodeBlockCopy = styled.div<{ isCopied: boolean }>`
   position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  font-size: 1rem;
+  top: 1rem;
+  right: 1rem;
+  font-size: 0.75rem;
   line-height: 1;
   cursor: pointer;
   z-index: 1;
@@ -54,10 +54,9 @@ export const CodeBlockCopy = styled.div<{ isCopied: boolean }>`
       rgb(3 237 249 / 46%) 0px 0px 5px, rgb(3 237 249 / 46%) 0px 0px 8px;
     position: absolute;
     left: -18.5px;
-    font-size: 1rem;
-    line-height: 1rem;
+    line-height: 1;
     z-index: -1;
-    transform: translateX(-40px);
+    transform: translateX(-30px);
     opacity: ${props => (props.isCopied ? 1 : 0)};
     transition: opacity 500ms;
   }
