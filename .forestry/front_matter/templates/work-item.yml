@@ -6,6 +6,7 @@ fields:
   type: text
   config:
     required: true
+    max: 20
   label: Site Name
   description: What's the site called
 - name: img_file
@@ -23,7 +24,7 @@ fields:
     schema:
       format: markdown
   label: Description
-  description: Add a quick descriptionabout the site
+  description: Add a quick description about the site
 - name: tech_used
   type: tag_list
   default: []
