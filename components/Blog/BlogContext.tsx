@@ -6,7 +6,7 @@ export type ProbedImageType = {
   url: string;
 };
 
-export type BlogContextType = () => {
+export type BlogContextType = {
   internalImages: ProbedImageType[];
   externalImages: ProbedImageType[];
 };
