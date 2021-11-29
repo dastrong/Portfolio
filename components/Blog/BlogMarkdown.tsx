@@ -162,16 +162,19 @@ const components: Components = {
     );
 
     return (
-      <Styled.Image
-        {...props}
-        unoptimized={isExternal}
-        layout="intrinsic"
-        height={height}
-        width={width}
-        src={updatedSrc}
-        placeholder="blur"
-        blurDataURL={shimmerDataURL}
-      />
+      <>
+        <Styled.Image
+          {...props}
+          unoptimized={isExternal}
+          layout="intrinsic"
+          height={height}
+          width={width}
+          src={updatedSrc}
+          placeholder="blur"
+          blurDataURL={shimmerDataURL}
+        />
+        <br />
+      </>
     );
   },
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
