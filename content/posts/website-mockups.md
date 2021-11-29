@@ -13,7 +13,7 @@ internal_images:
 - "/v1637738361/Portfolio/work_Portfolio.png"
 
 ---
-Let's learn how to make some simple website mockups like the one you see above or the others on my [work page](/work "Daniel Strong's Work") for FREE, step by step.
+Let's learn how to make some simple website mockups like the one you see below or the others on my [work page](/work "Daniel Strong's Work") for FREE, step by step.
 
 ![Daniel Strong's Portfolio Website Mockup](/v1637738361/Portfolio/work_Portfolio.png "My Portfolio Website Mockup")
 
@@ -26,15 +26,10 @@ Go to your site, open the Chrome DevTools, toggle Device Toolbar, and set your w
 > If you're doing a couple sites, you might want to add the following custom device dimensions to speed yourself up.
 
 | Device | Width | Height | Aspect Ratio |
-
 |:-------:|:-----:|:------:|:------------:|
-
 | Mobile | 375 | 812 | 0.46 |
-
 | Tablet | 768 | 1024 | 0.75 |
-
 | Laptop | 1440 | 900 | 1.60 |
-
 | Desktop | 1920 | 1080 | 1.77 |
 
 ### Step 2
