@@ -138,8 +138,11 @@ const components: Components = {
   li: ({ children }) => <Styled.ListItem>{children}</Styled.ListItem>,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   img: ({ node, ref, ...props }) => {
+    // strip the base cloud url if it's there - forestry adds automatically
+    const updatedSrc = props.src.replace(process.env.NEXT_PUBLIC_CLOUD_URL, "");
+
     // check if the image is external/internal
-    const isExternal = props.src.startsWith("http");
+    const isExternal = updatedSrc.startsWith("http");
 
     const { colors } = useTheme();
     // grab the image heights/widths from the BlogContext
@@ -148,7 +151,7 @@ const components: Components = {
     // get this currently processed image height/width combo
     const { height, width } = images[
       isExternal ? "externalImages" : "internalImages"
-    ].find(img => img.url.endsWith(props.src));
+    ].find(img => img.url.endsWith(updatedSrc));
 
     // create a styled shimmerDataURL as a placeholder
     const shimmerDataURL = getShimmerDataURL(
@@ -159,16 +162,19 @@ const components: Components = {
     );
 
     return (
-      <Styled.Image
-        {...props}
-        unoptimized={isExternal}
-        layout="intrinsic"
-        height={height}
-        width={width}
-        src={props.src}
-        placeholder="blur"
-        blurDataURL={shimmerDataURL}
-      />
+      <>
+        <Styled.Image
+          {...props}
+          unoptimized={isExternal}
+          layout="intrinsic"
+          height={height}
+          width={width}
+          src={updatedSrc}
+          placeholder="blur"
+          blurDataURL={shimmerDataURL}
+        />
+        <br />
+      </>
     );
   },
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

@@ -1,7 +1,7 @@
 import { DefaultTheme } from "styled-components";
 
 const customMediaQuery = (maxWidth: number) =>
-  `@media (max-width: ${maxWidth}px)`;
+  `@media screen and (max-width: ${maxWidth}px)`;
 
 export const darkColors = {
   dark: "#000000",

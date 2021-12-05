@@ -77,15 +77,15 @@ export const TextContent = styled.div`
 `;
 
 export const Title = styled.h2`
-  display: flex;
-  align-items: center;
+  display: inline-block;
+  width: 100%;
   font-size: 1.75rem;
   margin-bottom: 0.5rem;
 
   ${props => props.theme.media.md} {
     font-size: 2rem;
     margin-bottom: 1rem;
-    justify-content: center;
+    text-align: center;
   }
 
   ${props => props.theme.media.sm} {
