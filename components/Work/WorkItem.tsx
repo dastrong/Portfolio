@@ -18,7 +18,8 @@ export default function WorkItem({
   site_name,
   routeName,
   priority,
-}: WorkTypes & { routeName?: string; priority: boolean }) {
+  featured,
+}: WorkTypes & { routeName?: string; priority: boolean; featured?: boolean }) {
   const [ref, inView, skipAnimation] = useEnterAnimation(true);
 
   const { colors } = useTheme();
@@ -38,6 +39,7 @@ export default function WorkItem({
       skipAnimation={skipAnimation}
       containerStyles={Styled.ItemContainer}
       contentStyles={Styled.ItemContent}
+      isStatic={featured}
     >
       <Styled.ImageWrapper>
         <Styled.Image
