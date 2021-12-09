@@ -10,7 +10,7 @@ fields:
     min: 
     max: 
     step: 
-  label: Number of Featured Work
+  label: Featured Work Count
   description: Choose how many pieces of work can be featured
 - name: work_order
   type: list
