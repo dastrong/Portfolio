@@ -10,14 +10,13 @@ import PageHead from "components/Shared/PageHead";
 import Tags from "components/Shared/Tags";
 import { BlogCard, WorkCard } from "components/Shared/Cards";
 import { StyledHeader } from "components/Shared/StyledHeader";
+import { StyledSubHeading } from "components/Shared/StyledSubHeading";
 
 import type { WorkTypes } from "components/Work/Work.types";
 import type { BlogTypes } from "components/Blog/Blog.types";
 
-const StyledTypeHeader = styled.h2`
-  margin: 3.5rem auto 0;
-  font-size: ${props => props.theme.fontSize.lg};
-  text-align: center;
+const StyledSubHeader = styled(StyledSubHeading)`
+  margin-top: 3.5rem;
 `;
 
 const StyledEmpty = styled.p`
@@ -56,7 +55,7 @@ export default function TagsPage({
       title={
         currentTag
           ? `Results for: ${currentTag}`
-          : `Search For Daniel Strong Content`
+          : `Search for Daniel Strong content by tag`
       }
       description="Looking for something specific? Filter my work and posts by any available tag."
     >
@@ -65,7 +64,7 @@ export default function TagsPage({
       <Tags tags={tags} currentTag={currentTag} />
 
       {/* Show work or posts related that use the chosen tag */}
-      <StyledTypeHeader>Related Posts</StyledTypeHeader>
+      <StyledSubHeader>Related Posts</StyledSubHeader>
       {postList.length === 0 ? (
         <StyledEmpty>No blog posts related to: {currentTag}</StyledEmpty>
       ) : (
@@ -73,7 +72,7 @@ export default function TagsPage({
       )}
 
       {/* Show work or posts related that use the chosen tag */}
-      <StyledTypeHeader>Related Work</StyledTypeHeader>
+      <StyledSubHeader>Related Work</StyledSubHeader>
       {workList.length === 0 ? (
         <StyledEmpty>No work containing: {currentTag}</StyledEmpty>
       ) : (
