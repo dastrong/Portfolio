@@ -105,7 +105,14 @@ export const getStaticProps: GetStaticProps = async () => {
       const { data } = matter(fileContents);
       return data;
     })
-    .filter(post => post.show_post);
+    // filter out all the incomplete posts
+    .filter(({ show_post }) => show_post)
+    // sort the posts - newest first
+    .sort(
+      (a: BlogTypes, b: BlogTypes) =>
+        Date.parse(b.date_publish) - Date.parse(a.date_publish)
+    );
+
   // create an array of all completed posts
   const allWorks = allWorkPaths
     .map((filename: string) => {
