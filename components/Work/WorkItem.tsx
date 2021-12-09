@@ -17,10 +17,9 @@ export default function WorkItem({
   show_work,
   site_name,
   routeName,
-  priority,
-  featured,
-}: WorkTypes & { routeName?: string; priority: boolean; featured?: boolean }) {
-  const [ref, inView, skipAnimation] = useEnterAnimation(true);
+  featured = false,
+}: WorkTypes & { routeName?: string; featured?: boolean }) {
+  const [ref, inView, skipAnimation] = useEnterAnimation(featured);
 
   const { colors } = useTheme();
   const shimmerDataURL = getShimmerDataURL(
@@ -35,7 +34,7 @@ export default function WorkItem({
   return (
     <GradientContainer
       ref={ref}
-      inView={inView || priority}
+      inView={inView || featured}
       skipAnimation={skipAnimation}
       containerStyles={Styled.ItemContainer}
       contentStyles={Styled.ItemContent}
@@ -43,7 +42,7 @@ export default function WorkItem({
     >
       <Styled.ImageWrapper>
         <Styled.Image
-          priority={priority}
+          priority={featured}
           src={img_file}
           alt={routeName}
           height={487}
