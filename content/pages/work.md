@@ -1,4 +1,6 @@
 ---
+featured_work_count: 2
+initial_other_work_count: 3
 work_order:
 - content/work/portfolio.md
 - content/work/esl-in-the-rok.md

@@ -2,7 +2,7 @@
 label: Work Page
 hide_body: true
 fields:
-- name: number_of_featured_work
+- name: featured_work_count
   type: number
   default: 2
   required: true
@@ -12,6 +12,16 @@ fields:
     step: 
   label: Featured Work Count
   description: Choose how many pieces of work can be featured
+- name: initial_other_work_count
+  type: number
+  default: 3
+  required: true
+  config:
+    min: 
+    max: 
+    step: 
+  label: Initial Other Work Count
+  description: Choose how many other pieces of work are initially shown
 - name: work_order
   type: list
   config:
