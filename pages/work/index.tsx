@@ -60,7 +60,7 @@ export default function Work({
           }
         >
           {showMore ? <FaCaretDown /> : <FaCaretUp />}
-          <span>Show {showMore ? "more" : "less"} work</span>
+          Show {showMore ? "more" : "less"} work
           {showMore ? <FaCaretDown /> : <FaCaretUp />}
         </Styled.Button>
       </Styled.PageContainer>
