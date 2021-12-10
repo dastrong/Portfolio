@@ -83,11 +83,9 @@ export const getStaticProps = async () => {
   // create an array of all work content
   const allWorkContent = workData.work_order.map((filename: string) => {
     const filePath = path.join(root, filename);
-    const routeName = filename.slice(13, -3);
     const fileContents = fs.readFileSync(filePath, "utf8");
-    const fileMatter = matter(fileContents);
-    const data = fileMatter.data as WorkTypes;
-    return { ...data, routeName };
+    const data = matter(fileContents).data as WorkTypes;
+    return data;
   });
 
   return {

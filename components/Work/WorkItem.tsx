@@ -4,6 +4,7 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 
 import useEnterAnimation from "hooks/useEnterAnimation";
 import { getShimmerDataURL } from "utils/getShimmerDataURL";
+import { formatTitleToFile } from "utils/formatTitleToFile";
 import GradientContainer from "components/Shared/GradientContainer";
 import InterLink from "components/Shared/Links";
 
@@ -16,9 +17,8 @@ export default function WorkItem({
   links,
   show_work,
   site_name,
-  routeName,
   featured = false,
-}: WorkTypes & { routeName?: string; featured?: boolean }) {
+}: WorkTypes & { featured?: boolean }) {
   const [ref, inView, skipAnimation] = useEnterAnimation(featured);
 
   const { colors } = useTheme();
@@ -44,7 +44,7 @@ export default function WorkItem({
         <Styled.Image
           priority={featured}
           src={img_file}
-          alt={routeName}
+          alt={site_name + " mockup"}
           height={487}
           width={1000}
           sizes="(max-width: 400px) 350px, (max-width: 767px) 550px, 350px"
@@ -75,7 +75,7 @@ export default function WorkItem({
         <Styled.ButtonGroup>
           <InterLink
             primary
-            href={`/work/${routeName}`}
+            href={`/work/${formatTitleToFile(site_name)}`}
             StyledAnchor={Styled.Button}
             aria-label={`Further ${site_name} Information`}
           >

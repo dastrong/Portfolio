@@ -1,7 +1,7 @@
 import React from "react";
 import fs from "fs";
 import path from "path";
-import { GetStaticProps } from "next";
+import { InferGetStaticPropsType } from "next";
 import { useRouter } from "next/router";
 import matter from "gray-matter";
 import styled from "styled-components";
@@ -29,11 +29,7 @@ export default function TagsPage({
   tags,
   posts,
   works,
-}: {
-  tags: string[];
-  posts: BlogTypes[];
-  works: WorkTypes[];
-}) {
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   // use the router object to grab the query object for displaying certain tag related content
   const router = useRouter();
 
@@ -82,7 +78,7 @@ export default function TagsPage({
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps = async () => {
   const root = path.join(process.cwd());
 
   // get the filenames (add to root)
@@ -94,23 +90,24 @@ export const getStaticProps: GetStaticProps = async () => {
   );
 
   // get all the paths
-  const allPostPaths = matter(postFrontMatter.default).data.pages;
-  const allWorkPaths = matter(workFrontMatter.default).data.pages;
+  const allPostPaths: string[] = matter(postFrontMatter.default).data.pages;
+  const allWorkPaths: string[] = matter(workFrontMatter.default).data.pages;
 
   // create an array of all completed posts
   const allPosts = allPostPaths
     .map((filename: string) => {
       const filePath = path.join(root, filename);
       const fileContents = fs.readFileSync(filePath, "utf8");
-      const { data } = matter(fileContents);
+      const data = matter(fileContents).data as BlogTypes;
       return data;
     })
     // filter out all the incomplete posts
     .filter(({ show_post }) => show_post)
-    // sort the posts - newest first
+    // sort the posts - most recently updated or posted first
     .sort(
-      (a: BlogTypes, b: BlogTypes) =>
-        Date.parse(b.date_publish) - Date.parse(a.date_publish)
+      (a, b) =>
+        Date.parse(b.date_update || b.date_publish) -
+        Date.parse(a.date_update || a.date_publish)
     );
 
   // create an array of all completed posts
@@ -118,7 +115,7 @@ export const getStaticProps: GetStaticProps = async () => {
     .map((filename: string) => {
       const filePath = path.join(root, filename);
       const fileContents = fs.readFileSync(filePath, "utf8");
-      const { data } = matter(fileContents);
+      const data = matter(fileContents).data as WorkTypes;
       return data;
     })
     .filter(work => work.show_work);
@@ -126,11 +123,11 @@ export const getStaticProps: GetStaticProps = async () => {
   // grabbing all tags for each data type
   const allPostsTags = allPosts.reduce(
     (acc, cVal) => [...acc, ...cVal.tags],
-    []
+    [] as string[]
   );
   const allWorksTags = allWorks.reduce(
     (acc, cVal) => [...acc, ...cVal.tech_used],
-    []
+    [] as string[]
   );
 
   // get and sort all unique tags
