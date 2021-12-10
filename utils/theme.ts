@@ -10,8 +10,8 @@ export const darkColors = {
 };
 
 export const lightColors = {
-  dark: "#E1F1F8",
-  main: "#F8F8FF",
+  dark: "#edf4f7",
+  main: "#f9fafa",
   light: "#F3F8FA",
 };
 

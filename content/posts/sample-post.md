@@ -5,8 +5,8 @@ tags:
   - React
   - Express
   - MongoDB
-title: Something clever here
-show_post: true
+title: Sample Post
+show_post: false
 internal_images: 
   - "/v1635041037/Portfolio/blog_thumbnail.jpg"
   - "/v1635041038/Portfolio/blog_samplesnippet.png"

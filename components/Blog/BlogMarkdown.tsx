@@ -54,32 +54,32 @@ const MarkdownCodeBlock = (props: { children: ReactNode; value: string }) => {
 
 const components: Components = {
   h1: props => (
-    <Styled.Heading level={1} as="h1">
+    <Styled.Heading level={1} as="h1" id={props.id}>
       {props.children}
     </Styled.Heading>
   ),
   h2: props => (
-    <Styled.Heading level={2} as="h2">
+    <Styled.Heading level={2} as="h2" id={props.id}>
       {props.children}
     </Styled.Heading>
   ),
   h3: props => (
-    <Styled.Heading level={3} as="h3">
+    <Styled.Heading level={3} as="h3" id={props.id}>
       {props.children}
     </Styled.Heading>
   ),
   h4: props => (
-    <Styled.Heading level={4} as="h4">
+    <Styled.Heading level={4} as="h4" id={props.id}>
       {props.children}
     </Styled.Heading>
   ),
   h5: props => (
-    <Styled.Heading level={5} as="h5">
+    <Styled.Heading level={5} as="h5" id={props.id}>
       {props.children}
     </Styled.Heading>
   ),
   h6: props => (
-    <Styled.Heading level={6} as="h6">
+    <Styled.Heading level={6} as="h6" id={props.id}>
       {props.children}
     </Styled.Heading>
   ),

@@ -1,7 +1,7 @@
 import React from "react";
 import fs from "fs";
 import path from "path";
-import { GetStaticProps } from "next";
+import { InferGetStaticPropsType } from "next";
 import { useRouter } from "next/router";
 import matter from "gray-matter";
 import styled from "styled-components";
@@ -10,14 +10,13 @@ import PageHead from "components/Shared/PageHead";
 import Tags from "components/Shared/Tags";
 import { BlogCard, WorkCard } from "components/Shared/Cards";
 import { StyledHeader } from "components/Shared/StyledHeader";
+import { StyledSubHeading } from "components/Shared/StyledSubHeading";
 
 import type { WorkTypes } from "components/Work/Work.types";
 import type { BlogTypes } from "components/Blog/Blog.types";
 
-const StyledTypeHeader = styled.h2`
-  margin: 3.5rem auto 0;
-  font-size: ${props => props.theme.fontSize.lg};
-  text-align: center;
+const StyledSubHeader = styled(StyledSubHeading)`
+  margin-top: 3.5rem;
 `;
 
 const StyledEmpty = styled.p`
@@ -30,11 +29,7 @@ export default function TagsPage({
   tags,
   posts,
   works,
-}: {
-  tags: string[];
-  posts: BlogTypes[];
-  works: WorkTypes[];
-}) {
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   // use the router object to grab the query object for displaying certain tag related content
   const router = useRouter();
 
@@ -56,7 +51,7 @@ export default function TagsPage({
       title={
         currentTag
           ? `Results for: ${currentTag}`
-          : `Search For Daniel Strong Content`
+          : `Search for Daniel Strong content by tag`
       }
       description="Looking for something specific? Filter my work and posts by any available tag."
     >
@@ -65,7 +60,7 @@ export default function TagsPage({
       <Tags tags={tags} currentTag={currentTag} />
 
       {/* Show work or posts related that use the chosen tag */}
-      <StyledTypeHeader>Related Posts</StyledTypeHeader>
+      <StyledSubHeader>Related Posts</StyledSubHeader>
       {postList.length === 0 ? (
         <StyledEmpty>No blog posts related to: {currentTag}</StyledEmpty>
       ) : (
@@ -73,7 +68,7 @@ export default function TagsPage({
       )}
 
       {/* Show work or posts related that use the chosen tag */}
-      <StyledTypeHeader>Related Work</StyledTypeHeader>
+      <StyledSubHeader>Related Work</StyledSubHeader>
       {workList.length === 0 ? (
         <StyledEmpty>No work containing: {currentTag}</StyledEmpty>
       ) : (
@@ -83,7 +78,7 @@ export default function TagsPage({
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps = async () => {
   const root = path.join(process.cwd());
 
   // get the filenames (add to root)
@@ -95,24 +90,32 @@ export const getStaticProps: GetStaticProps = async () => {
   );
 
   // get all the paths
-  const allPostPaths = matter(postFrontMatter.default).data.pages;
-  const allWorkPaths = matter(workFrontMatter.default).data.pages;
+  const allPostPaths: string[] = matter(postFrontMatter.default).data.pages;
+  const allWorkPaths: string[] = matter(workFrontMatter.default).data.pages;
 
   // create an array of all completed posts
   const allPosts = allPostPaths
     .map((filename: string) => {
       const filePath = path.join(root, filename);
       const fileContents = fs.readFileSync(filePath, "utf8");
-      const { data } = matter(fileContents);
+      const data = matter(fileContents).data as BlogTypes;
       return data;
     })
-    .filter(post => post.show_post);
+    // filter out all the incomplete posts
+    .filter(({ show_post }) => show_post)
+    // sort the posts - most recently updated or posted first
+    .sort(
+      (a, b) =>
+        Date.parse(b.date_update || b.date_publish) -
+        Date.parse(a.date_update || a.date_publish)
+    );
+
   // create an array of all completed posts
   const allWorks = allWorkPaths
     .map((filename: string) => {
       const filePath = path.join(root, filename);
       const fileContents = fs.readFileSync(filePath, "utf8");
-      const { data } = matter(fileContents);
+      const data = matter(fileContents).data as WorkTypes;
       return data;
     })
     .filter(work => work.show_work);
@@ -120,11 +123,11 @@ export const getStaticProps: GetStaticProps = async () => {
   // grabbing all tags for each data type
   const allPostsTags = allPosts.reduce(
     (acc, cVal) => [...acc, ...cVal.tags],
-    []
+    [] as string[]
   );
   const allWorksTags = allWorks.reduce(
     (acc, cVal) => [...acc, ...cVal.tech_used],
-    []
+    [] as string[]
   );
 
   // get and sort all unique tags
