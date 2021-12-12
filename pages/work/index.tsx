@@ -32,6 +32,9 @@ export default function Work({
     <PageHead
       title="Daniel Strong's Work"
       description="Want to see what I've worked on? View some of my past work for clients and in projects now."
+      ogImage={encodeURI(
+        `https://danielstrong.tech/api/og-image?type=/api/og-image?type=default&title=Daniel Strong's Work&heading=Come checkout what I've built&url=work`
+      )}
     >
       <Styled.PageContainer>
         <StyledHeader underlined>Featured Work</StyledHeader>

@@ -54,6 +54,9 @@ export default function TagsPage({
           : `Search for Daniel Strong content by tag`
       }
       description="Looking for something specific? Filter my work and posts by any available tag."
+      ogImage={encodeURI(
+        `https://danielstrong.tech/api/og-image?type=default&title=Filter my work and posts by tag&heading=Looking for something specific?&url=tags`
+      )}
     >
       <StyledHeader underlined>Tags</StyledHeader>
 

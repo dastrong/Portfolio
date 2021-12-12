@@ -29,12 +29,15 @@ export default function ViewWork({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [refButtons, inViewButtons] = useEnterAnimation();
   const [refText, inViewText] = useEnterAnimation();
+  const imgSrc = `${process.env.NEXT_PUBLIC_CLOUD_URL}/f_auto,w_500${image.img_file}`;
 
   return (
     <PageHead
       title={site_name}
       description={description}
-      ogImage={"/c_pad,h_300,w_525" + image.img_file}
+      ogImage={encodeURI(
+        `https://danielstrong.tech/api/og-image?type=work&title=${site_name}&image=${imgSrc}`
+      )}
       ogImageAlt={site_name + " social media banner"}
     >
       <StyledHeader underlined>{site_name}</StyledHeader>

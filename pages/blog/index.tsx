@@ -14,6 +14,9 @@ export default function Blog({ posts }: { posts: BlogTypes[] }) {
     <PageHead
       title="Daniel Strong's Blog"
       description="Join me in learning new, useful, and interesting things in web development."
+      ogImage={encodeURI(
+        `https://danielstrong.tech/api/og-image?type=/api/og-image?type=default&title=Daniel Strong's Blog&heading=Come learn something new&url=blog`
+      )}
     >
       <StyledHeader underlined>Blog Posts</StyledHeader>
 

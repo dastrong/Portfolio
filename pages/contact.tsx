@@ -27,6 +27,9 @@ export default function Contact({
     <PageHead
       title="Contact Daniel Strong"
       description="Reach out and send Daniel Strong a personal email."
+      ogImage={encodeURI(
+        `https://danielstrong.tech/api/og-image?type=default&title=Shoot me an email&heading=Want to get in touch?&url=contact`
+      )}
     >
       <StyledHeader underlined>Contact Me</StyledHeader>
 

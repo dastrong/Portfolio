@@ -46,7 +46,15 @@ export default function ViewBlog({
   images,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <PageHead title={title} description={description} ogType="article">
+    <PageHead
+      title={title}
+      description={description}
+      ogType="article"
+      ogImage={encodeURI(
+        `https://danielstrong.tech/api/og-image?type=blog&title=${title}`
+      )}
+      ogImageAlt={`${title} social banner`}
+    >
       <StyledHeader>{title}</StyledHeader>
 
       <BlogInfo date={date_publish} thumbnail_img_file={thumbnail_img_file} />

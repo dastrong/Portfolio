@@ -13,13 +13,14 @@ type PageHeadProps = {
 };
 
 const URL = "https://www.danielstrong.tech";
-const CLOUD_URL = process.env.NEXT_PUBLIC_CLOUD_URL;
 
 export default function PageHead({
   children,
   title = "Daniel Strong",
   description,
-  ogImage = "/c_scale,w_550/v1637644711/Portfolio/banner.png",
+  ogImage = encodeURI(
+    `${URL}/api/og-image?type=default&title=Daniel Strong&heading=Come get to know`
+  ),
   ogImageAlt = "Daniel Strong Social Media Banner",
   ogType = "website",
 }: PageHeadProps) {
@@ -30,7 +31,6 @@ export default function PageHead({
     <>
       <Head>
         <title>{title}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content={description} />
         <meta
           name="google-site-verification"
@@ -41,14 +41,14 @@ export default function PageHead({
         <meta property="og:type" content={ogType} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
-        <meta property="og:image" content={CLOUD_URL + ogImage} />
+        <meta property="og:image" content={ogImage} />
         <meta property="og:image:alt" content={ogImageAlt} />
         <meta property="og:url" content={URL + asPath} />
         <meta property="og:site_name" content="Daniel Strong" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={CLOUD_URL + ogImage} />
+        <meta name="twitter:image" content={ogImage} />
         <meta name="twitter:image:alt" content={ogImageAlt} />
         <meta name="twitter:creator" content="@DaStrongWon" />
         <meta name="theme-color" content={colors.background.main} />
