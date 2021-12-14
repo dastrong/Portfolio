@@ -188,6 +188,7 @@ function OgImageTemplate({ type, ...props }: QueryProps) {
 }
 
 export default withOGImage({
+  cacheControl: `public, immutable, no-transform, s-maxage=31536000, max-age=31536000`,
   template: {
     html: ({ type, title, heading, image, url }: QueryProps) => {
       const sheet = new ServerStyleSheet();
