@@ -15,14 +15,15 @@
     ],
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
-    "no-use-before-define": "off", 
+    "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": [
       2,
       { "functions": false, "classes": true }
     ],
     // note you must disable the base rule as it can report incorrect errors
     "camelcase": "off",
-    "@typescript-eslint/camelcase": "off"
+    "@typescript-eslint/camelcase": "off",
+    "react/prop-types": "off"
   },
   "parserOptions": {
     "ecmaVersion": 2018,
