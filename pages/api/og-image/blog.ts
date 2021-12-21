@@ -1,8 +1,8 @@
 import { IncomingMessage, ServerResponse } from "http";
-import { parseRequest } from "./_lib/parser";
-import { getScreenshot } from "./_lib/chromium";
-import { getHtml } from "./_templates/base";
-import { getBlogHtml, blogCss } from "./_templates/blog";
+import { parseRequest } from "utils/og-image/_lib/parser";
+import { getScreenshot } from "utils/og-image/_lib/chromium";
+import { getHtml } from "utils/og-image/_templates/base";
+import { getBlogHtml, blogCss } from "utils/og-image/_templates/blog";
 
 const isDev = process.env.NODE_ENV === "development";
 
