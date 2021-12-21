@@ -6,7 +6,7 @@ tech_used:
 - Styled-Components
 - TypeScript
 - Figma
-site_name: My Portfolio
+site_name: Portfolio
 img_file: "/v1637738361/Portfolio/work_Portfolio.png"
 description: This is my portfolio website that I designed and developed myself from
   scratch.
