@@ -2,7 +2,7 @@ import { readFileSync } from "fs";
 import { resolve, join } from "path";
 import { lightColors, textures } from "utils/theme";
 
-const fontsDir = resolve(process.cwd(), "pages/api/og-image/_fonts");
+const fontsDir = resolve(process.cwd(), "utils/og-image/_fonts");
 const thin = readFileSync(join(fontsDir, "OpenSansThin.woff2")).toString(
   "base64"
 );
