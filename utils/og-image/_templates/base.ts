@@ -3,12 +3,16 @@ import { resolve, join } from "path";
 import { lightColors, textures } from "utils/theme";
 
 const fontsDir = resolve(process.cwd(), "utils/og-image/_fonts");
+console.time("Open Sans loading: ");
 const thin = readFileSync(join(fontsDir, "OpenSansThin.woff2")).toString(
   "base64"
 );
+console.timeEnd("Open Sans loading: ");
+console.time("Open Sans loading: ");
 const bold = readFileSync(join(fontsDir, "WorkSansBold.woff2")).toString(
   "base64"
 );
+console.timeEnd("Open Sans loading: ");
 
 export function getHtml(htmlContent: string, additionalCss: string) {
   return `<!DOCTYPE html>
