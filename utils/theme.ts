@@ -4,15 +4,15 @@ const customMediaQuery = (maxWidth: number) =>
   `@media screen and (max-width: ${maxWidth}px)`;
 
 export const darkColors = {
-  dark: "#000000",
-  main: "#070707",
+  dark: "#070707",
+  main: "#0C0C0C",
   light: "#161616",
 };
 
 export const lightColors = {
   dark: "#edf4f7",
-  main: "#f9fafa",
-  light: "#F3F8FA",
+  main: "#f1f5f5",
+  light: "#f9fafa",
 };
 
 export const textures = {
