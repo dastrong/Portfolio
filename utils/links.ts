@@ -23,7 +23,7 @@ export const externalLinks = [
   },
   {
     text: "LinkedIn",
-    href: "https://www.linkedin.com/in/daniel-strong-tech",
+    href: "https://www.linkedin.com/in/danielstrongtech",
     SquareIcon: FaLinkedin,
     RegIcon: FaLinkedinIn,
   },
