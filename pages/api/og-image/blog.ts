@@ -12,7 +12,6 @@ export default async function handler(
 ) {
   try {
     const parsedReq = parseRequest(req);
-    console.log(parsedReq);
     const blogHtml = getBlogHtml(parsedReq);
     const html = getHtml(blogHtml, blogCss);
     if (isDev && parsedReq.debug === "1") {
