@@ -27,6 +27,5 @@ export async function getOptions(isDev: boolean) {
       headless: chrome.headless,
     };
   }
-  console.log("chrome.headless: ", chrome.headless);
   return options;
 }

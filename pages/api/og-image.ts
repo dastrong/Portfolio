@@ -13,7 +13,6 @@ export default async function handler(
   res: ServerResponse
 ) {
   try {
-    console.time("handler");
     const parsedReq = parseRequest(req);
     let innerHtml: string;
     let innerCss: string;
@@ -34,16 +33,13 @@ export default async function handler(
       return;
     }
 
-    console.time("screenshot");
     const file = await getScreenshot(html, isDev);
-    console.timeEnd("screenshot");
     res.statusCode = 200;
     res.setHeader("Content-Type", `image/png`);
     res.setHeader(
       "Cache-Control",
       `public, immutable, no-transform, s-maxage=31536000, max-age=31536000`
     );
-    console.timeEnd("handler");
     res.end(file);
   } catch (e) {
     res.statusCode = 500;
