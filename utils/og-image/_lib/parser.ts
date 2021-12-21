@@ -3,7 +3,6 @@ import { parse } from "url";
 import { ParsedRequest } from "./types";
 
 export function parseRequest(req: IncomingMessage) {
-  console.log("HTTP " + req.url);
   const { query } = parse(req.url || "/", true);
   const { title, image, heading, type, url, debug }: ParsedRequest =
     query || {};
