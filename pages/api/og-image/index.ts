@@ -2,9 +2,11 @@ import { IncomingMessage, ServerResponse } from "http";
 import { parseRequest } from "./_lib/parser";
 import { getScreenshot } from "./_lib/chromium";
 import { getHtml } from "./_templates/base";
+import { getWorkHtml, workCss } from "./_templates/work";
+import { getBlogHtml, blogCss } from "./_templates/blog";
+import { getDefaultHtml, defaultCss } from "./_templates/default";
 
-const isDev = !process.env.AWS_REGION;
-const isHtmlDebug = process.env.OG_HTML_DEBUG === "1";
+const isDev = process.env.NODE_ENV === "development";
 
 export default async function handler(
   req: IncomingMessage,
@@ -12,12 +14,20 @@ export default async function handler(
 ) {
   try {
     const parsedReq = parseRequest(req);
-    console.log(parsedReq);
-    // generate the inner html/css and pass it to the getHtml function below
-    const innerHtml = "";
-    const innerCss = "";
+    let innerHtml: string;
+    let innerCss: string;
+    if (parsedReq.type === "work") {
+      innerHtml = getWorkHtml(parsedReq);
+      innerCss = workCss;
+    } else if (parsedReq.type === "blog") {
+      innerHtml = getBlogHtml(parsedReq);
+      innerCss = blogCss;
+    } else {
+      innerHtml = getDefaultHtml(parsedReq);
+      innerCss = defaultCss;
+    }
     const html = getHtml(innerHtml, innerCss);
-    if (isHtmlDebug) {
+    if (isDev && parsedReq.debug === "1") {
       res.setHeader("Content-Type", "text/html");
       res.end(html);
       return;

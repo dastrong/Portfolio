@@ -4,4 +4,5 @@ export interface ParsedRequest {
   heading?: string;
   image?: string;
   url?: string;
+  debug?: string;
 }

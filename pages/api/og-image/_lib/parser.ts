@@ -5,14 +5,16 @@ import { ParsedRequest } from "./types";
 export function parseRequest(req: IncomingMessage) {
   console.log("HTTP " + req.url);
   const { query } = parse(req.url || "/", true);
-  const { title, image, heading, type, url }: ParsedRequest = query || {};
+  const { title, image, heading, type, url, debug }: ParsedRequest =
+    query || {};
 
   const parsedRequest: ParsedRequest = {
-    type,
+    type: type || "default",
     url: url || "",
     title: title ? decodeURIComponent(title) : "",
     image: image ? decodeURIComponent(image) : "",
     heading: heading ? decodeURIComponent(heading) : "",
+    debug: debug || "0",
   };
 
   return parsedRequest;
