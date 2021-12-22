@@ -2,10 +2,10 @@
 img_file: "/v1635041038/Portfolio/about_me.jpg"
 
 ---
-My name is Daniel Strong and I’m a full-stack JavaScript developer. I was born on Vancouver Island, Canada, but have been living abroad for the past five years.
+Daniel is a passionate, full-stack developer. 
 
-Currently, I live in South Korea, but I’m looking to transition for the right opportunity to transition full time into web development (wherever that may be).
+Originally born near Vancouver, Canada, he has been living abroad for the past six years. Presently, he resides in South Korea, but he is actively looking for the right opportunity for his transition back to Canada in early 2022.
 
-My stack is any, and everything JavaScript. If your company uses it, perfect! If not, I’m 100% willing and able to learn new languages and/or frameworks. If you think I’d bring value to your company, please message me.
+His tech stack is anything JavaScript. If your company uses it, perfect! If not, he's 100% willing and able to learn new languages. If you think he would bring value to your company, get in touch now.
 
-If you’re still not sold, check out some of my past work or read some of my poor written, but hopefully informative blog posts here.
+If you’re not sold yet, check out some blog posts or past work to learn more about him. 
