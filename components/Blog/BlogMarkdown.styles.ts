@@ -10,14 +10,14 @@ export const Wrapper = styled(StyledTextContainer)`
   background-color: ${props => props.theme.colors.background.light};
   box-shadow: 0px 0px 6px ${props => props.theme.colors.accent}33;
   border-radius: ${props => props.theme.borderRadius}px;
-  padding: 1rem;
+  padding: 1.5rem;
 
   ${props => props.theme.media.sm} {
     box-shadow: none;
   }
 
   ${props => props.theme.media.xs} {
-    padding: 0rem;
+    padding: 0.25rem;
   }
 `;
 
