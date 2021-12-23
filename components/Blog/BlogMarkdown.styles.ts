@@ -5,7 +5,7 @@ import { StyledTextContainer } from "components/Shared/StyledTextContainer";
 import { StyledParagraph } from "components/Shared/StyledParagraph";
 
 export const Wrapper = styled(StyledTextContainer)`
-  max-width: 600px;
+  max-width: 700px;
   margin: 2rem auto;
   background-color: ${props => props.theme.colors.background.light};
   box-shadow: 0px 0px 6px ${props => props.theme.colors.accent}33;

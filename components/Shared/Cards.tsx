@@ -11,7 +11,7 @@ import { formatDate } from "utils/formatDate";
 
 const StyledContainer = styled.div`
   width: 90%;
-  max-width: 600px;
+  max-width: 700px;
   min-width: 300px;
   margin: 1.75rem auto;
   padding: 1rem;
