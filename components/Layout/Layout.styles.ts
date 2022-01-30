@@ -1,61 +1,41 @@
 import styled, { createGlobalStyle, css } from "styled-components";
 
 export const StyledSection = styled.section<{ isHomePage: boolean }>`
-  overflow: hidden;
-
-  ${props => props.theme.media.xxl} {
-    max-width: ${props => props.theme.width.xl}px;
-  }
-
-  ${props => props.theme.media.xl} {
-    padding: 2.25rem 0.625rem;
-    max-width: ${props => props.theme.width.lg}px;
-  }
-
-  ${props => props.theme.media.lg} {
-    padding: 2rem 0.625rem;
-    max-width: ${props => props.theme.width.md}px;
-  }
-
-  ${props => props.theme.media.md} {
-    padding: 2rem 1.25rem;
-    width: 100%;
-    min-height: calc(100vh - 375px - 55px);
-  }
-
-  ${props => props.theme.media.sm} {
-    padding: 30px 0.625rem;
-  }
-
   ${props =>
-    props.isHomePage
-      ? css`
-          margin: 0 auto;
-          padding: 0;
-          width: 100%;
-          max-width: ${props.theme.width.xxl}px;
-          height: 100vh;
-          display: flex;
+    !props.isHomePage &&
+    css`
+      overflow: hidden;
 
-          ${props => props.theme.media.md} {
-            margin: 55px auto 0;
-            padding: 1.25rem 0.625rem 0;
-            min-height: calc(100vh - 55px);
-            height: 100%;
-            display: block;
-          }
+      ${props.theme.media.xxl} {
+        max-width: ${props.theme.width.xl}px;
+      }
 
-          @media screen and (min-width: 768px) and (orientation: landscape) and (max-height: 768px) {
-            max-width: ${props => props.theme.width.lg}px;
-          }
-        `
-      : css`
-          margin: 55px auto 0;
-          padding: 2.5rem 0.625rem;
-          width: 90%;
-          max-width: ${props.theme.width.xxl}px;
-          min-height: calc(100vh - 228px - 55px);
-        `}
+      ${props.theme.media.xl} {
+        padding: 2.25rem 0.625rem;
+        max-width: ${props.theme.width.lg}px;
+      }
+
+      ${props.theme.media.lg} {
+        padding: 2rem 0.625rem;
+        max-width: ${props.theme.width.md}px;
+      }
+
+      ${props.theme.media.md} {
+        padding: 2rem 1.25rem;
+        width: 100%;
+        min-height: calc(100vh - 375px - 55px);
+      }
+
+      ${props.theme.media.sm} {
+        padding: 30px 0.625rem;
+      }
+
+      margin: 55px auto 0;
+      padding: 2.5rem 0.625rem;
+      width: 90%;
+      max-width: ${props.theme.width.xxl}px;
+      min-height: calc(100vh - 228px - 55px);
+    `}
 `;
 
 export default createGlobalStyle`

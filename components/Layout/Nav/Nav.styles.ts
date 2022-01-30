@@ -7,13 +7,6 @@ export const Nav = styled.nav<{ isHomePage: boolean }>`
   background-color: ${({ theme }) => theme.colors.background.main};
   position: fixed;
   top: 0;
-  transition-duration: ${props => (props.isHomePage ? 0 : "0.2s")};
-  transition-property: transform;
-  transform: translateY(${props => (props.isHomePage ? "-100%" : 0)});
-
-  ${props => props.theme.media.md} {
-    transform: translateY(0);
-  }
 `;
 
 export const NavContent = styled.div`
@@ -78,8 +71,8 @@ export const MobileMenu = styled.div<{ isMenuOpen: boolean }>`
 
   /* these styles apply to the NavLogoMobile  */
   svg {
-    opacity: ${props => (props.isMenuOpen ? 1 : 0)};
-    transition: opacity ${props => `${props.isMenuOpen ? 0.4 : 0}s`};
+    transform: scale(${props => (props.isMenuOpen ? "1" : "0")});
+    transition: transform ${props => `${props.isMenuOpen ? 0.2 : 0}s`};
     transition-delay: ${props => `${props.isMenuOpen ? 0.5 : 0}s`};
     transition-timing-function: cubic-bezier(0.57, 0.11, 0.87, 1);
   }
