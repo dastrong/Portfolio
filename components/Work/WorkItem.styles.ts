@@ -7,7 +7,7 @@ export const ItemContainer = css`
   width: 100%;
   min-width: 300px;
   max-width: 750px;
-  margin: 10px auto;
+  margin: 0.75rem auto 1.25rem;
 
   opacity: 0;
   transform: translateY(40px);

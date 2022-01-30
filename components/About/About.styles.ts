@@ -41,7 +41,7 @@ export const ImageWrapper = styled.div`
   width: 40%;
   line-height: 0;
   min-width: 300px;
-  border-radius: 155px;
+  border-radius: 5rem;
   box-shadow: 0px 0px 1px 0px ${props => props.theme.colors.accent},
     0px 0px 0px 3px ${props => props.theme.colors.accent} inset;
   border: 3px solid ${props => props.theme.colors.accent};
