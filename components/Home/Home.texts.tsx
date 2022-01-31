@@ -4,7 +4,7 @@ const Text = styled.div`
   margin: auto;
   position: absolute;
   opacity: 0;
-  font-size: 7vw;
+  font-size: 6vw;
   padding: 1rem;
 
   @media (orientation: portrait) {
