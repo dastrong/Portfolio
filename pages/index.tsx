@@ -180,7 +180,7 @@ function Globe() {
             values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
             result="hardAlpha"
           />
-          <feOffset dy="20" />
+          <feOffset dy="-50" />
           <feGaussianBlur stdDeviation="25" />
           <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
           <feColorMatrix values="0 0 0 0 0.635294 0 0 0 0 0.0588235 0 0 0 0 0.482353 0 0 0 1 0" />
