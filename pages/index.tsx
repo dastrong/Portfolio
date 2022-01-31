@@ -101,11 +101,11 @@ export default function Home() {
 
         {/* ICONS - 4 */}
         <Texts.StyledExtras>
-          I love
+          I'm
           <br />
-          learning new
+          adept in so
           <br />
-          technologies too.
+          much more too.
         </Texts.StyledExtras>
         <Icons
           name="extras"
