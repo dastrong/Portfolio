@@ -17,7 +17,7 @@ export const ButtonsContainer = styled.div`
 `;
 
 export const Button = styled(StyledButton)`
-  font-size: 1.75vw;
+  font-size: 1.5vw;
   padding: 1.5vh 2.5vw;
   margin-top: 24px;
 
@@ -26,11 +26,21 @@ export const Button = styled(StyledButton)`
   }
 
   ${props => props.theme.media.lg} {
-    font-size: 2.25vw;
+    font-size: 1.75vw;
   }
 
   ${props => props.theme.media.md} {
-    font-size: 3vw;
+    font-size: 2.5vw;
+    padding: 0.75rem 1.5rem;
+    margin-top: 16px;
+
+    &:nth-of-type(even) {
+      margin-left: 0px;
+    }
+  }
+
+  ${props => props.theme.media.md} {
+    font-size: 1rem;
     padding: 0.75rem 1.5rem;
     margin-top: 16px;
 
