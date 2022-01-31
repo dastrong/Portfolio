@@ -130,6 +130,17 @@ const StyledIcon = styled.div`
   animation: ${iconFalling} 8000ms forwards;
 `;
 
+function arrayShuffle(array: number[]) {
+  array = [...array];
+
+  for (let index = array.length - 1; index > 0; index--) {
+    const newIndex = Math.floor(Math.random() * (index + 1));
+    [array[index], array[newIndex]] = [array[newIndex], array[index]];
+  }
+
+  return array;
+}
+
 export default function Icons({
   icons,
   exitDelay,
@@ -143,12 +154,15 @@ export default function Icons({
   name: string;
   color: "--blue" | "--pink";
 }) {
+  const numArray = [...Array(icons.length)].map((_, i) => i);
+  const shuffledNums = arrayShuffle(numArray);
+
   return (
     <OuterContainer delay={exitDelay}>
       <InnerContainer>
         {icons.map((Icon, i) => {
           const maxDelay = 1000;
-          const percent = i / (icons.length - 1);
+          const percent = shuffledNums[i] / (icons.length - 1);
           const val = Math.floor(100 / icons.length - 2);
           return (
             <StyledIcon
