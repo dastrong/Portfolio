@@ -40,7 +40,8 @@
     "rehype-slug": "^5.0.0",
     "remark-gfm": "^3.0.1",
     "sharp": "^0.29.3",
-    "styled-components": "^5.3.3"
+    "styled-components": "^5.3.3",
+    "use-ackee": "^3.0.1"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^12.0.7",
@@ -51,6 +52,7 @@
     "@types/react-copy-to-clipboard": "^5.0.2",
     "@types/react-syntax-highlighter": "^13.5.2",
     "@types/styled-components": "^5.1.15",
+    "@types/use-ackee": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^5.1.0",
     "@typescript-eslint/parser": "^5.1.0",
     "cross-env": "^7.0.3",
