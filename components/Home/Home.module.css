@@ -54,9 +54,9 @@
   }
 }
 
-.emphasis {
+.fadeIn {
   opacity: 0;
-  animation: fadeIn 300ms 16300ms forwards;
+  animation: fadeIn 200ms 16300ms forwards;
 }
 @keyframes fadeIn {
   from {

@@ -59,9 +59,21 @@ export default function Home() {
           I’ve used
           <br />
           <span className={styles.strikethrough}>every</span>{" "}
-          <em className={styles.emphasis}>most</em>
+          <em className={styles.fadeIn}>most</em>
           <br />
-          styling frameworks..
+          styling framework
+          <span className={styles.fadeIn} style={{ animationDelay: "16350ms" }}>
+            s
+          </span>
+          <span className={styles.fadeIn} style={{ animationDelay: "16400ms" }}>
+            .
+          </span>
+          <span className={styles.fadeIn} style={{ animationDelay: "16450ms" }}>
+            .
+          </span>
+          <span className={styles.fadeIn} style={{ animationDelay: "16500ms" }}>
+            .
+          </span>
         </Texts.StyledStyling>
         <Icons
           name="styles"
