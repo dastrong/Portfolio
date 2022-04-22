@@ -59,7 +59,7 @@ fields:
   label: External Images
   description: Add any external image URL's used in the blog post here
 pages:
-- content/posts/journey-to-development.md
+- content/posts/my-software-engineer-journey.md
 - content/posts/sample-post.md
 - content/posts/update-esl-in-the-rok-teachers.md
 - content/posts/website-mockups.md
