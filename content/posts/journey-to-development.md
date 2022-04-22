@@ -7,7 +7,7 @@ external_images: []
 title: My Software Engineer Journey
 description: My journey to discover and become a software engineer
 date_update: 04/21/2022
-show_post: false
+show_post: true
 internal_images:
 - "/v1650590352/Portfolio/ross-parmly-rf6ywHVkrlY-unsplash_an86rh.jpg"
 
