@@ -29,7 +29,7 @@ There I took up teaching to support myself and ended up loving every minute of i
 
 My journey into software development started in August 2017. At this point I had moved from Thailand to South Korea. I was still teaching English, but the summer semester break was just starting.
 
-Flush with free time, I stumbled across ([Udemy](https://www.udemy.com/ "https://www.udemy.com")) and found ([Colt Steele's Web Development bootcamp course](https://www.udemy.com/course/the-web-developer-bootcamp/ "https://www.udemy.com/course/the-web-developer-bootcamp/")). I love a good deal (I didn't know those 90% off deals on Udemy are never-ending), so I bought it, not expecting that it would leadme to my new career.
+Flush with free time, I stumbled across [Udemy](https://www.udemy.com/ "https://www.udemy.com") and found [Colt Steele's Web Development bootcamp course](https://www.udemy.com/course/the-web-developer-bootcamp/ "https://www.udemy.com/course/the-web-developer-bootcamp/"). I love a good deal (I didn't know those 90% off deals on Udemy are never-ending), so I bought it, not expecting that it would leadme to my new career.
 
 ## Chapter 2 - Takeoff
 
@@ -65,16 +65,19 @@ The first was, unsurprisingly, joining online developer communities. Here I foun
 
 The other was building things that when finished I or someone else would want to use. If you're lucky, it might even turn into your very own business! Otherwise, you're left with something that at least you'll use.
 
-> Since I was teaching full-time, I built ([a site](https://www.eslintherok.com "https://www.eslintherok.com")) that automated a lot of the activities I used in the classroom. Once finished I ended up with an extra hour or two per day that I could put towards adding additional features or learning something else.  
-> **## Chapter 6 - "We need a Doc... Developer"**  
-> When people used to ask me what I did, I would say something along the lines of "I'm an English teacher, but I'm learning to code on the side."  
-> Once my work started to get used more frequently and I got paid by my first client, my mindset changed. Instead, Istarted to answer with, "I'm a developer” and simply left off the part about teaching
+> Since I was teaching full-time, I built [a site](https://www.eslintherok.com "https://www.eslintherok.com") that automated a lot of the activities I used in the classroom. Once finished I ended up with an extra hour or two per day that I could put towards adding additional features or learning something else.  
+
+## Chapter 6 - "We need a Doc... Developer"  
+
+When people used to ask me what I did, I would say something along the lines of "I'm an English teacher, but I'm learning to code on the side."  
+
+Once my work started to get used more frequently and I got paid by my first client, my mindset changed. Instead, Istarted to answer with, "I'm a developer” and simply left off the part about teaching
 
 ## Chapter 7 - Landing
 
 My metaphorical plane needs to land and I can think of no better content to go here than landing my first full-time development job!
 
-I joined ([Codiga](https://www.codiga.io "https://www.codiga.io")) in March of this year (2022) and the experience has been nothing short of amazing. ([The team](https://www.codiga.io/about-us "https://www.codiga.io/about-us")) has been welcoming, the tasks challenging, and our future is bright together.
+I joined [Codiga](https://www.codiga.io "https://www.codiga.io") in March of this year (2022) and the experience has been nothing short of amazing. [The team](https://www.codiga.io/about-us "https://www.codiga.io/about-us") has been welcoming, the tasks challenging, and our future is bright together.
 
 > Coincidentally, I find myself writing about my journey on the way home from our first meetup in Houston.
 
