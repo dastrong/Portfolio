@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 export const StyledButton = styled.a<{ primary?: boolean }>`
   box-sizing: border-box;
-  border-radius: 2rem;
+  border-radius: 11111111px;
   padding: 0.75rem 0.25rem;
   cursor: pointer;
   min-width: 100px;
