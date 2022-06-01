@@ -39,7 +39,7 @@
     "rehype-autolink-headings": "^6.1.0",
     "rehype-slug": "^5.0.0",
     "remark-gfm": "^3.0.1",
-    "sharp": "^0.29.3",
+    "sharp": "^0.30.5",
     "styled-components": "^5.3.3",
     "use-ackee": "^3.0.1"
   },
